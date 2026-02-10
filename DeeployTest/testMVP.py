@@ -91,7 +91,8 @@ def setupDeployer(graph: gs.Graph, memoryHierarchy: MemoryHierarchy, defaultTarg
                            inputTypes,
                            deeployStateDir = _DEEPLOYSTATEDIR,
                            inputOffsets = inputOffsets,
-                           scheduler = _mockScheduler)
+                           scheduler = _mockScheduler,
+                           name = args.name)
 
     # Make the deployer engine-color-aware
     if args.platform == "Siracusa_w_neureka":
@@ -197,6 +198,11 @@ if __name__ == '__main__':
                             - min: Initalize all variables at their minimal value.
                         """)
     parser.add_argument('--profileTiling', action = "store_true")
+    parser.add_argument('--profileToJSON',
+                          dest = 'profileToJSON',
+                          action = 'store_true',
+                          default = False,
+                          help = 'Store profile tiling to JSON.\n')
     parser.add_argument('--plotMemAlloc',
                         action = 'store_true',
                         help = 'Turn on plotting of the memory allocation and save it in the deeployState folder\n')
@@ -207,6 +213,12 @@ if __name__ == '__main__':
         help =
         "Number of cores on which the network is run. Currently, required for im2col buffer sizing on Siracusa. Default: 1."
     )
+    parser.add_argument('--name',
+                        metavar = 'name',
+                        dest = 'name',
+                        type = str,
+                        default = "DeeployNetwork",
+                        help = 'Change the name of the generated network C variables. FOR NOW: make sure to change deeploytest.c accordingly.\n')
 
     parser.set_defaults(shouldFail = False)
     args = parser.parse_args()

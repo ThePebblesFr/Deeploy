@@ -14,22 +14,23 @@ void PULP_DW_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
     uint32_t pad_left, uint32_t pad_right,
-    float32_t *__restrict__ pContextBuffer) {
+    float32_t *__restrict__ pContextBuffer, int nb_dedicated_cores) {
 
   // Compute core information
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Compute the chunk size for each core
   // (Splitting work along the output channels)
   uint16_t ch_out_chunk =
-      (F_total >> log2Core) + ((F_total & (NUM_CORES - 1)) != 0);
+      (F_total >> log2Core) + ((F_total & (nb_dedicated_cores - 1)) != 0);
   uint16_t ch_out_start = MIN(ch_out_chunk * core_id, F_total);
   uint16_t ch_out_stop = MIN(ch_out_start + ch_out_chunk, F_total);
   uint16_t ch_out_count = ch_out_stop - ch_out_start;
 
   // If there is no output channel to process, return
-  // (when F < NUM_CORES and working on a core with id > F)
+  // (when F < nb_dedicated_cores and working on a core with id > F)
   if (ch_out_count == 0) {
     return;
   }

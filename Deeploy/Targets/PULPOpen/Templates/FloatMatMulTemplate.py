@@ -28,7 +28,8 @@ for(uint32_t b=0; b<${batch}; b++) {
         batch_out,
         ${M},
         ${N},
-        ${O}
+        ${O},
+        NUM_CORES
     );
 }
 """)

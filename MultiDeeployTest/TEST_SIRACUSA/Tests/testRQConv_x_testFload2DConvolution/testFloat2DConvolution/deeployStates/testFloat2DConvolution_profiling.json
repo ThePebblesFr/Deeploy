@@ -1,0 +1,31 @@
+{
+    "name": "testFloat2DConvolution",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "conv_node_input_0_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 531,
+            "kernel_exec": 1413,
+            "output_DMA": 495
+        },
+        {
+            "layer_name": "conv_node_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 617,
+            "kernel_exec": 52186,
+            "output_DMA": 384
+        },
+        {
+            "layer_name": "conv_node_output_0_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 382,
+            "kernel_exec": 2186,
+            "output_DMA": 363
+        }
+    ]
+}

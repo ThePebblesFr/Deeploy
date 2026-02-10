@@ -8,7 +8,7 @@
 
 void RQiHardswish_s8_s8_plp(int8_t *input, int8_t *output, int32_t size,
                             int32_t one_over_six, int32_t three, int32_t six,
-                            int32_t mul, int32_t add, int32_t shift) {
+                            int32_t mul, int32_t add, int32_t shift, int nb_dedicated_cores) {
 
   int32_t temp;
   int32_t rnd;
@@ -16,8 +16,9 @@ void RQiHardswish_s8_s8_plp(int8_t *input, int8_t *output, int32_t size,
   rnd = (1 << (shift - 1));
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
-  int16_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
+  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, size);
   int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
 

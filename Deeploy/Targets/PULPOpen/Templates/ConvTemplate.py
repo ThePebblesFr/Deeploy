@@ -134,7 +134,7 @@ else:
 operatorString = 'conv'
 %>
 
-pulp_nn_${operatorString}${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, ${mul}, ${add}, 1, ${log2D}, ${dim_im_in_y}, ${dim_im_in_x}, ${ch_im_in}, ${dim_im_out_y}, ${dim_im_out_x}, ${ch_im_out}, ${dim_kernel_y}, ${dim_kernel_x}, ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}, ${stride_y}, ${stride_x}, 1, 1);
+pulp_nn_${operatorString}${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, ${mul}, ${add}, 1, ${log2D}, ${dim_im_in_y}, ${dim_im_in_x}, ${ch_im_in}, ${dim_im_out_y}, ${dim_im_out_x}, ${ch_im_out}, ${dim_kernel_y}, ${dim_kernel_x}, ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}, ${stride_y}, ${stride_x}, 1, 1, NUM_CORES);
 """)
 
 PULPDWConv2D_8_Template = PULP2DDWConvTemplate("""
@@ -154,7 +154,7 @@ if weight_signed:
 else:
     signatureString += '_u8'
 %>
-pulp_nn_depthwise${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, NULL, ${mul}, ${add}, 1, ${log2D}, ${dim_im_in_y}, ${dim_im_in_x}, ${ch_im_in}, ${dim_im_out_y}, ${dim_im_out_x}, ${ch_im_out}, ${dim_kernel_y}, ${dim_kernel_x}, ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}, ${stride_y}, ${stride_x}, 1, 1);
+pulp_nn_depthwise${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, NULL, ${mul}, ${add}, 1, ${log2D}, ${dim_im_in_y}, ${dim_im_in_x}, ${ch_im_in}, ${dim_im_out_y}, ${dim_im_out_x}, ${ch_im_out}, ${dim_kernel_y}, ${dim_kernel_x}, ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}, ${stride_y}, ${stride_x}, 1, 1, NUM_CORES);
 """)
 
 PULPConv1D_8_Template = PULP1DConvTemplate("""
@@ -184,7 +184,7 @@ else:
 operatorString = 'conv'
 %>
 
-pulp_nn_${operatorString}${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, ${mul}, ${add}, 1, ${log2D}, 1, ${dim_im_in_y}, ${ch_im_in}, 1, ${dim_im_out_y}, ${ch_im_out}, 1, ${dim_kernel_y}, ${padding_y_top}, ${padding_y_bottom}, 0, 0, 1, ${stride_y}, 1, 1);
+pulp_nn_${operatorString}${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, ${mul}, ${add}, 1, ${log2D}, 1, ${dim_im_in_y}, ${ch_im_in}, 1, ${dim_im_out_y}, ${ch_im_out}, 1, ${dim_kernel_y}, ${padding_y_top}, ${padding_y_bottom}, 0, 0, 1, ${stride_y}, 1, 1, NUM_CORES);
 """)
 
 PULPDWConv1D_8_Template = PULP1DDWConvTemplate("""
@@ -204,5 +204,5 @@ if weight_signed:
 else:
     signatureString += '_u8'
 %>
-pulp_nn_depthwise${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, NULL, ${mul}, ${add}, 1, ${log2D}, 1, ${dim_im_in_y}, ${ch_im_in}, 1, ${dim_im_out_y}, ${ch_im_out}, 1, ${dim_kernel_y}, ${padding_y_top}, ${padding_y_bottom}, 0, 0, 1, ${stride_y}, 1, 1);
+pulp_nn_depthwise${signatureString}(${data_in}, ${ctxtBuffer}, NULL, ${data_out}, ${weight}, NULL, ${mul}, ${add}, 1, ${log2D}, 1, ${dim_im_in_y}, ${ch_im_in}, 1, ${dim_im_out_y}, ${ch_im_out}, 1, ${dim_kernel_y}, ${padding_y_top}, ${padding_y_bottom}, 0, 0, 1, ${stride_y}, 1, 1, NUM_CORES);
 """)

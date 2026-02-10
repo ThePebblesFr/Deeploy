@@ -11,12 +11,13 @@
 void PULP_MatMul_fp32_fp32_fp32_unroll1x7(const float32_t *__restrict__ pSrcA,
                                           const float32_t *__restrict__ pSrcB,
                                           float32_t *__restrict__ pDstY,
-                                          uint32_t M, uint32_t N, uint32_t O) {
+                                          uint32_t M, uint32_t N, uint32_t O, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
-  uint32_t M_chunk = (M >> log2Core) + ((M & (NUM_CORES - 1)) != 0);
+  uint32_t M_chunk = (M >> log2Core) + ((M & (nb_dedicated_cores - 1)) != 0);
   uint32_t M_start = MIN(core_id * M_chunk, M);
   uint32_t M_end = MIN(M_start + M_chunk, M);
   uint32_t M_size = M_end - M_start;

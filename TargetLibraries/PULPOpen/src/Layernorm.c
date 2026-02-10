@@ -11,14 +11,15 @@
 void PULP_Layernorm_fp32_fp32(float32_t *data_in, float32_t *data_out,
                               float32_t *scale, float32_t *bias,
                               float32_t epsilon, uint32_t size,
-                              uint32_t lastDimLength) {
+                              uint32_t lastDimLength, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
   int32_t seq_length = size / lastDimLength;
   int32_t chunk =
-      (seq_length >> log2Core) + ((seq_length & (NUM_CORES - 1)) != 0);
+      (seq_length >> log2Core) + ((seq_length & (nb_dedicated_cores - 1)) != 0);
   int32_t start_seq = MIN(chunk * core_id, seq_length);
   int32_t end_seq = MIN(start_seq + chunk, seq_length);
 

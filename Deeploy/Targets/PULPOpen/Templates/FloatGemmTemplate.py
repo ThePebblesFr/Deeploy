@@ -21,7 +21,8 @@ for(uint32_t i=0; i<${batch}; i++){
         ${N},
         ${O},
         ${transA},
-        ${transB}
+        ${transB},
+        NUM_CORES
     );
 
     % if A_batched:

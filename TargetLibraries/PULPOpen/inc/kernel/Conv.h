@@ -15,7 +15,7 @@ void PULP_Conv2d_fp32_fp32_fp32_HWC(
     uint32_t Q, uint32_t SP, uint32_t SQ,
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
-    uint32_t pad_left, uint32_t pad_right);
+    uint32_t pad_left, uint32_t pad_right, int nb_dedicated_cores);
 
 void PULP_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcA, uint32_t H, uint32_t W, uint32_t C,
@@ -24,7 +24,7 @@ void PULP_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
     uint32_t pad_left, uint32_t pad_right,
-    float32_t *__restrict__ pContextBuffer);
+    float32_t *__restrict__ pContextBuffer, int nb_dedicated_cores);
 
 void PULP_DW_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcA, uint32_t H, uint32_t W, uint32_t C,
@@ -33,6 +33,6 @@ void PULP_DW_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
     uint32_t pad_left, uint32_t pad_right,
-    float32_t *__restrict__ pContextBuffer);
+    float32_t *__restrict__ pContextBuffer, int nb_dedicated_cores);
 
 #endif // __DEEPLOY_MATH_CONV_KERNEL_HEADER_

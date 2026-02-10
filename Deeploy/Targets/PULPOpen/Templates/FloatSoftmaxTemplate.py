@@ -10,7 +10,8 @@ PULP_Softmax_fp${data_in_type.referencedType.typeWidth}_fp${data_out_type.refere
     ${data_in},
     ${data_out},
     ${size},
-    ${lastDimLength}
+    ${lastDimLength},
+    NUM_CORES
 );
 """)
 

@@ -2467,7 +2467,8 @@ class NetworkContainer():
         self.ctxt = NetworkContext(variableBuffer = self.Platform.VariableBuffer,
                                    constantBuffer = self.Platform.ConstantBuffer,
                                    structBuffer = self.Platform.StructBuffer,
-                                   transientBuffer = self.Platform.TransientBuffer)
+                                   transientBuffer = self.Platform.TransientBuffer,
+                                   name=self.name)
 
         self.deeployStateDir = deeployStateDir
 
@@ -2631,7 +2632,8 @@ class NetworkContainer():
         self.ctxt = NetworkContext(variableBuffer = self.Platform.VariableBuffer,
                                    constantBuffer = self.Platform.ConstantBuffer,
                                    structBuffer = self.Platform.StructBuffer,
-                                   transientBuffer = self.Platform.TransientBuffer)
+                                   transientBuffer = self.Platform.TransientBuffer,
+                                   name=self.name)
 
         log.debug(" - Create IO Bindings")
         self.ctxt = self._createIOBindings(self.ctxt, self.graph)
@@ -2785,10 +2787,12 @@ class NetworkContainer():
         callStack = ''
 
         for key, node in self.layerBinding.items():
+            callStack += f"\n// RUNNETRWORK LAYER {self.name}_{node.node.name} CALL START\n"
             self.ctxt, code = node.generate(self.ctxt)
 
             sections = reduce(lambda a, b: a + b, code, [])
             callStack += reduce(lambda a, b: a + b, sections, "")
+            callStack += f"\n// RUNNETRWORK LAYER {self.name}_{node.node.name} CALL END\n"
 
         return callStack
 
@@ -3215,7 +3219,6 @@ class NetworkDeployer(NetworkContainer):
 
         """
         super().__init__(graph, deploymentPlatform, inputTypes, scheduler, name, deeployStateDir = deeployStateDir)
-
         self.loweringOptimizer = loweringOptimizer
         self.default_channels_first = default_channels_first
 

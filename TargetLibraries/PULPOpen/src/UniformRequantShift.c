@@ -11,11 +11,12 @@ void UniformRequantShift_s8_s8(int8_t *data_in, int32_t size, int32_t mul,
                                int32_t add, int8_t *data_out, int32_t log2D,
                                int32_t HW, int32_t input_offset,
                                int32_t output_offset, int8_t output_min,
-                               int8_t output_max, bool rounding) {
+                               int8_t output_max, bool rounding, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
-  int16_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
+  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, size);
   int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
 
@@ -76,11 +77,12 @@ void UniformRequantShift_u8_s8(uint8_t *data_in, int32_t size, int32_t mul,
                                int32_t add, int8_t *data_out, int32_t log2D,
                                int32_t HW, int32_t input_offset,
                                int32_t output_offset, int8_t output_min,
-                               int8_t output_max, bool rounding) {
+                               int8_t output_max, bool rounding, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
-  int16_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
+  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, size);
   int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
 
@@ -141,11 +143,12 @@ void UniformRequantShift_s16_s8(int16_t *data_in, int32_t size, int32_t mul,
                                 int32_t add, int8_t *data_out, int32_t log2D,
                                 int32_t HW, int32_t input_offset,
                                 int32_t output_offset, int8_t output_min,
-                                int8_t output_max, bool rounding) {
+                                int8_t output_max, bool rounding, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
-  int16_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
+  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, size);
   int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
 
@@ -206,11 +209,12 @@ void UniformRequantShift_s32_s8(int32_t *data_in, int32_t size, int32_t mul,
                                 int32_t add, int8_t *data_out, int32_t log2D,
                                 int32_t HW, int32_t input_offset,
                                 int32_t output_offset, int8_t output_min,
-                                int8_t output_max, bool rounding) {
+                                int8_t output_max, bool rounding, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
-  int16_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
+  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, size);
   int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
 

@@ -10,7 +10,7 @@
 void PULPSoftmax_u8_u8(uint8_t *data_in, uint8_t *data_out,
                        uint32_t *lastDimBuffer, uint32_t size,
                        uint32_t lastDimLength, int32_t coeffB, int32_t coeffC,
-                       int32_t log2) {
+                       int32_t log2, int nb_dedicated_cores) {
   uint8_t z;
   int16_t xTilde, p;
   uint32_t y_sum;
@@ -19,15 +19,18 @@ void PULPSoftmax_u8_u8(uint8_t *data_in, uint8_t *data_out,
   uint32_t intermediateResult;
   uint32_t chunk, offset;
 
-  if (pi_core_id() < (NUM_CORES - 1)) {
-    chunk = (size / lastDimLength) / NUM_CORES;
-    offset = chunk * lastDimLength * pi_core_id();
-    lastDimBuffer += lastDimLength * pi_core_id();
+  int core_id = pi_core_id();
+  core_id = core_id % nb_dedicated_cores;
+
+  if (core_id < (nb_dedicated_cores - 1)) {
+    chunk = (size / lastDimLength) / nb_dedicated_cores;
+    offset = chunk * lastDimLength * core_id;
+    lastDimBuffer += lastDimLength * core_id;
   } else {
-    uint32_t prevChunk = (size / lastDimLength) / NUM_CORES;
-    chunk = (size / lastDimLength) - prevChunk * (NUM_CORES - 1);
+    uint32_t prevChunk = (size / lastDimLength) / nb_dedicated_cores;
+    chunk = (size / lastDimLength) - prevChunk * (nb_dedicated_cores - 1);
     offset = size - (chunk * lastDimLength);
-    lastDimBuffer += lastDimLength * pi_core_id();
+    lastDimBuffer += lastDimLength * core_id;
   }
 
   for (uint32_t i = offset; i < offset + (chunk * lastDimLength);
@@ -57,7 +60,7 @@ void PULPSoftmax_u8_u8(uint8_t *data_in, uint8_t *data_out,
 void PULPSoftmax_i8_u8(int8_t *data_in, uint8_t *data_out,
                        uint32_t *lastDimBuffer, uint32_t size,
                        uint32_t lastDimLength, int32_t coeffB, int32_t coeffC,
-                       int32_t log2) {
+                       int32_t log2, int nb_dedicated_cores) {
   uint8_t z;
   int16_t xTilde, p;
   uint32_t y_sum;
@@ -66,15 +69,18 @@ void PULPSoftmax_i8_u8(int8_t *data_in, uint8_t *data_out,
   uint32_t intermediateResult;
   uint32_t chunk, offset;
 
-  if (pi_core_id() < (NUM_CORES - 1)) {
-    chunk = (size / lastDimLength) / NUM_CORES;
-    offset = chunk * lastDimLength * pi_core_id();
-    lastDimBuffer += lastDimLength * pi_core_id();
+  int core_id = pi_core_id();
+  core_id = core_id % nb_dedicated_cores;
+
+  if (core_id < (nb_dedicated_cores - 1)) {
+    chunk = (size / lastDimLength) / nb_dedicated_cores;
+    offset = chunk * lastDimLength * core_id;
+    lastDimBuffer += lastDimLength * core_id;
   } else {
-    uint32_t prevChunk = (size / lastDimLength) / NUM_CORES;
-    chunk = (size / lastDimLength) - prevChunk * (NUM_CORES - 1);
+    uint32_t prevChunk = (size / lastDimLength) / nb_dedicated_cores;
+    chunk = (size / lastDimLength) - prevChunk * (nb_dedicated_cores - 1);
     offset = size - (chunk * lastDimLength);
-    lastDimBuffer += lastDimLength * pi_core_id();
+    lastDimBuffer += lastDimLength * core_id;
   }
 
   for (uint32_t i = offset; i < offset + (chunk * lastDimLength);
@@ -103,14 +109,15 @@ void PULPSoftmax_i8_u8(int8_t *data_in, uint8_t *data_out,
 }
 
 void PULP_Softmax_fp32_fp32(float32_t *input, float32_t *output, uint32_t size,
-                            uint32_t last_dim_length) {
+                            uint32_t last_dim_length, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
   int32_t num_vectors = size / last_dim_length;
   int32_t chunk =
-      (num_vectors >> log2Core) + ((num_vectors & (NUM_CORES - 1)) != 0);
+      (num_vectors >> log2Core) + ((num_vectors & (nb_dedicated_cores - 1)) != 0);
   int32_t vector_start = MIN(chunk * core_id, num_vectors);
   int32_t vector_end = MIN(vector_start + chunk, num_vectors);
   int32_t local_vectors = vector_end - vector_start;

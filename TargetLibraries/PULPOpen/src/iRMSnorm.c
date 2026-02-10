@@ -38,7 +38,7 @@ inline int16_t _plp_sqrt_q16(int16_t pSrc) {
 }
 
 void iRMSnorm_s8_s8_plp(int8_t *data_in, int8_t *data_out, int32_t *weight,
-                        int32_t size, int32_t lastDimLength, int32_t log2D) {
+                        int32_t size, int32_t lastDimLength, int32_t log2D, int nb_dedicated_cores) {
 
   int32_t sum;
   int32_t std;
@@ -46,9 +46,10 @@ void iRMSnorm_s8_s8_plp(int8_t *data_in, int8_t *data_out, int32_t *weight,
   int32_t intermediate;
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
   int16_t chunk =
-      (lastDimLength >> log2Core) + ((lastDimLength & (NUM_CORES - 1)) != 0);
+      (lastDimLength >> log2Core) + ((lastDimLength & (nb_dedicated_cores - 1)) != 0);
   int16_t chunk_start = MIN(chunk * core_id, lastDimLength);
   int16_t chunk_stop = MIN(chunk_start + chunk, lastDimLength + 1);
 

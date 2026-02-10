@@ -7,12 +7,13 @@
 #include "DeeployPULPMath.h"
 #include "pmsis.h"
 
-void PULP_Relu_fp32_fp32(float32_t *input, float32_t *output, uint32_t size) {
+void PULP_Relu_fp32_fp32(float32_t *input, float32_t *output, uint32_t size, int nb_dedicated_cores) {
 
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
-  int32_t chunk = (size >> log2Core) + ((size & (NUM_CORES - 1)) != 0);
+  int32_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
   int32_t start = MIN(chunk * core_id, size);
   int32_t end = MIN(start + chunk, size);
   int32_t local_size = end - start;

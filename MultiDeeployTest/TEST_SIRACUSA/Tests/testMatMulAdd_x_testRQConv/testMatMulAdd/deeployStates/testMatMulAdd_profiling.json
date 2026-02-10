@@ -1,0 +1,23 @@
+{
+    "name": "testMatMulAdd",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "MatMul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 721,
+            "kernel_exec": 361896,
+            "output_DMA": 1181
+        },
+        {
+            "layer_name": "ADD1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1401,
+            "kernel_exec": 14653,
+            "output_DMA": 1154
+        }
+    ]
+}

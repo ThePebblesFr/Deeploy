@@ -4,7 +4,7 @@
 
 from Deeploy.DeeployTypes import NodeTemplate
 
-pulpL2InitTemplate = NodeTemplate("${type.typeName} ${name};\n")
+pulpL2InitTemplate = NodeTemplate("${type.typeName} ${name}; // L2_init_template\n")
 
 pulpL1InitTemplate = NodeTemplate("${type.typeName} ${name};\n")
 #pulpL2AllocateTemplate = NodeTemplate("${name} = (${type.typeName}) pi_l2_malloc(${type.referencedType.typeWidth//8} * ${size});\n")
@@ -30,7 +30,7 @@ pulpL2StructInitTemplate = NodeTemplate("""static PI_L2 ${type.typeName} ${name}
 #static const ${type}* ${name} = &${name}_UL;
 
 pulpL2StructAllocateTemplate = NodeTemplate(""" % for key, value in structDict.items():
-    ${name}.${key} = ${value};
+    ${name}.${key} = ${value}; // L2_struct_allocate_template
 % endfor """)
 
 pulpGenericStructInitTemplate = NodeTemplate("""

@@ -5,6 +5,7 @@
 include_directories(${GENERATED_SOURCE})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+message(STATUS "[cMake  ]   hello")
 
 add_library(network OBJECT ${GENERATED_SOURCE}/Network.c)
 target_link_libraries(network PUBLIC deeploylib)

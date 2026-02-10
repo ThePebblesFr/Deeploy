@@ -1,0 +1,48 @@
+
+#ifndef __DEEPLOY_HEADER__
+#define __DEEPLOY_HEADER__
+#include "DeeployPULPMath.h"
+#include "bsp/ram.h"
+#include "dory_mem.h"
+#include "mchan_siracusa.h"
+#include "pmsis.h"
+#include "pulp_nn_kernels.h"
+#include "stdint.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+void RunNetwork();
+void InitNetwork();
+
+
+extern int8_t *testMatMulAdd_MEMORYARENA_L1;
+static const uint32_t testMatMulAdd_MEMORYARENA_L1_len = 18432;
+extern int8_t *testMatMulAdd_MEMORYARENA_L2;
+static const uint32_t testMatMulAdd_MEMORYARENA_L2_len = 16384;
+extern int8_t *testMatMulAdd_input_0;
+static const uint32_t testMatMulAdd_input_0_len = 1536;
+extern int32_t *testMatMulAdd_output_0;
+static const uint32_t testMatMulAdd_output_0_len = 2048;
+static const uint32_t testMatMulAdd_num_inputs = 1;
+static const uint32_t testMatMulAdd_num_outputs = 1;
+extern void *testMatMulAdd_inputs[1];
+extern void *testMatMulAdd_outputs[1];
+static const uint32_t testMatMulAdd_inputs_bytes[1] = {1536};
+static const uint32_t testMatMulAdd_outputs_bytes[1] = {8192};
+
+
+extern int8_t *simpleCNN_MEMORYARENA_L1;
+static const uint32_t simpleCNN_MEMORYARENA_L1_len = 63640;
+extern int8_t *simpleCNN_MEMORYARENA_L2;
+static const uint32_t simpleCNN_MEMORYARENA_L2_len = 20480;
+extern int8_t *simpleCNN_input_0;
+static const uint32_t simpleCNN_input_0_len = 1024;
+extern uint8_t *simpleCNN_output_0;
+static const uint32_t simpleCNN_output_0_len = 10;
+static const uint32_t simpleCNN_num_inputs = 1;
+static const uint32_t simpleCNN_num_outputs = 1;
+extern void *simpleCNN_inputs[1];
+extern void *simpleCNN_outputs[1];
+static const uint32_t simpleCNN_inputs_bytes[1] = {1024};
+static const uint32_t simpleCNN_outputs_bytes[1] = {10};
+#endif

@@ -1,0 +1,1983 @@
+{
+    "name": "microLlama1",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_0_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 251,
+            "kernel_exec": 2120,
+            "output_DMA": 160
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 184,
+            "kernel_exec": 351,
+            "output_DMA": 118
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 269,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_14_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 300,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_15_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 278,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_25_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 284,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_26_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 162,
+            "kernel_exec": 303,
+            "output_DMA": 119
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_36_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 300,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_37_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 280,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_47_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 284,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_48_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 269,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_58_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 162,
+            "kernel_exec": 300,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_59_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 142,
+            "kernel_exec": 299,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_69_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 275,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_70_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 254,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_80_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 127,
+            "kernel_exec": 276,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_81_input_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 268,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 717,
+            "kernel_exec": 3081,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 696,
+            "kernel_exec": 2709,
+            "output_DMA": 181
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 697,
+            "kernel_exec": 2752,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 106,
+            "kernel_exec": 472,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 237,
+            "kernel_exec": 2360,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 260,
+            "kernel_exec": 1929,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_8_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 178,
+            "kernel_exec": 1194,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "_Transpose_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 180,
+            "kernel_exec": 508,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Transpose_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 490,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Concat_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 150,
+            "kernel_exec": 1645,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_Concat_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 168,
+            "kernel_exec": 1541,
+            "output_DMA": 127
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_6_output_2_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 106,
+            "kernel_exec": 711,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 272,
+            "kernel_exec": 2190,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 169,
+            "kernel_exec": 1316,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_0_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 201,
+            "kernel_exec": 1401,
+            "output_DMA": 106
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_15_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 166,
+            "kernel_exec": 1037,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 295,
+            "kernel_exec": 2420,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Transpose_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 468,
+            "output_DMA": 181
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 3021,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 202,
+            "kernel_exec": 1439,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_1_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 206,
+            "kernel_exec": 2112,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_8_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2445,
+            "kernel_exec": 7907,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_9_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 7682,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 199,
+            "kernel_exec": 2710,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_0_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 227,
+            "kernel_exec": 1067,
+            "output_DMA": 222
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_25_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 282,
+            "kernel_exec": 2078,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_10_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2252,
+            "kernel_exec": 6385,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_9_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 148,
+            "kernel_exec": 1434,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_2_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 206,
+            "kernel_exec": 2111,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_11_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 696,
+            "kernel_exec": 2925,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_12_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2699,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_13_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 2753,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Transpose_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 106,
+            "kernel_exec": 501,
+            "output_DMA": 181
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_14_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 240,
+            "kernel_exec": 2311,
+            "output_DMA": 146
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_15_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 241,
+            "kernel_exec": 2001,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_Concat_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 170,
+            "kernel_exec": 1589,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_Transpose_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 107,
+            "kernel_exec": 482,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Transpose_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 109,
+            "kernel_exec": 516,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Concat_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 189,
+            "kernel_exec": 1546,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_17_output_4_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 686,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_16_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 258,
+            "kernel_exec": 1957,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 223,
+            "kernel_exec": 1323,
+            "output_DMA": 141
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_1_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 184,
+            "kernel_exec": 1486,
+            "output_DMA": 108
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_45_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 166,
+            "kernel_exec": 1014,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_17_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 275,
+            "kernel_exec": 2463,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_Transpose_9_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 499,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_18_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 3011,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_10_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 130,
+            "kernel_exec": 1446,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_3_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 206,
+            "kernel_exec": 2122,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_19_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2443,
+            "kernel_exec": 7935,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_20_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2445,
+            "kernel_exec": 7752,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 160,
+            "kernel_exec": 2727,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_1_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 185,
+            "kernel_exec": 1004,
+            "output_DMA": 222
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_55_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 243,
+            "kernel_exec": 2094,
+            "output_DMA": 175
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_21_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2282,
+            "kernel_exec": 6357,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_11_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 128,
+            "kernel_exec": 1418,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_4_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 225,
+            "kernel_exec": 2110,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_22_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2986,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_23_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2724,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_24_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2636,
+            "output_DMA": 106
+        },
+        {
+            "layer_name": "_Transpose_10_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 144,
+            "kernel_exec": 447,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_25_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 238,
+            "kernel_exec": 2271,
+            "output_DMA": 126
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_26_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 259,
+            "kernel_exec": 2010,
+            "output_DMA": 144
+        },
+        {
+            "layer_name": "_Concat_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 189,
+            "kernel_exec": 1564,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "_Transpose_12_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 501,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_Transpose_11_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 127,
+            "kernel_exec": 482,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_Concat_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 188,
+            "kernel_exec": 1561,
+            "output_DMA": 127
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_28_output_6_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 690,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_27_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 272,
+            "kernel_exec": 2029,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 169,
+            "kernel_exec": 1318,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_2_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 181,
+            "kernel_exec": 1462,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_75_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 999,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_28_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 239,
+            "kernel_exec": 2392,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_Transpose_14_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 495,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_29_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 3016,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_12_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 128,
+            "kernel_exec": 1453,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_5_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 225,
+            "kernel_exec": 2084,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_30_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 7902,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_31_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2443,
+            "kernel_exec": 7640,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 162,
+            "kernel_exec": 2686,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_2_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 226,
+            "kernel_exec": 1033,
+            "output_DMA": 241
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_85_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 245,
+            "kernel_exec": 2048,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_32_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2279,
+            "kernel_exec": 6425,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_13_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 167,
+            "kernel_exec": 1427,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_6_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 206,
+            "kernel_exec": 2105,
+            "output_DMA": 127
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_33_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 698,
+            "kernel_exec": 3000,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_34_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 2689,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_35_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 718,
+            "kernel_exec": 2695,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_Transpose_15_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 144,
+            "kernel_exec": 466,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_36_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 273,
+            "kernel_exec": 2235,
+            "output_DMA": 144
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_37_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 299,
+            "kernel_exec": 1982,
+            "output_DMA": 126
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_98_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 1158,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "_Transpose_17_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 149,
+            "kernel_exec": 478,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_Transpose_16_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 145,
+            "kernel_exec": 512,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_Concat_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 168,
+            "kernel_exec": 1581,
+            "output_DMA": 133
+        },
+        {
+            "layer_name": "_Concat_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 170,
+            "kernel_exec": 1549,
+            "output_DMA": 202
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_39_output_8_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 198,
+            "kernel_exec": 699,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_38_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 219,
+            "kernel_exec": 2067,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 204,
+            "kernel_exec": 1322,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_3_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 1421,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_105_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 203,
+            "kernel_exec": 957,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_39_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 296,
+            "kernel_exec": 2388,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_Transpose_19_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 514,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_40_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 3092,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_14_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 200,
+            "kernel_exec": 1459,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_7_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 226,
+            "kernel_exec": 2094,
+            "output_DMA": 108
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_41_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2425,
+            "kernel_exec": 7921,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_42_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 8050,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 180,
+            "kernel_exec": 2678,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_3_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 203,
+            "kernel_exec": 982,
+            "output_DMA": 222
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_115_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 263,
+            "kernel_exec": 2071,
+            "output_DMA": 175
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_43_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2280,
+            "kernel_exec": 6439,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_15_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 148,
+            "kernel_exec": 1430,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_8_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2098,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_44_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 735,
+            "kernel_exec": 2916,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_45_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2780,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_46_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 718,
+            "kernel_exec": 2678,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Transpose_20_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 515,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_47_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 258,
+            "kernel_exec": 2296,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_48_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 242,
+            "kernel_exec": 1888,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_128_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 1110,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_Transpose_22_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 127,
+            "kernel_exec": 484,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Transpose_21_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 107,
+            "kernel_exec": 461,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Concat_9_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 169,
+            "kernel_exec": 1582,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "_Concat_8_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 133,
+            "kernel_exec": 1547,
+            "output_DMA": 182
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_50_output_10_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 144,
+            "kernel_exec": 645,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_49_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 239,
+            "kernel_exec": 2048,
+            "output_DMA": 144
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 169,
+            "kernel_exec": 1320,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_4_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 1469,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_135_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 184,
+            "kernel_exec": 1028,
+            "output_DMA": 141
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_50_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 262,
+            "kernel_exec": 2433,
+            "output_DMA": 144
+        },
+        {
+            "layer_name": "_Transpose_24_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 198,
+            "kernel_exec": 513,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_51_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 717,
+            "kernel_exec": 3056,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_16_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 1439,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_9_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2100,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_52_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 8196,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_53_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 7671,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 179,
+            "kernel_exec": 2673,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_4_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 183,
+            "kernel_exec": 1021,
+            "output_DMA": 224
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_145_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 282,
+            "kernel_exec": 2073,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_54_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2254,
+            "kernel_exec": 6469,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_17_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 148,
+            "kernel_exec": 1417,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_10_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2094,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_55_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 696,
+            "kernel_exec": 2931,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_56_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 697,
+            "kernel_exec": 2692,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_57_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2731,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_Transpose_25_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 106,
+            "kernel_exec": 512,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_58_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 240,
+            "kernel_exec": 2291,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_59_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 260,
+            "kernel_exec": 1985,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_158_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 200,
+            "kernel_exec": 1161,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "_Transpose_27_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 180,
+            "kernel_exec": 481,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Transpose_26_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 481,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_Concat_11_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 170,
+            "kernel_exec": 1585,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_Concat_10_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 188,
+            "kernel_exec": 1521,
+            "output_DMA": 127
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_61_output_12_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 696,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_60_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 274,
+            "kernel_exec": 2038,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 169,
+            "kernel_exec": 1285,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_5_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 181,
+            "kernel_exec": 1495,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_165_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 1019,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_61_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 241,
+            "kernel_exec": 2381,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_Transpose_29_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 472,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_62_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 3027,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_18_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 128,
+            "kernel_exec": 1435,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_11_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 227,
+            "kernel_exec": 2104,
+            "output_DMA": 179
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_63_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2443,
+            "kernel_exec": 7923,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_64_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2425,
+            "kernel_exec": 7648,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 179,
+            "kernel_exec": 2707,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_5_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 228,
+            "kernel_exec": 1018,
+            "output_DMA": 240
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_175_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 262,
+            "kernel_exec": 2071,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_65_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2233,
+            "kernel_exec": 6444,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_19_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 222,
+            "kernel_exec": 1450,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_12_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 228,
+            "kernel_exec": 2111,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_66_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 738,
+            "kernel_exec": 3021,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_67_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 717,
+            "kernel_exec": 2678,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_68_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 716,
+            "kernel_exec": 2630,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_Transpose_30_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 178,
+            "kernel_exec": 494,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_69_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 220,
+            "kernel_exec": 2336,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_70_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 298,
+            "kernel_exec": 1991,
+            "output_DMA": 183
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_188_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 166,
+            "kernel_exec": 1138,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "_Transpose_32_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 166,
+            "kernel_exec": 464,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Transpose_31_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 199,
+            "kernel_exec": 466,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_Concat_13_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 151,
+            "kernel_exec": 1607,
+            "output_DMA": 184
+        },
+        {
+            "layer_name": "_Concat_12_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 191,
+            "kernel_exec": 1490,
+            "output_DMA": 145
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_72_output_14_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 126,
+            "kernel_exec": 719,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_71_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 260,
+            "kernel_exec": 2081,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 225,
+            "kernel_exec": 1326,
+            "output_DMA": 141
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_6_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 182,
+            "kernel_exec": 1458,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_195_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 146,
+            "kernel_exec": 1046,
+            "output_DMA": 103
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_72_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 295,
+            "kernel_exec": 2443,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "_Transpose_34_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 106,
+            "kernel_exec": 501,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_73_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 2987,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_20_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 148,
+            "kernel_exec": 1426,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_13_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2124,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_74_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2443,
+            "kernel_exec": 8524,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_75_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2445,
+            "kernel_exec": 7691,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 182,
+            "kernel_exec": 2679,
+            "output_DMA": 159
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_6_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 226,
+            "kernel_exec": 1041,
+            "output_DMA": 241
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_205_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 263,
+            "kernel_exec": 2036,
+            "output_DMA": 157
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_76_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2279,
+            "kernel_exec": 6430,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_21_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 1434,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_14_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 226,
+            "kernel_exec": 2093,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_77_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 716,
+            "kernel_exec": 2969,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_78_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2638,
+            "output_DMA": 106
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_79_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 715,
+            "kernel_exec": 2742,
+            "output_DMA": 142
+        },
+        {
+            "layer_name": "_Transpose_35_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 200,
+            "kernel_exec": 483,
+            "output_DMA": 124
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_80_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 293,
+            "kernel_exec": 2245,
+            "output_DMA": 126
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_81_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 315,
+            "kernel_exec": 2072,
+            "output_DMA": 126
+        },
+        {
+            "layer_name": "_Concat_15_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 212,
+            "kernel_exec": 1589,
+            "output_DMA": 127
+        },
+        {
+            "layer_name": "_Transpose_37_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 180,
+            "kernel_exec": 494,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_Transpose_36_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 127,
+            "kernel_exec": 494,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_216_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 164,
+            "kernel_exec": 1159,
+            "output_DMA": 122
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_83_output_16_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 107,
+            "kernel_exec": 706,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_Concat_14_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 150,
+            "kernel_exec": 1630,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_82_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 241,
+            "kernel_exec": 2042,
+            "output_DMA": 107
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_8_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 203,
+            "kernel_exec": 1321,
+            "output_DMA": 141
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_SOFTMAX_PASS_7_iSoftmax_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 204,
+            "kernel_exec": 1454,
+            "output_DMA": 108
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_225_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 147,
+            "kernel_exec": 994,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_83_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 239,
+            "kernel_exec": 2433,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_Transpose_39_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 178,
+            "kernel_exec": 516,
+            "output_DMA": 123
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_84_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 695,
+            "kernel_exec": 3011,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_22_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 202,
+            "kernel_exec": 1453,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_15_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2093,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_85_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2423,
+            "kernel_exec": 8222,
+            "output_DMA": 178
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_86_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2445,
+            "kernel_exec": 7611,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_iHARDSWISHRQ_PASS_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 180,
+            "kernel_exec": 2709,
+            "output_DMA": 180
+        },
+        {
+            "layer_name": "__QL_OP_TREE_REPLACE_MULTIPLICATION_7_Mul_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 203,
+            "kernel_exec": 980,
+            "output_DMA": 224
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_235_RequantShift_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 243,
+            "kernel_exec": 2100,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_87_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2278,
+            "kernel_exec": 6483,
+            "output_DMA": 182
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_23_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 148,
+            "kernel_exec": 1433,
+            "output_DMA": 105
+        },
+        {
+            "layer_name": "__QL_REPLACED__INTEGER_RMSNORM_PASS_16_iRMSNorm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 224,
+            "kernel_exec": 2121,
+            "output_DMA": 123
+        }
+    ]
+}

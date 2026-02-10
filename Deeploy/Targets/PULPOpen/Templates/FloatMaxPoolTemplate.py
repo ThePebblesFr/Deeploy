@@ -17,7 +17,7 @@ for (uint32_t n=0; n<${batch}; ++n) {
         ${dim_kernel_x}, ${dim_kernel_y},
         ${stride_x}, ${stride_y},
         ref_${data_out}_${data_out},
-        ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}
+        ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}, NUM_CORES
     );
     ref_${data_out}_${data_in} += ${ch_im_in}*${dim_im_in_x}*${dim_im_in_y};
     ref_${data_out}_${data_out} += ${ch_im_out}*${dim_im_out_x}*${dim_im_out_y};

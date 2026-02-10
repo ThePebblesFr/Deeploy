@@ -13,6 +13,7 @@ PULP_Layernorm_fp${data_in_type.referencedType.typeWidth}_fp${data_out_type.refe
     ${bias},
     ${epsilon},
     ${size},
-    ${lastDimLength}
+    ${lastDimLength},
+    NUM_CORES
 );
 """)

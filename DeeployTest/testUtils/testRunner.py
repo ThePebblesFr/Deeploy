@@ -6,6 +6,7 @@ import argparse
 import codecs
 import os
 import re
+import json
 import shutil
 import subprocess
 from typing import Literal, Tuple
@@ -46,6 +47,7 @@ def getPaths(path_test: str, gendir_name: str) -> Tuple[str, str]:
 
         print(f"Path is not inside the script location. Using gendir path {dir_gen}")
 
+    print(f"dir_gen: {dir_gen}, dir_test: {dir_test}, test_name: {test_name}")
     return dir_gen, dir_test, test_name
 
 
@@ -174,6 +176,12 @@ class TestRunnerArgumentParser(argparse.ArgumentParser):
                           help = '(Optional) mapping of input names to offsets. '
                           'If not specified, offsets are set to 0. '
                           'Example: --input-offset-map input_0=0 input_1=128 ...')
+        self.add_argument('--name',
+                        metavar = 'name',
+                        dest = 'name',
+                        type = str,
+                        default = "DeeployNetwork",
+                        help = 'Change the name of the generated network C variables. FOR NOW: make sure to change deeploytest.c accordingly.\n')
 
         if self.tiling_arguments:
             self.add_argument('--defaultMemLevel',
@@ -223,6 +231,11 @@ class TestRunnerArgumentParser(argparse.ArgumentParser):
                 '--plotMemAlloc',
                 action = 'store_true',
                 help = 'Turn on plotting of the memory allocation and save it in the deeployState folder\n')
+            self.add_argument('--profileToJSON',
+                          dest = 'profileToJSON',
+                          action = 'store_true',
+                          default = False,
+                          help = 'Store profile tiling to JSON.\n')
 
         self.args = None
 
@@ -245,6 +258,8 @@ class TestRunnerArgumentParser(argparse.ArgumentParser):
             command += " --input-type-map " + " ".join(self.args.input_type_map)
         if self.args.input_offset_map:
             command += " --input-offset-map " + " ".join(self.args.input_offset_map)
+        if self.args.name:
+            command += f" --name={self.args.name}"
 
         if self.tiling_arguments:
             if self.args.defaultMemLevel:
@@ -265,6 +280,8 @@ class TestRunnerArgumentParser(argparse.ArgumentParser):
                 command += f" --plotMemAlloc"
             if self.args.searchStrategy:
                 command += f" --searchStrategy={self.args.searchStrategy}"
+            if self.args.profileToJSON:
+                command += f" --profileToJSON"
 
         return command
 
@@ -347,7 +364,7 @@ class TestRunner():
             command += f" --cores={self._args.cores}"
 
         command += self._argument_parser.generate_cmd_args()
-
+  
         log.debug(f"[TestRunner] Generation Command: {command}")
 
         err = os.system(command)
@@ -434,6 +451,66 @@ class TestRunner():
 
         fileHandle.write("")
         fileHandle.close()
+
+        if self._args.profileTiling and self._args.profileToJSON:
+            try:
+                after_input = result.split("Input copied", 1)[1]
+            except IndexError:
+                raise RuntimeError("Could not find 'Input copied' in the log.")
+
+            try:
+                between = after_input.split("Output:", 1)[0]
+            except IndexError:
+                raise RuntimeError("Could not find 'Output:' in the log after 'Input copied'.")
+            lines = [ l.strip() for l in between.splitlines() if l.strip() ]
+
+            pattern = re.compile(
+                r'^\[(?P<layer>[^\]]+)\]\[(?P<buf>DB|SB)\]\[(?P<ops>\d+) ops\]\[Tile (?P<tile>\d+)\] '
+                r'(?P<kind>Input DMA|Kernel|Output DMA) took (?P<cycles>\d+) cycles'
+            )
+            layer_tiles = {}
+            layer_order = []
+            for line in lines:
+                m = pattern.match(line)
+                if not m:
+                    continue
+
+                layer_name = m.group("layer")
+                buf_type = m.group("buf")
+                tile = int(m.group("tile"))
+                kind = m.group("kind")
+                cycles = int(m.group("cycles"))
+
+                key = (layer_name, tile)
+
+                if key not in layer_tiles:
+                    layer_tiles[key] = {
+                        "layer_name": layer_name,
+                        "tile": tile,
+                        "double_buffering": (buf_type == "DB"),
+                        "input_DMA": 0,
+                        "kernel_exec": 0,
+                        "output_DMA": 0,
+                    }
+                    layer_order.append(key)
+
+                if kind == "Input DMA":
+                    layer_tiles[key]["input_DMA"] += cycles
+                elif kind == "Kernel":
+                    layer_tiles[key]["kernel_exec"] += cycles
+                elif kind == "Output DMA":
+                    layer_tiles[key]["output_DMA"] += cycles
+            data = {
+                "name": self._args.name,
+                "nb_dedicated_cores": self._args.cores,
+                "L1_dedicated_size": self._args.l1,
+                "layers": [layer_tiles[name] for name in layer_order],
+            }
+
+            output_path = self._dir_gen + "/deeployStates/" + self._args.name + "_profiling.json"
+            with open(output_path, "w") as f:
+                json.dump(data, f, indent=4)
+
 
         if "Errors: 0 out of " not in result:
             log.error(f"{FAILURE_MARK} Found errors in {self._dir_test}")

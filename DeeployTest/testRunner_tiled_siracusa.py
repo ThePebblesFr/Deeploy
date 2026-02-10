@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+from testUtils.UpdateMainDeeployTest import update_deeploy_test_main
 from testUtils.testRunner import TestRunner, TestRunnerArgumentParser
 
 if __name__ == "__main__":
@@ -16,6 +17,8 @@ if __name__ == "__main__":
                         default = 8,
                         help = 'Set number of cluster cores')
     args = parser.parse_args()
+
+    update_deeploy_test_main(args.name)
 
     testRunner = TestRunner(platform = "Siracusa", simulator = "gvsoc", tiling = True, argument_parser = parser)
 

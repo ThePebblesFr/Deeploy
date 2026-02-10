@@ -1,0 +1,25 @@
+
+pytorch2.7.1:à
+p
+input_0
+input_1output_0Add"Add*H
+mapping":Deeploy.Targets.Generic.Templates.AddTemplate._AddTemplate 
+main_graphZs
+input_0
+
+
+
+
+PBiased: True, nLevels: 256, Deeploy: True, Type: int8_t*, Reference Type: int8_tZs
+input_1
+
+
+
+
+PBiased: True, nLevels: 256, Deeploy: True, Type: int8_t*, Reference Type: int8_tbv
+output_0
+
+
+
+
+RBiased: True, nLevels: 512, Deeploy: True, Type: int32_t*, Reference Type: int32_tB

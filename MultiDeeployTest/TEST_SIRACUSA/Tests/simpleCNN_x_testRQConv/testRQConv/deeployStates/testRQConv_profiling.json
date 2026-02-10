@@ -1,0 +1,31 @@
+{
+    "name": "testRQConv",
+    "nb_dedicated_cores": 8,
+    "L1_dedicated_size": 64000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_input_0_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 657,
+            "kernel_exec": 11687,
+            "output_DMA": 626
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 707,
+            "kernel_exec": 252779,
+            "output_DMA": 943
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 943,
+            "kernel_exec": 4412,
+            "output_DMA": 921
+        }
+    ]
+}

@@ -1,0 +1,359 @@
+{
+    "name": "EEGFormer",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 371,
+            "kernel_exec": 31606,
+            "output_DMA": 283
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 327,
+            "kernel_exec": 31262,
+            "output_DMA": 283
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 329,
+            "kernel_exec": 31205,
+            "output_DMA": 261
+        },
+        {
+            "layer_name": "Transpose_31_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 258,
+            "kernel_exec": 1914,
+            "output_DMA": 283
+        },
+        {
+            "layer_name": "_MERGE_TRANSPOSES_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 258,
+            "kernel_exec": 1883,
+            "output_DMA": 262
+        },
+        {
+            "layer_name": "_MERGE_TRANSPOSES_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 276,
+            "kernel_exec": 1971,
+            "output_DMA": 261
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 469,
+            "kernel_exec": 374019,
+            "output_DMA": 3928
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 262,
+            "kernel_exec": 124678,
+            "output_DMA": 1308
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 193,
+            "kernel_exec": 101871,
+            "output_DMA": 938
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_3_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "input_DMA": 120,
+            "kernel_exec": 34065,
+            "output_DMA": 368
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 741,
+            "kernel_exec": 20996,
+            "output_DMA": 457
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 637,
+            "kernel_exec": 20215,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 617,
+            "kernel_exec": 20104,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "input_DMA": 619,
+            "kernel_exec": 19978,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 4,
+            "double_buffering": false,
+            "input_DMA": 597,
+            "kernel_exec": 20020,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 5,
+            "double_buffering": false,
+            "input_DMA": 581,
+            "kernel_exec": 19924,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 6,
+            "double_buffering": false,
+            "input_DMA": 579,
+            "kernel_exec": 19979,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 7,
+            "double_buffering": false,
+            "input_DMA": 581,
+            "kernel_exec": 19972,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 8,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2164,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 9,
+            "double_buffering": false,
+            "input_DMA": 132,
+            "kernel_exec": 2180,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 10,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2164,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 11,
+            "double_buffering": false,
+            "input_DMA": 132,
+            "kernel_exec": 2182,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 12,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2183,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 13,
+            "double_buffering": false,
+            "input_DMA": 136,
+            "kernel_exec": 2152,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 14,
+            "double_buffering": false,
+            "input_DMA": 132,
+            "kernel_exec": 2210,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 15,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2182,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 16,
+            "double_buffering": false,
+            "input_DMA": 577,
+            "kernel_exec": 19981,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 17,
+            "double_buffering": false,
+            "input_DMA": 579,
+            "kernel_exec": 19946,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 18,
+            "double_buffering": false,
+            "input_DMA": 579,
+            "kernel_exec": 19965,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 19,
+            "double_buffering": false,
+            "input_DMA": 581,
+            "kernel_exec": 20019,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 20,
+            "double_buffering": false,
+            "input_DMA": 579,
+            "kernel_exec": 19936,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 21,
+            "double_buffering": false,
+            "input_DMA": 579,
+            "kernel_exec": 19948,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 22,
+            "double_buffering": false,
+            "input_DMA": 581,
+            "kernel_exec": 19953,
+            "output_DMA": 219
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 23,
+            "double_buffering": false,
+            "input_DMA": 577,
+            "kernel_exec": 19980,
+            "output_DMA": 217
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 24,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2179,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 25,
+            "double_buffering": false,
+            "input_DMA": 132,
+            "kernel_exec": 2173,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 26,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2165,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 27,
+            "double_buffering": false,
+            "input_DMA": 132,
+            "kernel_exec": 2182,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 28,
+            "double_buffering": false,
+            "input_DMA": 138,
+            "kernel_exec": 2145,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 29,
+            "double_buffering": false,
+            "input_DMA": 136,
+            "kernel_exec": 2162,
+            "output_DMA": 115
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 30,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2156,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_4_L2",
+            "tile": 31,
+            "double_buffering": false,
+            "input_DMA": 134,
+            "kernel_exec": 2187,
+            "output_DMA": 117
+        },
+        {
+            "layer_name": "Transpose_44_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 282,
+            "kernel_exec": 1390,
+            "output_DMA": 260
+        },
+        {
+            "layer_name": "_MERGE_GEMM_MATMUL_RQ_PASS_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 303,
+            "kernel_exec": 31448,
+            "output_DMA": 269
+        }
+    ]
+}

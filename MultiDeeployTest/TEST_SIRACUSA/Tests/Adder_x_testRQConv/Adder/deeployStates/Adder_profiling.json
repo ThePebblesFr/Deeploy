@@ -1,0 +1,15 @@
+{
+    "name": "Adder",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "Add_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 269,
+            "kernel_exec": 1675,
+            "output_DMA": 202
+        }
+    ]
+}

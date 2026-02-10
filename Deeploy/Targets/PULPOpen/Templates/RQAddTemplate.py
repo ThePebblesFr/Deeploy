@@ -23,5 +23,5 @@ else:
 %>
 
 // PULP NN RQADD
-pulp_nn_add${signatureString}(${data_in_1}, ${data_in_2}, ${data_out}, ${rqs1_mul}, ${rqs1_add}, ${rqs1_log2D}, ${rqs2_mul}, ${rqs2_add}, ${rqs2_log2D}, ${rqsOut_mul}, ${rqsOut_add}, ${rqsOut_log2D}, 1, ${size}, 1, 1);
+pulp_nn_add${signatureString}(${data_in_1}, ${data_in_2}, ${data_out}, ${rqs1_mul}, ${rqs1_add}, ${rqs1_log2D}, ${rqs2_mul}, ${rqs2_add}, ${rqs2_log2D}, ${rqsOut_mul}, ${rqsOut_add}, ${rqsOut_log2D}, 1, ${size}, 1, 1, NUM_CORES);
 """)

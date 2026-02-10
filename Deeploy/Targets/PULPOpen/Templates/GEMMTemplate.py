@@ -55,7 +55,7 @@ for(int j=0;j<${M};j++){
 for(int k=0;k<3;k++){
   asm volatile("nop" ::);
 }
-pulp_nn_linear${signatureString}(ref_${data_out}_${A}, NULL, ref_${data_out}_${data_out}, ref_${data_out}_${B}, ${mul}, ${C}, 1, ${log2D}, ${N}, ${O}, 1, 1);
+pulp_nn_linear${signatureString}(ref_${data_out}_${A}, NULL, ref_${data_out}_${data_out}, ref_${data_out}_${B}, ${mul}, ${C}, 1, ${log2D}, ${N}, ${O}, 1, 1, NUM_CORES);
 ref_${data_out}_${A} += ${N};
 ref_${data_out}_${data_out} += ${O};
 }

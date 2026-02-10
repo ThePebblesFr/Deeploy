@@ -4,6 +4,8 @@
 
 cmake_minimum_required(VERSION 3.12)
 
+option(ENABLE_MULTIDEEPLOY_TEST "Build MultiDeeployTest instead of DeeployTest" OFF)
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -206,7 +208,11 @@ if(platform STREQUAL Siracusa OR platform STREQUAL Siracusa_w_neureka OR platfor
   add_subdirectory(TargetLibraries/PULPOpen)
   target_include_directories(deeploypulp PUBLIC TargetLibraries/Generic/inc)
 
-  add_subdirectory(DeeployTest)
+  if(ENABLE_MULTIDEEPLOY_TEST)
+    add_subdirectory(MultiDeeployTest)
+  else()
+    add_subdirectory(DeeployTest)
+  endif()
   target_link_libraries(deeploylib INTERFACE deeploybasic deeploypulp)
 
 endif()

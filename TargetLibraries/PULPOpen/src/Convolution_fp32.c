@@ -13,15 +13,16 @@ void PULP_Conv2d_fp32_fp32_fp32_HWC(
     uint32_t Q, uint32_t SP, uint32_t SQ,
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
-    uint32_t pad_left, uint32_t pad_right) {
+    uint32_t pad_left, uint32_t pad_right, int nb_dedicated_cores) {
 
   // Compute core
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  core_id = core_id % nb_dedicated_cores;
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Compute the chunk size for each core
   uint16_t ch_out_chunk =
-      (F_total >> log2Core) + ((F_total & (NUM_CORES - 1)) != 0);
+      (F_total >> log2Core) + ((F_total & (nb_dedicated_cores - 1)) != 0);
   uint16_t ch_out_start = MIN(ch_out_chunk * core_id, F_total);
   uint16_t ch_out_stop = MIN(ch_out_start + ch_out_chunk, F_total);
   uint16_t ch_out_count = ch_out_stop - ch_out_start;
@@ -108,15 +109,15 @@ void PULP_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
     const float32_t *__restrict__ pSrcBias, const bool has_bias,
     float32_t *__restrict__ pDstC, uint32_t pad_top, uint32_t pad_bottom,
     uint32_t pad_left, uint32_t pad_right,
-    float32_t *__restrict__ pContextBuffer) {
+    float32_t *__restrict__ pContextBuffer, int nb_dedicated_cores) {
 
   // Compute core
   int8_t core_id = pi_core_id();
-  int8_t log2Core = LOG2(NUM_CORES);
+  int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Compute the chunk size for each core
   uint16_t ch_out_chunk =
-      (F_total >> log2Core) + ((F_total & (NUM_CORES - 1)) != 0);
+      (F_total >> log2Core) + ((F_total & (nb_dedicated_cores - 1)) != 0);
   uint16_t ch_out_start = MIN(ch_out_chunk * core_id, F_total);
   uint16_t ch_out_stop = MIN(ch_out_start + ch_out_chunk, F_total);
   uint16_t ch_out_count = ch_out_stop - ch_out_start;

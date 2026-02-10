@@ -86,7 +86,8 @@ for (uint32_t n=0; n<${batch}; ++n) {
         ${stride_y}, ${stride_x},
         ${bias}, ${has_bias},
         ref_${data_out}_${data_out},
-        ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right}
+        ${padding_y_top}, ${padding_y_bottom}, ${padding_x_left}, ${padding_x_right},
+        NUM_CORES
     );
 
 
@@ -119,7 +120,8 @@ for (uint32_t n=0; n<${batch}; ++n) {
         ${padding_y_bottom},
         ${padding_x_left},
         ${padding_x_right},
-        ${ctxtBuffer}
+        ${ctxtBuffer},
+        NUM_CORES
     );
 
     ref_${data_out}_${data_in} += ${ch_im_in} * ${dim_im_in_x} * ${dim_im_in_y};
@@ -151,7 +153,8 @@ for (uint32_t n=0; n<${batch}; ++n) {
         ${padding_y_bottom},
         ${padding_x_left},
         ${padding_x_right},
-        ${ctxtBuffer}
+        ${ctxtBuffer},
+        NUM_CORES
     );
 
     ref_${data_out}_${data_in} += ${ch_im_in} * ${dim_im_in_x} * ${dim_im_in_y};

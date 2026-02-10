@@ -84,10 +84,10 @@ int main(void) {
 #ifndef CI
   printf("Initialized\r\n");
 #endif
-  for (uint32_t buf = 0; buf < DeeployNetwork_num_inputs; buf++) {
-    if ((uint32_t)DeeployNetwork_inputs[buf] >= 0x10000000) {
-      memcpy(DeeployNetwork_inputs[buf], testInputVector[buf],
-             DeeployNetwork_inputs_bytes[buf]);
+  for (uint32_t buf = 0; buf < TestRQAdd_num_inputs; buf++) {
+    if ((uint32_t) TestRQAdd_inputs[buf] >= 0x10000000) {
+      memcpy(TestRQAdd_inputs[buf], testInputVector[buf],
+             TestRQAdd_inputs_bytes[buf]);
     }
   }
 
@@ -114,15 +114,15 @@ int main(void) {
   FloatCompareArgs float_compare_args;
   uint32_t float_error_count = 0;
 
-  for (uint32_t buf = 0; buf < DeeployNetwork_num_outputs; buf++) {
-    tot_tested += DeeployNetwork_outputs_bytes[buf] / sizeof(OUTPUTTYPE);
+  for (uint32_t buf = 0; buf < TestRQAdd_num_outputs; buf++) {
+    tot_tested += TestRQAdd_outputs_bytes[buf] / sizeof(OUTPUTTYPE);
 
-    if ((uint32_t)DeeployNetwork_outputs[buf] < 0x1000000) {
-      compbuf = pi_l2_malloc((int)DeeployNetwork_outputs_bytes[buf]);
-      ram_read(compbuf, DeeployNetwork_outputs[buf],
-               DeeployNetwork_outputs_bytes[buf]);
+    if ((uint32_t) TestRQAdd_outputs[buf] < 0x1000000) {
+      compbuf = pi_l2_malloc((int) TestRQAdd_outputs_bytes[buf]);
+      ram_read(compbuf, TestRQAdd_outputs[buf],
+               TestRQAdd_outputs_bytes[buf]);
     } else {
-      compbuf = DeeployNetwork_outputs[buf];
+      compbuf = TestRQAdd_outputs[buf];
     }
 
     if (ISOUTPUTFLOAT) {
@@ -130,7 +130,7 @@ int main(void) {
       float_compare_args.expected = testOutputVector[buf];
       float_compare_args.actual = compbuf;
       float_compare_args.num_elements =
-          DeeployNetwork_outputs_bytes[buf] / sizeof(float);
+          TestRQAdd_outputs_bytes[buf] / sizeof(float);
       float_compare_args.output_buf_index = buf;
       float_compare_args.err_count = &float_error_count;
 
@@ -144,7 +144,7 @@ int main(void) {
     } else {
 
       for (uint32_t i = 0;
-           i < DeeployNetwork_outputs_bytes[buf] / sizeof(OUTPUTTYPE); i++) {
+           i < TestRQAdd_outputs_bytes[buf] / sizeof(OUTPUTTYPE); i++) {
         OUTPUTTYPE expected = ((OUTPUTTYPE *)testOutputVector[buf])[i];
         OUTPUTTYPE actual = ((OUTPUTTYPE *)compbuf)[i];
         int32_t error = expected - actual;
@@ -158,8 +158,8 @@ int main(void) {
         }
       }
     }
-    if ((uint32_t)DeeployNetwork_outputs[buf] < 0x1000000) {
-      pi_l2_free(compbuf, (int)DeeployNetwork_outputs_bytes[buf]);
+    if ((uint32_t) TestRQAdd_outputs[buf] < 0x1000000) {
+      pi_l2_free(compbuf, (int) TestRQAdd_outputs_bytes[buf]);
     }
   }
 

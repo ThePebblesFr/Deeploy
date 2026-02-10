@@ -18,6 +18,7 @@ ${closureName}(&${closureStructArgName});
 """)
 
 _closureTemplate = NodeTemplate("""
+// LAYER FUNCTION CLOSURE, START
 static void ${closureName}(void* ${closureName}_args){
 // CLOSURE ARG CAST
 ${closureStructArgs.typeName}* args = (${closureStructArgs.typeName}*) ${closureStructArgName};
@@ -35,6 +36,7 @@ args->${argName} = ${argName};
 % endfor
 % endif
 }
+// LAYER FUNCTION CLOSURE, END
 """)
 
 _closureWriteBackTemplate = NodeTemplate("""
@@ -45,7 +47,9 @@ ${argName} = ${closureStructArgName}.${argName};
 """)
 
 _closureStructDefTemplate = NodeTemplate("""
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct ${closureStructArgs._typeDefRepr()} ${closureStructArgName}_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 """)
 
 
@@ -110,6 +114,7 @@ class ClosureGeneration(CodeTransformationPass, IntrospectiveCodeTransformationM
         ctxt.lookup(ret)._users.append(nodeName)
 
         allArgs = {
+            "modelName": ctxt.name,
             "closureName": self.closureName,
             "functionCall": self.functionCall,
             "closureStructArgs": ctxt.lookup(self.closureName + "_args").structDict,
@@ -132,6 +137,7 @@ class ClosureGeneration(CodeTransformationPass, IntrospectiveCodeTransformationM
                              nodeName: str) -> Tuple[NetworkContext, ExecutionBlock]:
 
         allArgs = {
+            "modelName": ctxt.name,
             "closureName": self.closureName,
             "functionCall": self.functionCall,
             "closureStructArgs": ctxt.lookup(self.closureName + "_args").structDict,
@@ -156,7 +162,7 @@ class ClosureGeneration(CodeTransformationPass, IntrospectiveCodeTransformationM
               name: str,
               verbose: CodeGenVerbosity = _NoVerbosity) -> Tuple[NetworkContext, ExecutionBlock]:
         # Prepend underscore to avoid name issues when beginning with problematic characters (like numbers)
-        self.closureName = "_" + name + self.closureSuffix
+        self.closureName = ctxt.name + "_" + name + self.closureSuffix
         self.functionCall = executionBlock.generate(ctxt)
         self._generateClosureStruct(ctxt, executionBlock)
         ctxt = self._generateClosureCtxt(ctxt, name)

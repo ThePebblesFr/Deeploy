@@ -54,5 +54,5 @@ if output_signed:
 else:
     signatureString += '_u8'
 %>
-PULPSoftmax${signatureString}(${data_in}, ${data_out}, ${lastDimBuffer}, ${size}, ${lastDimLength}, ${coeffB}, ${coeffC}, ${log2});
+PULPSoftmax${signatureString}(${data_in}, ${data_out}, ${lastDimBuffer}, ${size}, ${lastDimLength}, ${coeffB}, ${coeffC}, ${log2}, NUM_CORES);
 """)

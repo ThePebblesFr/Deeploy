@@ -1,0 +1,28 @@
+
+onnx1.12.0:ö
+ä
+input_0
+weight_tensorMatMul_Out_tensorMatMul"MatMul*M
+mapping"?Deeploy.Targets.PULPOpen.Templates.GEMMTemplate._MatMulTemplate†
+Å
+MatMul_Out_tensor
+offset_tensoroutput_0ADD1"Add*H
+mapping":Deeploy.Targets.Generic.Templates.AddTemplate._AddTemplate†GEMMNet*é0@Bweight_tensorb-Biased: True, nLevels: 254.0, Deeploy: True, j%
+locationbackend_post_binding.dataj
+offset30720j
+length3072p*é @Boffset_tensorb-Biased: True, nLevels: 254.0, Deeploy: True, j%
+locationbackend_post_binding.dataj
+offset33792j
+length2048pZk
+input_0
+
+ 
+0PBiased: True, nLevels: 256, Deeploy: True, Type: int8_t*, Reference Type: int8_tbs
+output_0
+
+ 
+@WBiased: True, nLevels: 786686.0, Deeploy: True, Type: int32_t*, Reference Type: int32_tjz
+MatMul_Out_tensor
+
+ 
+@UBiased: True, nLevels: 786432, Deeploy: True, Type: int32_t*, Reference Type: int32_tB

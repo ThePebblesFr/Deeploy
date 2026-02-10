@@ -129,7 +129,7 @@ def generateNetwork(args):
 
     _DEEPLOYSTATEDIR = os.path.join(args.dumpdir, "deeployStates")
 
-    deployer = mapDeployer(platform, graph, inputTypes, deeployStateDir = _DEEPLOYSTATEDIR, inputOffsets = inputOffsets)
+    deployer = mapDeployer(platform, graph, inputTypes, name=args.name, deeployStateDir = _DEEPLOYSTATEDIR, inputOffsets = inputOffsets)
 
     log.debug(f"Deployer: {deployer}")
 
@@ -194,6 +194,12 @@ if __name__ == '__main__':
         help =
         "Number of cores on which the network is run. Currently, required for im2col buffer sizing on Siracusa. Default: 1.",
     )
+    parser.add_argument('--name',
+                        metavar = 'name',
+                        dest = 'name',
+                        type = str,
+                        default = "DeeployNetwork",
+                        help = 'Change the name of the generated network C variables. FOR NOW: make sure to change deeploytest.c accordingly.\n')
     parser.set_defaults(shouldFail = False)
 
     args = parser.parse_args()

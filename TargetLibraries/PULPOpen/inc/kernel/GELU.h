@@ -10,9 +10,9 @@
 #include "DeeployPULPMath.h"
 
 void PULP_GELU_fp32_fp32(float32_t *data_in, float32_t *data_out,
-                         int32_t dataSize);
+                         int32_t dataSize, int nb_dedicated_cores);
 
 void PULP_GELU_fp32_fp32_sigmoid(float32_t *data_in, float32_t *data_out,
-                                 int32_t dataSize);
+                                 int32_t dataSize, int nb_dedicated_cores);
 
 #endif // __DEEPLOY_MATH_GELU_KERNEL_HEADER_

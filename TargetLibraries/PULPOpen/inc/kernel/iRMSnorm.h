@@ -10,6 +10,6 @@
 #include "DeeployPULPMath.h"
 
 void iRMSnorm_s8_s8_plp(int8_t *data_in, int8_t *data_out, int32_t *weight,
-                        int32_t size, int32_t lastDimLength, int32_t log2D);
+                        int32_t size, int32_t lastDimLength, int32_t log2D, int nb_dedicated_cores);
 
 #endif // __DEEPLOY_MATH_IRMSNORM_KERNEL_HEADER__
