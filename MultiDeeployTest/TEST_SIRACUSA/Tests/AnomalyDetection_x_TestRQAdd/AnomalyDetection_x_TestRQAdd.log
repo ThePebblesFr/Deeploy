@@ -1,0 +1,124 @@
+===== Workload Scheduling Summary =====
+
+--- Round 0 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_0 [time=14874], AnomalyDetection__MERGE_GEMMRQ_PASS_0 [time=13738], AnomalyDetection__MERGE_GEMMRQ_PASS_0 [time=9343], AnomalyDetection__MERGE_GEMMRQ_PASS_1 [time=9306], AnomalyDetection__MERGE_GEMMRQ_PASS_2 [time=9118]
+  Model 1: TestRQAdd__MERGE_ADDRQ_PASS_0 [time=64108]
+  → Round duration: 64108 cycles
+
+--- Round 1 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_3 [time=9066]
+  Model 1: TestRQAdd__MERGE_ADDRQ_PASS_0 [time=2590]
+  → Round duration: 9066 cycles
+
+--- Round 2 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_4 [time=1743], AnomalyDetection__MERGE_GEMMRQ_PASS_5 [time=2734], AnomalyDetection__MERGE_GEMMRQ_PASS_6 [time=9058], AnomalyDetection__MERGE_GEMMRQ_PASS_7 [time=9050]
+  Model 1: TestRQAdd__MERGE_ADDRQ_PASS_0 [time=31054]
+  → Round duration: 31054 cycles
+
+--- Round 3 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_8 [time=9150]
+  Model 1: TestRQAdd__MERGE_ADDRQ_PASS_0 [time=1523]
+  → Round duration: 9150 cycles
+
+--- Round 4 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_9 [time=15422]
+  Model 1: (no layers)
+  → Round duration: 15422 cycles
+
+--- Round 5 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_9 [time=14199]
+  Model 1: (no layers)
+  → Round duration: 14199 cycles
+
+--- Round 6 ---
+  Model 0: AnomalyDetection__MERGE_GEMMRQ_PASS_9 [time=12520]
+  Model 1: (no layers)
+  → Round duration: 12520 cycles
+
+===== End of Scheduling Summary =====
+
+=== Round 0 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_0
+[DMA_in] 7169 cycles
+[Kernel] 10542 cycles
+[DMA_out] 193 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_0
+[DMA_in] 4334 cycles
+[Kernel] 9823 cycles
+[DMA_out] 93 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_0
+[DMA_in] 2954 cycles
+[Kernel] 6603 cycles
+[DMA_out] 73 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_1
+[DMA_in] 2547 cycles
+[Kernel] 6576 cycles
+[DMA_out] 244 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_2
+[DMA_in] 2530 cycles
+[Kernel] 6680 cycles
+[DMA_out] 262 cycles
+Tile TestRQAdd.TestRQAdd__MERGE_ADDRQ_PASS_0
+[DMA_in] 3217 cycles
+[Kernel] 59971 cycles
+[DMA_out] 1759 cycles
+
+=== Round 1 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_3
+[DMA_in] 2568 cycles
+[Kernel] 6962 cycles
+[DMA_out] 226 cycles
+Tile TestRQAdd.TestRQAdd__MERGE_ADDRQ_PASS_0
+[DMA_in] 2586 cycles
+[Kernel] 3136 cycles
+[DMA_out] 287 cycles
+
+=== Round 2 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_4
+[DMA_in] 1058 cycles
+[Kernel] 1491 cycles
+[DMA_out] 199 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_5
+[DMA_in] 471 cycles
+[Kernel] 2317 cycles
+[DMA_out] 141 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_6
+[DMA_in] 2502 cycles
+[Kernel] 6610 cycles
+[DMA_out] 160 cycles
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_7
+[DMA_in] 2518 cycles
+[Kernel] 6671 cycles
+[DMA_out] 225 cycles
+Tile TestRQAdd.TestRQAdd__MERGE_ADDRQ_PASS_0
+[DMA_in] 1785 cycles
+[Kernel] 29923 cycles
+[DMA_out] 1023 cycles
+
+=== Round 3 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_8
+[DMA_in] 2525 cycles
+[Kernel] 6932 cycles
+[DMA_out] 227 cycles
+Tile TestRQAdd.TestRQAdd__MERGE_ADDRQ_PASS_0
+[DMA_in] 2487 cycles
+[Kernel] 2186 cycles
+[DMA_out] 219 cycles
+
+=== Round 4 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_9
+[DMA_in] 4198 cycles
+[Kernel] 11385 cycles
+[DMA_out] 191 cycles
+
+=== Round 5 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_9
+[DMA_in] 4198 cycles
+[Kernel] 10888 cycles
+[DMA_out] 193 cycles
+
+=== Round 6 ===
+Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_9
+[DMA_in] 3617 cycles
+[Kernel] 9477 cycles
+[DMA_out] 191 cycles

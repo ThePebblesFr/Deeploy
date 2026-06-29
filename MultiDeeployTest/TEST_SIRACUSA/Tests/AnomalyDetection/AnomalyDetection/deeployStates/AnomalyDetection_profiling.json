@@ -1,119 +1,103 @@
 {
     "name": "AnomalyDetection",
-    "nb_dedicated_cores": 4,
-    "L1_dedicated_size": 32000,
+    "nb_dedicated_cores": 8,
+    "L1_dedicated_size": 64000,
     "layers": [
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 4220,
-            "kernel_exec": 10509,
-            "output_DMA": 145
+            "input_DMA": 7982,
+            "kernel_exec": 10432,
+            "output_DMA": 201
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
             "tile": 1,
             "double_buffering": false,
-            "input_DMA": 4076,
-            "kernel_exec": 9556,
-            "output_DMA": 106
-        },
-        {
-            "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
-            "tile": 2,
-            "double_buffering": false,
-            "input_DMA": 2743,
-            "kernel_exec": 6536,
-            "output_DMA": 64
+            "input_DMA": 2821,
+            "kernel_exec": 3788,
+            "output_DMA": 200
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_1_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2353,
-            "kernel_exec": 6754,
-            "output_DMA": 199
+            "input_DMA": 2330,
+            "kernel_exec": 3838,
+            "output_DMA": 160
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_2_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2326,
-            "kernel_exec": 6630,
-            "output_DMA": 162
+            "input_DMA": 2304,
+            "kernel_exec": 3946,
+            "output_DMA": 201
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_3_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2327,
-            "kernel_exec": 6541,
-            "output_DMA": 198
+            "input_DMA": 2349,
+            "kernel_exec": 3896,
+            "output_DMA": 116
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_4_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 308,
-            "kernel_exec": 1233,
-            "output_DMA": 202
+            "input_DMA": 325,
+            "kernel_exec": 1130,
+            "output_DMA": 160
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_5_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 366,
-            "kernel_exec": 2170,
+            "input_DMA": 406,
+            "kernel_exec": 1771,
             "output_DMA": 198
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_6_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2307,
-            "kernel_exec": 6550,
-            "output_DMA": 201
+            "input_DMA": 2327,
+            "kernel_exec": 3877,
+            "output_DMA": 199
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_7_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2308,
-            "kernel_exec": 6582,
+            "input_DMA": 2328,
+            "kernel_exec": 3879,
             "output_DMA": 160
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_8_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 2328,
-            "kernel_exec": 6660,
-            "output_DMA": 162
+            "input_DMA": 2331,
+            "kernel_exec": 3797,
+            "output_DMA": 198
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_9_L2",
             "tile": 0,
             "double_buffering": false,
-            "input_DMA": 4046,
-            "kernel_exec": 11171,
-            "output_DMA": 205
+            "input_DMA": 8040,
+            "kernel_exec": 11592,
+            "output_DMA": 177
         },
         {
             "layer_name": "_MERGE_GEMMRQ_PASS_9_L2",
             "tile": 1,
             "double_buffering": false,
-            "input_DMA": 3891,
-            "kernel_exec": 10228,
-            "output_DMA": 80
-        },
-        {
-            "layer_name": "_MERGE_GEMMRQ_PASS_9_L2",
-            "tile": 2,
-            "double_buffering": false,
-            "input_DMA": 3348,
-            "kernel_exec": 9097,
-            "output_DMA": 75
+            "input_DMA": 3124,
+            "kernel_exec": 4585,
+            "output_DMA": 177
         }
     ]
 }

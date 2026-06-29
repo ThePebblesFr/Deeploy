@@ -17,27 +17,27 @@ int8_t *TestRQAdd_input_0;        // L2_init_template
 int8_t *TestRQAdd_input_1;        // L2_init_template
 int8_t *TestRQAdd_output_0;       // L2_init_template
 
-static PI_L1 uint16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size[4] = {10664, 344, 5208, 168};
+static PI_L1 uint16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size[6] = {5332, 172, 5332, 172, 5208, 168};
 
-static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_numTiles[2] = {0, 4};
+static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_numTiles[2] = {0, 6};
 
-static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_cmd[4] = {1976744, 1966424, 1971288, 1966248};
+static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_cmd[6] = {1971412, 1966252, 1971412, 1966252, 1971288, 1966248};
 
-static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_size_1d[4] = {86, 86, 42, 42};
+static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_size_1d[6] = {43, 43, 43, 43, 42, 42};
 
-static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_relativeOffset[4] = {15872, -15786, 15872, 0};
+static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_relativeOffset[6] = {15872, -15829, 15872, -15829, 15872, 0};
 
-static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_cmd[4] = {1976744, 1966424, 1971288, 1966248};
+static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_cmd[6] = {1971412, 1966252, 1971412, 1966252, 1971288, 1966248};
 
-static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_size_1d[4] = {86, 86, 42, 42};
+static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_size_1d[6] = {43, 43, 43, 43, 42, 42};
 
-static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_relativeOffset[4] = {15872, -15786, 15872, 0};
+static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_relativeOffset[6] = {15872, -15829, 15872, -15829, 15872, 0};
 
-static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_cmd[4] = {1845672, 1835352, 1840216, 1835176};
+static PI_L1 uint32_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_cmd[6] = {1840340, 1835180, 1840340, 1835180, 1840216, 1835176};
 
-static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_size_1d[4] = {86, 86, 42, 42};
+static PI_L1 uint8_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_size_1d[6] = {43, 43, 43, 43, 42, 42};
 
-static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_relativeOffset[4] = {15872, -15786, 15872, 0};
+static PI_L1 int16_t TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_relativeOffset[6] = {15872, -15829, 15872, -15829, 15872, 0};
 
 void *TestRQAdd_inputs[2];
 void *TestRQAdd_outputs[1];
@@ -122,8 +122,8 @@ static void TestRQAdd__MERGE_ADDRQ_PASS_0_closure(void *TestRQAdd__MERGE_ADDRQ_P
 
   // CLOSURE FUNCTION CALL
   uint16_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size_ref = (uint16_t *)((char *)TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size + 0);
-  int8_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)TestRQAdd_MEMORYARENA_L1 + 10664);
-  int8_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)TestRQAdd_MEMORYARENA_L1 + 21328);
+  int8_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)TestRQAdd_MEMORYARENA_L1 + 5332);
+  int8_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)TestRQAdd_MEMORYARENA_L1 + 10664);
   int8_t *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref = (int8_t *)((char *)TestRQAdd_MEMORYARENA_L1 + 0);
   void *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_input_0_ref = (void *)((char *)TestRQAdd_input_0 + 0);
   void *TestRQAdd_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_input_1_ref = (void *)((char *)TestRQAdd_input_1 + 0);
@@ -133,17 +133,17 @@ static void TestRQAdd__MERGE_ADDRQ_PASS_0_closure(void *TestRQAdd__MERGE_ADDRQ_P
 
   const static char _MERGE_ADDRQ_PASS_0_L2_prefix[] = "[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile ";
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_end_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_end_measurements[6];
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_start_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_start_measurements[6];
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_end_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_end_measurements[6];
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_start_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_start_measurements[6];
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_end_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_end_measurements[6];
 
-  uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_start_measurements[4];
+  uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_start_measurements[6];
 
   // Initialize DMA futures
   uint32_t TestRQAdd_channel_output = (uint32_t)-1;
@@ -289,7 +289,7 @@ void RunNetwork() {
 
 void InitNetwork() {
 
-  TestRQAdd_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 31992);
+  TestRQAdd_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 15996);
 
   TestRQAdd_MEMORYARENA_L2 = (int8_t *)pi_l2_malloc(sizeof(int8_t) * 49152);
 

@@ -14,13 +14,13 @@
 void RunNetwork();
 void InitNetwork();
 
-extern int8_t *simpleCNN_MEMORYARENA_L1;
-static const uint32_t simpleCNN_MEMORYARENA_L1_len = 62864;
-extern int8_t *simpleCNN_MEMORYARENA_L2;
+extern int8_t *simpleCNN_MEMORYARENA_L1; // L2_init_template
+static const uint32_t simpleCNN_MEMORYARENA_L1_len = 46240;
+extern int8_t *simpleCNN_MEMORYARENA_L2; // L2_init_template
 static const uint32_t simpleCNN_MEMORYARENA_L2_len = 20480;
-extern int8_t *simpleCNN_input_0;
+extern int8_t *simpleCNN_input_0; // L2_init_template
 static const uint32_t simpleCNN_input_0_len = 1024;
-extern uint8_t *simpleCNN_output_0;
+extern uint8_t *simpleCNN_output_0; // L2_init_template
 static const uint32_t simpleCNN_output_0_len = 10;
 static const uint32_t simpleCNN_num_inputs = 1;
 static const uint32_t simpleCNN_num_outputs = 1;

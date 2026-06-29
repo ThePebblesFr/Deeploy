@@ -1,0 +1,78 @@
+BFD: DWARF error: invalid or unhandled FORM value: 0x25
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Input DMA took 512 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Kernel took 4431 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Output DMA took 483 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][887808 ops][Tile 0] Input DMA took 564 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][887808 ops][Tile 0] Kernel took 322857 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][887808 ops][Tile 0] Output DMA took 2198 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 0] Input DMA took 2329 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 0] Kernel took 358296 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 0] Output DMA took 2157 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 1] Input DMA took 2290 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 1] Kernel took 357073 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][4721664 ops][Tile 1] Output DMA took 2136 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 0] Input DMA took 2345 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 0] Kernel took 363703 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 0] Output DMA took 2176 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 1] Input DMA took 2308 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 1] Kernel took 361398 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][4721664 ops][Tile 1] Output DMA took 2156 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 0] Input DMA took 3248 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 0] Kernel took 56735 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 0] Output DMA took 3200 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 1] Input DMA took 2195 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 1] Kernel took 33932 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][16384 ops][Tile 1] Output DMA took 2155 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][2360064 ops][Tile 0] Input DMA took 2766 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][2360064 ops][Tile 0] Kernel took 285471 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][2360064 ops][Tile 0] Output DMA took 1142 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][262912 ops][Tile 0] Input DMA took 2236 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][262912 ops][Tile 0] Kernel took 102951 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][262912 ops][Tile 0] Output DMA took 1142 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][4719360 ops][Tile 0] Input DMA took 2332 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][4719360 ops][Tile 0] Kernel took 490579 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][4719360 ops][Tile 0] Output DMA took 1141 cycles 
+[_MERGE_ADDRQ_PASS_1_L2][SB][8192 ops][Tile 0] Input DMA took 2174 cycles 
+[_MERGE_ADDRQ_PASS_1_L2][SB][8192 ops][Tile 0] Kernel took 45613 cycles 
+[_MERGE_ADDRQ_PASS_1_L2][SB][8192 ops][Tile 0] Output DMA took 1143 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 0] Input DMA took 3154 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 0] Kernel took 202441 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 0] Output DMA took 725 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 1] Input DMA took 1566 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 1] Kernel took 59090 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][2359488 ops][Tile 1] Output DMA took 391 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][262336 ops][Tile 0] Input DMA took 1452 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][262336 ops][Tile 0] Kernel took 60636 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][262336 ops][Tile 0] Output DMA took 632 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 0] Input DMA took 2727 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 0] Kernel took 200701 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 0] Output DMA took 533 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 1] Input DMA took 2661 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 1] Kernel took 199176 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 1] Output DMA took 485 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 2] Input DMA took 1185 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 2] Kernel took 67847 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][4718784 ops][Tile 2] Output DMA took 279 cycles 
+[_MERGE_ADDRQ_PASS_2_L2][SB][4096 ops][Tile 0] Input DMA took 1150 cycles 
+[_MERGE_ADDRQ_PASS_2_L2][SB][4096 ops][Tile 0] Kernel took 23330 cycles 
+[_MERGE_ADDRQ_PASS_2_L2][SB][4096 ops][Tile 0] Output DMA took 616 cycles 
+[MaxPool_40_L2][SB][4032 ops][Tile 0] Input DMA took 640 cycles 
+[MaxPool_40_L2][SB][4032 ops][Tile 0] Kernel took 4735 cycles 
+[MaxPool_40_L2][SB][4032 ops][Tile 0] Output DMA took 99 cycles 
+[MaxPool_40_onnxReshape_73_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 209 cycles 
+[MaxPool_40_onnxReshape_73_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 632 cycles 
+[MaxPool_40_onnxReshape_73_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 100 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][1502 ops][Tile 0] Input DMA took 280 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][1502 ops][Tile 0] Kernel took 1602 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][1502 ops][Tile 0] Output DMA took 100 cycles 
+Output:
+Expected:   20  Actual:   30  Diff:   10 at Index            2 in Output 0
+Expected:   43  Actual:   53  Diff:   10 at Index            5 in Output 0
+Expected:   21  Actual:   34  Diff:   13 at Index            8 in Output 0
+Expected:  -15  Actual:   -1  Diff:   14 at Index            9 in Output 0
+Runtime: 3675293 cycles
+Errors: 4 out of 10 

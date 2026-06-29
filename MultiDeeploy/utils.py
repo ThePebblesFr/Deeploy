@@ -8,14 +8,21 @@ def normalize_layer_name(name: str) -> str:
       - ModelProfile (suffix _L2, _L3, etc.)
       - FunctionCall (contains closure, memory level)
     """
-    name = name.lstrip("_")
-    # Remove memory suffixes
-    name = re.sub(r"_L[0-9]+$", "", name)
+    if "___" in name:
+        parts = name.split("___", 1)
+        print(parts)
 
-    # Remove closure suffixes
-    name = re.sub(r"_closure.*$", "", name)
+        model, layer = parts
+        return f"{model}__{layer}"
 
-    return name
+    if "__" in name:
+        return name  # already normalized
+
+    # Split only on the FIRST underscore
+    parts = name.split("_", 1)
+
+    model, layer = parts
+    return f"{model}__{layer}"
 
 def split_struct_and_function(code: str) -> tuple[str, str]:
     """
@@ -748,41 +755,47 @@ def compute_tiling_i_ranges(scheduling_queue) -> List[Dict[str, Dict[str, Tuple[
 
 def generate_subgroup_barriers_code():
     return """
-typedef struct {
-  uint8_t group_start;
-  uint8_t group_size;
-  volatile uint32_t arrived[NUM_CORES];
-  volatile uint32_t epoch;
-} subgroup_barrier_t;
+#include "hal/eu/eu_v3.h"
+#include "archi/eu/eu_v3.h"
 
-static inline void subgroup_barrier_init(subgroup_barrier_t *b, int group_start, int group_end) {
-  b->group_start = group_start;
-  b->group_size = group_end - group_start + 1;
-  b->epoch = 0;
-  for (int i = b->group_start; i < NUM_CORES; i++) {
-    b->arrived[i] = 0;
-  }
+static inline uint32_t subgroup_core_mask(uint32_t group_start, uint32_t group_end)
+{
+    uint32_t mask = 0;
+
+    for (uint32_t c = group_start; c <= group_end; c++) {
+        for (volatile int i = 0; i < 8; i++) {
+            asm volatile("nop");
+        }
+        // printf("Adding core %u to subgroup barrier mask (bit %08x)\\n", c, bit);
+        mask |= (1u << c);
+    }
+
+    return mask;
 }
 
-static inline void subgroup_barrier_wait(subgroup_barrier_t *b, uint32_t core_id) {
-  b->arrived[core_id] = 1;
-  uint32_t starting_epoch = b->epoch;
-  int all_arrived = 0;
+static inline void subgroup_barrier_init(uint32_t barrier_id,
+                                         uint32_t group_start,
+                                         uint32_t group_end)
+{
+    uint32_t mask = subgroup_core_mask(group_start, group_end);
+    eu_bar_setup(eu_bar_addr(barrier_id), mask);
+}
 
-  for (int i = b->group_start; i < b->group_start + b->group_size; i++) {
-    if (b->arrived[i] == 1) {
-      all_arrived++;
-    }
-  }
-
-  if (all_arrived != b->group_size) {
-    while (b->epoch == starting_epoch) {}
-  } else {
-    b->epoch++;
-  }
-  
-  for (int i = b->group_start; i < b->group_start + b->group_size; i++) {
-    b->arrived[i] = 0;
-  }
+static inline void subgroup_barrier_wait(uint32_t barrier_id, uint32_t core_id)
+{
+    // printf("Core %u waiting on barrier %u\\n", core_id, barrier_id);
+    eu_evt_maskSet(1u << PULP_HW_BAR_EVENT);
+    eu_bar_trig_wait_clr(eu_bar_addr(barrier_id));
+    // printf("Core %u passed barrier %u\\n", core_id, barrier_id);
 }
 """
+
+def generate_timings_printing_code(tiles_timings):
+    ret_str = "void print_tiles_timings() {\n"
+    for round_idx, round_timings in enumerate(tiles_timings):
+        ret_str += f""" printf("=== Round {round_idx} ===\\n");\n"""
+        for tile_idx, tile in enumerate(round_timings):
+            ret_str += f""" printf("Tile {tile['model_name']}.{tile['layer_name']}\\n[DMA_in] %d cycles\\n[Kernel] %d cycles\\n[DMA_out] %d cycles\\n", round_{round_idx}_tiles_timings[{tile_idx}][0], round_{round_idx}_tiles_timings[{tile_idx}][1], round_{round_idx}_tiles_timings[{tile_idx}][2]);\n"""
+        ret_str += f""" printf("\\n");\n"""
+    ret_str += "}\n"
+    return ret_str

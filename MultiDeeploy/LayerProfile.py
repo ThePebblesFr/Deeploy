@@ -24,7 +24,7 @@ class LayerProfile:
     def from_dict(d):
         return LayerProfile(
             model_name=None,
-            layer_name=normalize_layer_name(d["layer_name"]),
+            layer_name=d["layer_name"],
             tile=d["tile"],
             double_buffering=d["double_buffering"],
             input_DMA=d["input_DMA"],

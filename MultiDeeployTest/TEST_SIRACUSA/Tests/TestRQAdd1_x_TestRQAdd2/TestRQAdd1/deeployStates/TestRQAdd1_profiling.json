@@ -1,0 +1,39 @@
+{
+    "name": "TestRQAdd1",
+    "nb_dedicated_cores": 6,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2958,
+            "kernel_exec": 59315,
+            "output_DMA": 1752
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_0_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 192,
+            "kernel_exec": 2383,
+            "output_DMA": 130
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_0_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 1431,
+            "kernel_exec": 28716,
+            "output_DMA": 952
+        },
+        {
+            "layer_name": "_MERGE_ADDRQ_PASS_0_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "input_DMA": 109,
+            "kernel_exec": 1277,
+            "output_DMA": 114
+        }
+    ]
+}

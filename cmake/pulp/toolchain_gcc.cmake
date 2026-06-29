@@ -14,7 +14,7 @@ set(CMAKE_OBJDUMP ${TOOLCHAIN_PREFIX}-objdump)
 set(CMAKE_AR ${TOOLCHAIN_PREFIX}-ar)
 set(SIZE ${TOOLCHAIN_PREFIX}-size)
 
-set(ISA rv32imc_zfinx_xpulpv3)
+set(ISA rv32imfcxpulpv3)
 set(PE 8)
 set(FC 1)
 

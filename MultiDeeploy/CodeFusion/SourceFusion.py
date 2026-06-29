@@ -2,7 +2,7 @@ from typing import List
 from MultiDeeploy.CodeFusion.SourceFile import SourceFile
 from MultiDeeploy.CodeFusion.Templates.FunctionsDefinition_templates import closure_function_definition_statement, struct_definition_statement, tiling_closure_function_definition_statement
 from MultiDeeploy.WorkloadScheduler import WorkloadScheduler
-from MultiDeeploy.utils import compute_tiling_i_ranges, generate_subgroup_barriers_code, normalize_args_cast, replace_num_cores
+from MultiDeeploy.utils import compute_tiling_i_ranges, generate_subgroup_barriers_code, generate_timings_printing_code, normalize_args_cast, replace_num_cores
 from MultiDeeploy.CodeFusion.Templates.RunNetwork_templates import arg_cast_statement, closure_call_statement
 
 class SourceFusion():
@@ -15,6 +15,23 @@ class SourceFusion():
         self.fused_content: List[str] = []
         self.new_layer_keys_by_round = []
         self.lf_map = {}
+        self.tiles_timings = []
+
+    def _initialize_tiles_timings(self):
+
+        for round in self.workload_scheduler.Scheduling_queue:
+            round_tiles = []
+            for layer in round:
+                for tile in layer:
+                    key = {
+                        "model_name": tile.model_name,
+                        "layer_name": tile.layer_name,
+                        "DMA_in": 0,
+                        "kernel_exec": 0,
+                        "DMA_out": 0
+                    }
+                    round_tiles.append(key)
+            self.tiles_timings.append(round_tiles)
 
     def _compute_new_layer_keys_by_round(self):
         """
@@ -90,11 +107,25 @@ class SourceFusion():
             if i < nb_models - 1:
                 self.fused_content.append(", ")
 
+        # Subgroup barriers
         self.fused_content.append("};\n")
         self.fused_content.append(generate_subgroup_barriers_code())
 
-        for i in range(nb_models):
-            self.fused_content.append(f"PI_L1 static subgroup_barrier_t g_barrier_{i};\n")
+        # for i in range(nb_models):
+        #     self.fused_content.append(f"PI_L1 static subgroup_barrier_t g_barrier_{i};\n")
+
+        # Timings
+        self.fused_content.append("\n")
+        self._initialize_tiles_timings()
+        for i in range(len(self.tiles_timings)):
+            self.fused_content.append(f"uint32_t round_{i}_tiles_timings[{len(self.tiles_timings[i])}][3] = {{")
+            for tile in self.tiles_timings[i]:
+                self.fused_content.append(f"{{{tile['DMA_in']}, {tile['kernel_exec']}, {tile['DMA_out']}}},")
+            self.fused_content[-1] = self.fused_content[-1].rstrip(',')  # remove last comma
+            self.fused_content.append("};\n")
+        self.fused_content.append("\n")
+
+        self.fused_content.append(generate_timings_printing_code(self.tiles_timings))
 
     def functions_fusion(self) -> None:
         """
@@ -111,9 +142,7 @@ class SourceFusion():
             * find the round's "longest layer" (scheduler)
             * emit fused code for:
                 - tiling_closure
-                - closure_L3
                 - closure
-                - cluster_fork
 
         """
 
@@ -153,6 +182,7 @@ class SourceFusion():
             seen = set()
             for model_layers in round_layers:
                 for tile in model_layers:
+                    print(tile.layer_name)
                     key = (tile.model_name, tile.layer_name)
                     if key not in seen:
                         if key not in lf_map:
@@ -235,8 +265,9 @@ class SourceFusion():
             for line in source.init_network.content:
                 self.fused_content.append(line)
 
-        for i, source in enumerate(self.files):
-            self.fused_content.append(f"subgroup_barrier_init(&g_barrier_{i}, cores_map[{i}][0], cores_map[{i}][1]);\n")
+        #for i, source in enumerate(self.files):
+            # self.fused_content.append(f"subgroup_barrier_init({i+2}, cores_map[{i}][0], cores_map[{i}][1]);\n")
+            #     self.fused_content.append(f"subgroup_barrier_init(&g_barrier_{i}, cores_map[{i}][0], cores_map[{i}][1]);\n")
 
         self.fused_content.append("}\n")
 
@@ -297,4 +328,5 @@ class SourceFusion():
             self.fused_content.append(arg_cast_statement(round_idx, list_of_args, list_of_layer_buffer))
             self.fused_content.append(closure_call_statement(round_idx))
 
+        # self.fused_content.append("print_tiles_timings();\n")
         self.fused_content.append("\n}\n")

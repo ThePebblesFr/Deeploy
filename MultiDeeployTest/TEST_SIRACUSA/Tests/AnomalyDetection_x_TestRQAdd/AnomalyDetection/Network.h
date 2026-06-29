@@ -15,7 +15,7 @@ void RunNetwork();
 void InitNetwork();
 
 extern int8_t *AnomalyDetection_MEMORYARENA_L1; // L2_init_template
-static const uint32_t AnomalyDetection_MEMORYARENA_L1_len = 31792;
+static const uint32_t AnomalyDetection_MEMORYARENA_L1_len = 46160;
 extern int8_t *AnomalyDetection_MEMORYARENA_L2; // L2_init_template
 static const uint32_t AnomalyDetection_MEMORYARENA_L2_len = 768;
 extern uint8_t *AnomalyDetection_input_0; // L2_init_template

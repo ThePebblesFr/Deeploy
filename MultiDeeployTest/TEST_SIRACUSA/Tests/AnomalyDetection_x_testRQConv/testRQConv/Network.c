@@ -179,8 +179,8 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *test
   uint32_t _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
-  uint32_t channel_output = (uint32_t)-1;
+  uint32_t testRQConv_channel_input = (uint32_t)-1;
+  uint32_t testRQConv_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_numTiles
@@ -192,15 +192,15 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *test
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    channel_input = mchan_channel_alloc();
+    testRQConv_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1445888, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref);
 
     // Wait for input tiles
 
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
+    if (testRQConv_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_input);
+      mchan_channel_free(testRQConv_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -222,15 +222,15 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *test
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    channel_output = mchan_channel_alloc();
+    testRQConv_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1314816, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
 
     // Wait for output tiles
 
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
+    if (testRQConv_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_output);
+      mchan_channel_free(testRQConv_channel_output);
     }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -427,8 +427,8 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_closure(void *testRQConv__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
-  uint32_t channel_output = (uint32_t)-1;
+  uint32_t testRQConv_channel_input = (uint32_t)-1;
+  uint32_t testRQConv_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr];
@@ -437,7 +437,7 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_closure(void *testRQConv__MERGE_CONV
     _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    channel_input = mchan_channel_alloc();
+    testRQConv_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1445888, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
     mchan_transfer_1d(1442304, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
@@ -447,9 +447,9 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_closure(void *testRQConv__MERGE_CONV
 
     // Wait for input tiles
 
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
+    if (testRQConv_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_input);
+      mchan_channel_free(testRQConv_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -472,15 +472,15 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_closure(void *testRQConv__MERGE_CONV
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    channel_output = mchan_channel_alloc();
+    testRQConv_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1317092, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_output_0_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
+    if (testRQConv_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_output);
+      mchan_channel_free(testRQConv_channel_output);
     }
 
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -679,8 +679,8 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_closure(void 
   uint32_t _MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
-  uint32_t channel_output = (uint32_t)-1;
+  uint32_t testRQConv_channel_input = (uint32_t)-1;
+  uint32_t testRQConv_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_numTiles
@@ -692,15 +692,15 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_closure(void 
     _MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    channel_input = mchan_channel_alloc();
+    testRQConv_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1448164, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_data_in_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_output_0_pre_transpose__MERGE_CONVRQ_PASS_0_output_0_pre_transposed_ref);
 
     // Wait for input tiles
 
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
+    if (testRQConv_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_input);
+      mchan_channel_free(testRQConv_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -723,15 +723,15 @@ static void testRQConv__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_closure(void 
     _MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    channel_output = mchan_channel_alloc();
+    testRQConv_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1317092, testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_data_out_ref,
                       testRQConv_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_output_0_pre_transpose_output_0_ref);
 
     // Wait for output tiles
 
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
+    if (testRQConv_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(testRQConv_channel_output);
+      mchan_channel_free(testRQConv_channel_output);
     }
 
     _MERGE_CONVRQ_PASS_0_output_0_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();

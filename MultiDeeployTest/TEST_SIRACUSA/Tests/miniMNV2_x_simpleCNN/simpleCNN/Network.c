@@ -11,10 +11,10 @@
 
 #include "Network.h"
 
-int8_t *simpleCNN_MEMORYARENA_L1;
-int8_t *simpleCNN_MEMORYARENA_L2;
-int8_t *simpleCNN_input_0;
-uint8_t *simpleCNN_output_0;
+int8_t *simpleCNN_MEMORYARENA_L1; // L2_init_template
+int8_t *simpleCNN_MEMORYARENA_L2; // L2_init_template
+int8_t *simpleCNN_input_0;        // L2_init_template
+uint8_t *simpleCNN_output_0;      // L2_init_template
 
 static PI_L2 int8_t simpleCNN_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor[144] = {
     -76,  -29,  -49, -115, -22, -50,  78,   -10,  -118, 33,  47,   64,   23,   115,  -8,   -91,  -47,  -67, 26,   14,   11,   10,   -7,   32,
@@ -3996,19 +3996,19 @@ static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[2
 
 static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1_features_8_numTiles[2] = {0, 1};
 
-static PI_L1 uint16_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out[3] = {43, 43, 42};
+static PI_L1 uint16_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out[3] = {60, 60, 8};
 
 static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[2] = {0, 3};
 
-static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_cmd[3] = {1466560, 1466560, 1465984};
+static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_cmd[3] = {1476352, 1476352, 1446400};
 
-static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_cmd[3] = {1441964, 1441964, 1441960};
+static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_cmd[3] = {1442032, 1442032, 1441824};
 
-static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_cmd[3] = {1441964, 1441964, 1441960};
+static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_cmd[3] = {1442032, 1442032, 1441824};
 
-static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_cmd[3] = {1835696, 1835696, 1835680};
+static PI_L1 uint32_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_cmd[3] = {1835968, 1835968, 1835136};
 
-static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_size_1d[3] = {43, 43, 42};
+static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_size_1d[3] = {60, 60, 8};
 
 static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1_features_12_numTiles[2] = {0, 1};
 
@@ -4019,15 +4019,18 @@ static PI_L1 uint8_t simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_nu
 void *simpleCNN_inputs[1];
 void *simpleCNN_outputs[1];
 extern struct pi_device cluster_dev;
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref;
-} __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure(void *__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure(void *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t *args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t *)__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
       args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
@@ -4068,76 +4071,68 @@ static void __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure(void *__MERGE
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref;
-} __MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork(void *__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork(void *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t *args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t *)__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
       args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
       args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
-                                                                          simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
-                                                                      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
-                                                                          simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref};
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args_t){
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
+              simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
+              simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref};
 
-  // __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure(&simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t *args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t *)__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args;
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
       args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 2048);
+  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 1024);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref = (void *)((char *)simpleCNN_input_0 + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref + 1024);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref + 1024);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref);
 
   const static char _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_prefix[] = "[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][DB][0 ops][Tile ";
+  const static char _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_prefix[] = "[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile ";
 
   uint32_t _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_end_measurements[1];
 
@@ -4151,7 +4146,9 @@ static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *__MERGE_CONVRQ
 
   uint32_t _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_start_measurements[1];
 
-  _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_numTiles
@@ -4160,82 +4157,49 @@ static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *__MERGE_CONVRQ
                       [(*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr) + 1];
        TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_numTiles
-                             [*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    __MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args =
-        (__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
-                                                                          simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
-                                                                      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
-                                                                          simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref};
+    simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args =
+        (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args_t){
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
+                simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
+                simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork,
-                    &simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork,
+                    &simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_cluster_fork_args);
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311744, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -4243,16 +4207,7 @@ static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *__MERGE_CONVRQ
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr > 0)
@@ -4282,33 +4237,39 @@ static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *__MERGE_CONVRQ
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3(void *__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3(void *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t *args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t *)__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args;
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
       args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t){.simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed =
-                                                                   simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
-                                                               .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
-                                                                   simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr};
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args_t){.simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed =
+                                                                            simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
+                                                                        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
+                                                                            simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_0_input_0_transpose_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure(&simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref;
@@ -4316,11 +4277,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref;
-} __MERGE_CONVRQ_PASS_0_tiling_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_tiling_closure(void *__MERGE_CONVRQ_PASS_0_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure(void *simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_tiling_closure_args_t *args = (__MERGE_CONVRQ_PASS_0_tiling_closure_args_t *)__MERGE_CONVRQ_PASS_0_tiling_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_0_buffer;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref;
@@ -4339,7 +4303,9 @@ static void __MERGE_CONVRQ_PASS_0_tiling_closure(void *__MERGE_CONVRQ_PASS_0_til
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref;
@@ -4347,11 +4313,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref;
-} __MERGE_CONVRQ_PASS_0_cluster_fork_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_cluster_fork(void *__MERGE_CONVRQ_PASS_0_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork(void *simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_cluster_fork_args_t *args = (__MERGE_CONVRQ_PASS_0_cluster_fork_args_t *)__MERGE_CONVRQ_PASS_0_cluster_fork_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_0_buffer;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref;
@@ -4360,97 +4329,61 @@ static void __MERGE_CONVRQ_PASS_0_cluster_fork(void *__MERGE_CONVRQ_PASS_0_clust
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_0_tiling_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_0_tiling_closure_args = (__MERGE_CONVRQ_PASS_0_tiling_closure_args_t){
-      .simpleCNN__MERGE_CONVRQ_PASS_0_buffer = simpleCNN__MERGE_CONVRQ_PASS_0_buffer,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref};
+  simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args_t){
+          .simpleCNN__MERGE_CONVRQ_PASS_0_buffer = simpleCNN__MERGE_CONVRQ_PASS_0_buffer,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref};
 
-  // __MERGE_CONVRQ_PASS_0_tiling_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_tiling_closure(&simpleCNN___MERGE_CONVRQ_PASS_0_tiling_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_0_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_closure(void *__MERGE_CONVRQ_PASS_0_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_closure(void *simpleCNN__MERGE_CONVRQ_PASS_0_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_closure_args_t *args = (__MERGE_CONVRQ_PASS_0_closure_args_t *)__MERGE_CONVRQ_PASS_0_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_0_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_closure_args;
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 32768);
-  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 34816);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 35248);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 35376);
+  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 16384);
+  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 17408);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 17696);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 17760);
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref + 1024);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_ref =
       (void *)((char *)simpleCNN_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref + 144);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_ref =
       (void *)((char *)simpleCNN_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref + 64);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_ref =
       (void *)((char *)simpleCNN_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref + 64);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref + 16384);
-  void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 35104);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
-  mchan_transfer_1d(1441936, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_ref);
-  mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_ref);
-  mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
+  void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 17552);
 
   const static char _MERGE_CONVRQ_PASS_0_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_CONVRQ_PASS_0_L2_prefix[] = "[_MERGE_CONVRQ_PASS_0_L2][DB][297984 ops][Tile ";
+  const static char _MERGE_CONVRQ_PASS_0_L2_prefix[] = "[_MERGE_CONVRQ_PASS_0_L2][SB][297984 ops][Tile ";
 
   uint32_t _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_end_measurements[1];
 
@@ -4464,163 +4397,64 @@ static void __MERGE_CONVRQ_PASS_0_closure(void *__MERGE_CONVRQ_PASS_0_closure_ar
 
   uint32_t _MERGE_CONVRQ_PASS_0_L2_kernel_start_measurements[1];
 
-  _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[(*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
+    mchan_transfer_1d(1441936, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_ref);
+    mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_ref);
+    mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441936, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0add_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441856, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_pilot_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_0_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    __MERGE_CONVRQ_PASS_0_cluster_fork_args_t simpleCNN___MERGE_CONVRQ_PASS_0_cluster_fork_args = (__MERGE_CONVRQ_PASS_0_cluster_fork_args_t){
-        .simpleCNN__MERGE_CONVRQ_PASS_0_buffer = simpleCNN__MERGE_CONVRQ_PASS_0_buffer,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref};
+    simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args =
+        (simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args_t){
+            .simpleCNN__MERGE_CONVRQ_PASS_0_buffer = simpleCNN__MERGE_CONVRQ_PASS_0_buffer,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_CONVRQ_PASS_0_cluster_fork, &simpleCNN___MERGE_CONVRQ_PASS_0_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork, &simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_cluster_fork_args);
 
     _MERGE_CONVRQ_PASS_0_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1327104, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -4628,16 +4462,7 @@ static void __MERGE_CONVRQ_PASS_0_closure(void *__MERGE_CONVRQ_PASS_0_closure_ar
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr > 0)
@@ -4661,40 +4486,48 @@ static void __MERGE_CONVRQ_PASS_0_closure(void *__MERGE_CONVRQ_PASS_0_closure_ar
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_0_closure_L3_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_0_closure_L3(void *__MERGE_CONVRQ_PASS_0_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3(void *simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_0_closure_L3_args_t *args = (__MERGE_CONVRQ_PASS_0_closure_L3_args_t *)__MERGE_CONVRQ_PASS_0_closure_L3_args;
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args_t *)simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args;
   int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_0_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_0_closure_args = (__MERGE_CONVRQ_PASS_0_closure_args_t){
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_closure_args = (simpleCNN__MERGE_CONVRQ_PASS_0_closure_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
       .simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_0_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_closure(&simpleCNN___MERGE_CONVRQ_PASS_0_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_0_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref;
-} _features_0_tiling_closure_args_t;
+} simpleCNN_features_0_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_0_tiling_closure(void *_features_0_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_0_tiling_closure(void *simpleCNN_features_0_tiling_closure_args) {
   // CLOSURE ARG CAST
-  _features_0_tiling_closure_args_t *args = (_features_0_tiling_closure_args_t *)_features_0_tiling_closure_args;
+  simpleCNN_features_0_tiling_closure_args_t *args = (simpleCNN_features_0_tiling_closure_args_t *)simpleCNN_features_0_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref;
 
@@ -4707,72 +4540,63 @@ static void _features_0_tiling_closure(void *_features_0_tiling_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref;
-} _features_0_cluster_fork_args_t;
+} simpleCNN_features_0_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_0_cluster_fork(void *_features_0_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_0_cluster_fork(void *simpleCNN_features_0_cluster_fork_args) {
   // CLOSURE ARG CAST
-  _features_0_cluster_fork_args_t *args = (_features_0_cluster_fork_args_t *)_features_0_cluster_fork_args;
+  simpleCNN_features_0_cluster_fork_args_t *args = (simpleCNN_features_0_cluster_fork_args_t *)simpleCNN_features_0_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  _features_0_tiling_closure_args_t simpleCNN__features_0_tiling_closure_args =
-      (_features_0_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref};
+  simpleCNN_features_0_tiling_closure_args_t simpleCNN_simpleCNN_features_0_tiling_closure_args =
+      (simpleCNN_features_0_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref};
 
-  // _features_0_tiling_closure CLOSURE CALL
-  _features_0_tiling_closure(&simpleCNN__features_0_tiling_closure_args);
+  // simpleCNN_features_0_tiling_closure CLOSURE CALL
+  simpleCNN_features_0_tiling_closure(&simpleCNN_simpleCNN_features_0_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr;
-} _features_0_closure_args_t;
+} simpleCNN_features_0_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_0_closure(void *_features_0_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_0_closure(void *simpleCNN_features_0_closure_args) {
   // CLOSURE ARG CAST
-  _features_0_closure_args_t *args = (_features_0_closure_args_t *)_features_0_closure_args;
+  simpleCNN_features_0_closure_args_t *args = (simpleCNN_features_0_closure_args_t *)simpleCNN_features_0_closure_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed = args->simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 32768);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 16384);
   void *simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref + 16384);
-  void *simpleCNN_TILING_CODEGEN_L1_features_0_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_0_input1_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref + 4096);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1458176, simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref);
 
   const static char features_0_L2_suffix[] = " cycles \n";
 
-  const static char features_0_L2_prefix[] = "[features_0_L2][DB][12288 ops][Tile ";
+  const static char features_0_L2_prefix[] = "[features_0_L2][SB][12288 ops][Tile ";
 
   uint32_t features_0_L2_egress_dma_wait_end_measurements[1];
 
@@ -4786,82 +4610,53 @@ static void _features_0_closure(void *_features_0_closure_args) {
 
   uint32_t features_0_L2_kernel_start_measurements[1];
 
-  features_0_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1_features_0_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1_features_0_numTiles[(*simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    features_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      features_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1458176, simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1_features_0_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1_features_0_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1_features_0_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1458176, simpleCNN_TILING_CODEGEN_L1_features_0_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1_features_0__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     features_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     features_0_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    _features_0_cluster_fork_args_t simpleCNN__features_0_cluster_fork_args =
-        (_features_0_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref};
+    simpleCNN_features_0_cluster_fork_args_t simpleCNN_simpleCNN_features_0_cluster_fork_args =
+        (simpleCNN_features_0_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)_features_0_cluster_fork, &simpleCNN__features_0_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN_features_0_cluster_fork, &simpleCNN_simpleCNN_features_0_cluster_fork_args);
 
     features_0_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     features_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1314816, simpleCNN_TILING_CODEGEN_L1_features_0_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1_features_0_features_0_input1_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     features_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -4869,16 +4664,7 @@ static void _features_0_closure(void *_features_0_closure_args) {
   }
   *simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  features_0_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr > 0)
@@ -4899,32 +4685,38 @@ static void _features_0_closure(void *_features_0_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr;
-} _features_0_closure_L3_args_t;
+} simpleCNN_features_0_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_0_closure_L3(void *_features_0_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_0_closure_L3(void *simpleCNN_features_0_closure_L3_args) {
   // CLOSURE ARG CAST
-  _features_0_closure_L3_args_t *args = (_features_0_closure_L3_args_t *)_features_0_closure_L3_args;
+  simpleCNN_features_0_closure_L3_args_t *args = (simpleCNN_features_0_closure_L3_args_t *)simpleCNN_features_0_closure_L3_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed = args->simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  _features_0_closure_args_t simpleCNN__features_0_closure_args = (_features_0_closure_args_t){
+  simpleCNN_features_0_closure_args_t simpleCNN_simpleCNN_features_0_closure_args = (simpleCNN_features_0_closure_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed,
       .simpleCNN_features_0_input1_tensor_pre_transposed = simpleCNN_features_0_input1_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr};
 
-  // _features_0_closure CLOSURE CALL
-  _features_0_closure(&simpleCNN__features_0_closure_args);
+  // simpleCNN_features_0_closure CLOSURE CALL
+  simpleCNN_features_0_closure(&simpleCNN_simpleCNN_features_0_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref;
@@ -4932,11 +4724,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref;
-} __MERGE_CONVRQ_PASS_1_tiling_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_1_tiling_closure(void *__MERGE_CONVRQ_PASS_1_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure(void *simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_1_tiling_closure_args_t *args = (__MERGE_CONVRQ_PASS_1_tiling_closure_args_t *)__MERGE_CONVRQ_PASS_1_tiling_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_1_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref;
@@ -4955,7 +4750,9 @@ static void __MERGE_CONVRQ_PASS_1_tiling_closure(void *__MERGE_CONVRQ_PASS_1_til
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref;
@@ -4963,11 +4760,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref;
-} __MERGE_CONVRQ_PASS_1_cluster_fork_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_1_cluster_fork(void *__MERGE_CONVRQ_PASS_1_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork(void *simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_1_cluster_fork_args_t *args = (__MERGE_CONVRQ_PASS_1_cluster_fork_args_t *)__MERGE_CONVRQ_PASS_1_cluster_fork_args;
+  simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args_t *)simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_1_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref;
@@ -4976,97 +4776,61 @@ static void __MERGE_CONVRQ_PASS_1_cluster_fork(void *__MERGE_CONVRQ_PASS_1_clust
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_1_tiling_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_1_tiling_closure_args = (__MERGE_CONVRQ_PASS_1_tiling_closure_args_t){
-      .simpleCNN__MERGE_CONVRQ_PASS_1_buffer = simpleCNN__MERGE_CONVRQ_PASS_1_buffer,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref};
+  simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args_t){
+          .simpleCNN__MERGE_CONVRQ_PASS_1_buffer = simpleCNN__MERGE_CONVRQ_PASS_1_buffer,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref};
 
-  // __MERGE_CONVRQ_PASS_1_tiling_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_1_tiling_closure(&simpleCNN___MERGE_CONVRQ_PASS_1_tiling_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_1_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_1_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_1_closure(void *__MERGE_CONVRQ_PASS_1_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_1_closure(void *simpleCNN__MERGE_CONVRQ_PASS_1_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_1_closure_args_t *args = (__MERGE_CONVRQ_PASS_1_closure_args_t *)__MERGE_CONVRQ_PASS_1_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_1_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_1_closure_args;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed = args->simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 25600);
-  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 16384);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 36096);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 36352);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 12800);
+  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 8192);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 19200);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 19328);
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_0_input1_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref + 4096);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref + 4608);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref + 128);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref + 128);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref + 8192);
-  void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 33792);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_ref);
-  mchan_transfer_1d(1446400, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_ref);
-  mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_ref);
-  mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_ref);
+  void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 16896);
 
   const static char _MERGE_CONVRQ_PASS_1_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_CONVRQ_PASS_1_L2_prefix[] = "[_MERGE_CONVRQ_PASS_1_L2][DB][2360064 ops][Tile ";
+  const static char _MERGE_CONVRQ_PASS_1_L2_prefix[] = "[_MERGE_CONVRQ_PASS_1_L2][SB][2360064 ops][Tile ";
 
   uint32_t _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_end_measurements[1];
 
@@ -5080,163 +4844,64 @@ static void __MERGE_CONVRQ_PASS_1_closure(void *__MERGE_CONVRQ_PASS_1_closure_ar
 
   uint32_t _MERGE_CONVRQ_PASS_1_L2_kernel_start_measurements[1];
 
-  _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[(*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_ref);
+    mchan_transfer_1d(1446400, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_ref);
+    mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_ref);
+    mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_0_input1_tensor_pre_transposed_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1446400, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1add_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441920, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_1mul_tensor_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_1_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    __MERGE_CONVRQ_PASS_1_cluster_fork_args_t simpleCNN___MERGE_CONVRQ_PASS_1_cluster_fork_args = (__MERGE_CONVRQ_PASS_1_cluster_fork_args_t){
-        .simpleCNN__MERGE_CONVRQ_PASS_1_buffer = simpleCNN__MERGE_CONVRQ_PASS_1_buffer,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref};
+    simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args =
+        (simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args_t){
+            .simpleCNN__MERGE_CONVRQ_PASS_1_buffer = simpleCNN__MERGE_CONVRQ_PASS_1_buffer,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_CONVRQ_PASS_1_cluster_fork, &simpleCNN___MERGE_CONVRQ_PASS_1_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork, &simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_cluster_fork_args);
 
     _MERGE_CONVRQ_PASS_1_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1318912, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -5244,16 +4909,7 @@ static void __MERGE_CONVRQ_PASS_1_closure(void *__MERGE_CONVRQ_PASS_1_closure_ar
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr > 0)
@@ -5277,40 +4933,48 @@ static void __MERGE_CONVRQ_PASS_1_closure(void *__MERGE_CONVRQ_PASS_1_closure_ar
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_1_closure_L3_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_1_closure_L3(void *__MERGE_CONVRQ_PASS_1_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3(void *simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_1_closure_L3_args_t *args = (__MERGE_CONVRQ_PASS_1_closure_L3_args_t *)__MERGE_CONVRQ_PASS_1_closure_L3_args;
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args_t *)simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args;
   uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed = args->simpleCNN_features_0_input1_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_1_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_1_closure_args = (__MERGE_CONVRQ_PASS_1_closure_args_t){
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_closure_args = (simpleCNN__MERGE_CONVRQ_PASS_1_closure_args_t){
       .simpleCNN_features_0_input1_tensor_pre_transposed = simpleCNN_features_0_input1_tensor_pre_transposed,
       .simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_1_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_1_closure(&simpleCNN___MERGE_CONVRQ_PASS_1_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_1_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref;
-} _features_4_tiling_closure_args_t;
+} simpleCNN_features_4_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_4_tiling_closure(void *_features_4_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_4_tiling_closure(void *simpleCNN_features_4_tiling_closure_args) {
   // CLOSURE ARG CAST
-  _features_4_tiling_closure_args_t *args = (_features_4_tiling_closure_args_t *)_features_4_tiling_closure_args;
+  simpleCNN_features_4_tiling_closure_args_t *args = (simpleCNN_features_4_tiling_closure_args_t *)simpleCNN_features_4_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref;
 
@@ -5323,72 +4987,63 @@ static void _features_4_tiling_closure(void *_features_4_tiling_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref;
-} _features_4_cluster_fork_args_t;
+} simpleCNN_features_4_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_4_cluster_fork(void *_features_4_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_4_cluster_fork(void *simpleCNN_features_4_cluster_fork_args) {
   // CLOSURE ARG CAST
-  _features_4_cluster_fork_args_t *args = (_features_4_cluster_fork_args_t *)_features_4_cluster_fork_args;
+  simpleCNN_features_4_cluster_fork_args_t *args = (simpleCNN_features_4_cluster_fork_args_t *)simpleCNN_features_4_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  _features_4_tiling_closure_args_t simpleCNN__features_4_tiling_closure_args =
-      (_features_4_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref};
+  simpleCNN_features_4_tiling_closure_args_t simpleCNN_simpleCNN_features_4_tiling_closure_args =
+      (simpleCNN_features_4_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref};
 
-  // _features_4_tiling_closure CLOSURE CALL
-  _features_4_tiling_closure(&simpleCNN__features_4_tiling_closure_args);
+  // simpleCNN_features_4_tiling_closure CLOSURE CALL
+  simpleCNN_features_4_tiling_closure(&simpleCNN_simpleCNN_features_4_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr;
-} _features_4_closure_args_t;
+} simpleCNN_features_4_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_4_closure(void *_features_4_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_4_closure(void *simpleCNN_features_4_closure_args) {
   // CLOSURE ARG CAST
-  _features_4_closure_args_t *args = (_features_4_closure_args_t *)_features_4_closure_args;
+  simpleCNN_features_4_closure_args_t *args = (simpleCNN_features_4_closure_args_t *)simpleCNN_features_4_closure_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed = args->simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 16384);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 8192);
   void *simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref + 8192);
-  void *simpleCNN_TILING_CODEGEN_L1_features_4_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_4_input4_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref + 2048);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1449984, simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref);
 
   const static char features_4_L2_suffix[] = " cycles \n";
 
-  const static char features_4_L2_prefix[] = "[features_4_L2][DB][6144 ops][Tile ";
+  const static char features_4_L2_prefix[] = "[features_4_L2][SB][6144 ops][Tile ";
 
   uint32_t features_4_L2_egress_dma_wait_end_measurements[1];
 
@@ -5402,82 +5057,53 @@ static void _features_4_closure(void *_features_4_closure_args) {
 
   uint32_t features_4_L2_kernel_start_measurements[1];
 
-  features_4_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1_features_4_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1_features_4_numTiles[(*simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    features_4_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      features_4_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1449984, simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1_features_4_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1_features_4_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1_features_4_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1449984, simpleCNN_TILING_CODEGEN_L1_features_4_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1_features_4__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     features_4_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     features_4_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    _features_4_cluster_fork_args_t simpleCNN__features_4_cluster_fork_args =
-        (_features_4_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref};
+    simpleCNN_features_4_cluster_fork_args_t simpleCNN_simpleCNN_features_4_cluster_fork_args =
+        (simpleCNN_features_4_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)_features_4_cluster_fork, &simpleCNN__features_4_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN_features_4_cluster_fork, &simpleCNN_simpleCNN_features_4_cluster_fork_args);
 
     features_4_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     features_4_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1312768, simpleCNN_TILING_CODEGEN_L1_features_4_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1_features_4_features_4_input4_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     features_4_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -5485,16 +5111,7 @@ static void _features_4_closure(void *_features_4_closure_args) {
   }
   *simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  features_4_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr > 0)
@@ -5515,32 +5132,38 @@ static void _features_4_closure(void *_features_4_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr;
-} _features_4_closure_L3_args_t;
+} simpleCNN_features_4_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_4_closure_L3(void *_features_4_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_4_closure_L3(void *simpleCNN_features_4_closure_L3_args) {
   // CLOSURE ARG CAST
-  _features_4_closure_L3_args_t *args = (_features_4_closure_L3_args_t *)_features_4_closure_L3_args;
+  simpleCNN_features_4_closure_L3_args_t *args = (simpleCNN_features_4_closure_L3_args_t *)simpleCNN_features_4_closure_L3_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed = args->simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  _features_4_closure_args_t simpleCNN__features_4_closure_args = (_features_4_closure_args_t){
+  simpleCNN_features_4_closure_args_t simpleCNN_simpleCNN_features_4_closure_args = (simpleCNN_features_4_closure_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed,
       .simpleCNN_features_4_input4_tensor_pre_transposed = simpleCNN_features_4_input4_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr};
 
-  // _features_4_closure CLOSURE CALL
-  _features_4_closure(&simpleCNN__features_4_closure_args);
+  // simpleCNN_features_4_closure CLOSURE CALL
+  simpleCNN_features_4_closure(&simpleCNN_simpleCNN_features_4_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref;
@@ -5548,11 +5171,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref;
-} __MERGE_CONVRQ_PASS_2_tiling_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_2_tiling_closure(void *__MERGE_CONVRQ_PASS_2_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure(void *simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_2_tiling_closure_args_t *args = (__MERGE_CONVRQ_PASS_2_tiling_closure_args_t *)__MERGE_CONVRQ_PASS_2_tiling_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_2_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref;
@@ -5571,7 +5197,9 @@ static void __MERGE_CONVRQ_PASS_2_tiling_closure(void *__MERGE_CONVRQ_PASS_2_til
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref;
@@ -5579,11 +5207,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref;
-} __MERGE_CONVRQ_PASS_2_cluster_fork_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_2_cluster_fork(void *__MERGE_CONVRQ_PASS_2_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork(void *simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_2_cluster_fork_args_t *args = (__MERGE_CONVRQ_PASS_2_cluster_fork_args_t *)__MERGE_CONVRQ_PASS_2_cluster_fork_args;
+  simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args_t *)simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_2_buffer;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref;
@@ -5592,97 +5223,61 @@ static void __MERGE_CONVRQ_PASS_2_cluster_fork(void *__MERGE_CONVRQ_PASS_2_clust
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_2_tiling_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_2_tiling_closure_args = (__MERGE_CONVRQ_PASS_2_tiling_closure_args_t){
-      .simpleCNN__MERGE_CONVRQ_PASS_2_buffer = simpleCNN__MERGE_CONVRQ_PASS_2_buffer,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref};
+  simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args_t){
+          .simpleCNN__MERGE_CONVRQ_PASS_2_buffer = simpleCNN__MERGE_CONVRQ_PASS_2_buffer,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref};
 
-  // __MERGE_CONVRQ_PASS_2_tiling_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_2_tiling_closure(&simpleCNN___MERGE_CONVRQ_PASS_2_tiling_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_2_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_2_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_2_closure(void *__MERGE_CONVRQ_PASS_2_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_2_closure(void *simpleCNN__MERGE_CONVRQ_PASS_2_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_2_closure_args_t *args = (__MERGE_CONVRQ_PASS_2_closure_args_t *)__MERGE_CONVRQ_PASS_2_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_2_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_2_closure_args;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed = args->simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 49664);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 27136);
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 53760);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 54272);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 36864);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 29184);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 29440);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 23040);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_4_input4_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref + 2048);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref + 18432);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref + 256);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref + 256);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref + 4096);
-  void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 45056);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_ref);
-  mchan_transfer_1d(1460224, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref);
-  mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_ref);
-  mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_ref);
+  void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 18432);
 
   const static char _MERGE_CONVRQ_PASS_2_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_CONVRQ_PASS_2_L2_prefix[] = "[_MERGE_CONVRQ_PASS_2_L2][DB][2359488 ops][Tile ";
+  const static char _MERGE_CONVRQ_PASS_2_L2_prefix[] = "[_MERGE_CONVRQ_PASS_2_L2][SB][2359488 ops][Tile ";
 
   uint32_t _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_end_measurements[1];
 
@@ -5696,163 +5291,64 @@ static void __MERGE_CONVRQ_PASS_2_closure(void *__MERGE_CONVRQ_PASS_2_closure_ar
 
   uint32_t _MERGE_CONVRQ_PASS_2_L2_kernel_start_measurements[1];
 
-  _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[(*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_ref);
+    mchan_transfer_1d(1460224, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref);
+    mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_ref);
+    mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_4_input4_tensor_pre_transposed_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1460224, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2add_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1442048, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_2_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    __MERGE_CONVRQ_PASS_2_cluster_fork_args_t simpleCNN___MERGE_CONVRQ_PASS_2_cluster_fork_args = (__MERGE_CONVRQ_PASS_2_cluster_fork_args_t){
-        .simpleCNN__MERGE_CONVRQ_PASS_2_buffer = simpleCNN__MERGE_CONVRQ_PASS_2_buffer,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref};
+    simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args =
+        (simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args_t){
+            .simpleCNN__MERGE_CONVRQ_PASS_2_buffer = simpleCNN__MERGE_CONVRQ_PASS_2_buffer,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_CONVRQ_PASS_2_cluster_fork, &simpleCNN___MERGE_CONVRQ_PASS_2_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork, &simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_cluster_fork_args);
 
     _MERGE_CONVRQ_PASS_2_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1314816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -5860,16 +5356,7 @@ static void __MERGE_CONVRQ_PASS_2_closure(void *__MERGE_CONVRQ_PASS_2_closure_ar
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr > 0)
@@ -5893,40 +5380,48 @@ static void __MERGE_CONVRQ_PASS_2_closure(void *__MERGE_CONVRQ_PASS_2_closure_ar
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_2_closure_L3_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_2_closure_L3(void *__MERGE_CONVRQ_PASS_2_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3(void *simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_2_closure_L3_args_t *args = (__MERGE_CONVRQ_PASS_2_closure_L3_args_t *)__MERGE_CONVRQ_PASS_2_closure_L3_args;
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args_t *)simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args;
   uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed = args->simpleCNN_features_4_input4_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_2_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_2_closure_args = (__MERGE_CONVRQ_PASS_2_closure_args_t){
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_closure_args = (simpleCNN__MERGE_CONVRQ_PASS_2_closure_args_t){
       .simpleCNN_features_4_input4_tensor_pre_transposed = simpleCNN_features_4_input4_tensor_pre_transposed,
       .simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_2_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_2_closure(&simpleCNN___MERGE_CONVRQ_PASS_2_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_2_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref;
-} _features_8_tiling_closure_args_t;
+} simpleCNN_features_8_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_8_tiling_closure(void *_features_8_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_8_tiling_closure(void *simpleCNN_features_8_tiling_closure_args) {
   // CLOSURE ARG CAST
-  _features_8_tiling_closure_args_t *args = (_features_8_tiling_closure_args_t *)_features_8_tiling_closure_args;
+  simpleCNN_features_8_tiling_closure_args_t *args = (simpleCNN_features_8_tiling_closure_args_t *)simpleCNN_features_8_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref;
 
@@ -5939,72 +5434,63 @@ static void _features_8_tiling_closure(void *_features_8_tiling_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref;
-} _features_8_cluster_fork_args_t;
+} simpleCNN_features_8_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_8_cluster_fork(void *_features_8_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_8_cluster_fork(void *simpleCNN_features_8_cluster_fork_args) {
   // CLOSURE ARG CAST
-  _features_8_cluster_fork_args_t *args = (_features_8_cluster_fork_args_t *)_features_8_cluster_fork_args;
+  simpleCNN_features_8_cluster_fork_args_t *args = (simpleCNN_features_8_cluster_fork_args_t *)simpleCNN_features_8_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  _features_8_tiling_closure_args_t simpleCNN__features_8_tiling_closure_args =
-      (_features_8_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref};
+  simpleCNN_features_8_tiling_closure_args_t simpleCNN_simpleCNN_features_8_tiling_closure_args =
+      (simpleCNN_features_8_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref};
 
-  // _features_8_tiling_closure CLOSURE CALL
-  _features_8_tiling_closure(&simpleCNN__features_8_tiling_closure_args);
+  // simpleCNN_features_8_tiling_closure CLOSURE CALL
+  simpleCNN_features_8_tiling_closure(&simpleCNN_simpleCNN_features_8_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr;
-} _features_8_closure_args_t;
+} simpleCNN_features_8_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_8_closure(void *_features_8_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_8_closure(void *simpleCNN_features_8_closure_args) {
   // CLOSURE ARG CAST
-  _features_8_closure_args_t *args = (_features_8_closure_args_t *)_features_8_closure_args;
+  simpleCNN_features_8_closure_args_t *args = (simpleCNN_features_8_closure_args_t *)simpleCNN_features_8_closure_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed = args->simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 8192);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 4096);
   void *simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref + 4096);
-  void *simpleCNN_TILING_CODEGEN_L1_features_8_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_8_input8_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref + 1024);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref);
 
   const static char features_8_L2_suffix[] = " cycles \n";
 
-  const static char features_8_L2_prefix[] = "[features_8_L2][DB][3072 ops][Tile ";
+  const static char features_8_L2_prefix[] = "[features_8_L2][SB][3072 ops][Tile ";
 
   uint32_t features_8_L2_egress_dma_wait_end_measurements[1];
 
@@ -6018,82 +5504,53 @@ static void _features_8_closure(void *_features_8_closure_args) {
 
   uint32_t features_8_L2_kernel_start_measurements[1];
 
-  features_8_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1_features_8_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1_features_8_numTiles[(*simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    features_8_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      features_8_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1_features_8_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1_features_8_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1_features_8_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1445888, simpleCNN_TILING_CODEGEN_L1_features_8_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1_features_8__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     features_8_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     features_8_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    _features_8_cluster_fork_args_t simpleCNN__features_8_cluster_fork_args =
-        (_features_8_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
-                                          .simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref};
+    simpleCNN_features_8_cluster_fork_args_t simpleCNN_simpleCNN_features_8_cluster_fork_args =
+        (simpleCNN_features_8_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_in_ref,
+                                                   .simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)_features_8_cluster_fork, &simpleCNN__features_8_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN_features_8_cluster_fork, &simpleCNN_simpleCNN_features_8_cluster_fork_args);
 
     features_8_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     features_8_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311744, simpleCNN_TILING_CODEGEN_L1_features_8_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1_features_8_features_8_input8_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     features_8_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -6101,16 +5558,7 @@ static void _features_8_closure(void *_features_8_closure_args) {
   }
   *simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  features_8_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr > 0)
@@ -6131,32 +5579,38 @@ static void _features_8_closure(void *_features_8_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr;
-} _features_8_closure_L3_args_t;
+} simpleCNN_features_8_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_8_closure_L3(void *_features_8_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_8_closure_L3(void *simpleCNN_features_8_closure_L3_args) {
   // CLOSURE ARG CAST
-  _features_8_closure_L3_args_t *args = (_features_8_closure_L3_args_t *)_features_8_closure_L3_args;
+  simpleCNN_features_8_closure_L3_args_t *args = (simpleCNN_features_8_closure_L3_args_t *)simpleCNN_features_8_closure_L3_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed = args->simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  _features_8_closure_args_t simpleCNN__features_8_closure_args = (_features_8_closure_args_t){
+  simpleCNN_features_8_closure_args_t simpleCNN_simpleCNN_features_8_closure_args = (simpleCNN_features_8_closure_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed,
       .simpleCNN_features_8_input8_tensor_pre_transposed = simpleCNN_features_8_input8_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr};
 
-  // _features_8_closure CLOSURE CALL
-  _features_8_closure(&simpleCNN__features_8_closure_args);
+  // simpleCNN_features_8_closure CLOSURE CALL
+  simpleCNN_features_8_closure(&simpleCNN_simpleCNN_features_8_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer;
   uint16_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref;
@@ -6165,11 +5619,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref;
-} __MERGE_CONVRQ_PASS_3_tiling_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_3_tiling_closure(void *__MERGE_CONVRQ_PASS_3_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure(void *simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_3_tiling_closure_args_t *args = (__MERGE_CONVRQ_PASS_3_tiling_closure_args_t *)__MERGE_CONVRQ_PASS_3_tiling_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_3_buffer;
   uint16_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref;
@@ -6189,7 +5646,9 @@ static void __MERGE_CONVRQ_PASS_3_tiling_closure(void *__MERGE_CONVRQ_PASS_3_til
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer;
   uint16_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref;
@@ -6198,11 +5657,14 @@ typedef struct {
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref;
-} __MERGE_CONVRQ_PASS_3_cluster_fork_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_3_cluster_fork(void *__MERGE_CONVRQ_PASS_3_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork(void *simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_3_cluster_fork_args_t *args = (__MERGE_CONVRQ_PASS_3_cluster_fork_args_t *)__MERGE_CONVRQ_PASS_3_cluster_fork_args;
+  simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args_t *)simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args;
   void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer = args->simpleCNN__MERGE_CONVRQ_PASS_3_buffer;
   uint16_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref;
@@ -6212,32 +5674,37 @@ static void __MERGE_CONVRQ_PASS_3_cluster_fork(void *__MERGE_CONVRQ_PASS_3_clust
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_3_tiling_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_3_tiling_closure_args = (__MERGE_CONVRQ_PASS_3_tiling_closure_args_t){
-      .simpleCNN__MERGE_CONVRQ_PASS_3_buffer = simpleCNN__MERGE_CONVRQ_PASS_3_buffer,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref};
+  simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args_t){
+          .simpleCNN__MERGE_CONVRQ_PASS_3_buffer = simpleCNN__MERGE_CONVRQ_PASS_3_buffer,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref};
 
-  // __MERGE_CONVRQ_PASS_3_tiling_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_3_tiling_closure(&simpleCNN___MERGE_CONVRQ_PASS_3_tiling_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_3_closure_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_3_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_3_closure(void *simpleCNN__MERGE_CONVRQ_PASS_3_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_3_closure_args_t *args = (__MERGE_CONVRQ_PASS_3_closure_args_t *)__MERGE_CONVRQ_PASS_3_closure_args;
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_3_closure_args_t *)simpleCNN__MERGE_CONVRQ_PASS_3_closure_args;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed = args->simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr;
@@ -6245,81 +5712,26 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
   // CLOSURE FUNCTION CALL
   uint16_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref =
       (uint16_t *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 58752);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 43776);
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 62176);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 62520);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 60800);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 45760);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 46000);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 44800);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_8_input8_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref + 1024);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref + 24768);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref + 172);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref =
       (void *)((char *)simpleCNN_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref + 172);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref + 688);
-  void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 49536);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_ref);
-  mchan_transfer_1d(1466560, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref);
-
-  // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref
-  simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref =
-      (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref) + 24768);
-
-  mchan_transfer_1d(1441964, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref);
-
-  // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref
-  simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref =
-      (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref) + 172);
-
-  mchan_transfer_1d(1441964, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref);
-
-  // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref
-  simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref =
-      (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref) + 172);
+  void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer = (void *)((char *)simpleCNN_MEMORYARENA_L1 + 34560);
 
   const static char _MERGE_CONVRQ_PASS_3_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_CONVRQ_PASS_3_L2_prefix[] = "[_MERGE_CONVRQ_PASS_3_L2][DB][2359344 ops][Tile ";
+  const static char _MERGE_CONVRQ_PASS_3_L2_prefix[] = "[_MERGE_CONVRQ_PASS_3_L2][SB][2359344 ops][Tile ";
 
   uint32_t _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_end_measurements[3];
 
@@ -6333,144 +5745,46 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
 
   uint32_t _MERGE_CONVRQ_PASS_3_L2_kernel_start_measurements[3];
 
-  _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[(*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_ref);
+    mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_cmd[TILING_I], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref
+    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref =
+        (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref) + 34560);
 
-    // Wait for current input tile
+    mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_cmd[TILING_I], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref);
 
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
+    // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref
+    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref =
+        (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref) + 240);
 
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr + 1]) {
+    mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_cmd[TILING_I], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref);
 
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_buffer_1;
-        break;
-      }
+    // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref
+    simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref =
+        (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref) + 240);
 
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1442816, simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_8_input8_tensor_pre_transposed_ref);
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_cmd[TILING_I + 1], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref);
-
-      // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref =
-          (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref) + 24768);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_cmd[TILING_I + 1], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref);
-
-      // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref =
-          (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3add_tensor_ref) + 172);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_cmd[TILING_I + 1], simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref);
-
-      // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref
-      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref =
-          (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_features_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor_ref) + 172);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -6480,30 +5794,24 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
     // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref
     *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out[TILING_I];
 
-    __MERGE_CONVRQ_PASS_3_cluster_fork_args_t simpleCNN___MERGE_CONVRQ_PASS_3_cluster_fork_args = (__MERGE_CONVRQ_PASS_3_cluster_fork_args_t){
-        .simpleCNN__MERGE_CONVRQ_PASS_3_buffer = simpleCNN__MERGE_CONVRQ_PASS_3_buffer,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
-        .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref};
+    simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args =
+        (simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args_t){
+            .simpleCNN__MERGE_CONVRQ_PASS_3_buffer = simpleCNN__MERGE_CONVRQ_PASS_3_buffer,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_ch_im_out_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref,
+            .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_CONVRQ_PASS_3_cluster_fork, &simpleCNN___MERGE_CONVRQ_PASS_3_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork, &simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_cluster_fork_args);
 
     _MERGE_CONVRQ_PASS_3_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_2d_ext_strided(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_cmd[TILING_I],
                                   simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref,
                                   simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref,
@@ -6511,7 +5819,14 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
 
     // UPDATE VARIABLE simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref
     simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref =
-        (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref) + 43);
+        (void *)((char *)(simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref) + 60);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -6519,16 +5834,7 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_end_measurements[2] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr > 0)
@@ -6552,40 +5858,48 @@ static void __MERGE_CONVRQ_PASS_3_closure(void *__MERGE_CONVRQ_PASS_3_closure_ar
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr;
-} __MERGE_CONVRQ_PASS_3_closure_L3_args_t;
+} simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_CONVRQ_PASS_3_closure_L3(void *__MERGE_CONVRQ_PASS_3_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3(void *simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_CONVRQ_PASS_3_closure_L3_args_t *args = (__MERGE_CONVRQ_PASS_3_closure_L3_args_t *)__MERGE_CONVRQ_PASS_3_closure_L3_args;
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args_t *args = (simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args_t *)simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args;
   uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed = args->simpleCNN_features_8_input8_tensor_pre_transposed;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_CONVRQ_PASS_3_closure_args_t simpleCNN___MERGE_CONVRQ_PASS_3_closure_args = (__MERGE_CONVRQ_PASS_3_closure_args_t){
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_closure_args = (simpleCNN__MERGE_CONVRQ_PASS_3_closure_args_t){
       .simpleCNN_features_8_input8_tensor_pre_transposed = simpleCNN_features_8_input8_tensor_pre_transposed,
       .simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_3_closure CLOSURE CALL
-  __MERGE_CONVRQ_PASS_3_closure(&simpleCNN___MERGE_CONVRQ_PASS_3_closure_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_3_closure CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref;
-} _features_12_tiling_closure_args_t;
+} simpleCNN_features_12_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_tiling_closure(void *_features_12_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_12_tiling_closure(void *simpleCNN_features_12_tiling_closure_args) {
   // CLOSURE ARG CAST
-  _features_12_tiling_closure_args_t *args = (_features_12_tiling_closure_args_t *)_features_12_tiling_closure_args;
+  simpleCNN_features_12_tiling_closure_args_t *args = (simpleCNN_features_12_tiling_closure_args_t *)simpleCNN_features_12_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref;
 
@@ -6598,72 +5912,63 @@ static void _features_12_tiling_closure(void *_features_12_tiling_closure_args) 
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref;
-} _features_12_cluster_fork_args_t;
+} simpleCNN_features_12_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_cluster_fork(void *_features_12_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_12_cluster_fork(void *simpleCNN_features_12_cluster_fork_args) {
   // CLOSURE ARG CAST
-  _features_12_cluster_fork_args_t *args = (_features_12_cluster_fork_args_t *)_features_12_cluster_fork_args;
+  simpleCNN_features_12_cluster_fork_args_t *args = (simpleCNN_features_12_cluster_fork_args_t *)simpleCNN_features_12_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = args->simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  _features_12_tiling_closure_args_t simpleCNN__features_12_tiling_closure_args =
-      (_features_12_tiling_closure_args_t){.simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
-                                           .simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref};
+  simpleCNN_features_12_tiling_closure_args_t simpleCNN_simpleCNN_features_12_tiling_closure_args = (simpleCNN_features_12_tiling_closure_args_t){
+      .simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
+      .simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref};
 
-  // _features_12_tiling_closure CLOSURE CALL
-  _features_12_tiling_closure(&simpleCNN__features_12_tiling_closure_args);
+  // simpleCNN_features_12_tiling_closure CLOSURE CALL
+  simpleCNN_features_12_tiling_closure(&simpleCNN_simpleCNN_features_12_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr;
-} _features_12_closure_args_t;
+} simpleCNN_features_12_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_closure(void *_features_12_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_12_closure(void *simpleCNN_features_12_closure_args) {
   // CLOSURE ARG CAST
-  _features_12_closure_args_t *args = (_features_12_closure_args_t *)_features_12_closure_args;
+  simpleCNN_features_12_closure_args_t *args = (simpleCNN_features_12_closure_args_t *)simpleCNN_features_12_closure_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = args->simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 4096);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 2048);
   void *simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref + 2048);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref + 512);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref);
 
   const static char features_12_L2_suffix[] = " cycles \n";
 
-  const static char features_12_L2_prefix[] = "[features_12_L2][DB][1536 ops][Tile ";
+  const static char features_12_L2_prefix[] = "[features_12_L2][SB][1536 ops][Tile ";
 
   uint32_t features_12_L2_egress_dma_wait_end_measurements[1];
 
@@ -6677,84 +5982,53 @@ static void _features_12_closure(void *_features_12_closure_args) {
 
   uint32_t features_12_L2_kernel_start_measurements[1];
 
-  features_12_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1_features_12_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1_features_12_numTiles[(*simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr) + 1]; TILING_I++) {
 
-    if (TILING_I > 0) {
+    features_12_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      features_12_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1_features_12_numTiles[*simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1_features_12_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1_features_12_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1443840, simpleCNN_TILING_CODEGEN_L1_features_12_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1_features_12__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     features_12_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     features_12_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    _features_12_cluster_fork_args_t simpleCNN__features_12_cluster_fork_args =
-        (_features_12_cluster_fork_args_t){.simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
-                                           .simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref};
+    simpleCNN_features_12_cluster_fork_args_t simpleCNN_simpleCNN_features_12_cluster_fork_args = (simpleCNN_features_12_cluster_fork_args_t){
+        .simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_in_ref,
+        .simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref = simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)_features_12_cluster_fork, &simpleCNN__features_12_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN_features_12_cluster_fork, &simpleCNN_simpleCNN_features_12_cluster_fork_args);
 
     features_12_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     features_12_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, simpleCNN_TILING_CODEGEN_L1_features_12_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1_features_12_features_12_onnxFlatten_27_tensor_pre_transposed_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     features_12_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -6762,16 +6036,7 @@ static void _features_12_closure(void *_features_12_closure_args) {
   }
   *simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  features_12_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr > 0)
@@ -6794,41 +6059,51 @@ static void _features_12_closure(void *_features_12_closure_args) {
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr;
-} _features_12_closure_L3_args_t;
+} simpleCNN_features_12_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_closure_L3(void *_features_12_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_12_closure_L3(void *simpleCNN_features_12_closure_L3_args) {
   // CLOSURE ARG CAST
-  _features_12_closure_L3_args_t *args = (_features_12_closure_L3_args_t *)_features_12_closure_L3_args;
+  simpleCNN_features_12_closure_L3_args_t *args = (simpleCNN_features_12_closure_L3_args_t *)simpleCNN_features_12_closure_L3_args;
   uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = args->simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = args->simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  _features_12_closure_args_t simpleCNN__features_12_closure_args = (_features_12_closure_args_t){
+  simpleCNN_features_12_closure_args_t simpleCNN_simpleCNN_features_12_closure_args = (simpleCNN_features_12_closure_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed,
       .simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr};
 
-  // _features_12_closure CLOSURE CALL
-  _features_12_closure(&simpleCNN__features_12_closure_args);
+  // simpleCNN_features_12_closure CLOSURE CALL
+  simpleCNN_features_12_closure(&simpleCNN_simpleCNN_features_12_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref;
-} _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t;
+} simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure(void *_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void
+simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure(void *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args) {
   // CLOSURE ARG CAST
-  _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t *args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t *)_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args;
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t *args =
+      (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t *)
+          simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
       args->simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
@@ -6871,47 +6146,59 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure(void
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref;
-} _features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t;
+} simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork(void *_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void
+simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork(void *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args) {
   // CLOSURE ARG CAST
-  _features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t *args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t *)_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args;
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t *args =
+      (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t *)
+          simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
       args->simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
       args->simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t){
-          .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
-              simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
-          .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
-              simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref};
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t
+      simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args =
+          (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args_t){
+              .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
+                  simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
+              .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
+                  simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref};
 
-  // _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure CLOSURE CALL
-  _features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure(&simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args);
+  // simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure CLOSURE CALL
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure(
+      &simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_onnxFlatten_27_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr;
-} _features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t;
+} simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args) {
   // CLOSURE ARG CAST
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t *args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t *)_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args;
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t *args =
+      (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t *)simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = args->simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_onnxFlatten_27_tensor = args->simpleCNN_onnxFlatten_27_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr =
@@ -6919,33 +6206,15 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_feat
 
   // CLOSURE FUNCTION CALL
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
-  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 1024);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 512);
   void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_ref =
       (void *)((char *)simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref + 512);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1 +
-               0);
   void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_ref =
       (void *)((char *)simpleCNN_onnxFlatten_27_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref + 512);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
-                    simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_ref);
 
   const static char features_12_onnxFlatten_27_tensor_pre_transpose_L2_suffix[] = " cycles \n";
 
-  const static char features_12_onnxFlatten_27_tensor_pre_transpose_L2_prefix[] = "[features_12_onnxFlatten_27_tensor_pre_transpose_L2][DB][0 ops][Tile ";
+  const static char features_12_onnxFlatten_27_tensor_pre_transpose_L2_prefix[] = "[features_12_onnxFlatten_27_tensor_pre_transpose_L2][SB][0 ops][Tile ";
 
   uint32_t features_12_onnxFlatten_27_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[1];
 
@@ -6959,7 +6228,9 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_feat
 
   uint32_t features_12_onnxFlatten_27_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
-  features_12_onnxFlatten_27_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_numTiles
@@ -6968,83 +6239,50 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_feat
                       [(*simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr) + 1];
        TILING_I++) {
 
-    if (TILING_I > 0) {
+    features_12_onnxFlatten_27_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      features_12_onnxFlatten_27_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
+                      simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) < simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_numTiles
-                             [*simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_next,
-                        simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_features_12_onnxFlatten_27_tensor_pre_transposed_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     features_12_onnxFlatten_27_tensor_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     features_12_onnxFlatten_27_tensor_pre_transpose_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    _features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args =
-        (_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t){
-            .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
-                simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
-            .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
-                simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref};
+    simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t
+        simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args =
+            (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args_t){
+                .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref =
+                    simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_in_ref,
+                .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref =
+                    simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork,
-                    &simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork,
+                    &simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_cluster_fork_args);
 
     features_12_onnxFlatten_27_tensor_pre_transpose_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     features_12_onnxFlatten_27_tensor_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_onnxFlatten_27_tensor_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     features_12_onnxFlatten_27_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -7052,16 +6290,7 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_feat
   }
   *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  features_12_onnxFlatten_27_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I = ((*simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr > 0)
@@ -7091,48 +6320,57 @@ static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure(void *_feat
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_onnxFlatten_27_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr;
-} _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t;
+} simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3(void *_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void
+simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3(void *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args) {
   // CLOSURE ARG CAST
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t *args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t *)_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args;
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t *args =
+      (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t *)simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args;
   uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = args->simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
   uint8_t *simpleCNN_onnxFlatten_27_tensor = args->simpleCNN_onnxFlatten_27_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr =
       args->simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_closure_args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t){
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args =
+      (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args_t){
           .simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed,
           .simpleCNN_onnxFlatten_27_tensor = simpleCNN_onnxFlatten_27_tensor,
           .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr =
               simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr};
 
-  // _features_12_onnxFlatten_27_tensor_pre_transpose_closure CLOSURE CALL
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure(&simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_closure_args);
+  // simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure CLOSURE CALL
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure(&simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref;
-} __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t;
+} simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure(void *__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure(void *simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t *args =
-      (__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t *)__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args;
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t *args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t *)simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref;
@@ -7172,19 +6410,23 @@ static void __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure(void *__MERGE_GEMM_MATM
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref;
-} __MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t;
+} simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork(void *__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork(void *simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args) {
   // CLOSURE ARG CAST
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t *args =
-      (__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t *)__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args;
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t *args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t *)simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref;
   int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref;
   int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref;
@@ -7192,93 +6434,55 @@ static void __MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork(void *__MERGE_GEMM_MATMUL
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args =
-      (__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t){
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args_t){
           .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref,
           .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref,
           .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref,
           .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref,
           .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref};
 
-  // __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure CLOSURE CALL
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure(&simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args);
+  // simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure CLOSURE CALL
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure(&simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_tiling_closure_args);
 
   pi_cl_team_barrier();
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_onnxMatMul_28_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr;
-} __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t;
+} simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_GEMM_MATMUL_RQ_PASS_0_closure(void *__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure(void *simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args) {
   // CLOSURE ARG CAST
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t *args = (__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t *)__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args;
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t *args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t *)simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args;
   uint8_t *simpleCNN_onnxMatMul_28_tensor = args->simpleCNN_onnxMatMul_28_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 10260);
-  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 20);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 11364);
-  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 11284);
+  uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 5130);
+  int8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = (int8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 10);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 5682);
+  int32_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref = (int32_t *)((char *)simpleCNN_MEMORYARENA_L1 + 5642);
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_ref = (void *)((char *)simpleCNN_onnxMatMul_28_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref + 512);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_ref = (void *)((char *)simpleCNN_onnxMatMul_32_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref + 5120);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_1 + 0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_ref =
       (void *)((char *)simpleCNN_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref + 40);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1 +
-               0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_ref =
       (void *)((char *)simpleCNN_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref + 40);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_next =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1 +
-               0);
   void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_ref = (void *)((char *)simpleCNN_output_0 + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_buffer_0 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref + 0);
-  void *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_buffer_1 =
-      (void *)((char *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref + 10);
-
-  // Initialize DMA future
-  uint32_t channel_output = (uint32_t)-1;
-  uint32_t channel_input = (uint32_t)-1;
-  channel_input = mchan_channel_alloc();
-  mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_ref);
-  mchan_transfer_1d(1446912, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_ref);
-  mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_ref);
-  mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref,
-                    simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
 
   const static char _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_suffix[] = " cycles \n";
 
-  const static char _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_prefix[] = "[_MERGE_GEMM_MATMUL_RQ_PASS_0_L2][DB][11806 ops][Tile ";
+  const static char _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_prefix[] = "[_MERGE_GEMM_MATMUL_RQ_PASS_0_L2][SB][11806 ops][Tile ";
 
   uint32_t _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_egress_dma_wait_end_measurements[1];
 
@@ -7292,168 +6496,65 @@ static void __MERGE_GEMM_MATMUL_RQ_PASS_0_closure(void *__MERGE_GEMM_MATMUL_RQ_P
 
   uint32_t _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_kernel_start_measurements[1];
 
-  _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_ingress_dma_wait_start_measurements[0] = getCycles();
+  // Initialize DMA futures
+  uint32_t simpleCNN_channel_input = (uint32_t)-1;
+  uint32_t simpleCNN_channel_output = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr];
        TILING_I < simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[(*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr) + 1];
        TILING_I++) {
 
-    if (TILING_I > 0) {
+    _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-      _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
-    }
+    // Transfer input tiles
+    simpleCNN_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_ref);
+    mchan_transfer_1d(1446912, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_ref);
+    mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_ref);
+    mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref,
+                      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
 
-    switch ((TILING_I) % 2) {
-    case 0:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_buffer_0;
-      break;
-    case 1:
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref =
-          (int8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref =
-          (int32_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1;
-      simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref =
-          (uint8_t *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_buffer_1;
-      break;
-    }
+    // Wait for input tiles
 
-    // Wait for current input tile
-
-    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_input);
-      mchan_channel_free(channel_input);
-    }
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) <
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      channel_input = mchan_channel_alloc();
-      mchan_transfer_1d(1442304, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_28_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) <
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1446912, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_onnxMatMul_32_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) <
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0add_tensor_ref);
-    }
-
-    // Wait for current input tile
-
-    // DOUBLE BUFFERING CHECK TILE LOAD
-    if ((TILING_I + 1) <
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_numTiles[*simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr + 1]) {
-
-      switch ((TILING_I + 1) % 2) {
-      case 0:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_0;
-        break;
-      case 1:
-        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_next =
-            (void *)simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_buffer_1;
-        break;
-      }
-
-      // Transfer next input tile
-      mchan_transfer_1d(1441832, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_next,
-                        simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_classifier_QL_REPLACED__INTEGERIZE_BN1D_UNSIGNED_ACT_PASS_0mul_tensor_ref);
+    if (simpleCNN_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_input);
+      mchan_channel_free(simpleCNN_channel_input);
     }
 
     _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
 
     _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_kernel_start_measurements[TILING_I] = getCycles();
 
-    __MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args =
-        (__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t){
+    simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args =
+        (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args_t){
             .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_A_ref,
             .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_B_ref,
             .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_mul_ref,
             .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_C_ref,
             .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref};
 
-    pi_cl_team_fork(NUM_CORES, (void *)__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork, &simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args);
+    pi_cl_team_fork(NUM_CORES, (void *)simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork,
+                    &simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_cluster_fork_args);
 
     _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_kernel_end_measurements[TILING_I] = getCycles();
 
     _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
-    // Wait for previous output tile
-
-    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(channel_output);
-      mchan_channel_free(channel_output);
-    }
-
-    // Transfer current output tile
-    channel_output = mchan_channel_alloc();
+    // Transfer output tiles
+    simpleCNN_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310730, simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_data_out_ref,
                       simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_output_0_ref);
+
+    // Wait for output tiles
+
+    if (simpleCNN_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(simpleCNN_channel_output);
+      mchan_channel_free(simpleCNN_channel_output);
+    }
 
     _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
 
@@ -7461,16 +6562,7 @@ static void __MERGE_GEMM_MATMUL_RQ_PASS_0_closure(void *__MERGE_GEMM_MATMUL_RQ_P
   }
   *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr += 1;
 
-  // Wait for final output tile
-
-  if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
-    mchan_channel_wait(channel_output);
-    mchan_channel_free(channel_output);
-  }
-
-  // Deinitialize DMA future
-
-  _MERGE_GEMM_MATMUL_RQ_PASS_0_L2_egress_dma_wait_end_measurements[0] = getCycles();
+  // Deinitialize DMA futures
 
   StopTimer();
   for (int PROFILING_I =
@@ -7498,45 +6590,52 @@ static void __MERGE_GEMM_MATMUL_RQ_PASS_0_closure(void *__MERGE_GEMM_MATMUL_RQ_P
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
+// LAYER FUNCTION STRUCT DEFINITION, START
 typedef struct {
   uint8_t *simpleCNN_onnxMatMul_28_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr;
-} __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t;
+} simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t;
+// LAYER FUNCTION STRUCT DEFINITION, END
 
-static void __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3(void *__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args) {
+// LAYER FUNCTION CLOSURE, START
+static void simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3(void *simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args) {
   // CLOSURE ARG CAST
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t *args = (__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t *)__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args;
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t *args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t *)simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args;
   uint8_t *simpleCNN_onnxMatMul_28_tensor = args->simpleCNN_onnxMatMul_28_tensor;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = args->simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args = (__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t){
-      .simpleCNN_onnxMatMul_28_tensor = simpleCNN_onnxMatMul_28_tensor,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr};
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args_t){.simpleCNN_onnxMatMul_28_tensor = simpleCNN_onnxMatMul_28_tensor,
+                                                              .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr =
+                                                                  simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr};
 
-  // __MERGE_GEMM_MATMUL_RQ_PASS_0_closure CLOSURE CALL
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure(&simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args);
+  // simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure CLOSURE CALL
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure(&simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_args);
 
   // CLOSURE ARG WRITEBACK
 }
+// LAYER FUNCTION CLOSURE, END
 
 void RunNetwork() {
-  int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;
-  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed;
-  uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;
-  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed;
-  uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;
-  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed;
-  uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;
-  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed;
-  uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;
-  uint8_t *simpleCNN_onnxFlatten_27_tensor;
-  uint8_t *simpleCNN_onnxMatMul_28_tensor;
-  void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer;
-  void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer;
-  void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer;
-  void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer;
+  int8_t *simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed;                    // L2_init_template
+  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed; // L2_init_template
+  uint8_t *simpleCNN_features_0_input1_tensor_pre_transposed;                   // L2_init_template
+  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed; // L2_init_template
+  uint8_t *simpleCNN_features_4_input4_tensor_pre_transposed;                   // L2_init_template
+  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed; // L2_init_template
+  uint8_t *simpleCNN_features_8_input8_tensor_pre_transposed;                   // L2_init_template
+  uint8_t *simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed; // L2_init_template
+  uint8_t *simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed;          // L2_init_template
+  uint8_t *simpleCNN_onnxFlatten_27_tensor;                                     // L2_init_template
+  uint8_t *simpleCNN_onnxMatMul_28_tensor;                                      // L2_init_template
+  void *simpleCNN__MERGE_CONVRQ_PASS_0_buffer;                                  // L2_init_template
+  void *simpleCNN__MERGE_CONVRQ_PASS_1_buffer;                                  // L2_init_template
+  void *simpleCNN__MERGE_CONVRQ_PASS_2_buffer;                                  // L2_init_template
+  void *simpleCNN__MERGE_CONVRQ_PASS_3_buffer;                                  // L2_init_template
 
   uint8_t bu_simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr = 0;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
@@ -7562,113 +6661,167 @@ void RunNetwork() {
       &bu_simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr;
   uint8_t bu_simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = 0;
   uint8_t *simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = &bu_simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr;
-  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = (int8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 16384);
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args =
-      (__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t){.simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed =
-                                                                      simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
-                                                                  .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
-                                                                      simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr};
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose CALL START
 
-  // __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3 CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3(&simpleCNN___MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args);
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = (int8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 16384);
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args_t){.simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed =
+                                                                               simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
+                                                                           .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr =
+                                                                               simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_tileIdxPtr};
+
+  // simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transpose CALL END
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_0 CALL START
 
   simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 0);
-  __MERGE_CONVRQ_PASS_0_closure_L3_args_t simpleCNN___MERGE_CONVRQ_PASS_0_closure_L3_args = (__MERGE_CONVRQ_PASS_0_closure_L3_args_t){
-      .simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
-      .simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr};
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args_t){
+          .simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_input_0_transposed,
+          .simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_0_closure_L3 CLOSURE CALL
-  __MERGE_CONVRQ_PASS_0_closure_L3(&simpleCNN___MERGE_CONVRQ_PASS_0_closure_L3_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_0_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_0 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_features_0 CALL START
 
   simpleCNN_features_0_input1_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 16384);
-  _features_0_closure_L3_args_t simpleCNN__features_0_closure_L3_args = (_features_0_closure_L3_args_t){
+  simpleCNN_features_0_closure_L3_args_t simpleCNN_simpleCNN_features_0_closure_L3_args = (simpleCNN_features_0_closure_L3_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_0_onnxMaxPool_17_tensor_pre_transposed,
       .simpleCNN_features_0_input1_tensor_pre_transposed = simpleCNN_features_0_input1_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_0_tileIdxPtr};
 
-  // _features_0_closure_L3 CLOSURE CALL
-  _features_0_closure_L3(&simpleCNN__features_0_closure_L3_args);
+  // simpleCNN_features_0_closure_L3 CLOSURE CALL
+  simpleCNN_features_0_closure_L3(&simpleCNN_simpleCNN_features_0_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN_features_0 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_1 CALL START
 
   simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 0);
-  __MERGE_CONVRQ_PASS_1_closure_L3_args_t simpleCNN___MERGE_CONVRQ_PASS_1_closure_L3_args = (__MERGE_CONVRQ_PASS_1_closure_L3_args_t){
-      .simpleCNN_features_0_input1_tensor_pre_transposed = simpleCNN_features_0_input1_tensor_pre_transposed,
-      .simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr};
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args_t){
+          .simpleCNN_features_0_input1_tensor_pre_transposed = simpleCNN_features_0_input1_tensor_pre_transposed,
+          .simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_1_closure_L3 CLOSURE CALL
-  __MERGE_CONVRQ_PASS_1_closure_L3(&simpleCNN___MERGE_CONVRQ_PASS_1_closure_L3_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_1_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_1 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_features_4 CALL START
 
   simpleCNN_features_4_input4_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 8192);
-  _features_4_closure_L3_args_t simpleCNN__features_4_closure_L3_args = (_features_4_closure_L3_args_t){
+  simpleCNN_features_4_closure_L3_args_t simpleCNN_simpleCNN_features_4_closure_L3_args = (simpleCNN_features_4_closure_L3_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_1_onnxMaxPool_20_tensor_pre_transposed,
       .simpleCNN_features_4_input4_tensor_pre_transposed = simpleCNN_features_4_input4_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_4_tileIdxPtr};
 
-  // _features_4_closure_L3 CLOSURE CALL
-  _features_4_closure_L3(&simpleCNN__features_4_closure_L3_args);
+  // simpleCNN_features_4_closure_L3 CLOSURE CALL
+  simpleCNN_features_4_closure_L3(&simpleCNN_simpleCNN_features_4_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN_features_4 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_2 CALL START
 
   simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 0);
-  __MERGE_CONVRQ_PASS_2_closure_L3_args_t simpleCNN___MERGE_CONVRQ_PASS_2_closure_L3_args = (__MERGE_CONVRQ_PASS_2_closure_L3_args_t){
-      .simpleCNN_features_4_input4_tensor_pre_transposed = simpleCNN_features_4_input4_tensor_pre_transposed,
-      .simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr};
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args_t){
+          .simpleCNN_features_4_input4_tensor_pre_transposed = simpleCNN_features_4_input4_tensor_pre_transposed,
+          .simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_2_closure_L3 CLOSURE CALL
-  __MERGE_CONVRQ_PASS_2_closure_L3(&simpleCNN___MERGE_CONVRQ_PASS_2_closure_L3_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_2_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_2 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_features_8 CALL START
 
   simpleCNN_features_8_input8_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 4096);
-  _features_8_closure_L3_args_t simpleCNN__features_8_closure_L3_args = (_features_8_closure_L3_args_t){
+  simpleCNN_features_8_closure_L3_args_t simpleCNN_simpleCNN_features_8_closure_L3_args = (simpleCNN_features_8_closure_L3_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_2_onnxMaxPool_23_tensor_pre_transposed,
       .simpleCNN_features_8_input8_tensor_pre_transposed = simpleCNN_features_8_input8_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_8_tileIdxPtr};
 
-  // _features_8_closure_L3 CLOSURE CALL
-  _features_8_closure_L3(&simpleCNN__features_8_closure_L3_args);
+  // simpleCNN_features_8_closure_L3 CLOSURE CALL
+  simpleCNN_features_8_closure_L3(&simpleCNN_simpleCNN_features_8_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN_features_8 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_3 CALL START
 
   simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 0);
-  __MERGE_CONVRQ_PASS_3_closure_L3_args_t simpleCNN___MERGE_CONVRQ_PASS_3_closure_L3_args = (__MERGE_CONVRQ_PASS_3_closure_L3_args_t){
-      .simpleCNN_features_8_input8_tensor_pre_transposed = simpleCNN_features_8_input8_tensor_pre_transposed,
-      .simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr};
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args_t simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args =
+      (simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args_t){
+          .simpleCNN_features_8_input8_tensor_pre_transposed = simpleCNN_features_8_input8_tensor_pre_transposed,
+          .simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed,
+          .simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr};
 
-  // __MERGE_CONVRQ_PASS_3_closure_L3 CLOSURE CALL
-  __MERGE_CONVRQ_PASS_3_closure_L3(&simpleCNN___MERGE_CONVRQ_PASS_3_closure_L3_args);
+  // simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3(&simpleCNN_simpleCNN__MERGE_CONVRQ_PASS_3_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_CONVRQ_PASS_3 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_features_12 CALL START
 
   simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 2048);
-  _features_12_closure_L3_args_t simpleCNN__features_12_closure_L3_args = (_features_12_closure_L3_args_t){
+  simpleCNN_features_12_closure_L3_args_t simpleCNN_simpleCNN_features_12_closure_L3_args = (simpleCNN_features_12_closure_L3_args_t){
       .simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed = simpleCNN__MERGE_CONVRQ_PASS_3_onnxMaxPool_26_tensor_pre_transposed,
       .simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed,
       .simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1_features_12_tileIdxPtr};
 
-  // _features_12_closure_L3 CLOSURE CALL
-  _features_12_closure_L3(&simpleCNN__features_12_closure_L3_args);
+  // simpleCNN_features_12_closure_L3 CLOSURE CALL
+  simpleCNN_features_12_closure_L3(&simpleCNN_simpleCNN_features_12_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN_features_12 CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose CALL START
 
   simpleCNN_onnxFlatten_27_tensor = (uint8_t *)((char *)simpleCNN_MEMORYARENA_L2 + 0);
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args =
-      (_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t){
-          .simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed,
-          .simpleCNN_onnxFlatten_27_tensor = simpleCNN_onnxFlatten_27_tensor,
-          .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr =
-              simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr};
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t
+      simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args =
+          (simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args_t){
+              .simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed = simpleCNN_features_12_onnxFlatten_27_tensor_pre_transposed,
+              .simpleCNN_onnxFlatten_27_tensor = simpleCNN_onnxFlatten_27_tensor,
+              .simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr =
+                  simpleCNN_TILING_CODEGEN_L1_features_12_onnxFlatten_27_tensor_pre_transpose_tileIdxPtr};
 
-  // _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3 CLOSURE CALL
-  _features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3(&simpleCNN__features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args);
+  // simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3 CLOSURE CALL
+  simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3(&simpleCNN_simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN_features_12_onnxFlatten_27_tensor_pre_transpose CALL END
+
+  // RUNNETRWORK LAYER simpleCNN_flatten CALL START
 
   // Reshape (Name: flatten, Op: Flatten)
   simpleCNN_onnxMatMul_28_tensor = simpleCNN_onnxFlatten_27_tensor;
 
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args = (__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t){
-      .simpleCNN_onnxMatMul_28_tensor = simpleCNN_onnxMatMul_28_tensor,
-      .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr = simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr};
+  // RUNNETRWORK LAYER simpleCNN_flatten CALL END
 
-  // __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3 CLOSURE CALL
-  __MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3(&simpleCNN___MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args);
+  // RUNNETRWORK LAYER simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0 CALL START
+
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args =
+      (simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args_t){.simpleCNN_onnxMatMul_28_tensor = simpleCNN_onnxMatMul_28_tensor,
+                                                                 .simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr =
+                                                                     simpleCNN_TILING_CODEGEN_L1__MERGE_GEMM_MATMUL_RQ_PASS_0_tileIdxPtr};
+
+  // simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3 CLOSURE CALL
+  simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3(&simpleCNN_simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0_closure_L3_args);
+
+  // RUNNETRWORK LAYER simpleCNN__MERGE_GEMM_MATMUL_RQ_PASS_0 CALL END
 }
 
 void InitNetwork() {
 
-  simpleCNN_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 62864);
+  simpleCNN_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 46240);
 
   simpleCNN_MEMORYARENA_L2 = (int8_t *)pi_l2_malloc(sizeof(int8_t) * 20480);
 

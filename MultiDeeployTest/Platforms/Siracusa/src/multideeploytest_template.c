@@ -107,10 +107,13 @@ int main(void) {
   pi_cluster_task(&cluster_task, RunNetwork, NULL);
   cluster_task.stack_size = MAINSTACKSIZE;
   cluster_task.slave_stack_size = SLAVESTACKSIZE;
+  *(volatile int *)0x10000000 = 0xabbaabba;
   ResetTimer();
   StartTimer();
   pi_cluster_send_task_to_cl(&cluster_dev, &cluster_task);
   StopTimer();
+  *(volatile int *)0x10000000 = 0xdeadcaca;
+  printf("Runtime RunNetwork: %u cycles\r\n", getCycles());
 
 #ifndef CI
   printf("Output:\r\n");

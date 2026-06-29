@@ -166,7 +166,7 @@ class FunctionsDefinition:
 
 class FunctionCall():
 
-    RE_LAYER_FROM_CALL = re.compile(r"\b([A-Za-z0-9_]+)_([A-Za-z0-9_]+)_closure(?:_[A-Za-z0-9_]+)?\s*\(")
+    RE_LAYER_FROM_CALL = re.compile(r"([A-Za-z_]\w*)_closure_L3\(")
     RE_ASSIGN_END = re.compile(r";\s*$")
     RE_COMPOUND_START = re.compile(r"\)\s*\{")
     RE_COMPOUND_END_INLINE = re.compile(r"(.*?)(\};)(.*)", re.DOTALL)
@@ -264,24 +264,8 @@ class FunctionCall():
         call_lines.extend(lines[i:])
         self.layer_function_call = "".join(call_lines)
 
-        # 6) Extract layer name from the function call
-        # Try to find the closure function call pattern
-        m = self.RE_LAYER_FROM_CALL.search(self.layer_function_call)
-        if not m:
-            # Fallback: try to extract from prefix_args_cast or args_cast
-            m = self.RE_LAYER_FROM_CALL.search(self.prefix_args_cast + self.args_cast)
-            if not m:
-                raise RuntimeError(
-                    f"Could not extract layer name from function call:\n{self.layer_function_call}\n\nOr from prefix:\n{self.prefix_args_cast}"
-                )
-
-        if self.model_name == "testRQConv":
-            self.layer_name = m.group(1) + "_" + m.group(2)
-        else:
-            self.layer_name = normalize_layer_name(
-                m.group(1) + "_" + m.group(2)
-            )
-
+        match = self.RE_LAYER_FROM_CALL.search(self.layer_function_call)
+        self.layer_name = normalize_layer_name(match.group(1))
 
 
 class RunNetworkFunctionDefinition():
@@ -438,43 +422,43 @@ class RunNetworkFunctionDefinition():
 
         # Heuristic patterns for the last args struct and last call end
         # (use simple, reliable anchors; avoid relying on "__" conventions)
-        RE_LAST_ARGS_DECL = re.compile(r"^\s*[A-Za-z_]\w*(?:_[A-Za-z0-9_]+)*_args_t\b")
-        RE_LAST_CALL_END  = re.compile(r"\);\s*$")
+        # RE_LAST_ARGS_DECL = re.compile(r"^\s*[A-Za-z_]\w*(?:_[A-Za-z0-9_]+)*_args_t\b")
+        # RE_LAST_CALL_END  = re.compile(r"\);\s*$")
 
-        last_args_idx = None
-        for i in range(len(lines) - 1, -1, -1):
-            if RE_LAST_ARGS_DECL.search(lines[i]) or "_args_t" in lines[i]:
-                last_args_idx = i
-                break
+        # last_args_idx = None
+        # for i in range(len(lines) - 1, -1, -1):
+        #     if RE_LAST_ARGS_DECL.search(lines[i]) or "_args_t" in lines[i]:
+        #         last_args_idx = i
+        #         break
 
-        last_call_end_idx = None
-        for i in range(len(lines) - 1, -1, -1):
-            if RE_LAST_CALL_END.search(lines[i]):
-                last_call_end_idx = i
-                break
+        # last_call_end_idx = None
+        # for i in range(len(lines) - 1, -1, -1):
+        #     if RE_LAST_CALL_END.search(lines[i]):
+        #         last_call_end_idx = i
+        #         break
 
-        # If we can't confidently find both anchors, do nothing (leave the parsed result as-is)
-        if last_args_idx is None or last_call_end_idx is None or last_call_end_idx < last_args_idx:
-            return
+        # # If we can't confidently find both anchors, do nothing (leave the parsed result as-is)
+        # if last_args_idx is None or last_call_end_idx is None or last_call_end_idx < last_args_idx:
+        #     return
 
-        last_block = "".join(lines[last_args_idx:last_call_end_idx + 1])
+        # last_block = "".join(lines[last_args_idx:last_call_end_idx + 1])
 
-        # If the last parsed block is just a bare call, replace it; otherwise append
-        if self.functions_calls:
-            last_parsed = self.functions_calls[-1].content
-            last_parsed_is_bare_call = (
-                "_args_t" not in last_parsed
-                and RE_CALL_START.search(last_parsed) is not None
-            )
+        # # If the last parsed block is just a bare call, replace it; otherwise append
+        # if self.functions_calls:
+        #     last_parsed = self.functions_calls[-1].content
+        #     last_parsed_is_bare_call = (
+        #         "_args_t" not in last_parsed
+        #         and RE_CALL_START.search(last_parsed) is not None
+        #     )
 
-            if last_parsed_is_bare_call:
-                self.functions_calls[-1] = FunctionCall(last_block, self.model_name)
-            else:
-                # Avoid duplicating if we already captured it correctly
-                if last_block.strip() != last_parsed.strip():
-                    self.functions_calls.append(FunctionCall(last_block, self.model_name))
-        else:
-            self.functions_calls.append(FunctionCall(last_block, self.model_name))
+        #     if last_parsed_is_bare_call:
+        #         self.functions_calls[-1] = FunctionCall(last_block, self.model_name)
+        #     else:
+        #         # Avoid duplicating if we already captured it correctly
+        #         if last_block.strip() != last_parsed.strip():
+        #             self.functions_calls.append(FunctionCall(last_block, self.model_name))
+        # else:
+        #     self.functions_calls.append(FunctionCall(last_block, self.model_name))
     
     def deduplicateFunctionCallsByLayer(self) -> None:
         """
@@ -540,7 +524,6 @@ class SourceFile():
         self.run_network.getVariablesDefinitions()
         self.run_network.getFunctionCalls()
         for func_call in self.run_network.functions_calls:
-            # print(f"[SourceFile] Function call: {func_call.content}")
             func_call.parseContent()
         self.run_network.deduplicateFunctionCallsByLayer()
 

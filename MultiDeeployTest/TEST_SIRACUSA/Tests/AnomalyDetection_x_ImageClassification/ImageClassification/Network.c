@@ -2378,9 +2378,9 @@ static void ImageClassification__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(v
 
   // CLOSURE FUNCTION CALL
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
+      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 3072); // ARENA ALLOCATE
+      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 3072);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref = (void *)((char *)ImageClassification_input_0 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
@@ -2402,8 +2402,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(v
   uint32_t _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_numTiles
@@ -2630,16 +2630,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_0_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 19456); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20320); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20384); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 19456);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20320);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20384);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_0weight_tensor_ref =
@@ -2651,7 +2646,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_0_closure(void *ImageClassifi
       ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_DUPLICATE_FOR_RequantShift_16_ref =
           (void *)((char *)ImageClassification_model0_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_DUPLICATE_FOR_RequantShift_16 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_x3_tensor_split_ref = (void *)((char *)ImageClassification_x3_tensor_split + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_0_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 19888); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_0_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 19888);
 
   const static char _MERGE_CONVRQ_PASS_0_L2_suffix[] = " cycles \n";
 
@@ -2670,8 +2665,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_0_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -2901,16 +2896,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_1_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 26880); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28032); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 26880);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28032);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_x3_tensor_split_ref = (void *)((char *)ImageClassification_x3_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_model1stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor_ref =
       (void *)((char *)ImageClassification_model1stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_1weight_tensor + 0);
@@ -2922,7 +2912,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_1_closure(void *ImageClassifi
           (void *)((char *)ImageClassification_model0_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0mul_tensor_DUPLICATE_FOR_RequantShift_19 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_input1_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_1_input1_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_1_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 24576); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_1_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 24576);
 
   const static char _MERGE_CONVRQ_PASS_1_L2_suffix[] = " cycles \n";
 
@@ -2941,8 +2931,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_1_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_1_L2_kernel_start_measurements[2];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -3200,16 +3190,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_2_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 26880); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28032); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 26880);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28032);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_1_input1_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_1_input1_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_model1stack2_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref =
@@ -3221,7 +3206,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_2_closure(void *ImageClassifi
       (void *)((char *)ImageClassification_model1stack2_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_0mul_tensor + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_onnxAdd_46_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_2_onnxAdd_46_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_2_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 24576); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_2_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 24576);
 
   const static char _MERGE_CONVRQ_PASS_2_L2_suffix[] = " cycles \n";
 
@@ -3240,8 +3225,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_2_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_2_L2_kernel_start_measurements[2];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -3492,12 +3477,9 @@ static void ImageClassification__MERGE_ADDRQ_PASS_0_closure(void *ImageClassific
   // CLOSURE FUNCTION CALL
   uint16_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size_ref =
       (uint16_t *)((char *)ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_size + 0);
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 10240); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20480); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 10240);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 20480);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_x3_tensor_split_ref = (void *)((char *)ImageClassification_x3_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_2_onnxAdd_46_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_2_onnxAdd_46_tensor_pre_transposed + 0);
@@ -3520,8 +3502,8 @@ static void ImageClassification__MERGE_ADDRQ_PASS_0_closure(void *ImageClassific
   uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_start_measurements[2];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_numTiles[*ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr];
@@ -3768,16 +3750,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_3_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 24576); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31488); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31616); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 24576);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31488);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31616);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_input4_tensor_split_ref = (void *)((char *)ImageClassification_input4_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_model2stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor_ref =
       (void *)((char *)ImageClassification_model2stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_3weight_tensor + 0);
@@ -3788,7 +3765,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_3_closure(void *ImageClassifi
       (void *)((char *)ImageClassification_model2stack0_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2mul_tensor + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_3_input8_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_3_input8_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_3_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 29184); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_3_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 29184);
 
   const static char _MERGE_CONVRQ_PASS_3_L2_suffix[] = " cycles \n";
 
@@ -3807,8 +3784,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_3_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_3_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -4038,16 +4015,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_4_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 24576); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25344); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25472); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 24576);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25344);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25472);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input4_tensor_split_ref = (void *)((char *)ImageClassification_input4_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_model2_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_5weight_tensor_ref =
       (void *)((char *)ImageClassification_model2_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_5weight_tensor + 0);
@@ -4059,7 +4031,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_4_closure(void *ImageClassifi
           (void *)((char *)ImageClassification_model2stack2_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_1mul_tensor_DUPLICATE_FOR_RequantShift_25 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4__MERGE_CONVRQ_PASS_4_onnxAdd_54_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_4_onnxAdd_54_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_4_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 25088); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_4_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 25088);
 
   const static char _MERGE_CONVRQ_PASS_4_L2_suffix[] = " cycles \n";
 
@@ -4078,8 +4050,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_4_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_4_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -4312,15 +4284,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_5_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 9216);                                                                         // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 30208); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 30336); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 17408); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 9216);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 30208);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 30336);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 17408);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5__MERGE_CONVRQ_PASS_3_input8_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_3_input8_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_model2stack2_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_4weight_tensor_ref =
@@ -4333,7 +4301,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_5_closure(void *ImageClassifi
           (void *)((char *)ImageClassification_model2stack2_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_1mul_tensor_DUPLICATE_FOR_RequantShift_29 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5__MERGE_CONVRQ_PASS_5_onnxAdd_58_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_5_onnxAdd_58_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_5_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 25600); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_5_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 25600);
 
   const static char _MERGE_CONVRQ_PASS_5_L2_suffix[] = " cycles \n";
 
@@ -4352,8 +4320,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_5_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_5_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -4573,12 +4541,9 @@ static void ImageClassification__MERGE_ADDRQ_PASS_1_closure(void *ImageClassific
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_in_1_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_in_2_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384); // ARENA ALLOCATE
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_in_1_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_in_2_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 16384);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1__MERGE_CONVRQ_PASS_4_onnxAdd_54_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_4_onnxAdd_54_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1__MERGE_CONVRQ_PASS_5_onnxAdd_58_tensor_pre_transposed_ref =
@@ -4602,8 +4567,8 @@ static void ImageClassification__MERGE_ADDRQ_PASS_1_closure(void *ImageClassific
   uint32_t _MERGE_ADDRQ_PASS_1_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_numTiles[*ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_1_tileIdxPtr];
@@ -4839,15 +4804,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_6_closure(void *ImageClassifi
   // CLOSURE FUNCTION CALL
   uint16_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_ch_im_out_ref =
       (uint16_t *)((char *)ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_ch_im_out + 0);
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 15264);                                                                        // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31456); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31668); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 15264);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31456);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31668);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 28064);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_input12_tensor_split_ref = (void *)((char *)ImageClassification_input12_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_model3stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_6weight_tensor_ref =
       (void *)((char *)ImageClassification_model3stack0_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_6weight_tensor + 0);
@@ -4858,7 +4819,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_6_closure(void *ImageClassifi
       (void *)((char *)ImageClassification_model3stack0_QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_3mul_tensor + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_6_input16_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_6_input16_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_6_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 23456); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_6_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 23456);
 
   const static char _MERGE_CONVRQ_PASS_6_L2_suffix[] = " cycles \n";
 
@@ -4877,8 +4838,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_6_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_6_L2_kernel_start_measurements[2];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -5144,16 +5105,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_7_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_weight_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 12288); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 14848); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 15104); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 12288);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 14848);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 15104);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input12_tensor_split_ref = (void *)((char *)ImageClassification_input12_tensor_split + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_model3_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_8weight_tensor_ref =
       (void *)((char *)ImageClassification_model3_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_8weight_tensor + 0);
@@ -5165,7 +5121,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_7_closure(void *ImageClassifi
           (void *)((char *)ImageClassification_model3stack2_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_2mul_tensor_DUPLICATE_FOR_RequantShift_33 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7__MERGE_CONVRQ_PASS_7_onnxAdd_66_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_7_onnxAdd_66_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_7_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 14336); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_7_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 14336);
 
   const static char _MERGE_CONVRQ_PASS_7_L2_suffix[] = " cycles \n";
 
@@ -5184,8 +5140,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_7_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_7_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -5428,15 +5384,11 @@ static void ImageClassification__MERGE_CONVRQ_PASS_8_closure(void *ImageClassifi
   // CLOSURE FUNCTION CALL
   uint16_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_ch_im_out_ref =
       (uint16_t *)((char *)ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_ch_im_out + 0);
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25344);                                                                        // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_mul_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31232); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_add_ref =
-      (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31344); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 29440); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 25344);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_weight_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31232);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_add_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 31344);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 29440);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8__MERGE_CONVRQ_PASS_6_input16_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_6_input16_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_model3stack2_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_7weight_tensor_ref =
@@ -5449,7 +5401,7 @@ static void ImageClassification__MERGE_CONVRQ_PASS_8_closure(void *ImageClassifi
           (void *)((char *)ImageClassification_model3stack2_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_2mul_tensor_DUPLICATE_FOR_RequantShift_37 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8__MERGE_CONVRQ_PASS_8_onnxAdd_70_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_8_onnxAdd_70_tensor_pre_transposed + 0);
-  void *ImageClassification__MERGE_CONVRQ_PASS_8_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 16128); // ARENA ALLOCATE
+  void *ImageClassification__MERGE_CONVRQ_PASS_8_buffer = (void *)((char *)ImageClassification_MEMORYARENA_L1 + 16128);
 
   const static char _MERGE_CONVRQ_PASS_8_L2_suffix[] = " cycles \n";
 
@@ -5468,8 +5420,8 @@ static void ImageClassification__MERGE_CONVRQ_PASS_8_closure(void *ImageClassifi
   uint32_t _MERGE_CONVRQ_PASS_8_L2_kernel_start_measurements[3];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =
@@ -5725,12 +5677,9 @@ static void ImageClassification__MERGE_ADDRQ_PASS_2_closure(void *ImageClassific
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_in_1_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 4096); // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_in_2_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192); // ARENA ALLOCATE
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_in_1_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 4096);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_in_2_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 8192);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2__MERGE_CONVRQ_PASS_7_onnxAdd_66_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification__MERGE_CONVRQ_PASS_7_onnxAdd_66_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2__MERGE_CONVRQ_PASS_8_onnxAdd_70_tensor_pre_transposed_ref =
@@ -5755,8 +5704,8 @@ static void ImageClassification__MERGE_ADDRQ_PASS_2_closure(void *ImageClassific
   uint32_t _MERGE_ADDRQ_PASS_2_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_numTiles[*ImageClassification_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_2_tileIdxPtr];
@@ -5954,8 +5903,8 @@ static void ImageClassification_MaxPool_40_closure(void *ImageClassification_Max
   uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1_MaxPool_40_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);     // ARENA ALLOCATE
-  uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 4096); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_data_in_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
+  uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_data_out_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 4096);
   void *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxMaxPool_72_tensor_tp_ref = (void *)((char *)ImageClassification_onnxMaxPool_72_tensor_tp + 0);
   void *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_MaxPool_40_onnxReshape_73_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification_MaxPool_40_onnxReshape_73_tensor_pre_transposed + 0);
@@ -5977,8 +5926,8 @@ static void ImageClassification_MaxPool_40_closure(void *ImageClassification_Max
   uint32_t MaxPool_40_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1_MaxPool_40_numTiles[*ImageClassification_TILING_CODEGEN_L1_MaxPool_40_tileIdxPtr];
@@ -6202,9 +6151,9 @@ static void ImageClassification_MaxPool_40_onnxReshape_73_tensor_pre_transpose_c
 
   // CLOSURE FUNCTION CALL
   uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxReshape_73_tensor_pre_transpose_data_in_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
+      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
   uint8_t *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxReshape_73_tensor_pre_transpose_data_out_ref =
-      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 64); // ARENA ALLOCATE
+      (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 64);
   void *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxReshape_73_tensor_pre_transpose_MaxPool_40_onnxReshape_73_tensor_pre_transposed_ref =
       (void *)((char *)ImageClassification_MaxPool_40_onnxReshape_73_tensor_pre_transposed + 0);
   void *ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxReshape_73_tensor_pre_transpose_onnxReshape_73_tensor_ref =
@@ -6227,8 +6176,8 @@ static void ImageClassification_MaxPool_40_onnxReshape_73_tensor_pre_transpose_c
   uint32_t MaxPool_40_onnxReshape_73_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = ImageClassification_TILING_CODEGEN_L1_MaxPool_40_onnxReshape_73_tensor_pre_transpose_numTiles
@@ -6470,12 +6419,11 @@ static void ImageClassification__MERGE_GEMMRQ_PASS_0_closure(void *ImageClassifi
   uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr = args->ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 650);   // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 10);      // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 754); // ARENA ALLOCATE
-  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 714);   // ARENA ALLOCATE
-  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref =
-      (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0); // ARENA ALLOCATE
+  uint8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 650);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 10);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 754);
+  int32_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)ImageClassification_MEMORYARENA_L1 + 714);
+  int8_t *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (int8_t *)((char *)ImageClassification_MEMORYARENA_L1 + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_75_tensor_ref = (void *)((char *)ImageClassification_onnxGemm_75_tensor + 0);
   void *ImageClassification_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref =
       (void *)((char *)ImageClassification__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor + 0);
@@ -6502,8 +6450,8 @@ static void ImageClassification__MERGE_GEMMRQ_PASS_0_closure(void *ImageClassifi
   uint32_t _MERGE_GEMMRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t channel_input = (uint32_t)-1;
   uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I =

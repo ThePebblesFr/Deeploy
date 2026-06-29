@@ -384,6 +384,9 @@ class TestRunner():
         else:
             self.cmake_args += " -D gvsoc_simulation=OFF"
 
+        self.cmake_args += ' -D CMAKE_C_FLAGS=-g0'
+        self.cmake_args += ' -D CMAKE_CXX_FLAGS=-g0'
+
         command = f"$CMAKE -D TOOLCHAIN={self._args.toolchain} -D TOOLCHAIN_INSTALL_DIR={self._dir_toolchain} -D GENERATED_SOURCE={self._dir_gen} -D platform={self._platform} {self.cmake_args} -B {self._dir_build} -D TESTNAME={self._name_test} .."
 
         if self._args.verbose >= 3:
@@ -428,6 +431,7 @@ class TestRunner():
                 command = "BANSHEE_LOG=debug " + command
 
         log.debug(f"[TestRunner] Simulation Command: {command}")
+        print(f"Running simulation with command: {command}")
 
         process = subprocess.Popen([command],
                                    stdout = subprocess.PIPE,

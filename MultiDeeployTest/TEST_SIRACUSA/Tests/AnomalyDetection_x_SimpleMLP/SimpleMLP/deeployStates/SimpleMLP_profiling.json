@@ -1,0 +1,71 @@
+{
+    "name": "SimpleMLP",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "node_linear_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 3535,
+            "kernel_exec": 126544,
+            "output_DMA": 147
+        },
+        {
+            "layer_name": "node_linear_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 3409,
+            "kernel_exec": 125997,
+            "output_DMA": 108
+        },
+        {
+            "layer_name": "node_linear_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 3412,
+            "kernel_exec": 125920,
+            "output_DMA": 58
+        },
+        {
+            "layer_name": "node_linear_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "input_DMA": 3391,
+            "kernel_exec": 125923,
+            "output_DMA": 62
+        },
+        {
+            "layer_name": "node_relu_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 225,
+            "kernel_exec": 650,
+            "output_DMA": 198
+        },
+        {
+            "layer_name": "node_linear_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2259,
+            "kernel_exec": 83811,
+            "output_DMA": 196
+        },
+        {
+            "layer_name": "node_relu_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 202,
+            "kernel_exec": 589,
+            "output_DMA": 176
+        },
+        {
+            "layer_name": "node_linear_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 480,
+            "kernel_exec": 13672,
+            "output_DMA": 175
+        }
+    ]
+}

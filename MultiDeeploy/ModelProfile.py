@@ -1,4 +1,5 @@
 from MultiDeeploy.LayerProfile import LayerProfile
+from MultiDeeploy.utils import normalize_layer_name
 
 class ModelProfile:
 
@@ -20,7 +21,7 @@ class ModelProfile:
         for layer_dict in d.get("layers", []):
             layer = LayerProfile.from_dict(layer_dict)
             layer.model_name = model_name
-            layer.layer_name = model_name + "__" + layer.layer_name
+            layer.layer_name = normalize_layer_name(model_name + "__" + layer.layer_name)[:-3]
             layers.append(layer)
 
         return ModelProfile(

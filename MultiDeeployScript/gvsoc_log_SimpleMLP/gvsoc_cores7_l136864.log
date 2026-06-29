@@ -1,0 +1,20 @@
+BFD: DWARF error: invalid or unhandled FORM value: 0x25
+@power.measure_0@0.000702@
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+Runtime RunNetwork: 22803 cycles
+Output:
+Expected:   0.007547  Actual:   0.007955  Diff:  -0.000408 at Index            0 in Output 0
+Expected:  -0.049634  Actual:  -0.006798  Diff:  -0.042837 at Index            1 in Output 0
+Expected:  -0.067512  Actual:   0.007767  Diff:  -0.075279 at Index            2 in Output 0
+Expected:  -0.107776  Actual:   0.035640  Diff:  -0.143416 at Index            3 in Output 0
+Expected:  -0.114095  Actual:  -0.014585  Diff:  -0.099511 at Index            4 in Output 0
+Expected:   0.055170  Actual:   0.033318  Diff:   0.021852 at Index            5 in Output 0
+Expected:   0.026795  Actual:   0.028979  Diff:  -0.002183 at Index            6 in Output 0
+Expected:  -0.223553  Actual:  -0.009015  Diff:  -0.214537 at Index            7 in Output 0
+Expected:   0.030223  Actual:  -0.048604  Diff:   0.078827 at Index            8 in Output 0
+Expected:   0.006224  Actual:  -0.032007  Diff:   0.038230 at Index            9 in Output 0
+Runtime: 22803 cycles
+Errors: 10 out of 10 

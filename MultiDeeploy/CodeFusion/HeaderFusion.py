@@ -98,7 +98,7 @@ def process_testinputs_file(path: Path, model_name: str) -> str:
     RE_ARRAY = re.compile(
         r"("                       # group 1: full type prefix (kept)
         r"(?:const\s+)?"
-        r"(?:u?int(?:8|16|32|64)_t)\s+"
+        r"(?:\w+_t)\s+"
         r")"
         r"(\w+)"                   # group 2: var name
         r"(\s*\[\s*\]\s*=\s*\{.*?\}\s*;)",  # group 3: [] = { ... };

@@ -1,0 +1,199 @@
+{
+    "name": "TinyImageClassification",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "conv1Conv_input_0_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1684,
+            "kernel_exec": 5657,
+            "output_DMA": 1703
+        },
+        {
+            "layer_name": "conv1Conv_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1737,
+            "kernel_exec": 604798,
+            "output_DMA": 3196
+        },
+        {
+            "layer_name": "conv1Conv_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 1738,
+            "kernel_exec": 605648,
+            "output_DMA": 3219
+        },
+        {
+            "layer_name": "conv1Conv_conv1Conv_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1710,
+            "kernel_exec": 5148,
+            "output_DMA": 1705
+        },
+        {
+            "layer_name": "conv1Conv_conv1Conv_output_0_tensor_pre_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 1686,
+            "kernel_exec": 4670,
+            "output_DMA": 1705
+        },
+        {
+            "layer_name": "conv1Conv_conv1Conv_output_0_tensor_pre_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 1175,
+            "kernel_exec": 4780,
+            "output_DMA": 1158
+        },
+        {
+            "layer_name": "Relu_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2102,
+            "kernel_exec": 10126,
+            "output_DMA": 2506
+        },
+        {
+            "layer_name": "Relu_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 1972,
+            "kernel_exec": 9758,
+            "output_DMA": 2361
+        },
+        {
+            "layer_name": "Relu_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 310,
+            "kernel_exec": 1436,
+            "output_DMA": 567
+        },
+        {
+            "layer_name": "poolMaxPool_Relu_output_0_tensor_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 2121,
+            "kernel_exec": 4656,
+            "output_DMA": 2166
+        },
+        {
+            "layer_name": "poolMaxPool_Relu_output_0_tensor_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 1979,
+            "kernel_exec": 4289,
+            "output_DMA": 2044
+        },
+        {
+            "layer_name": "poolMaxPool_Relu_output_0_tensor_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "input_DMA": 313,
+            "kernel_exec": 764,
+            "output_DMA": 348
+        },
+        {
+            "layer_name": "poolMaxPool_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 3232,
+            "kernel_exec": 66224,
+            "output_DMA": 1138
+        },
+        {
+            "layer_name": "poolMaxPool_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 1530,
+            "kernel_exec": 35340,
+            "output_DMA": 622
+        },
+        {
+            "layer_name": "conv2Conv_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1575,
+            "kernel_exec": 571692,
+            "output_DMA": 1693
+        },
+        {
+            "layer_name": "conv2Conv_conv2Conv_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1669,
+            "kernel_exec": 3451,
+            "output_DMA": 1673
+        },
+        {
+            "layer_name": "Relu_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1669,
+            "kernel_exec": 8103,
+            "output_DMA": 1674
+        },
+        {
+            "layer_name": "pool_1MaxPool_Relu_1_output_0_tensor_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1727,
+            "kernel_exec": 4753,
+            "output_DMA": 1691
+        },
+        {
+            "layer_name": "pool_1MaxPool_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1707,
+            "kernel_exec": 25251,
+            "output_DMA": 486
+        },
+        {
+            "layer_name": "conv3Conv_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 1152,
+            "kernel_exec": 203711,
+            "output_DMA": 505
+        },
+        {
+            "layer_name": "conv3Conv_conv3Conv_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 519,
+            "kernel_exec": 1499,
+            "output_DMA": 526
+        },
+        {
+            "layer_name": "Relu_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 518,
+            "kernel_exec": 2382,
+            "output_DMA": 489
+        },
+        {
+            "layer_name": "fcGemm_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "input_DMA": 3962,
+            "kernel_exec": 139187,
+            "output_DMA": 104
+        },
+        {
+            "layer_name": "fcGemm_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "input_DMA": 862,
+            "kernel_exec": 15827,
+            "output_DMA": 141
+        }
+    ]
+}

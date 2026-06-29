@@ -16,7 +16,7 @@ void InitNetwork();
 
 
 extern int8_t *AnomalyDetection_MEMORYARENA_L1; // L2_init_template
-static const uint32_t AnomalyDetection_MEMORYARENA_L1_len = 31792;
+static const uint32_t AnomalyDetection_MEMORYARENA_L1_len = 46160;
 extern int8_t *AnomalyDetection_MEMORYARENA_L2; // L2_init_template
 static const uint32_t AnomalyDetection_MEMORYARENA_L2_len = 768;
 extern uint8_t *AnomalyDetection_input_0; // L2_init_template
@@ -32,7 +32,7 @@ static const uint32_t AnomalyDetection_outputs_bytes[1] = {640};
 
 
 extern int8_t *TestRQAdd_MEMORYARENA_L1; // L2_init_template
-static const uint32_t TestRQAdd_MEMORYARENA_L1_len = 31992;
+static const uint32_t TestRQAdd_MEMORYARENA_L1_len = 15996;
 extern int8_t *TestRQAdd_MEMORYARENA_L2; // L2_init_template
 static const uint32_t TestRQAdd_MEMORYARENA_L2_len = 49152;
 extern int8_t *TestRQAdd_input_0; // L2_init_template

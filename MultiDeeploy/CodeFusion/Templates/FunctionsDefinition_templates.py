@@ -101,10 +101,22 @@ def tiling_closure_function_definition_statement(id_round, lf_map, tiles, tiles_
     ret_str += f"""
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     """
 
     nb_models = len(tiles_by_model)
     round_ranges = ranges[id_round]
+    nb_tiles_done = 0
+
+    ret_str += f"if (core_id == 0) {{\n"
+    for model_idx in range(nb_models):
+        ret_str += f"   subgroup_barrier_init({model_idx+2}, cores_map[{model_idx}][0], cores_map[{model_idx}][1]);\n"
+    ret_str += "}\n"
+    ret_str += f"   subgroup_barrier_init({nb_models+2}, 0, NUM_CORES - 1);\n"
+    ret_str += f"""
+        pi_cl_team_barrier();
+        eu_evt_maskSet(1u << PULP_HW_BAR_EVENT);
+    """
 
     for model_idx in range(nb_models):
         model_tiles = tiles_by_model[model_idx]
@@ -121,7 +133,7 @@ def tiling_closure_function_definition_statement(id_round, lf_map, tiles, tiles_
 
         ret_str += f"    if (cores_map[{model_idx}][0] <= core_id && core_id <= cores_map[{model_idx}][1]) {{\n"
         ret_str += f"""uint32_t nb_cycles_start_{model_name} = getCycles();\n"""
-        ret_str += f"""printf("Core %d executing {model_name} Round_{id_round}_tiling_closure started at %d cycles\\n", core_id, nb_cycles_start_{model_name});\n"""
+        # ret_str += f"""printf("Core %d executing {model_name} Round_{id_round}_tiling_closure started at %d cycles\\n", core_id, nb_cycles_start_{model_name});\n"""
 
         for layer_name, (start_i, end_i) in model_ranges.items():
             tile_def = lf_map.get((model_name, layer_name))
@@ -133,32 +145,43 @@ def tiling_closure_function_definition_statement(id_round, lf_map, tiles, tiles_
 
             # DMA IN
             ret_str += f"        if (core_id == cores_map[{model_idx}][0]) {{\n"
+            ret_str += f"            temp_start = getCycles();\n"
             ret_str += tile_def.closure_body[1]["dma_in_transfer"]
             ret_str += tile_def.closure_body[1]["pre_cluster_fork_setup"]
-            ret_str += "printf(\"Core %d finished DMA in " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
+            # ret_str += "printf(\"Core %d finished DMA in " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
+            ret_str += f"            temp_end = getCycles();\n"
+            ret_str += f"            round_{id_round}_tiles_timings[{nb_tiles_done - start_i} + TILING_I][0] = temp_end - temp_start;\n"
+            ret_str += f"            temp_start = getCycles();\n"
             ret_str += "        }\n"
-            ret_str += f"        subgroup_barrier_wait(&g_barrier_{model_idx}, core_id);\n"
+            ret_str += f"        subgroup_barrier_wait({model_idx+2}, core_id);\n"
 
             # KERNEL EXEC
             ret_str += tile_body
-            ret_str += "printf(\"Core %d finished layer " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
-            ret_str += f"        subgroup_barrier_wait(&g_barrier_{model_idx}, core_id);\n"
+            # ret_str += "printf(\"Core %d finished kernel " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
+            ret_str += f"        subgroup_barrier_wait({model_idx+2}, core_id);\n"
 
             # DMA OUT
             ret_str += f"        if (core_id == cores_map[{model_idx}][0]) {{\n"
+            ret_str += f"            temp_end = getCycles();\n"
+            ret_str += f"            round_{id_round}_tiles_timings[{nb_tiles_done - start_i} + TILING_I][1] = temp_end - temp_start;\n"
+            ret_str += f"            temp_start = getCycles();\n"
             ret_str += tile_def.closure_body[1]["dma_out_transfer"]
             ret_str += tile_def.closure_body[1]["dma_out_getCycles_end"]
-            ret_str += "printf(\"Core %d finished DMA out " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
+            # ret_str += "printf(\"Core %d finished DMA out " + layer_name + " TILING_I=%d\\n\", core_id, TILING_I);\n"
+            ret_str += f"            temp_end = getCycles();\n"
+            ret_str += f"            round_{id_round}_tiles_timings[{nb_tiles_done - start_i} + TILING_I][2] = temp_end - temp_start;\n"
             ret_str += "        }\n"
-            ret_str += f"        subgroup_barrier_wait(&g_barrier_{model_idx}, core_id);\n"
-
-            ret_str += f"""uint32_t nb_cycles_{layer_name}_{model_name} = getCycles();\n"""
-            ret_str += f"""printf("Core %d finished layer {layer_name} of model {model_name} in %d cycles\\n", core_id, nb_cycles_{layer_name}_{model_name});\n"""
+            ret_str += f"        subgroup_barrier_wait({model_idx+2}, core_id);\n"
 
             ret_str += "      }\n"
+            nb_tiles_done += end_i - start_i
+
+        ret_str += f"""uint32_t nb_cycles_{layer_name}_{model_name} = getCycles();\n"""
+        # ret_str += f"""printf("Core %d finished layer {layer_name} of model {model_name} in %d cycles\\n", core_id, nb_cycles_{layer_name}_{model_name});\n"""
 
         ret_str += "    }\n"
 
-    ret_str += "        pi_cl_team_barrier();\n"
+    ret_str += f"       subgroup_barrier_wait({nb_models+2}, core_id);\n"
+    # ret_str += "        pi_cl_team_barrier();\n"
     ret_str += "}\n"
     return ret_str

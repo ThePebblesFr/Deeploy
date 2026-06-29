@@ -8249,17 +8249,17 @@ static PI_L2 int32_t AnomalyDetection__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0
     257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0, 257.0,
     257.0, 257.0};
 
-static PI_L1 uint16_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O[3] = {48, 48, 32};
+static PI_L1 uint16_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O[2] = {96, 32};
 
-static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_numTiles[2] = {0, 3};
+static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_numTiles[2] = {0, 2};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_cmd[3] = {1472512, 1472512, 1462272};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_cmd[2] = {1503232, 1462272};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_cmd[3] = {1441984, 1441984, 1441920};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_cmd[2] = {1442176, 1441920};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_cmd[3] = {1441984, 1441984, 1441920};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_cmd[2] = {1442176, 1441920};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_cmd[3] = {1310768, 1310768, 1310752};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_cmd[2] = {1310816, 1310752};
 
 static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_numTiles[2] = {0, 1};
 
@@ -8277,24 +8277,24 @@ static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_num
 
 static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_numTiles[2] = {0, 1};
 
-static PI_L1 uint16_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[3] = {224, 224, 192};
+static PI_L1 uint16_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[2] = {464, 176};
 
-static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_numTiles[2] = {0, 3};
+static PI_L1 uint8_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_numTiles[2] = {0, 2};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_cmd[3] = {1470464, 1470464, 1466368};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_cmd[2] = {1501184, 1464320};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[3] = {1442688, 1442688, 1442560};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[2] = {1443648, 1442496};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[3] = {1442688, 1442688, 1442560};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[2] = {1443648, 1442496};
 
-static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[3] = {1310944, 1310944, 1310912};
+static PI_L1 uint32_t AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[2] = {1311184, 1310896};
 
 void *AnomalyDetection_inputs[1];
 void *AnomalyDetection_outputs[1];
 extern struct pi_device cluster_dev;
 
-int cores_map[1][2] = {{0, 3}};
-int nb_dedicated_cores[1] = {4};
+int cores_map[1][2] = {{0, 7}};
+int nb_dedicated_cores[1] = {8};
 
 typedef struct {
   uint8_t group_start;
@@ -8334,6 +8334,58 @@ static inline void subgroup_barrier_wait(subgroup_barrier_t *b, uint32_t core_id
   }
 }
 PI_L1 static subgroup_barrier_t g_barrier_0;
+
+uint32_t round_0_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_1_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_2_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_3_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_4_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_5_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_6_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_7_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_8_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_9_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_10_tiles_timings[1][3] = {{0, 0, 0}};
+uint32_t round_11_tiles_timings[1][3] = {{0, 0, 0}};
+
+void print_tiles_timings() {
+ printf("=== Round 0 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_0\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_0_tiles_timings[0][0], round_0_tiles_timings[0][1], round_0_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 1 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_0\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_1_tiles_timings[0][0], round_1_tiles_timings[0][1], round_1_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 2 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_1\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_2_tiles_timings[0][0], round_2_tiles_timings[0][1], round_2_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 3 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_2\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_3_tiles_timings[0][0], round_3_tiles_timings[0][1], round_3_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 4 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_3\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_4_tiles_timings[0][0], round_4_tiles_timings[0][1], round_4_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 5 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_4\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_5_tiles_timings[0][0], round_5_tiles_timings[0][1], round_5_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 6 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_5\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_6_tiles_timings[0][0], round_6_tiles_timings[0][1], round_6_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 7 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_6\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_7_tiles_timings[0][0], round_7_tiles_timings[0][1], round_7_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 8 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_7\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_8_tiles_timings[0][0], round_8_tiles_timings[0][1], round_8_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 9 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_8\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_9_tiles_timings[0][0], round_9_tiles_timings[0][1], round_9_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 10 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_9\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_10_tiles_timings[0][0], round_10_tiles_timings[0][1], round_10_tiles_timings[0][2]);
+ printf("\n");
+ printf("=== Round 11 ===\n");
+ printf("Tile AnomalyDetection.AnomalyDetection__MERGE_GEMMRQ_PASS_9\n[DMA_in] %d cycles\n[Kernel] %d cycles\n[DMA_out] %d cycles\n", round_11_tiles_timings[0][0], round_11_tiles_timings[0][1], round_11_tiles_timings[0][2]);
+ printf("\n");
+}
 
 // ===== FUSED FUNCTIONS: Scheduling Round 0 =====
 
@@ -8381,15 +8433,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442432, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref,
@@ -8399,7 +8452,7 @@ printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d 
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref) + 30720);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref) + 61440);
 
     mchan_transfer_1d(
         AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref,
@@ -8411,7 +8464,7 @@ printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d 
         (void
              *)((char
                      *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref) +
-                192);
+                384);
 
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_cmd[TILING_I],
                       AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref,
@@ -8419,7 +8472,7 @@ printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d 
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref) + 192);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref) + 384);
 
     // Wait for input tiles
 
@@ -8432,7 +8485,9 @@ printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref
     *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O[TILING_I];
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_0_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -8458,13 +8513,15 @@ printf("Core %d executing AnomalyDetection Round_0_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref, 1, 16, 640,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref, 1, 1, 4);
+          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref, 1, 1, 8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_0_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_cmd[TILING_I],
@@ -8473,7 +8530,7 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref) + 48);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref) + 96);
 
     // Wait for output tiles
 
@@ -8482,11 +8539,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_0_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -8506,11 +8563,11 @@ static void Round_0_closure(Round_0_closure_args_t* Round_0_closure_args) {
 
 
   uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30720);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 61440);
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31552);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31360);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31744);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62464);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62080);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62848);
 
 
     Round_0_tiling_closure_args_t Round_0_tiling_closure_args = (Round_0_tiling_closure_args_t) {
@@ -8559,15 +8616,16 @@ static void Round_1_tiling_closure(Round_1_tiling_closure_args_t* Round_1_tiling
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 1; TILING_I < 2; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442432, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref,
@@ -8577,7 +8635,7 @@ printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d 
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref) + 30720);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref) + 61440);
 
     mchan_transfer_1d(
         AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref,
@@ -8589,7 +8647,7 @@ printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d 
         (void
              *)((char
                      *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref) +
-                192);
+                384);
 
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_cmd[TILING_I],
                       AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref,
@@ -8597,7 +8655,7 @@ printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d 
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref) + 192);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref) + 384);
 
     // Wait for input tiles
 
@@ -8610,7 +8668,9 @@ printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref
     *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O[TILING_I];
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_1_tiles_timings[-1 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -8636,13 +8696,15 @@ printf("Core %d executing AnomalyDetection Round_1_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref, 1, 16, 640,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref, 1, 1, 4);
+          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref, 1, 1, 8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_1_tiles_timings[-1 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_cmd[TILING_I],
@@ -8651,7 +8713,7 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref) + 48);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref) + 96);
 
     // Wait for output tiles
 
@@ -8660,11 +8722,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_1_tiles_timings[-1 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -8684,11 +8746,11 @@ static void Round_1_closure(Round_1_closure_args_t* Round_1_closure_args) {
 
 
   uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30720);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 61440);
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31552);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31360);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31744);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62464);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62080);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 62848);
 
 
     Round_1_tiling_closure_args_t Round_1_tiling_closure_args = (Round_1_tiling_closure_args_t) {
@@ -8707,184 +8769,6 @@ static void Round_1_closure(Round_1_closure_args_t* Round_1_closure_args) {
 
 // ===== FUSED FUNCTIONS: Scheduling Round 2 =====
 
-typedef struct {
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_46_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr;
-
-} Round_2_tiling_closure_args_t;
-
-static void Round_2_tiling_closure(Round_2_tiling_closure_args_t* Round_2_tiling_closure_args) {
-    Round_2_tiling_closure_args_t* args = (Round_2_tiling_closure_args_t*) Round_2_tiling_closure_args;
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_46_tensor = args->AnomalyDetection_onnxGemm_46_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr;
-
-
-
-
-
-        int core_id = pi_core_id();
-    
-        uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
-        uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
-
-        if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
-uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_2_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
-      for (int TILING_I = 2; TILING_I < 3; TILING_I++) {
-        if (core_id == cores_map[0][0]) {
-    // Transfer input tiles
-    AnomalyDetection_channel_input = mchan_channel_alloc();
-    mchan_transfer_1d(1442432, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_input_0_ref);
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref) + 30720);
-
-    mchan_transfer_1d(
-        AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref,
-        AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref);
-
-    // UPDATE VARIABLE
-    // AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref =
-        (void
-             *)((char
-                     *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref) +
-                192);
-
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref) + 192);
-
-    // Wait for input tiles
-
-    if (AnomalyDetection_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_input);
-      mchan_channel_free(AnomalyDetection_channel_input);
-    }
-
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref
-    *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O[TILING_I];
-
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-
-  // PULP NN GEMM
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref;
-  for (int i = 0; i < 1; i++) {
-    for (int j = 0; j < 1; j++) {
-// LMACAN: In some edge cases sporadic errors happen if this loop is not added.
-// We believe this is due to missing bubbles in the pipeline that break operator forwarding.
-// Breaking test:
-//   `python testRunner_tiled_siracusa.py -t=Tests/Transformer --defaultMemLevel=L3 --doublebuffer --l1=30000`
-#pragma unroll 1
-      for (int k = 0; k < 3; k++) {
-        asm volatile("nop" ::);
-      }
-      pulp_nn_linear_u8_u8_i8(
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref, NULL,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
-          AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref, 1, 16, 640,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref, 1, 1, 4);
-    }
-  }
-
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-        if (core_id == cores_map[0][0]) {
-    // Transfer output tiles
-    AnomalyDetection_channel_output = mchan_channel_alloc();
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref) + 48);
-
-    // Wait for output tiles
-
-    if (AnomalyDetection_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_output);
-      mchan_channel_free(AnomalyDetection_channel_output);
-    }
-
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_0 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_0 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_0_AnomalyDetection);
-      }
-    }
-        pi_cl_team_barrier();
-}
-
-typedef struct {
-  uint8_t *AnomalyDetection_onnxGemm_46_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr;
-
-} Round_2_closure_args_t;
-
-static void Round_2_closure(Round_2_closure_args_t* Round_2_closure_args) {
-    Round_2_closure_args_t* args = (Round_2_closure_args_t*) Round_2_closure_args;
-  uint8_t *AnomalyDetection_onnxGemm_46_tensor = args->AnomalyDetection_onnxGemm_46_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr;
-
-
-
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30720);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31552);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31360);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 31744);
-
-
-    Round_2_tiling_closure_args_t Round_2_tiling_closure_args = (Round_2_tiling_closure_args_t) {
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_O_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_mul_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_C_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref,
-.AnomalyDetection_onnxGemm_46_tensor = AnomalyDetection_onnxGemm_46_tensor,
-                                                             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr =
-                                                                 AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_2_tiling_closure, &Round_2_tiling_closure_args);
-}
-
-
-// ===== FUSED FUNCTIONS: Scheduling Round 3 =====
-
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_46_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25_ref;
@@ -8902,10 +8786,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_52_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr;
 
-} Round_3_tiling_closure_args_t;
+} Round_2_tiling_closure_args_t;
 
-static void Round_3_tiling_closure(Round_3_tiling_closure_args_t* Round_3_tiling_closure_args) {
-    Round_3_tiling_closure_args_t* args = (Round_3_tiling_closure_args_t*) Round_3_tiling_closure_args;
+static void Round_2_tiling_closure(Round_2_tiling_closure_args_t* Round_2_tiling_closure_args) {
+    Round_2_tiling_closure_args_t* args = (Round_2_tiling_closure_args_t*) Round_2_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_mul_ref;
@@ -8929,15 +8813,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_52_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_3_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_A_ref,
@@ -8958,7 +8843,9 @@ printf("Core %d executing AnomalyDetection Round_3_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_1 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_2_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -8984,13 +8871,15 @@ printf("Core %d executing AnomalyDetection Round_3_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_1 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_2_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_data_out_ref,
@@ -9003,11 +8892,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_1 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_1 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_2_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_1_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_1 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_1_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9018,10 +8907,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_52_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr;
 
-} Round_3_closure_args_t;
+} Round_2_closure_args_t;
 
-static void Round_3_closure(Round_3_closure_args_t* Round_3_closure_args) {
-    Round_3_closure_args_t* args = (Round_3_closure_args_t*) Round_3_closure_args;
+static void Round_2_closure(Round_2_closure_args_t* Round_2_closure_args) {
+    Round_2_closure_args_t* args = (Round_2_closure_args_t*) Round_2_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_46_tensor = args->AnomalyDetection_onnxGemm_46_tensor;
   uint8_t *AnomalyDetection_onnxGemm_52_tensor = args->AnomalyDetection_onnxGemm_52_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr;
@@ -9035,7 +8924,7 @@ static void Round_3_closure(Round_3_closure_args_t* Round_3_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_3_tiling_closure_args_t Round_3_tiling_closure_args = (Round_3_tiling_closure_args_t) {
+    Round_2_tiling_closure_args_t Round_2_tiling_closure_args = (Round_2_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_mul_ref,
@@ -9045,11 +8934,11 @@ static void Round_3_closure(Round_3_closure_args_t* Round_3_closure_args) {
                                                              .AnomalyDetection_onnxGemm_52_tensor = AnomalyDetection_onnxGemm_52_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_3_tiling_closure, &Round_3_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_2_tiling_closure, &Round_2_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 4 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 3 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_onnxGemm_52_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_model2_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_2weight_tensor_ref;
@@ -9068,10 +8957,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_58_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr;
 
-} Round_4_tiling_closure_args_t;
+} Round_3_tiling_closure_args_t;
 
-static void Round_4_tiling_closure(Round_4_tiling_closure_args_t* Round_4_tiling_closure_args) {
-    Round_4_tiling_closure_args_t* args = (Round_4_tiling_closure_args_t*) Round_4_tiling_closure_args;
+static void Round_3_tiling_closure(Round_3_tiling_closure_args_t* Round_3_tiling_closure_args) {
+    Round_3_tiling_closure_args_t* args = (Round_3_tiling_closure_args_t*) Round_3_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_mul_ref;
@@ -9095,15 +8984,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_onnxGemm_58_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_4_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_A_ref,
@@ -9124,7 +9014,9 @@ printf("Core %d executing AnomalyDetection Round_4_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_2 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_3_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9150,13 +9042,15 @@ printf("Core %d executing AnomalyDetection Round_4_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_2 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_3_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_data_out_ref,
@@ -9169,11 +9063,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_2 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_2 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_3_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_2_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_2 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_2_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9184,10 +9078,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_58_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr;
 
-} Round_4_closure_args_t;
+} Round_3_closure_args_t;
 
-static void Round_4_closure(Round_4_closure_args_t* Round_4_closure_args) {
-    Round_4_closure_args_t* args = (Round_4_closure_args_t*) Round_4_closure_args;
+static void Round_3_closure(Round_3_closure_args_t* Round_3_closure_args) {
+    Round_3_closure_args_t* args = (Round_3_closure_args_t*) Round_3_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_52_tensor = args->AnomalyDetection_onnxGemm_52_tensor;
   uint8_t *AnomalyDetection_onnxGemm_58_tensor = args->AnomalyDetection_onnxGemm_58_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr;
@@ -9201,7 +9095,7 @@ static void Round_4_closure(Round_4_closure_args_t* Round_4_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_4_tiling_closure_args_t Round_4_tiling_closure_args = (Round_4_tiling_closure_args_t) {
+    Round_3_tiling_closure_args_t Round_3_tiling_closure_args = (Round_3_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_mul_ref,
@@ -9211,11 +9105,11 @@ static void Round_4_closure(Round_4_closure_args_t* Round_4_closure_args) {
                                                              .AnomalyDetection_onnxGemm_58_tensor = AnomalyDetection_onnxGemm_58_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_4_tiling_closure, &Round_4_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_3_tiling_closure, &Round_3_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 5 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 4 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_onnxGemm_58_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_model3_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_3weight_tensor_ref;
@@ -9234,10 +9128,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_64_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr;
 
-} Round_5_tiling_closure_args_t;
+} Round_4_tiling_closure_args_t;
 
-static void Round_5_tiling_closure(Round_5_tiling_closure_args_t* Round_5_tiling_closure_args) {
-    Round_5_tiling_closure_args_t* args = (Round_5_tiling_closure_args_t*) Round_5_tiling_closure_args;
+static void Round_4_tiling_closure(Round_4_tiling_closure_args_t* Round_4_tiling_closure_args) {
+    Round_4_tiling_closure_args_t* args = (Round_4_tiling_closure_args_t*) Round_4_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_mul_ref;
@@ -9261,15 +9155,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_onnxGemm_64_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_5_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_A_ref,
@@ -9290,7 +9185,9 @@ printf("Core %d executing AnomalyDetection Round_5_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_3 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_4_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9316,13 +9213,15 @@ printf("Core %d executing AnomalyDetection Round_5_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_3 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_4_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_data_out_ref,
@@ -9335,11 +9234,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_3 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_3 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_4_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_3_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_3 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_3_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9350,10 +9249,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_64_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr;
 
-} Round_5_closure_args_t;
+} Round_4_closure_args_t;
 
-static void Round_5_closure(Round_5_closure_args_t* Round_5_closure_args) {
-    Round_5_closure_args_t* args = (Round_5_closure_args_t*) Round_5_closure_args;
+static void Round_4_closure(Round_4_closure_args_t* Round_4_closure_args) {
+    Round_4_closure_args_t* args = (Round_4_closure_args_t*) Round_4_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_58_tensor = args->AnomalyDetection_onnxGemm_58_tensor;
   uint8_t *AnomalyDetection_onnxGemm_64_tensor = args->AnomalyDetection_onnxGemm_64_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr;
@@ -9367,7 +9266,7 @@ static void Round_5_closure(Round_5_closure_args_t* Round_5_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_5_tiling_closure_args_t Round_5_tiling_closure_args = (Round_5_tiling_closure_args_t) {
+    Round_4_tiling_closure_args_t Round_4_tiling_closure_args = (Round_4_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_mul_ref,
@@ -9377,11 +9276,11 @@ static void Round_5_closure(Round_5_closure_args_t* Round_5_closure_args) {
                                                              .AnomalyDetection_onnxGemm_64_tensor = AnomalyDetection_onnxGemm_64_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_5_tiling_closure, &Round_5_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_4_tiling_closure, &Round_4_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 6 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 5 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_64_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor_ref;
@@ -9400,10 +9299,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_70_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr;
 
-} Round_6_tiling_closure_args_t;
+} Round_5_tiling_closure_args_t;
 
-static void Round_6_tiling_closure(Round_6_tiling_closure_args_t* Round_6_tiling_closure_args) {
-    Round_6_tiling_closure_args_t* args = (Round_6_tiling_closure_args_t*) Round_6_tiling_closure_args;
+static void Round_5_tiling_closure(Round_5_tiling_closure_args_t* Round_5_tiling_closure_args) {
+    Round_5_tiling_closure_args_t* args = (Round_5_tiling_closure_args_t*) Round_5_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_mul_ref;
@@ -9427,15 +9326,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_70_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_6_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_A_ref,
@@ -9456,7 +9356,9 @@ printf("Core %d executing AnomalyDetection Round_6_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_4 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_5_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9482,13 +9384,15 @@ printf("Core %d executing AnomalyDetection Round_6_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_C_ref, 1, 16, 128, 8, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_4 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_5_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310728, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_data_out_ref,
@@ -9501,11 +9405,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_4 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_4 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_5_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_4_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_4 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_4_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9516,10 +9420,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_70_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr;
 
-} Round_6_closure_args_t;
+} Round_5_closure_args_t;
 
-static void Round_6_closure(Round_6_closure_args_t* Round_6_closure_args) {
-    Round_6_closure_args_t* args = (Round_6_closure_args_t*) Round_6_closure_args;
+static void Round_5_closure(Round_5_closure_args_t* Round_5_closure_args) {
+    Round_5_closure_args_t* args = (Round_5_closure_args_t*) Round_5_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_64_tensor = args->AnomalyDetection_onnxGemm_64_tensor;
   uint8_t *AnomalyDetection_onnxGemm_70_tensor = args->AnomalyDetection_onnxGemm_70_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr;
@@ -9533,7 +9437,7 @@ static void Round_6_closure(Round_6_closure_args_t* Round_6_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 1216);
 
 
-    Round_6_tiling_closure_args_t Round_6_tiling_closure_args = (Round_6_tiling_closure_args_t) {
+    Round_5_tiling_closure_args_t Round_5_tiling_closure_args = (Round_5_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_mul_ref,
@@ -9543,11 +9447,11 @@ static void Round_6_closure(Round_6_closure_args_t* Round_6_closure_args) {
                                                              .AnomalyDetection_onnxGemm_70_tensor = AnomalyDetection_onnxGemm_70_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_6_tiling_closure, &Round_6_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_5_tiling_closure, &Round_5_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 7 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 6 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_onnxGemm_70_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_model5_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_5weight_tensor_ref;
@@ -9566,10 +9470,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_76_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr;
 
-} Round_7_tiling_closure_args_t;
+} Round_6_tiling_closure_args_t;
 
-static void Round_7_tiling_closure(Round_7_tiling_closure_args_t* Round_7_tiling_closure_args) {
-    Round_7_tiling_closure_args_t* args = (Round_7_tiling_closure_args_t*) Round_7_tiling_closure_args;
+static void Round_6_tiling_closure(Round_6_tiling_closure_args_t* Round_6_tiling_closure_args) {
+    Round_6_tiling_closure_args_t* args = (Round_6_tiling_closure_args_t*) Round_6_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_mul_ref;
@@ -9593,15 +9497,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_onnxGemm_76_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_7_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441800, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_A_ref,
@@ -9622,7 +9527,9 @@ printf("Core %d executing AnomalyDetection Round_7_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_5 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_6_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9648,13 +9555,15 @@ printf("Core %d executing AnomalyDetection Round_7_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_C_ref, 1, 16, 8, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_5 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_6_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_data_out_ref,
@@ -9667,11 +9576,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_5 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_5 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_6_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_5_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_5 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_5_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9682,10 +9591,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_76_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr;
 
-} Round_7_closure_args_t;
+} Round_6_closure_args_t;
 
-static void Round_7_closure(Round_7_closure_args_t* Round_7_closure_args) {
-    Round_7_closure_args_t* args = (Round_7_closure_args_t*) Round_7_closure_args;
+static void Round_6_closure(Round_6_closure_args_t* Round_6_closure_args) {
+    Round_6_closure_args_t* args = (Round_6_closure_args_t*) Round_6_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_70_tensor = args->AnomalyDetection_onnxGemm_70_tensor;
   uint8_t *AnomalyDetection_onnxGemm_76_tensor = args->AnomalyDetection_onnxGemm_76_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr;
@@ -9699,7 +9608,7 @@ static void Round_7_closure(Round_7_closure_args_t* Round_7_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 2048);
 
 
-    Round_7_tiling_closure_args_t Round_7_tiling_closure_args = (Round_7_tiling_closure_args_t) {
+    Round_6_tiling_closure_args_t Round_6_tiling_closure_args = (Round_6_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_mul_ref,
@@ -9709,11 +9618,11 @@ static void Round_7_closure(Round_7_closure_args_t* Round_7_closure_args) {
                                                              .AnomalyDetection_onnxGemm_76_tensor = AnomalyDetection_onnxGemm_76_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_7_tiling_closure, &Round_7_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_6_tiling_closure, &Round_6_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 8 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 7 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_76_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor_ref;
@@ -9732,10 +9641,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_82_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr;
 
-} Round_8_tiling_closure_args_t;
+} Round_7_tiling_closure_args_t;
 
-static void Round_8_tiling_closure(Round_8_tiling_closure_args_t* Round_8_tiling_closure_args) {
-    Round_8_tiling_closure_args_t* args = (Round_8_tiling_closure_args_t*) Round_8_tiling_closure_args;
+static void Round_7_tiling_closure(Round_7_tiling_closure_args_t* Round_7_tiling_closure_args) {
+    Round_7_tiling_closure_args_t* args = (Round_7_tiling_closure_args_t*) Round_7_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_mul_ref;
@@ -9759,15 +9668,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_82_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_8_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_A_ref,
@@ -9788,7 +9698,9 @@ printf("Core %d executing AnomalyDetection Round_8_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_6 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_7_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9814,13 +9726,15 @@ printf("Core %d executing AnomalyDetection Round_8_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_6 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_7_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_data_out_ref,
@@ -9833,11 +9747,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_6 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_6 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_7_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_6_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_6 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_6_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -9848,10 +9762,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_82_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr;
 
-} Round_8_closure_args_t;
+} Round_7_closure_args_t;
 
-static void Round_8_closure(Round_8_closure_args_t* Round_8_closure_args) {
-    Round_8_closure_args_t* args = (Round_8_closure_args_t*) Round_8_closure_args;
+static void Round_7_closure(Round_7_closure_args_t* Round_7_closure_args) {
+    Round_7_closure_args_t* args = (Round_7_closure_args_t*) Round_7_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_76_tensor = args->AnomalyDetection_onnxGemm_76_tensor;
   uint8_t *AnomalyDetection_onnxGemm_82_tensor = args->AnomalyDetection_onnxGemm_82_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr;
@@ -9865,7 +9779,7 @@ static void Round_8_closure(Round_8_closure_args_t* Round_8_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_8_tiling_closure_args_t Round_8_tiling_closure_args = (Round_8_tiling_closure_args_t) {
+    Round_7_tiling_closure_args_t Round_7_tiling_closure_args = (Round_7_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_mul_ref,
@@ -9875,11 +9789,11 @@ static void Round_8_closure(Round_8_closure_args_t* Round_8_closure_args) {
                                                              .AnomalyDetection_onnxGemm_82_tensor = AnomalyDetection_onnxGemm_82_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_8_tiling_closure, &Round_8_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_7_tiling_closure, &Round_7_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 9 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 8 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_onnxGemm_82_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_model7_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_7weight_tensor_ref;
@@ -9898,10 +9812,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_88_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr;
 
-} Round_9_tiling_closure_args_t;
+} Round_8_tiling_closure_args_t;
 
-static void Round_9_tiling_closure(Round_9_tiling_closure_args_t* Round_9_tiling_closure_args) {
-    Round_9_tiling_closure_args_t* args = (Round_9_tiling_closure_args_t*) Round_9_tiling_closure_args;
+static void Round_8_tiling_closure(Round_8_tiling_closure_args_t* Round_8_tiling_closure_args) {
+    Round_8_tiling_closure_args_t* args = (Round_8_tiling_closure_args_t*) Round_8_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_mul_ref;
@@ -9925,15 +9839,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_onnxGemm_88_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_9_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_A_ref,
@@ -9954,7 +9869,9 @@ printf("Core %d executing AnomalyDetection Round_9_tiling_closure started at %d 
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_7 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_8_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -9980,13 +9897,15 @@ printf("Core %d executing AnomalyDetection Round_9_tiling_closure started at %d 
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_7 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_8_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_data_out_ref,
@@ -9999,11 +9918,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_7 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_7 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_8_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_7_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_7 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_7_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -10014,10 +9933,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_88_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr;
 
-} Round_9_closure_args_t;
+} Round_8_closure_args_t;
 
-static void Round_9_closure(Round_9_closure_args_t* Round_9_closure_args) {
-    Round_9_closure_args_t* args = (Round_9_closure_args_t*) Round_9_closure_args;
+static void Round_8_closure(Round_8_closure_args_t* Round_8_closure_args) {
+    Round_8_closure_args_t* args = (Round_8_closure_args_t*) Round_8_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_82_tensor = args->AnomalyDetection_onnxGemm_82_tensor;
   uint8_t *AnomalyDetection_onnxGemm_88_tensor = args->AnomalyDetection_onnxGemm_88_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr;
@@ -10031,7 +9950,7 @@ static void Round_9_closure(Round_9_closure_args_t* Round_9_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_9_tiling_closure_args_t Round_9_tiling_closure_args = (Round_9_tiling_closure_args_t) {
+    Round_8_tiling_closure_args_t Round_8_tiling_closure_args = (Round_8_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_mul_ref,
@@ -10041,11 +9960,11 @@ static void Round_9_closure(Round_9_closure_args_t* Round_9_closure_args) {
                                                              .AnomalyDetection_onnxGemm_88_tensor = AnomalyDetection_onnxGemm_88_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_9_tiling_closure, &Round_9_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_8_tiling_closure, &Round_8_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 10 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 9 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_onnxGemm_88_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_model8_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_8weight_tensor_ref;
@@ -10064,10 +9983,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_94_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr;
 
-} Round_10_tiling_closure_args_t;
+} Round_9_tiling_closure_args_t;
 
-static void Round_10_tiling_closure(Round_10_tiling_closure_args_t* Round_10_tiling_closure_args) {
-    Round_10_tiling_closure_args_t* args = (Round_10_tiling_closure_args_t*) Round_10_tiling_closure_args;
+static void Round_9_tiling_closure(Round_9_tiling_closure_args_t* Round_9_tiling_closure_args) {
+    Round_9_tiling_closure_args_t* args = (Round_9_tiling_closure_args_t*) Round_9_tiling_closure_args;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_A_ref;
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_B_ref;
   int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_mul_ref;
@@ -10091,15 +10010,16 @@ AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_onnxGemm_94_tensor_ref= 
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_10_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
       for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_A_ref,
@@ -10120,7 +10040,9 @@ printf("Core %d executing AnomalyDetection Round_10_tiling_closure started at %d
     }
 
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_8 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_9_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -10146,13 +10068,15 @@ printf("Core %d executing AnomalyDetection Round_10_tiling_closure started at %d
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_C_ref, 1, 16, 128, 128, 1, 1,
-          4);
+          8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_8 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_9_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310848, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_data_out_ref,
@@ -10165,11 +10089,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_8 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_8 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_9_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_8_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_8 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_8_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -10180,10 +10104,10 @@ typedef struct {
   uint8_t *AnomalyDetection_onnxGemm_94_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr;
 
-} Round_10_closure_args_t;
+} Round_9_closure_args_t;
 
-static void Round_10_closure(Round_10_closure_args_t* Round_10_closure_args) {
-    Round_10_closure_args_t* args = (Round_10_closure_args_t*) Round_10_closure_args;
+static void Round_9_closure(Round_9_closure_args_t* Round_9_closure_args) {
+    Round_9_closure_args_t* args = (Round_9_closure_args_t*) Round_9_closure_args;
   uint8_t *AnomalyDetection_onnxGemm_88_tensor = args->AnomalyDetection_onnxGemm_88_tensor;
   uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr;
@@ -10197,7 +10121,7 @@ static void Round_10_closure(Round_10_closure_args_t* Round_10_closure_args) {
   uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_data_out_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 17536);
 
 
-    Round_10_tiling_closure_args_t Round_10_tiling_closure_args = (Round_10_tiling_closure_args_t) {
+    Round_9_tiling_closure_args_t Round_9_tiling_closure_args = (Round_9_tiling_closure_args_t) {
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_A_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_B_ref,
             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_mul_ref,
@@ -10207,17 +10131,203 @@ static void Round_10_closure(Round_10_closure_args_t* Round_10_closure_args) {
                                                              .AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_10_tiling_closure, &Round_10_tiling_closure_args);
+    pi_cl_team_fork(NUM_CORES, (void *)Round_9_tiling_closure, &Round_9_tiling_closure_args);
 }
 
 
-// ===== FUSED FUNCTIONS: Scheduling Round 11 =====
+// ===== FUSED FUNCTIONS: Scheduling Round 10 =====
 
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref;
 void *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref;
+
+typedef struct {
+  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
+
+  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
+
+} Round_10_tiling_closure_args_t;
+
+static void Round_10_tiling_closure(Round_10_tiling_closure_args_t* Round_10_tiling_closure_args) {
+    Round_10_tiling_closure_args_t* args = (Round_10_tiling_closure_args_t*) Round_10_tiling_closure_args;
+  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
+
+  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
+
+
+
+AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref= (void *)((char *)AnomalyDetection_onnxGemm_94_tensor + 0);
+AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref=
+      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor + 0);
+AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref=
+      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor + 0);
+AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref=
+      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor + 0);
+AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref= (void *)((char *)AnomalyDetection_output_0 + 0);
+
+
+        int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
+    
+        uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
+        uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
+
+        if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
+uint32_t nb_cycles_start_AnomalyDetection = getCycles();
+      for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
+        if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
+    // Transfer input tiles
+    AnomalyDetection_channel_input = mchan_channel_alloc();
+    mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref);
+    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref);
+
+    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref
+    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref =
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref) + 59392);
+
+    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref);
+
+    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref
+    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref =
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref) + 1856);
+
+    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[TILING_I],
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref);
+
+    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref
+    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref =
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref) + 1856);
+
+    // Wait for input tiles
+
+    if (AnomalyDetection_channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(AnomalyDetection_channel_input);
+      mchan_channel_free(AnomalyDetection_channel_input);
+    }
+
+
+    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref
+    *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[TILING_I];
+
+                temp_end = getCycles();
+            round_10_tiles_timings[0 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
+        }
+        subgroup_barrier_wait(&g_barrier_0, core_id);
+
+  // PULP NN GEMM
+  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref =
+      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
+  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref =
+      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
+  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref =
+      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
+  for (int i = 0; i < 1; i++) {
+    for (int j = 0; j < 1; j++) {
+// LMACAN: In some edge cases sporadic errors happen if this loop is not added.
+// We believe this is due to missing bubbles in the pipeline that break operator forwarding.
+// Breaking test:
+//   `python testRunner_tiled_siracusa.py -t=Tests/Transformer --defaultMemLevel=L3 --doublebuffer --l1=30000`
+#pragma unroll 1
+      for (int k = 0; k < 3; k++) {
+        asm volatile("nop" ::);
+      }
+      pulp_nn_linear_u8_i8_i8(
+          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref, NULL,
+          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
+          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
+          AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref, 1, 16, 128,
+          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref, 1, 1, 8);
+    }
+  }
+
+        subgroup_barrier_wait(&g_barrier_0, core_id);
+        if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_10_tiles_timings[0 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
+    // Transfer output tiles
+    AnomalyDetection_channel_output = mchan_channel_alloc();
+    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[TILING_I],
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
+                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref);
+
+    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref
+    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref =
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref) + 464);
+
+    // Wait for output tiles
+
+    if (AnomalyDetection_channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(AnomalyDetection_channel_output);
+      mchan_channel_free(AnomalyDetection_channel_output);
+    }
+
+printf("t");            temp_end = getCycles();
+            round_10_tiles_timings[0 + TILING_I][2] = temp_end - temp_start;
+        }
+        subgroup_barrier_wait(&g_barrier_0, core_id);
+uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection = getCycles();
+      }
+    }
+        pi_cl_team_barrier();
+}
+
+typedef struct {
+  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
+
+} Round_10_closure_args_t;
+
+static void Round_10_closure(Round_10_closure_args_t* Round_10_closure_args) {
+    Round_10_closure_args_t* args = (Round_10_closure_args_t*) Round_10_closure_args;
+  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
+
+
+
+  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O + 0);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 63568);
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 464);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 61712);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 59856);
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
+
+
+    Round_10_tiling_closure_args_t Round_10_tiling_closure_args = (Round_10_tiling_closure_args_t) {
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref,
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
+            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
+.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
+                                                             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
+                                                                 AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr};
+    pi_cl_team_fork(NUM_CORES, (void *)Round_10_tiling_closure, &Round_10_tiling_closure_args);
+}
+
+
+// ===== FUSED FUNCTIONS: Scheduling Round 11 =====
 
 typedef struct {
   uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
@@ -10246,26 +10356,19 @@ static void Round_11_tiling_closure(Round_11_tiling_closure_args_t* Round_11_til
 
 
 
-AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref= (void *)((char *)AnomalyDetection_onnxGemm_94_tensor + 0);
-AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref=
-      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor + 0);
-AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref=
-      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor + 0);
-AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref=
-      (void *)((char *)AnomalyDetection__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor + 0);
-AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref= (void *)((char *)AnomalyDetection_output_0 + 0);
 
 
         int core_id = pi_core_id();
+        uint32_t temp_start, temp_end;
     
         uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
         uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
 
         if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
 uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_11_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
-      for (int TILING_I = 0; TILING_I < 1; TILING_I++) {
+      for (int TILING_I = 1; TILING_I < 2; TILING_I++) {
         if (core_id == cores_map[0][0]) {
+            temp_start = getCycles();
     // Transfer input tiles
     AnomalyDetection_channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
@@ -10275,14 +10378,14 @@ printf("Core %d executing AnomalyDetection Round_11_tiling_closure started at %d
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref) + 28672);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref) + 59392);
 
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
                       AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref);
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref) + 896);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref) + 1856);
 
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[TILING_I],
                       AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
@@ -10290,7 +10393,7 @@ printf("Core %d executing AnomalyDetection Round_11_tiling_closure started at %d
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref) + 896);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref) + 1856);
 
     // Wait for input tiles
 
@@ -10303,7 +10406,9 @@ printf("Core %d executing AnomalyDetection Round_11_tiling_closure started at %d
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref
     *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[TILING_I];
 
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
+                temp_end = getCycles();
+            round_11_tiles_timings[-1 + TILING_I][0] = temp_end - temp_start;
+            temp_start = getCycles();
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 
@@ -10329,13 +10434,15 @@ printf("Core %d executing AnomalyDetection Round_11_tiling_closure started at %d
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
           ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
           AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref, 1, 16, 128,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref, 1, 1, 4);
+          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref, 1, 1, 8);
     }
   }
 
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
         subgroup_barrier_wait(&g_barrier_0, core_id);
         if (core_id == cores_map[0][0]) {
+            temp_end = getCycles();
+            round_11_tiles_timings[-1 + TILING_I][1] = temp_end - temp_start;
+            temp_start = getCycles();
     // Transfer output tiles
     AnomalyDetection_channel_output = mchan_channel_alloc();
     mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[TILING_I],
@@ -10344,7 +10451,7 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d
 
     // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref
     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref) + 224);
+        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref) + 464);
 
     // Wait for output tiles
 
@@ -10353,11 +10460,11 @@ printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d
       mchan_channel_free(AnomalyDetection_channel_output);
     }
 
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
+printf("t");            temp_end = getCycles();
+            round_11_tiles_timings[-1 + TILING_I][2] = temp_end - temp_start;
         }
         subgroup_barrier_wait(&g_barrier_0, core_id);
 uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection);
       }
     }
         pi_cl_team_barrier();
@@ -10377,10 +10484,10 @@ static void Round_11_closure(Round_11_closure_args_t* Round_11_closure_args) {
 
 
   uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30688);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 224);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 29792);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 28896);
+  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 63568);
+  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 464);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 61712);
+  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 59856);
   int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
 
 
@@ -10395,352 +10502,6 @@ static void Round_11_closure(Round_11_closure_args_t* Round_11_closure_args) {
                                                              .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
                                                                  AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr};
     pi_cl_team_fork(NUM_CORES, (void *)Round_11_tiling_closure, &Round_11_tiling_closure_args);
-}
-
-
-// ===== FUSED FUNCTIONS: Scheduling Round 12 =====
-
-typedef struct {
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-} Round_12_tiling_closure_args_t;
-
-static void Round_12_tiling_closure(Round_12_tiling_closure_args_t* Round_12_tiling_closure_args) {
-    Round_12_tiling_closure_args_t* args = (Round_12_tiling_closure_args_t*) Round_12_tiling_closure_args;
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-
-
-
-
-        int core_id = pi_core_id();
-    
-        uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
-        uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
-
-        if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
-uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_12_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
-      for (int TILING_I = 1; TILING_I < 2; TILING_I++) {
-        if (core_id == cores_map[0][0]) {
-    // Transfer input tiles
-    AnomalyDetection_channel_input = mchan_channel_alloc();
-    mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref);
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref) + 28672);
-
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref) + 896);
-
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref) + 896);
-
-    // Wait for input tiles
-
-    if (AnomalyDetection_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_input);
-      mchan_channel_free(AnomalyDetection_channel_input);
-    }
-
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref
-    *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[TILING_I];
-
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-
-  // PULP NN GEMM
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-  for (int i = 0; i < 1; i++) {
-    for (int j = 0; j < 1; j++) {
-// LMACAN: In some edge cases sporadic errors happen if this loop is not added.
-// We believe this is due to missing bubbles in the pipeline that break operator forwarding.
-// Breaking test:
-//   `python testRunner_tiled_siracusa.py -t=Tests/Transformer --defaultMemLevel=L3 --doublebuffer --l1=30000`
-#pragma unroll 1
-      for (int k = 0; k < 3; k++) {
-        asm volatile("nop" ::);
-      }
-      pulp_nn_linear_u8_i8_i8(
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref, NULL,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-          AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref, 1, 16, 128,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref, 1, 1, 4);
-    }
-  }
-
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-        if (core_id == cores_map[0][0]) {
-    // Transfer output tiles
-    AnomalyDetection_channel_output = mchan_channel_alloc();
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref) + 224);
-
-    // Wait for output tiles
-
-    if (AnomalyDetection_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_output);
-      mchan_channel_free(AnomalyDetection_channel_output);
-    }
-
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection);
-      }
-    }
-        pi_cl_team_barrier();
-}
-
-typedef struct {
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-} Round_12_closure_args_t;
-
-static void Round_12_closure(Round_12_closure_args_t* Round_12_closure_args) {
-    Round_12_closure_args_t* args = (Round_12_closure_args_t*) Round_12_closure_args;
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-
-
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30688);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 224);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 29792);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 28896);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
-
-
-    Round_12_tiling_closure_args_t Round_12_tiling_closure_args = (Round_12_tiling_closure_args_t) {
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
-                                                             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
-                                                                 AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_12_tiling_closure, &Round_12_tiling_closure_args);
-}
-
-
-// ===== FUSED FUNCTIONS: Scheduling Round 13 =====
-
-typedef struct {
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-} Round_13_tiling_closure_args_t;
-
-static void Round_13_tiling_closure(Round_13_tiling_closure_args_t* Round_13_tiling_closure_args) {
-    Round_13_tiling_closure_args_t* args = (Round_13_tiling_closure_args_t*) Round_13_tiling_closure_args;
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref;
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref;
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-
-
-
-
-        int core_id = pi_core_id();
-    
-        uint32_t AnomalyDetection_channel_input = (uint32_t)-1;
-        uint32_t AnomalyDetection_channel_output = (uint32_t)-1;
-
-        if (cores_map[0][0] <= core_id && core_id <= cores_map[0][1]) {
-uint32_t nb_cycles_start_AnomalyDetection = getCycles();
-printf("Core %d executing AnomalyDetection Round_13_tiling_closure started at %d cycles\n", core_id, nb_cycles_start_AnomalyDetection);
-      for (int TILING_I = 2; TILING_I < 3; TILING_I++) {
-        if (core_id == cores_map[0][0]) {
-    // Transfer input tiles
-    AnomalyDetection_channel_input = mchan_channel_alloc();
-    mchan_transfer_1d(1441920, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_onnxGemm_94_tensor_ref);
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9weight_tensor_ref) + 28672);
-
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_cmd[TILING_I], AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref) + 896);
-
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref) + 896);
-
-    // Wait for input tiles
-
-    if (AnomalyDetection_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_input);
-      mchan_channel_free(AnomalyDetection_channel_input);
-    }
-
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref
-    *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O[TILING_I];
-
-    printf("Core %d finished DMA in AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-
-  // PULP NN GEMM
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref;
-  int8_t *ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref =
-      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref;
-  for (int i = 0; i < 1; i++) {
-    for (int j = 0; j < 1; j++) {
-// LMACAN: In some edge cases sporadic errors happen if this loop is not added.
-// We believe this is due to missing bubbles in the pipeline that break operator forwarding.
-// Breaking test:
-//   `python testRunner_tiled_siracusa.py -t=Tests/Transformer --defaultMemLevel=L3 --doublebuffer --l1=30000`
-#pragma unroll 1
-      for (int k = 0; k < 3; k++) {
-        asm volatile("nop" ::);
-      }
-      pulp_nn_linear_u8_i8_i8(
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref, NULL,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-          ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref_AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-          AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref, AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref, 1, 16, 128,
-          *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref, 1, 1, 4);
-    }
-  }
-
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-        if (core_id == cores_map[0][0]) {
-    // Transfer output tiles
-    AnomalyDetection_channel_output = mchan_channel_alloc();
-    mchan_transfer_1d(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_cmd[TILING_I],
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-                      AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref);
-
-    // UPDATE VARIABLE AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref
-    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref =
-        (void *)((char *)(AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref) + 224);
-
-    // Wait for output tiles
-
-    if (AnomalyDetection_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(AnomalyDetection_channel_output);
-      mchan_channel_free(AnomalyDetection_channel_output);
-    }
-
-printf("Core %d finished DMA out AnomalyDetection__MERGE_GEMMRQ_PASS_9 TILING_I=%d\n", core_id, TILING_I);
-        }
-        subgroup_barrier_wait(&g_barrier_0, core_id);
-uint32_t nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection = getCycles();
-printf("Core %d finished layer AnomalyDetection__MERGE_GEMMRQ_PASS_9 of model AnomalyDetection in %d cycles\n", core_id, nb_cycles_AnomalyDetection__MERGE_GEMMRQ_PASS_9_AnomalyDetection);
-      }
-    }
-        pi_cl_team_barrier();
-}
-
-typedef struct {
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-} Round_13_closure_args_t;
-
-static void Round_13_closure(Round_13_closure_args_t* Round_13_closure_args) {
-    Round_13_closure_args_t* args = (Round_13_closure_args_t*) Round_13_closure_args;
-  uint8_t *AnomalyDetection_onnxGemm_94_tensor = args->AnomalyDetection_onnxGemm_94_tensor;
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr = args->AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr;
-
-
-
-  uint16_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = (uint16_t *)((char *)AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O + 0);
-  uint8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 30688);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 224);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 29792);
-  int32_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = (int32_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 28896);
-  int8_t *AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = (int8_t *)((char *)AnomalyDetection_MEMORYARENA_L1 + 0);
-
-
-    Round_13_tiling_closure_args_t Round_13_tiling_closure_args = (Round_13_tiling_closure_args_t) {
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_O_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_A_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_B_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_mul_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_C_ref,
-            .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref = AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_data_out_ref,
-.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
-                                                             .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
-                                                                 AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr};
-    pi_cl_team_fork(NUM_CORES, (void *)Round_13_tiling_closure, &Round_13_tiling_closure_args);
 }
 
 
@@ -10796,92 +10557,91 @@ Round_1_closure_args_t Round_1_closure_args = (Round_1_closure_args_t) {
 };
     Round_1_closure(&Round_1_closure_args);
 // ===== Scheduling Round 2 =====
-  AnomalyDetection_onnxGemm_46_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 0);
-
-Round_2_closure_args_t Round_2_closure_args = (Round_2_closure_args_t) {
-.AnomalyDetection_onnxGemm_46_tensor = AnomalyDetection_onnxGemm_46_tensor,
-                                                                .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr =
-                                                                    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr,
-};
-    Round_2_closure(&Round_2_closure_args);
-// ===== Scheduling Round 3 =====
   AnomalyDetection_onnxGemm_52_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 128);
 
-Round_3_closure_args_t Round_3_closure_args = (Round_3_closure_args_t) {
+Round_2_closure_args_t Round_2_closure_args = (Round_2_closure_args_t) {
 .AnomalyDetection_onnxGemm_46_tensor = AnomalyDetection_onnxGemm_46_tensor,
                                                                 .AnomalyDetection_onnxGemm_52_tensor = AnomalyDetection_onnxGemm_52_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_tileIdxPtr,
 };
-    Round_3_closure(&Round_3_closure_args);
-// ===== Scheduling Round 4 =====
+    Round_2_closure(&Round_2_closure_args);
+// ===== Scheduling Round 3 =====
   AnomalyDetection_onnxGemm_58_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 0);
 
-Round_4_closure_args_t Round_4_closure_args = (Round_4_closure_args_t) {
+Round_3_closure_args_t Round_3_closure_args = (Round_3_closure_args_t) {
 .AnomalyDetection_onnxGemm_52_tensor = AnomalyDetection_onnxGemm_52_tensor,
                                                                 .AnomalyDetection_onnxGemm_58_tensor = AnomalyDetection_onnxGemm_58_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_2_tileIdxPtr,
 };
-    Round_4_closure(&Round_4_closure_args);
-// ===== Scheduling Round 5 =====
+    Round_3_closure(&Round_3_closure_args);
+// ===== Scheduling Round 4 =====
   AnomalyDetection_onnxGemm_64_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 128);
 
-Round_5_closure_args_t Round_5_closure_args = (Round_5_closure_args_t) {
+Round_4_closure_args_t Round_4_closure_args = (Round_4_closure_args_t) {
 .AnomalyDetection_onnxGemm_58_tensor = AnomalyDetection_onnxGemm_58_tensor,
                                                                 .AnomalyDetection_onnxGemm_64_tensor = AnomalyDetection_onnxGemm_64_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_3_tileIdxPtr,
 };
-    Round_5_closure(&Round_5_closure_args);
-// ===== Scheduling Round 6 =====
+    Round_4_closure(&Round_4_closure_args);
+// ===== Scheduling Round 5 =====
   AnomalyDetection_onnxGemm_70_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 256);
 
-Round_6_closure_args_t Round_6_closure_args = (Round_6_closure_args_t) {
+Round_5_closure_args_t Round_5_closure_args = (Round_5_closure_args_t) {
 .AnomalyDetection_onnxGemm_64_tensor = AnomalyDetection_onnxGemm_64_tensor,
                                                                 .AnomalyDetection_onnxGemm_70_tensor = AnomalyDetection_onnxGemm_70_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_tileIdxPtr,
 };
-    Round_6_closure(&Round_6_closure_args);
-// ===== Scheduling Round 7 =====
+    Round_5_closure(&Round_5_closure_args);
+// ===== Scheduling Round 6 =====
   AnomalyDetection_onnxGemm_76_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 0);
 
-Round_7_closure_args_t Round_7_closure_args = (Round_7_closure_args_t) {
+Round_6_closure_args_t Round_6_closure_args = (Round_6_closure_args_t) {
 .AnomalyDetection_onnxGemm_70_tensor = AnomalyDetection_onnxGemm_70_tensor,
                                                                 .AnomalyDetection_onnxGemm_76_tensor = AnomalyDetection_onnxGemm_76_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_tileIdxPtr,
 };
-    Round_7_closure(&Round_7_closure_args);
-// ===== Scheduling Round 8 =====
+    Round_6_closure(&Round_6_closure_args);
+// ===== Scheduling Round 7 =====
   AnomalyDetection_onnxGemm_82_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 128);
 
-Round_8_closure_args_t Round_8_closure_args = (Round_8_closure_args_t) {
+Round_7_closure_args_t Round_7_closure_args = (Round_7_closure_args_t) {
 .AnomalyDetection_onnxGemm_76_tensor = AnomalyDetection_onnxGemm_76_tensor,
                                                                 .AnomalyDetection_onnxGemm_82_tensor = AnomalyDetection_onnxGemm_82_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_tileIdxPtr,
 };
-    Round_8_closure(&Round_8_closure_args);
-// ===== Scheduling Round 9 =====
+    Round_7_closure(&Round_7_closure_args);
+// ===== Scheduling Round 8 =====
   AnomalyDetection_onnxGemm_88_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 0);
 
-Round_9_closure_args_t Round_9_closure_args = (Round_9_closure_args_t) {
+Round_8_closure_args_t Round_8_closure_args = (Round_8_closure_args_t) {
 .AnomalyDetection_onnxGemm_82_tensor = AnomalyDetection_onnxGemm_82_tensor,
                                                                 .AnomalyDetection_onnxGemm_88_tensor = AnomalyDetection_onnxGemm_88_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_7_tileIdxPtr,
 };
-    Round_9_closure(&Round_9_closure_args);
-// ===== Scheduling Round 10 =====
+    Round_8_closure(&Round_8_closure_args);
+// ===== Scheduling Round 9 =====
   AnomalyDetection_onnxGemm_94_tensor = (uint8_t *)((char *)AnomalyDetection_MEMORYARENA_L2 + 640);
 
-Round_10_closure_args_t Round_10_closure_args = (Round_10_closure_args_t) {
+Round_9_closure_args_t Round_9_closure_args = (Round_9_closure_args_t) {
 .AnomalyDetection_onnxGemm_88_tensor = AnomalyDetection_onnxGemm_88_tensor,
                                                                 .AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
                                                                 .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr =
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_8_tileIdxPtr,
+};
+    Round_9_closure(&Round_9_closure_args);
+// ===== Scheduling Round 10 =====
+
+Round_10_closure_args_t Round_10_closure_args = (Round_10_closure_args_t) {
+.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
+                                                                .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
+                                                                    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr,
 };
     Round_10_closure(&Round_10_closure_args);
 // ===== Scheduling Round 11 =====
@@ -10892,28 +10652,12 @@ Round_11_closure_args_t Round_11_closure_args = (Round_11_closure_args_t) {
                                                                     AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr,
 };
     Round_11_closure(&Round_11_closure_args);
-// ===== Scheduling Round 12 =====
-
-Round_12_closure_args_t Round_12_closure_args = (Round_12_closure_args_t) {
-.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
-                                                                .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
-                                                                    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr,
-};
-    Round_12_closure(&Round_12_closure_args);
-// ===== Scheduling Round 13 =====
-
-Round_13_closure_args_t Round_13_closure_args = (Round_13_closure_args_t) {
-.AnomalyDetection_onnxGemm_94_tensor = AnomalyDetection_onnxGemm_94_tensor,
-                                                                .AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr =
-                                                                    AnomalyDetection_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_tileIdxPtr,
-};
-    Round_13_closure(&Round_13_closure_args);
 
 }
 
 void InitNetwork() {
 
-  AnomalyDetection_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 31792);
+  AnomalyDetection_MEMORYARENA_L1 = (int8_t *)pmsis_l1_malloc(sizeof(int8_t) * 63696);
 
   AnomalyDetection_MEMORYARENA_L2 = (int8_t *)pi_l2_malloc(sizeof(int8_t) * 768);
 
