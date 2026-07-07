@@ -23,7 +23,7 @@ def dedup_lines_preserve_order(lines):
 
     return "".join(out) if split else out
 
-def struct_definition_statement(id_round, tiles, func_name):
+def struct_definition_statement(id_round, tiles, func_name, models_dedicated_cores):
     ret_str = f"""typedef struct {{\n"""
     temp_str = ""
     for tile in tiles:
@@ -31,13 +31,13 @@ def struct_definition_statement(id_round, tiles, func_name):
             temp_str += f"{tile.tiling_closure[0][1]}\n"
         temp_str += f"{tile.closure[0][1]}\n"
     ret_str += dedup_lines_preserve_order(temp_str)
-    ret_str += f"""}} Round_{id_round}_{func_name}_args_t;\n"""
+    ret_str += f"""}} Round_{id_round}_{func_name}_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t;\n"""
     return ret_str
 
-def closure_function_definition_statement(id_round, tiles):
-    ret_str = f"""static void Round_{id_round}_closure(Round_{id_round}_closure_args_t* Round_{id_round}_closure_args) {{\n"""
+def closure_function_definition_statement(id_round, tiles, models_dedicated_cores):
+    ret_str = f"""static void Round_{id_round}_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}(Round_{id_round}_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t* Round_{id_round}_closure_args) {{\n"""
     # Args casting
-    ret_str += f"""    Round_{id_round}_closure_args_t* args = (Round_{id_round}_closure_args_t*) Round_{id_round}_closure_args;\n"""
+    ret_str += f"""    Round_{id_round}_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t* args = (Round_{id_round}_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t*) Round_{id_round}_closure_args;\n"""
     temp_str = ""
     for tile in tiles:
         args_cast = tile.closure_body[0]
@@ -53,7 +53,7 @@ def closure_function_definition_statement(id_round, tiles):
     ret_str += f"""\n\n"""
 
     # Tiling closure args casting
-    ret_str += f"""    Round_{id_round}_tiling_closure_args_t Round_{id_round}_tiling_closure_args = (Round_{id_round}_tiling_closure_args_t) {{\n"""
+    ret_str += f"""    Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t Round_{id_round}_tiling_closure_args = (Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t) {{\n"""
     temp_str = ""
     for tile in tiles:
         temp_str += tile.closure_body[1]["tiling_closure_arg_cast_args"].rstrip("\n") + ",\n"
@@ -62,7 +62,7 @@ def closure_function_definition_statement(id_round, tiles):
     ret_str = ret_str.rstrip(",\n") + "};\n"
 
     # Tiling closure call
-    ret_str += f"""    pi_cl_team_fork(NUM_CORES, (void *)Round_{id_round}_tiling_closure, &Round_{id_round}_tiling_closure_args);\n"""
+    ret_str += f"""    pi_cl_team_fork(NUM_CORES, (void *)Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}, &Round_{id_round}_tiling_closure_args);\n"""
     ret_str += f"""}}\n"""
     return ret_str
 
@@ -77,9 +77,9 @@ def generate_channels_declaration(model_name):
 
 def tiling_closure_function_definition_statement(id_round, lf_map, tiles, tiles_by_model, models_dedicated_cores, ranges, new_layer_keys_of_the_round):
 
-    ret_str = f"""static void Round_{id_round}_tiling_closure(Round_{id_round}_tiling_closure_args_t* Round_{id_round}_tiling_closure_args) {{\n"""
+    ret_str = f"""static void Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}(Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t* Round_{id_round}_tiling_closure_args) {{\n"""
     # Args casting
-    ret_str += f"""    Round_{id_round}_tiling_closure_args_t* args = (Round_{id_round}_tiling_closure_args_t*) Round_{id_round}_tiling_closure_args;\n"""
+    ret_str += f"""    Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t* args = (Round_{id_round}_tiling_closure_{models_dedicated_cores[0]}_{models_dedicated_cores[1]}_args_t*) Round_{id_round}_tiling_closure_args;\n"""
     temp_str = ""
     for tile in tiles:
             args_cast = tile.tiling_closure_body[0]

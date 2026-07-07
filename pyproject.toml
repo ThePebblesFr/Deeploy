@@ -44,5 +44,5 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["Deeploy*", "MultiDeeploy*"]
+include = ["Deeploy*", "MultiDeeploy*", "DynMultiDeeploy*"]
 exclude = ["DeeployTest*"]

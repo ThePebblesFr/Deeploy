@@ -84,10 +84,10 @@ int main(void) {
 #ifndef CI
   printf("Initialized\r\n");
 #endif
-  for (uint32_t buf = 0; buf < AnomalyDetection_6_num_inputs; buf++) {
-    if ((uint32_t) AnomalyDetection_6_inputs[buf] >= 0x10000000) {
-      memcpy(AnomalyDetection_6_inputs[buf], testInputVector[buf],
-             AnomalyDetection_6_inputs_bytes[buf]);
+  for (uint32_t buf = 0; buf < AnomalyDetection_2_num_inputs; buf++) {
+    if ((uint32_t) AnomalyDetection_2_inputs[buf] >= 0x10000000) {
+      memcpy(AnomalyDetection_2_inputs[buf], testInputVector[buf],
+             AnomalyDetection_2_inputs_bytes[buf]);
     }
   }
 
@@ -117,15 +117,15 @@ int main(void) {
   FloatCompareArgs float_compare_args;
   uint32_t float_error_count = 0;
 
-  for (uint32_t buf = 0; buf < AnomalyDetection_6_num_outputs; buf++) {
-    tot_tested += AnomalyDetection_6_outputs_bytes[buf] / sizeof(OUTPUTTYPE);
+  for (uint32_t buf = 0; buf < AnomalyDetection_2_num_outputs; buf++) {
+    tot_tested += AnomalyDetection_2_outputs_bytes[buf] / sizeof(OUTPUTTYPE);
 
-    if ((uint32_t) AnomalyDetection_6_outputs[buf] < 0x1000000) {
-      compbuf = pi_l2_malloc((int) AnomalyDetection_6_outputs_bytes[buf]);
-      ram_read(compbuf, AnomalyDetection_6_outputs[buf],
-               AnomalyDetection_6_outputs_bytes[buf]);
+    if ((uint32_t) AnomalyDetection_2_outputs[buf] < 0x1000000) {
+      compbuf = pi_l2_malloc((int) AnomalyDetection_2_outputs_bytes[buf]);
+      ram_read(compbuf, AnomalyDetection_2_outputs[buf],
+               AnomalyDetection_2_outputs_bytes[buf]);
     } else {
-      compbuf = AnomalyDetection_6_outputs[buf];
+      compbuf = AnomalyDetection_2_outputs[buf];
     }
 
     if (ISOUTPUTFLOAT) {
@@ -133,7 +133,7 @@ int main(void) {
       float_compare_args.expected = testOutputVector[buf];
       float_compare_args.actual = compbuf;
       float_compare_args.num_elements =
-          AnomalyDetection_6_outputs_bytes[buf] / sizeof(float);
+          AnomalyDetection_2_outputs_bytes[buf] / sizeof(float);
       float_compare_args.output_buf_index = buf;
       float_compare_args.err_count = &float_error_count;
 
@@ -147,7 +147,7 @@ int main(void) {
     } else {
 
       for (uint32_t i = 0;
-           i < AnomalyDetection_6_outputs_bytes[buf] / sizeof(OUTPUTTYPE); i++) {
+           i < AnomalyDetection_2_outputs_bytes[buf] / sizeof(OUTPUTTYPE); i++) {
         OUTPUTTYPE expected = ((OUTPUTTYPE *)testOutputVector[buf])[i];
         OUTPUTTYPE actual = ((OUTPUTTYPE *)compbuf)[i];
         int32_t error = expected - actual;
@@ -161,8 +161,8 @@ int main(void) {
         }
       }
     }
-    if ((uint32_t) AnomalyDetection_6_outputs[buf] < 0x1000000) {
-      pi_l2_free(compbuf, (int) AnomalyDetection_6_outputs_bytes[buf]);
+    if ((uint32_t) AnomalyDetection_2_outputs[buf] < 0x1000000) {
+      pi_l2_free(compbuf, (int) AnomalyDetection_2_outputs_bytes[buf]);
     }
   }
 

@@ -15,36 +15,36 @@ void RunNetwork();
 void InitNetwork();
 
 
-extern int8_t *AnomalyDetection_MEMORYARENA_L1; // L2_init_template
-static const uint32_t AnomalyDetection_MEMORYARENA_L1_len = 46160;
-extern int8_t *AnomalyDetection_MEMORYARENA_L2; // L2_init_template
-static const uint32_t AnomalyDetection_MEMORYARENA_L2_len = 768;
-extern uint8_t *AnomalyDetection_input_0; // L2_init_template
-static const uint32_t AnomalyDetection_input_0_len = 640;
-extern int8_t *AnomalyDetection_output_0; // L2_init_template
-static const uint32_t AnomalyDetection_output_0_len = 640;
-static const uint32_t AnomalyDetection_num_inputs = 1;
-static const uint32_t AnomalyDetection_num_outputs = 1;
-extern void *AnomalyDetection_inputs[1];
-extern void *AnomalyDetection_outputs[1];
-static const uint32_t AnomalyDetection_inputs_bytes[1] = {640};
-static const uint32_t AnomalyDetection_outputs_bytes[1] = {640};
+extern int8_t *AnomalyDetection_6_MEMORYARENA_L1; // L2_init_template
+static const uint32_t AnomalyDetection_6_MEMORYARENA_L1_len = 46160;
+extern int8_t *AnomalyDetection_6_MEMORYARENA_L2; // L2_init_template
+static const uint32_t AnomalyDetection_6_MEMORYARENA_L2_len = 768;
+extern uint8_t *AnomalyDetection_6_input_0; // L2_init_template
+static const uint32_t AnomalyDetection_6_input_0_len = 640;
+extern int8_t *AnomalyDetection_6_output_0; // L2_init_template
+static const uint32_t AnomalyDetection_6_output_0_len = 640;
+static const uint32_t AnomalyDetection_6_num_inputs = 1;
+static const uint32_t AnomalyDetection_6_num_outputs = 1;
+extern void *AnomalyDetection_6_inputs[1];
+extern void *AnomalyDetection_6_outputs[1];
+static const uint32_t AnomalyDetection_6_inputs_bytes[1] = {640};
+static const uint32_t AnomalyDetection_6_outputs_bytes[1] = {640};
 
 
-extern int8_t *TestRQAdd_MEMORYARENA_L1; // L2_init_template
-static const uint32_t TestRQAdd_MEMORYARENA_L1_len = 15996;
-extern int8_t *TestRQAdd_MEMORYARENA_L2; // L2_init_template
-static const uint32_t TestRQAdd_MEMORYARENA_L2_len = 49152;
-extern int8_t *TestRQAdd_input_0; // L2_init_template
-static const uint32_t TestRQAdd_input_0_len = 16384;
-extern int8_t *TestRQAdd_input_1; // L2_init_template
-static const uint32_t TestRQAdd_input_1_len = 16384;
-extern int8_t *TestRQAdd_output_0; // L2_init_template
-static const uint32_t TestRQAdd_output_0_len = 16384;
-static const uint32_t TestRQAdd_num_inputs = 2;
-static const uint32_t TestRQAdd_num_outputs = 1;
-extern void *TestRQAdd_inputs[2];
-extern void *TestRQAdd_outputs[1];
-static const uint32_t TestRQAdd_inputs_bytes[2] = {16384, 16384};
-static const uint32_t TestRQAdd_outputs_bytes[1] = {16384};
+extern int8_t *TestRQAdd_2_MEMORYARENA_L1; // L2_init_template
+static const uint32_t TestRQAdd_2_MEMORYARENA_L1_len = 15996;
+extern int8_t *TestRQAdd_2_MEMORYARENA_L2; // L2_init_template
+static const uint32_t TestRQAdd_2_MEMORYARENA_L2_len = 49152;
+extern int8_t *TestRQAdd_2_input_0; // L2_init_template
+static const uint32_t TestRQAdd_2_input_0_len = 16384;
+extern int8_t *TestRQAdd_2_input_1; // L2_init_template
+static const uint32_t TestRQAdd_2_input_1_len = 16384;
+extern int8_t *TestRQAdd_2_output_0; // L2_init_template
+static const uint32_t TestRQAdd_2_output_0_len = 16384;
+static const uint32_t TestRQAdd_2_num_inputs = 2;
+static const uint32_t TestRQAdd_2_num_outputs = 1;
+extern void *TestRQAdd_2_inputs[2];
+extern void *TestRQAdd_2_outputs[1];
+static const uint32_t TestRQAdd_2_inputs_bytes[2] = {16384, 16384};
+static const uint32_t TestRQAdd_2_outputs_bytes[1] = {16384};
 #endif

@@ -5,6 +5,8 @@
 cmake_minimum_required(VERSION 3.12)
 
 option(ENABLE_MULTIDEEPLOY_TEST "Build MultiDeeployTest instead of DeeployTest" OFF)
+option(ENABLE_DYNMULTIDEEPLOY_TEST "Build DynMultiDeeployTest" OFF)
+option(ENABLE_DYN_RECONFIG_TEST "Build the dynamically-reconfigurable DynMultiDeeployTest main (Platforms/DynSiracusa)" OFF)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -208,11 +210,19 @@ if(platform STREQUAL Siracusa OR platform STREQUAL Siracusa_w_neureka OR platfor
   add_subdirectory(TargetLibraries/PULPOpen)
   target_include_directories(deeploypulp PUBLIC TargetLibraries/Generic/inc)
 
+  message(STATUS "[cMake  ]   ENABLE_MULTIDEEPLOY_TEST    = " ${ENABLE_MULTIDEEPLOY_TEST})
+  message(STATUS "[cMake  ]   ENABLE_DYNMULTIDEEPLOY_TEST = " ${ENABLE_DYNMULTIDEEPLOY_TEST})
+  message(STATUS "[cMake  ]   ENABLE_DYN_RECONFIG_TEST    = " ${ENABLE_DYN_RECONFIG_TEST})
   if(ENABLE_MULTIDEEPLOY_TEST)
     add_subdirectory(MultiDeeployTest)
   else()
-    add_subdirectory(DeeployTest)
+    if (ENABLE_DYNMULTIDEEPLOY_TEST)
+      add_subdirectory(DynMultiDeeployTest)
+    else()
+      add_subdirectory(DeeployTest)
+    endif()
   endif()
+
   target_link_libraries(deeploylib INTERFACE deeploybasic deeploypulp)
 
 endif()

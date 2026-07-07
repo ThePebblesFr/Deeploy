@@ -1,0 +1,16 @@
+Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+clang version 15.0.0 (https://github.com/pulp-platform/llvm-project.git 1ccb97ef1789b8c574e3fcab0de674e11b189b96)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /app/install/llvm/bin
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /app/install/llvm/bin/clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/usr/bin/ld: cannot find -lstdc++: No such file or directory
+clang-15: error: linker command failed with exit code 1 (use -v to see invocation)
+
+

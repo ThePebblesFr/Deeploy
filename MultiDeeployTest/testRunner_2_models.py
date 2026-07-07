@@ -38,7 +38,7 @@ if __name__ == "__main__":
             f"--cores {models_dedicated_cores[i]} "
             f"--l1 {models_l1_dedicated_size[i]} "
             f"--plotMemAlloc "
-            f"--name {models_name[i]} "
+            f"--name {models_name[i]}"
             f"--profileToJSON"
         )
 

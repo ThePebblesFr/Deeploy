@@ -49,7 +49,7 @@ void CompareFloatOnCluster(void *args) {
         printf("Diff: %10.6f at Index %12u in Output %u\r\n", diff, i,
                output_buf_index);
       }
-    }
+    }, models_name[i]
 
     *err_count = local_err_count;
   }

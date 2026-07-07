@@ -68,6 +68,7 @@ class SourceFusion():
         cluster_dev_added = False
 
         for source in self.files:
+            self.fused_content.append(f"\n// ===== GLOBALS from {source.model_name} START =====\n\n")
             globals_part = source.globals.content
 
             for line in globals_part:
@@ -84,10 +85,12 @@ class SourceFusion():
                         seen_lines.add(line)
                 else:
                     self.fused_content.append(line)
+            self.fused_content.append(f"\n// ===== GLOBALS from {source.model_name} END =====\n\n")
 
         self.fused_content.append("\n")
 
         # Adding cores_map definition
+        self.fused_content.append("// ===== CORES MAP START =====\n\n")
         nb_models = len(self.files)
         self.fused_content.append(f"int cores_map[{nb_models}][2] = {{")
         core_cursor = 0
@@ -106,15 +109,19 @@ class SourceFusion():
             self.fused_content.append(str(self.models_dedicated_cores[i]))
             if i < nb_models - 1:
                 self.fused_content.append(", ")
+        self.fused_content.append("};\n")
+        self.fused_content.append("// ===== CORES MAP END =====\n\n")
 
         # Subgroup barriers
-        self.fused_content.append("};\n")
+        self.fused_content.append("// ===== SUBGROUP BARRIERS START =====\n\n")
         self.fused_content.append(generate_subgroup_barriers_code())
+        self.fused_content.append("// ===== SUBGROUP BARRIERS END =====\n\n")
 
         # for i in range(nb_models):
         #     self.fused_content.append(f"PI_L1 static subgroup_barrier_t g_barrier_{i};\n")
 
         # Timings
+        self.fused_content.append("// ===== TIMINGS START =====\n\n")
         self.fused_content.append("\n")
         self._initialize_tiles_timings()
         for i in range(len(self.tiles_timings)):
@@ -126,6 +133,7 @@ class SourceFusion():
         self.fused_content.append("\n")
 
         self.fused_content.append(generate_timings_printing_code(self.tiles_timings))
+        self.fused_content.append("// ===== TIMINGS END =====\n\n")
 
     def functions_fusion(self) -> None:
         """
@@ -231,7 +239,7 @@ class SourceFusion():
 
 
             # (a) struct for tiling_closure
-            self.fused_content.append(struct_definition_statement(round_idx, tiles, "tiling_closure"))
+            self.fused_content.append(struct_definition_statement(round_idx, tiles, "tiling_closure", self.models_dedicated_cores))
             self.fused_content.append("\n")
 
             # (b) tiling_closure function
@@ -249,11 +257,11 @@ class SourceFusion():
             self.fused_content.append("\n")
 
             # (c) struct for closure
-            self.fused_content.append(struct_definition_statement(round_idx, tiles, "closure"))
+            self.fused_content.append(struct_definition_statement(round_idx, tiles, "closure", self.models_dedicated_cores))
             self.fused_content.append("\n")
 
             # (d) closure function
-            self.fused_content.append(closure_function_definition_statement(round_idx, tiles))
+            self.fused_content.append(closure_function_definition_statement(round_idx, tiles, self.models_dedicated_cores))
             self.fused_content.append("\n")
             
             
@@ -325,8 +333,8 @@ class SourceFusion():
                 list_of_args.append(fc.args_cast)
                 list_of_layer_buffer.append(fc.layer_buffer)
 
-            self.fused_content.append(arg_cast_statement(round_idx, list_of_args, list_of_layer_buffer))
-            self.fused_content.append(closure_call_statement(round_idx))
+            self.fused_content.append(arg_cast_statement(round_idx, list_of_args, list_of_layer_buffer, self.models_dedicated_cores))
+            self.fused_content.append(closure_call_statement(round_idx, self.models_dedicated_cores))
 
         # self.fused_content.append("print_tiles_timings();\n")
         self.fused_content.append("\n}\n")
