@@ -19,5 +19,13 @@ def parse_arguments():
         help="List of model names to run (e.g., --models modelA modelB)"
     )
 
+    parser.add_argument(
+        '--gen-step',
+        dest = 'gen_step',
+        action = 'store_true',
+        default = False,
+        help = 'Skip network generation\n'
+    )
+
     args = parser.parse_args()
     return args

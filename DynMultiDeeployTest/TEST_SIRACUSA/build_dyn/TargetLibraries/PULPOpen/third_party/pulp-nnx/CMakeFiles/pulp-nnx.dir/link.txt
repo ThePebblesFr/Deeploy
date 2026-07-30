@@ -1,2 +1,0 @@
-/app/install/llvm/bin/llvm-ar qc ../../../../lib/libpulp-nnx.a "CMakeFiles/pulp-nnx.dir/util/pulp_nnx_util.c.obj" "CMakeFiles/pulp-nnx.dir/util/hwpe.c.obj" "CMakeFiles/pulp-nnx.dir/neureka/bsp/neureka_siracusa_bsp.c.obj" "CMakeFiles/pulp-nnx.dir/neureka/hal/neureka.c.obj" "CMakeFiles/pulp-nnx.dir/neureka/hal/neureka_task.c.obj" "CMakeFiles/pulp-nnx.dir/src/pulp_nnx_neureka.c.obj"
-/app/install/llvm/bin/llvm-ranlib ../../../../lib/libpulp-nnx.a

@@ -578,8 +578,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *mini
   uint32_t _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_numTiles
@@ -591,15 +591,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *mini
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442560, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref);
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -621,15 +621,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_input_0_transpose_closure(void *mini
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311488, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_0_input_0_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -829,8 +829,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_tileIdxPtr];
@@ -839,7 +839,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442560, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input_0_transposed_ref);
     mchan_transfer_1d(1442224, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_weight_ref,
@@ -851,9 +851,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -876,15 +876,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_0_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311744, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0__MERGE_CONVRQ_PASS_0_input1_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1078,8 +1078,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_1_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_1_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_tileIdxPtr];
@@ -1088,7 +1088,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_1_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442816, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_0_input1_tensor_pre_transposed_ref);
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_weight_ref,
@@ -1100,9 +1100,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_1_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_1_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1125,15 +1125,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_1_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1312768, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_1_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1337,8 +1337,8 @@ miniMNV2_2__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_closure(void *miniMN
   uint32_t _MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_numTiles
@@ -1350,15 +1350,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_closure(void *miniMN
     _MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1443840, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transposed_ref);
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1381,15 +1381,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_closure(void *miniMN
     _MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1312768, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_input4_tensor_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1594,8 +1594,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_2_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_2_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_tileIdxPtr];
@@ -1604,7 +1604,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_2_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1443840, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_input4_tensor_ref);
     mchan_transfer_1d(1442080, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_weight_ref,
@@ -1616,9 +1616,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_2_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_2_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1641,15 +1641,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_2_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_input8_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_2_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1842,8 +1842,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_3_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_3_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_tileIdxPtr];
@@ -1852,7 +1852,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_3_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3__MERGE_CONVRQ_PASS_2_input8_tensor_pre_transposed_ref);
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_weight_ref,
@@ -1864,9 +1864,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_3_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_3_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -1889,15 +1889,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_3_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310976, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_3_x15_tensor_split_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_3_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2090,8 +2090,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_4_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_4_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_tileIdxPtr];
@@ -2100,7 +2100,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_4_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_4_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442048, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_x15_tensor_split_ref);
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_weight_ref,
@@ -2112,9 +2112,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_4_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_4_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2137,15 +2137,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_4_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_4_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_4_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2349,8 +2349,8 @@ miniMNV2_2__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_closure(void *miniM
   uint32_t _MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_numTiles
@@ -2362,15 +2362,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_closure(void *miniM
     _MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transposed_ref);
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2393,15 +2393,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_closure(void *miniM
     _MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_input12_tensor_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2606,8 +2606,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_5_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_5_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_tileIdxPtr];
@@ -2616,7 +2616,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_5_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_5_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_input12_tensor_ref);
     mchan_transfer_1d(1442080, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_weight_ref,
@@ -2628,9 +2628,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_5_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_5_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2653,15 +2653,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_5_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_5_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5__MERGE_CONVRQ_PASS_5_input16_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_5_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2855,8 +2855,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_6_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_6_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_tileIdxPtr];
@@ -2865,7 +2865,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_6_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_6_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_5_input16_tensor_pre_transposed_ref);
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_weight_ref,
@@ -2877,9 +2877,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_6_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_6_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -2902,15 +2902,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_6_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_6_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310976, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_6_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3055,8 +3055,8 @@ static void miniMNV2_2__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_2__MERGE_ADDRQ
   uint8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr = args->miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  int8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_2_MEMORYARENA_L1 + 0);
-  int8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_2_MEMORYARENA_L1 + 256);
+  int8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_2_MEMORYARENA_L1 + 256);
+  int8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_2_MEMORYARENA_L1 + 0);
   int8_t *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref = (int8_t *)((char *)miniMNV2_2_MEMORYARENA_L1 + 512);
   void *miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref =
       (void *)((char *)miniMNV2_2__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed + 0);
@@ -3080,8 +3080,8 @@ static void miniMNV2_2__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_2__MERGE_ADDRQ
   uint32_t _MERGE_ADDRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr];
@@ -3090,7 +3090,7 @@ static void miniMNV2_2__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_2__MERGE_ADDRQ
     _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442048, miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref);
     mchan_transfer_1d(1442048, miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref,
@@ -3098,9 +3098,9 @@ static void miniMNV2_2__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_2__MERGE_ADDRQ
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_ADDRQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3120,15 +3120,15 @@ static void miniMNV2_2__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_2__MERGE_ADDRQ
     _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310976, miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_input20_tensor_tp_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_ADDRQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3323,8 +3323,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_7_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_7_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_tileIdxPtr];
@@ -3333,7 +3333,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_7_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_7_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442048, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input20_tensor_tp_ref);
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_weight_ref,
@@ -3345,9 +3345,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_7_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_7_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3370,15 +3370,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_7_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_7_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_7_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3582,8 +3582,8 @@ miniMNV2_2__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_closure(void *miniM
   uint32_t _MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_numTiles
@@ -3595,15 +3595,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_closure(void *miniM
     _MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transposed_ref);
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3626,15 +3626,15 @@ miniMNV2_2__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_closure(void *miniM
     _MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_input24_tensor_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3839,8 +3839,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_8_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_8_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_tileIdxPtr];
@@ -3849,7 +3849,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_8_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_8_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_input24_tensor_ref);
     mchan_transfer_1d(1442080, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_weight_ref,
@@ -3861,9 +3861,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_8_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_8_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -3886,15 +3886,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_8_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_8_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_8__MERGE_CONVRQ_PASS_8_input28_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_8_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4088,8 +4088,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_closure(void *miniMNV2_2__MERGE_CONV
   uint32_t _MERGE_CONVRQ_PASS_9_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_tileIdxPtr];
@@ -4098,7 +4098,7 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_9_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_data_in_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_8_input28_tensor_pre_transposed_ref);
     mchan_transfer_1d(1442816, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_weight_ref,
@@ -4110,9 +4110,9 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_closure(void *miniMNV2_2__MERGE_CONV
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_9_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4135,15 +4135,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_closure(void *miniMNV2_2__MERGE_CONV
     _MERGE_CONVRQ_PASS_9_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_9_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4351,8 +4351,8 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_
   uint32_t _MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_numTiles
@@ -4364,16 +4364,16 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_
     _MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(
         1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_data_in_ref,
         miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref);
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4396,15 +4396,15 @@ static void miniMNV2_2__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_
     _MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1311232, miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_data_out_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_onnxFlatten_64_tensor_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4622,8 +4622,8 @@ static void miniMNV2_2__MERGE_GEMMRQ_PASS_0_closure(void *miniMNV2_2__MERGE_GEMM
   uint32_t _MERGE_GEMMRQ_PASS_0_L2_kernel_start_measurements[1];
 
   // Initialize DMA futures
-  uint32_t miniMNV2_2_channel_output = (uint32_t)-1;
-  uint32_t miniMNV2_2_channel_input = (uint32_t)-1;
+  uint32_t channel_output = (uint32_t)-1;
+  uint32_t channel_input = (uint32_t)-1;
 
   // TILING LOOP
   for (int TILING_I = miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_numTiles[*miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_tileIdxPtr];
@@ -4632,7 +4632,7 @@ static void miniMNV2_2__MERGE_GEMMRQ_PASS_0_closure(void *miniMNV2_2__MERGE_GEMM
     _MERGE_GEMMRQ_PASS_0_L2_ingress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer input tiles
-    miniMNV2_2_channel_input = mchan_channel_alloc();
+    channel_input = mchan_channel_alloc();
     mchan_transfer_1d(1442304, miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_A_ref,
                       miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_65_tensor_ref);
     mchan_transfer_1d(1446912, miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_B_ref,
@@ -4644,9 +4644,9 @@ static void miniMNV2_2__MERGE_GEMMRQ_PASS_0_closure(void *miniMNV2_2__MERGE_GEMM
 
     // Wait for input tiles
 
-    if (miniMNV2_2_channel_input <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_input);
-      mchan_channel_free(miniMNV2_2_channel_input);
+    if (channel_input <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_input);
+      mchan_channel_free(channel_input);
     }
 
     _MERGE_GEMMRQ_PASS_0_L2_ingress_dma_wait_end_measurements[TILING_I] = getCycles();
@@ -4668,14 +4668,14 @@ static void miniMNV2_2__MERGE_GEMMRQ_PASS_0_closure(void *miniMNV2_2__MERGE_GEMM
     _MERGE_GEMMRQ_PASS_0_L2_egress_dma_wait_start_measurements[TILING_I] = getCycles();
 
     // Transfer output tiles
-    miniMNV2_2_channel_output = mchan_channel_alloc();
+    channel_output = mchan_channel_alloc();
     mchan_transfer_1d(1310730, miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_data_out_ref, miniMNV2_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_output_0_ref);
 
     // Wait for output tiles
 
-    if (miniMNV2_2_channel_output <= MCHAN_CHANNEL_ID_MAX) {
-      mchan_channel_wait(miniMNV2_2_channel_output);
-      mchan_channel_free(miniMNV2_2_channel_output);
+    if (channel_output <= MCHAN_CHANNEL_ID_MAX) {
+      mchan_channel_wait(channel_output);
+      mchan_channel_free(channel_output);
     }
 
     _MERGE_GEMMRQ_PASS_0_L2_egress_dma_wait_end_measurements[TILING_I] = getCycles();

@@ -15,88 +15,91 @@ if __name__ == "__main__":
     test_folder = args.test_folder
     models_name = args.models
 
-    # MultiDeeployTests generation
     test_c_path = "/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/" + models_name[0] + "_x_" + models_name[1]
     cores_splits = [[2, 6], [4, 4], [6, 2]]
     l1_splits = [[16000, 48000], [32000, 32000], [48000, 16000]]
 
-    for i, (g0, g1) in enumerate(cores_splits):
-        # Create a folder for each configuration
-        os.system(f"mkdir -p {test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/{models_name[0]}_{g0}")
-        os.system(f"mkdir -p {test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/{models_name[1]}_{g1}")
+    if args.gen_step:
 
-        # Run MultiDeeploy for each configuration
-        command = (
-            f"python3 testRunner_2_models.py "
-            f"-t {args.test_folder} "
-            f"--models {models_name[0]}_{g0} {models_name[1]}_{g1} "
-            f"--dedicated-cores {g0} {g1} "
-            f"--dedicated-l1 {l1_splits[i][0]} {l1_splits[i][1]}"
-        )
+        # MultiDeeployTests generation
 
+        for i, (g0, g1) in enumerate(cores_splits):
+            # Create a folder for each configuration
+            os.system(f"mkdir -p {test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/{models_name[0]}_{g0}")
+            os.system(f"mkdir -p {test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/{models_name[1]}_{g1}")
+
+            # Run MultiDeeploy for each configuration
+            command = (
+                f"python3 testRunner_2_models.py "
+                f"-t {args.test_folder} "
+                f"--models {models_name[0]}_{g0} {models_name[1]}_{g1} "
+                f"--dedicated-cores {g0} {g1} "
+                f"--dedicated-l1 {l1_splits[i][0]} {l1_splits[i][1]}"
+            )
+
+            err = os.system(command)
+            if err != 0:
+                print(f"[DynMultiDeeployTestRunner] Error during the MultiDeeploy execution for models {models_name[0]}_{g0} and {models_name[1]}_{g1}")
+                exit(1)
+
+        # Network.h code fusion
+        network_h_path = f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/Network.h"
+        command = f"cp /app/Deeploy/DynMultiDeeploy/Templates/Network.h {network_h_path}"
         err = os.system(command)
         if err != 0:
-            print(f"[DynMultiDeeployTestRunner] Error during the MultiDeeploy execution for models {models_name[0]}_{g0} and {models_name[1]}_{g1}")
+            print(f"[DynMultiDeeployTestRunner] Error during the creation of Network.h for models {models_name[0]} and {models_name[1]}")
+            exit(1)
+        fused_variables = fuse_variables(
+            files=[
+                Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_2_x_{models_name[1]}_6/Network.h"),
+                Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_4_x_{models_name[1]}_4/Network.h"),
+                Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_6_x_{models_name[1]}_2/Network.h")
+            ]
+        )
+        with open(network_h_path, "a") as f:
+            f.write(fused_variables)
+            f.write("#endif\n")
+
+        # testinputs/testoutputs copying and renaming
+        testinout_h_path = f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/"
+        command = f"cp {testinout_h_path}/{models_name[0]}_2_x_{models_name[1]}_6/testinputs.h {testinout_h_path}/testinputs.h"
+        err = os.system(command)
+        if err != 0:
+            print(f"[DynMultiDeeployTestRunner] Error during the copying of testinputs.h for models {models_name[0]} and {models_name[1]}")
+            exit(1)
+        command = f"cp {testinout_h_path}/{models_name[0]}_2_x_{models_name[1]}_6/testoutputs.h {testinout_h_path}/testoutputs.h"
+        err = os.system(command)
+        if err != 0:
+            print(f"[DynMultiDeeployTestRunner] Error during the copying of testoutputs.h for models {models_name[0]} and {models_name[1]}")
             exit(1)
 
-    # Network.h code fusion
-    network_h_path = f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/Network.h"
-    command = f"cp /app/Deeploy/DynMultiDeeploy/Templates/Network.h {network_h_path}"
-    err = os.system(command)
-    if err != 0:
-        print(f"[DynMultiDeeployTestRunner] Error during the creation of Network.h for models {models_name[0]} and {models_name[1]}")
-        exit(1)
-    fused_variables = fuse_variables(
-        files=[
-            Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_2_x_{models_name[1]}_6/Network.h"),
-            Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_4_x_{models_name[1]}_4/Network.h"),
-            Path(f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/{models_name[0]}_6_x_{models_name[1]}_2/Network.h")
-        ]
-    )
-    with open(network_h_path, "a") as f:
-        f.write(fused_variables)
-        f.write("#endif\n")
+        testinputs_text = Path(testinout_h_path + "testinputs.h").read_text()
+        testinputs_text = strip_core_suffix(testinputs_text, models_name)
+        with open(testinout_h_path + "testinputs.h", "w") as f:
+            f.write(testinputs_text)
 
-    # testinputs/testoutputs copying and renaming
-    testinout_h_path = f"/app/Deeploy/DynMultiDeeployTest/TEST_SIRACUSA/Tests/{models_name[0]}_x_{models_name[1]}/"
-    command = f"cp {testinout_h_path}/{models_name[0]}_2_x_{models_name[1]}_6/testinputs.h {testinout_h_path}/testinputs.h"
-    err = os.system(command)
-    if err != 0:
-        print(f"[DynMultiDeeployTestRunner] Error during the copying of testinputs.h for models {models_name[0]} and {models_name[1]}")
-        exit(1)
-    command = f"cp {testinout_h_path}/{models_name[0]}_2_x_{models_name[1]}_6/testoutputs.h {testinout_h_path}/testoutputs.h"
-    err = os.system(command)
-    if err != 0:
-        print(f"[DynMultiDeeployTestRunner] Error during the copying of testoutputs.h for models {models_name[0]} and {models_name[1]}")
-        exit(1)
+        testoutputs_text = Path(testinout_h_path + "testoutputs.h").read_text()
+        testoutputs_text = strip_core_suffix(testoutputs_text, models_name)
+        # Also strip the core-count suffix from the uppercase #define macros (e.g. MINIMNV2_2_OUTPUTTYPE)
+        testoutputs_text = strip_core_suffix(testoutputs_text, [model_name.upper() for model_name in models_name])
+        with open(testinout_h_path + "testoutputs.h", "w") as f:
+            f.write(testoutputs_text)
 
-    testinputs_text = Path(testinout_h_path + "testinputs.h").read_text()
-    testinputs_text = strip_core_suffix(testinputs_text, models_name)
-    with open(testinout_h_path + "testinputs.h", "w") as f:
-        f.write(testinputs_text)
+        # Network.c code fusion
+        network_c_path = f"{test_c_path}/Network.c"
+        fused_network_c = fuse_network_c(
+            template_path=Path("/app/Deeploy/DynMultiDeeploy/Templates/Network.c"),
+            files=[
+                Path(f"{test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/Network.c")
+                for g0, g1 in cores_splits
+            ],
+            core_splits=[(g0, g1) for g0, g1 in cores_splits],
+            model_names=models_name
+        )
+        with open(network_c_path, "w") as f:
+            f.write(fused_network_c)
 
-    testoutputs_text = Path(testinout_h_path + "testoutputs.h").read_text()
-    testoutputs_text = strip_core_suffix(testoutputs_text, models_name)
-    # Also strip the core-count suffix from the uppercase #define macros (e.g. MINIMNV2_2_OUTPUTTYPE)
-    testoutputs_text = strip_core_suffix(testoutputs_text, [model_name.upper() for model_name in models_name])
-    with open(testinout_h_path + "testoutputs.h", "w") as f:
-        f.write(testoutputs_text)
-
-    # Network.c code fusion
-    network_c_path = f"{test_c_path}/Network.c"
-    fused_network_c = fuse_network_c(
-        template_path=Path("/app/Deeploy/DynMultiDeeploy/Templates/Network.c"),
-        files=[
-            Path(f"{test_c_path}/{models_name[0]}_{g0}_x_{models_name[1]}_{g1}/Network.c")
-            for g0, g1 in cores_splits
-        ],
-        core_splits=[(g0, g1) for g0, g1 in cores_splits],
-        model_names=models_name
-    )
-    with open(network_c_path, "w") as f:
-        f.write(fused_network_c)
-
-    print(f"[DynMultiDeeployTestRunner] Successfully generated the dynamic-reconfiguration test for models {models_name[0]} and {models_name[1]} at {test_c_path}")
+        print(f"[DynMultiDeeployTestRunner] Successfully generated the dynamic-reconfiguration test for models {models_name[0]} and {models_name[1]} at {test_c_path}")
 
     print(f"[DynMultiDeeployTestRunner] Starting the simulation of the dynamic-reconfiguration test for models {models_name[0]} and {models_name[1]}")
     # Main code renaming

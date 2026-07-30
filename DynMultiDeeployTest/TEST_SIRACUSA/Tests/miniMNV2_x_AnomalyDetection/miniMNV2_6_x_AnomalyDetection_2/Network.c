@@ -8952,13 +8952,13 @@ void print_tiles_timings() {
 
 // ===== FUSED FUNCTIONS: Scheduling Round 0 =====
 
-void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref;
-void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_input_0_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_23_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref;
+void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref;
+void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref;
 
 typedef struct {
   uint8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_data_in_ref;
@@ -9001,9 +9001,6 @@ static void Round_0_tiling_closure_6_2(Round_0_tiling_closure_6_2_args_t* Round_
 
 
 
-miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref= (void *)((char *)miniMNV2_6_input_0 + 0);
-miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref=
-      (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_input_0_ref= (void *)((char *)AnomalyDetection_2_input_0 + 0);
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor_ref=
       (void *)((char *)AnomalyDetection_2_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0weight_tensor + 0);
@@ -9012,6 +9009,9 @@ AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_model0_QL_REPLACED__IN
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24_ref=
       (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_24 + 0);
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_0_onnxGemm_46_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_46_tensor + 0);
+miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose_input_0_ref= (void *)((char *)miniMNV2_6_input_0 + 0);
+miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_0_input_0_transpose__MERGE_CONVRQ_PASS_0_input_0_transposed_ref=
+      (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_0_input_0_transposed + 0);
 
 
         int core_id = pi_core_id();
@@ -10199,17 +10199,17 @@ static void Round_3_closure_6_2(Round_3_closure_6_2_args_t* Round_3_closure_args
 
 // ===== FUSED FUNCTIONS: Scheduling Round 4 =====
 
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_46_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_52_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_input4_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_net0net0net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_net0net0net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_2add_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_net0net0net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_2mul_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_input8_tensor_pre_transposed_ref;
 void *miniMNV2_6__MERGE_CONVRQ_PASS_2_buffer;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_46_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_52_tensor_ref;
 
 typedef struct {
   void *miniMNV2_6__MERGE_CONVRQ_PASS_2_buffer;
@@ -10263,6 +10263,14 @@ static void Round_4_tiling_closure_6_2(Round_4_tiling_closure_6_2_args_t* Round_
 
 
 
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_46_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_46_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor_ref=
+      (void *)((char *)AnomalyDetection_2_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25_ref=
+      (void *)((char *)AnomalyDetection_2_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25 + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26_ref=
+      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26 + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_52_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_52_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_input4_tensor_ref= (void *)((char *)miniMNV2_6_input4_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_net0net0net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor_ref=
       (void *)((char *)miniMNV2_6_net0net0net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_2weight_tensor + 0);
@@ -10273,14 +10281,6 @@ miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2_net0net0net_QL_REPLACED__INTEG
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_2__MERGE_CONVRQ_PASS_2_input8_tensor_pre_transposed_ref=
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_2_input8_tensor_pre_transposed + 0);
 miniMNV2_6__MERGE_CONVRQ_PASS_2_buffer= (void *)((char *)miniMNV2_6_MEMORYARENA_L1 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_46_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_46_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor_ref=
-      (void *)((char *)AnomalyDetection_2_model1_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_1weight_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25_ref=
-      (void *)((char *)AnomalyDetection_2_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_25 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26_ref=
-      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_26 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_1_onnxGemm_52_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_52_tensor + 0);
 
 
         int core_id = pi_core_id();
@@ -11539,11 +11539,6 @@ static void Round_7_closure_6_2(Round_7_closure_6_2_args_t* Round_7_closure_args
 
 // ===== FUSED FUNCTIONS: Scheduling Round 8 =====
 
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_64_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_PACTOpsRequantShift_105_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_70_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_input12_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_net0net1net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_5weight_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_net0net1net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_5add_tensor_ref;
@@ -11555,6 +11550,11 @@ void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_model5_QL_REPLAC
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_33_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_34_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_onnxGemm_76_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_64_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_PACTOpsRequantShift_105_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_70_tensor_ref;
 
 typedef struct {
   void *miniMNV2_6__MERGE_CONVRQ_PASS_5_buffer;
@@ -11646,14 +11646,6 @@ static void Round_8_tiling_closure_6_2(Round_8_tiling_closure_6_2_args_t* Round_
 
 
 
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_64_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_64_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor_ref=
-      (void *)((char *)AnomalyDetection_2_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31_ref=
-      (void *)((char *)AnomalyDetection_2_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_PACTOpsRequantShift_105_tensor_ref=
-      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_105_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_70_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_70_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_input12_tensor_ref= (void *)((char *)miniMNV2_6_input12_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_5_net0net1net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_5weight_tensor_ref=
       (void *)((char *)miniMNV2_6_net0net1net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_5weight_tensor + 0);
@@ -11672,6 +11664,14 @@ AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_model0_QL_REPLACED__IN
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_34_ref=
       (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_34 + 0);
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_5_onnxGemm_76_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_76_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_64_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_64_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor_ref=
+      (void *)((char *)AnomalyDetection_2_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4weight_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31_ref=
+      (void *)((char *)AnomalyDetection_2_model4_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_4bias_tensor_DUPLICATE_FOR_Gemm_31 + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_PACTOpsRequantShift_105_tensor_ref=
+      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_105_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_4_onnxGemm_70_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_70_tensor + 0);
 
 
         int core_id = pi_core_id();
@@ -12123,17 +12123,17 @@ static void Round_8_closure_6_2(Round_8_closure_6_2_args_t* Round_8_closure_args
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_x15_tensor_split_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_input20_tensor_tp_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_76_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36_ref;
-void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_82_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_5_input16_tensor_pre_transposed_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_net0net1net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_6weight_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_net0net1net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_6add_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_net0net1net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_6mul_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref;
 void *miniMNV2_6__MERGE_CONVRQ_PASS_6_buffer;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_76_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36_ref;
+void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_82_tensor_ref;
 
 typedef struct {
   void *miniMNV2_6__MERGE_CONVRQ_PASS_6_buffer;
@@ -12207,14 +12207,6 @@ miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_6_x31_tensor
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_x15_tensor_split_ref= (void *)((char *)miniMNV2_6_x15_tensor_split + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_input20_tensor_tp_ref= (void *)((char *)miniMNV2_6_input20_tensor_tp + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_76_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_76_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor_ref=
-      (void *)((char *)AnomalyDetection_2_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35_ref=
-      (void *)((char *)AnomalyDetection_2_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36_ref=
-      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36 + 0);
-AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_82_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_82_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_5_input16_tensor_pre_transposed_ref=
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_5_input16_tensor_pre_transposed + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_net0net1net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_6weight_tensor_ref=
@@ -12226,6 +12218,14 @@ miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_net0net1net_QL_REPLACED__INTEG
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref=
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed + 0);
 miniMNV2_6__MERGE_CONVRQ_PASS_6_buffer= (void *)((char *)miniMNV2_6_MEMORYARENA_L1 + 1024);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_76_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_76_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor_ref=
+      (void *)((char *)AnomalyDetection_2_model6_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_6weight_tensor + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35_ref=
+      (void *)((char *)AnomalyDetection_2_model0_QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_0bias_tensor_DUPLICATE_FOR_Gemm_35 + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36_ref=
+      (void *)((char *)AnomalyDetection_2_PACTOpsRequantShift_97_tensor_DUPLICATE_FOR_RequantShift_36 + 0);
+AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_onnxGemm_82_tensor_ref= (void *)((char *)AnomalyDetection_2_onnxGemm_82_tensor + 0);
 
 
         int core_id = pi_core_id();
@@ -12506,8 +12506,8 @@ static void Round_9_closure_6_2(Round_9_closure_6_2_args_t* Round_9_closure_args
   int32_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_mul_ref = (int32_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 1792);
   int32_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_add_ref = (int32_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 1856);
   int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_6_data_out_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 1536);
-  int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 0);
-  int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 256);
+  int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 256);
+  int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 0);
   int8_t *miniMNV2_6_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref = (int8_t *)((char *)miniMNV2_6_MEMORYARENA_L1 + 512);
   uint16_t *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_O_ref =
       (uint16_t *)((char *)AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_6_O + 0);
@@ -13705,14 +13705,14 @@ void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__IN
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_PACT_LIN_PASS_9bias_tensor_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref;
 void *AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref;
+void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref;
+void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_onnxFlatten_64_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_8_input28_tensor_pre_transposed_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_net0net2net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_9weight_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_net0net2net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_9add_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_net0net2net_QL_REPLACED__INTEGERIZE_BN2D_SIGNED_ACT_PASS_9mul_tensor_ref;
 void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref;
 void *miniMNV2_6__MERGE_CONVRQ_PASS_9_buffer;
-void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref;
-void *miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_onnxFlatten_64_tensor_ref;
 
 typedef struct {
   void *miniMNV2_6__MERGE_CONVRQ_PASS_9_buffer;
@@ -13786,6 +13786,10 @@ AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERI
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor_ref=
       (void *)((char *)AnomalyDetection_2__QL_REPLACED__INTEGERIZE_SIGNED_ACT_PASS_0mul_tensor + 0);
 AnomalyDetection_2_TILING_CODEGEN_L1__MERGE_GEMMRQ_PASS_9_output_0_ref= (void *)((char *)AnomalyDetection_2_output_0 + 0);
+miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref=
+      (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed + 0);
+miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_onnxFlatten_64_tensor_ref=
+      (void *)((char *)miniMNV2_6_onnxFlatten_64_tensor + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_8_input28_tensor_pre_transposed_ref=
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_8_input28_tensor_pre_transposed + 0);
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_net0net2net_QL_REPLACED__INTEGERIZE_PACT_CONV2D_PASS_9weight_tensor_ref=
@@ -13797,10 +13801,6 @@ miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_net0net2net_QL_REPLACED__INTEG
 miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref=
       (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed + 0);
 miniMNV2_6__MERGE_CONVRQ_PASS_9_buffer= (void *)((char *)miniMNV2_6_MEMORYARENA_L1 + 1536);
-miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed_ref=
-      (void *)((char *)miniMNV2_6__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transposed + 0);
-miniMNV2_6_TILING_CODEGEN_L1__MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_onnxFlatten_64_tensor_ref=
-      (void *)((char *)miniMNV2_6_onnxFlatten_64_tensor + 0);
 
 
         int core_id = pi_core_id();

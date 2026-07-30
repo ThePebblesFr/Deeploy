@@ -46,4 +46,19 @@ DeeployTest/Tests/**/*.json
 DeeployTest/Tests/**/generateTest.py
 DeeployTest/out.txt
 
+DynMultiDeeployTest/TestFiles/
+DynMultiDeeployDeeployTest/Tests/**/*.txt
+DynMultiDeeployDeeployTest/**/BUILD/*
+DynMultiDeeployDeeployTest/TEST_*/*
+DynMultiDeeployDeeployTest/deeployStates*/*
+DynMultiDeeployDeeployTest/DeeployState*
+DynMultiDeeployDeeployTest/testUtils/graphDebug.py
+DynMultiDeeployDeeployTest/Tests/**/pactIntegerizationProto
+DynMultiDeeployDeeployTest/Tests/**/quantlib
+DynMultiDeeployDeeployTest/Tests/**/*.py
+DynMultiDeeployDeeployTest/Tests/**/*.json
+DynMultiDeeployDeeployTest/Tests/**/generateTest.py
+DynMultiDeeployDeeployTest/out.txt
+DynMultiDeeployTest/TEST_SIRACUSA/build_dyn/
+
 CHANGELOG_GEN.md

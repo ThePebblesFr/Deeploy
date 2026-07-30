@@ -96968,3 +96968,463 @@ Output:
 Runtime: 243044 cycles
 Errors: 0 out of 640 
 [100%] Built target gvsoc_AnomalyDetection
+################## Testing Tests/miniMNV2_x_AnomalyDetection/miniMNV2 on Siracusa Platform ##################
+Consolidate compiler generated dependencies of target pulp-nnx
+[  1%] Built target pulp-nnx
+Consolidate compiler generated dependencies of target deeploybasic
+[  4%] Built target deeploybasic
+Consolidate compiler generated dependencies of target pulp-sdk
+[  8%] Built target pulp-sdk
+Consolidate compiler generated dependencies of target pulp-nn-mixed
+[ 96%] Built target pulp-nn-mixed
+Consolidate compiler generated dependencies of target deeploypulp
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target miniMNV2
+[100%] Built target miniMNV2
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Input DMA took 243 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Kernel took 1956 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Output DMA took 219 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Input DMA took 308 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Kernel took 46712 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Output DMA took 253 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Input DMA took 369 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Kernel took 53839 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Output DMA took 385 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 403 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 4291 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 384 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Input DMA took 470 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Kernel took 36607 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Output DMA took 175 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Input DMA took 306 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Kernel took 12216 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Output DMA took 175 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Input DMA took 329 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Kernel took 15622 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Output DMA took 189 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 247 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 1380 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 200 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Input DMA took 324 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Kernel took 33442 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Input DMA took 302 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Kernel took 12348 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Input DMA took 228 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Kernel took 3942 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Input DMA took 276 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Kernel took 15949 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Output DMA took 181 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 201 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 1338 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 179 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Input DMA took 280 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Kernel took 33214 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Input DMA took 338 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Kernel took 19013 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Output DMA took 177 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 163 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 1373 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 180 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Input DMA took 870 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Kernel took 5538 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Output DMA took 104 cycles 
+Runtime RunNetwork: 314201 cycles
+Output:
+Runtime: 314201 cycles
+Errors: 0 out of 10 
+[100%] Built target gvsoc_miniMNV2
+################## Testing Tests/miniMNV2_x_AnomalyDetection/AnomalyDetection on Siracusa Platform ##################
+Consolidate compiler generated dependencies of target pulp-nnx
+[  1%] Built target pulp-nnx
+Consolidate compiler generated dependencies of target deeploybasic
+[  4%] Built target deeploybasic
+Consolidate compiler generated dependencies of target pulp-sdk
+[  8%] Built target pulp-sdk
+Consolidate compiler generated dependencies of target pulp-nn-mixed
+[ 96%] Built target pulp-nn-mixed
+Consolidate compiler generated dependencies of target deeploypulp
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target AnomalyDetection
+[100%] Built target AnomalyDetection
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Input DMA took 5392 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Kernel took 13258 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Output DMA took 201 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Input DMA took 5411 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Kernel took 12771 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Output DMA took 161 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Input DMA took 2329 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Kernel took 6696 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Output DMA took 201 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Input DMA took 2328 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Kernel took 6587 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Output DMA took 160 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Input DMA took 2329 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Kernel took 6600 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Input DMA took 328 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Kernel took 1369 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Output DMA took 200 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Input DMA took 384 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Kernel took 2286 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Input DMA took 2327 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Kernel took 6633 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Input DMA took 2326 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Kernel took 6601 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Output DMA took 162 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Input DMA took 2329 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Kernel took 6602 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Input DMA took 5886 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Kernel took 16191 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Output DMA took 201 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Input DMA took 5300 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Kernel took 14025 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Output DMA took 199 cycles 
+Runtime RunNetwork: 142880 cycles
+Output:
+Runtime: 142880 cycles
+Errors: 0 out of 640 
+[100%] Built target gvsoc_AnomalyDetection
+################## Testing Tests/miniMNV2_x_AnomalyDetection/miniMNV2 on Siracusa Platform ##################
+Consolidate compiler generated dependencies of target pulp-nnx
+[  1%] Built target pulp-nnx
+Consolidate compiler generated dependencies of target deeploybasic
+[  4%] Built target deeploybasic
+Consolidate compiler generated dependencies of target pulp-sdk
+[  8%] Built target pulp-sdk
+Consolidate compiler generated dependencies of target pulp-nn-mixed
+[ 96%] Built target pulp-nn-mixed
+Consolidate compiler generated dependencies of target deeploypulp
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target miniMNV2
+[100%] Built target miniMNV2
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Input DMA took 243 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Kernel took 1474 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Input DMA took 349 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Kernel took 26358 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Output DMA took 253 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Input DMA took 371 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Kernel took 27929 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Output DMA took 363 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 382 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 2752 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 363 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Input DMA took 474 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Kernel took 19665 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Output DMA took 189 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Input DMA took 327 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Kernel took 7569 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Output DMA took 175 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Input DMA took 351 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Kernel took 9027 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Output DMA took 175 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 204 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 966 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 200 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Input DMA took 307 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Kernel took 18362 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Output DMA took 197 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Input DMA took 302 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Kernel took 7686 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Output DMA took 176 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Input DMA took 229 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Kernel took 2531 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Output DMA took 197 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Input DMA took 278 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Kernel took 9254 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Output DMA took 160 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 203 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 896 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 179 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Input DMA took 279 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Kernel took 18273 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Output DMA took 158 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Input DMA took 319 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Kernel took 10799 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Output DMA took 176 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 183 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 884 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 180 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Input DMA took 870 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Kernel took 3785 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Output DMA took 178 cycles 
+Runtime RunNetwork: 183466 cycles
+Output:
+Runtime: 183466 cycles
+Errors: 0 out of 10 
+[100%] Built target gvsoc_miniMNV2
+################## Testing Tests/miniMNV2_x_AnomalyDetection/AnomalyDetection on Siracusa Platform ##################
+[  1%] Built target pulp-nnx
+[  4%] Built target deeploybasic
+[  8%] Built target pulp-sdk
+[ 96%] Built target pulp-nn-mixed
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target AnomalyDetection
+[100%] Built target AnomalyDetection
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Input DMA took 4195 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Kernel took 10404 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Output DMA took 146 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Input DMA took 4051 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Kernel took 9526 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Output DMA took 103 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Input DMA took 2778 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Kernel took 6423 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Output DMA took 63 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Input DMA took 2353 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Kernel took 6616 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Output DMA took 116 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Input DMA took 2330 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Kernel took 6603 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Output DMA took 202 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Input DMA took 2327 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Kernel took 6489 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Input DMA took 326 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Kernel took 1232 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Input DMA took 408 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Kernel took 2277 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Input DMA took 2349 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Kernel took 6528 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Output DMA took 116 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Input DMA took 2326 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Kernel took 6628 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Output DMA took 198 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Input DMA took 2352 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Kernel took 6570 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Output DMA took 141 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Input DMA took 4064 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Kernel took 11182 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Output DMA took 229 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Input DMA took 3951 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Kernel took 10297 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Output DMA took 85 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Input DMA took 3345 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Kernel took 8806 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Output DMA took 75 cycles 
+Runtime RunNetwork: 143940 cycles
+Output:
+Runtime: 143940 cycles
+Errors: 0 out of 640 
+[100%] Built target gvsoc_AnomalyDetection
+################## Testing Tests/miniMNV2_x_AnomalyDetection/miniMNV2 on Siracusa Platform ##################
+Consolidate compiler generated dependencies of target pulp-nnx
+[  1%] Built target pulp-nnx
+Consolidate compiler generated dependencies of target deeploybasic
+[  4%] Built target deeploybasic
+Consolidate compiler generated dependencies of target pulp-sdk
+[  8%] Built target pulp-sdk
+Consolidate compiler generated dependencies of target pulp-nn-mixed
+[ 96%] Built target pulp-nn-mixed
+Consolidate compiler generated dependencies of target deeploypulp
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target miniMNV2
+[100%] Built target miniMNV2
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Input DMA took 243 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Kernel took 1278 cycles 
+[_MERGE_CONVRQ_PASS_0_input_0_transpose_L2][SB][0 ops][Tile 0] Output DMA took 219 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Input DMA took 310 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Kernel took 26227 cycles 
+[_MERGE_CONVRQ_PASS_0_L2][SB][55488 ops][Tile 0] Output DMA took 231 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Input DMA took 352 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Kernel took 28613 cycles 
+[_MERGE_CONVRQ_PASS_1_L2][SB][65728 ops][Tile 0] Output DMA took 365 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 427 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 2345 cycles 
+[_MERGE_CONVRQ_PASS_1_input4_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 363 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Input DMA took 472 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Kernel took 19921 cycles 
+[_MERGE_CONVRQ_PASS_2_L2][SB][9264 ops][Tile 0] Output DMA took 175 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Input DMA took 326 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Kernel took 7802 cycles 
+[_MERGE_CONVRQ_PASS_3_L2][SB][16432 ops][Tile 0] Output DMA took 177 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Input DMA took 329 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Kernel took 9267 cycles 
+[_MERGE_CONVRQ_PASS_4_L2][SB][16432 ops][Tile 0] Output DMA took 187 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 247 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 850 cycles 
+[_MERGE_CONVRQ_PASS_4_input12_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 202 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Input DMA took 324 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Kernel took 18504 cycles 
+[_MERGE_CONVRQ_PASS_5_L2][SB][9264 ops][Tile 0] Output DMA took 223 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Input DMA took 282 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Kernel took 7943 cycles 
+[_MERGE_CONVRQ_PASS_6_L2][SB][16432 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Input DMA took 246 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Kernel took 2520 cycles 
+[_MERGE_ADDRQ_PASS_0_L2][SB][256 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Input DMA took 274 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Kernel took 9544 cycles 
+[_MERGE_CONVRQ_PASS_7_L2][SB][16432 ops][Tile 0] Output DMA took 179 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 183 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 819 cycles 
+[_MERGE_CONVRQ_PASS_7_input24_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Input DMA took 276 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Kernel took 18410 cycles 
+[_MERGE_CONVRQ_PASS_8_L2][SB][9264 ops][Tile 0] Output DMA took 200 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Input DMA took 339 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Kernel took 11217 cycles 
+[_MERGE_CONVRQ_PASS_9_L2][SB][32816 ops][Tile 0] Output DMA took 181 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Input DMA took 163 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Kernel took 846 cycles 
+[_MERGE_CONVRQ_PASS_9_onnxFlatten_64_tensor_pre_transpose_L2][SB][0 ops][Tile 0] Output DMA took 201 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Input DMA took 850 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Kernel took 2836 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][11806 ops][Tile 0] Output DMA took 180 cycles 
+Runtime RunNetwork: 184504 cycles
+Output:
+Runtime: 184504 cycles
+Errors: 0 out of 10 
+[100%] Built target gvsoc_miniMNV2
+################## Testing Tests/miniMNV2_x_AnomalyDetection/AnomalyDetection on Siracusa Platform ##################
+Consolidate compiler generated dependencies of target pulp-nnx
+[  1%] Built target pulp-nnx
+Consolidate compiler generated dependencies of target deeploybasic
+[  4%] Built target deeploybasic
+Consolidate compiler generated dependencies of target pulp-sdk
+[  8%] Built target pulp-sdk
+Consolidate compiler generated dependencies of target pulp-nn-mixed
+[ 96%] Built target pulp-nn-mixed
+Consolidate compiler generated dependencies of target deeploypulp
+[ 98%] Built target deeploypulp
+Consolidate compiler generated dependencies of target network
+[100%] Built target network
+Consolidate compiler generated dependencies of target AnomalyDetection
+[100%] Built target AnomalyDetection
+[100%] POST_BUILD
+HELLO WORLD:
+Intializing
+Initialized
+Input copied
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Input DMA took 1601 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Kernel took 7386 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 0] Output DMA took 143 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Input DMA took 1435 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Kernel took 6476 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 1] Output DMA took 43 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Input DMA took 1437 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Kernel took 6395 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 2] Output DMA took 43 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 3] Input DMA took 1439 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 3] Kernel took 6376 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 3] Output DMA took 43 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 4] Input DMA took 1435 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 4] Kernel took 6380 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 4] Output DMA took 44 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 5] Input DMA took 1436 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 5] Kernel took 6374 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 5] Output DMA took 41 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 6] Input DMA took 1437 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 6] Kernel took 6371 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 6] Output DMA took 41 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 7] Input DMA took 1436 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 7] Kernel took 6368 cycles 
+[_MERGE_GEMMRQ_PASS_0_L2][SB][166144 ops][Tile 7] Output DMA took 41 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Input DMA took 2083 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Kernel took 10963 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 0] Output DMA took 139 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 1] Input DMA took 402 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 1] Kernel took 2169 cycles 
+[_MERGE_GEMMRQ_PASS_1_L2][SB][33536 ops][Tile 1] Output DMA took 161 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Input DMA took 2058 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Kernel took 10904 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 0] Output DMA took 160 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 1] Input DMA took 429 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 1] Kernel took 2109 cycles 
+[_MERGE_GEMMRQ_PASS_2_L2][SB][33536 ops][Tile 1] Output DMA took 141 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Input DMA took 2060 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Kernel took 10900 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 0] Output DMA took 200 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 1] Input DMA took 425 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 1] Kernel took 2146 cycles 
+[_MERGE_GEMMRQ_PASS_3_L2][SB][33536 ops][Tile 1] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Input DMA took 328 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Kernel took 1810 cycles 
+[_MERGE_GEMMRQ_PASS_4_L2][SB][2456 ops][Tile 0] Output DMA took 199 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Input DMA took 406 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Kernel took 3532 cycles 
+[_MERGE_GEMMRQ_PASS_5_L2][SB][2456 ops][Tile 0] Output DMA took 116 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Input DMA took 2082 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Kernel took 10804 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 0] Output DMA took 139 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 1] Input DMA took 402 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 1] Kernel took 2080 cycles 
+[_MERGE_GEMMRQ_PASS_6_L2][SB][33536 ops][Tile 1] Output DMA took 146 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Input DMA took 2045 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Kernel took 10823 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 0] Output DMA took 108 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 1] Input DMA took 431 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 1] Kernel took 2147 cycles 
+[_MERGE_GEMMRQ_PASS_7_L2][SB][33536 ops][Tile 1] Output DMA took 179 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Input DMA took 2068 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Kernel took 10770 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 0] Output DMA took 144 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 1] Input DMA took 390 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 1] Kernel took 2073 cycles 
+[_MERGE_GEMMRQ_PASS_8_L2][SB][33536 ops][Tile 1] Output DMA took 124 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Input DMA took 2141 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Kernel took 11241 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 0] Output DMA took 132 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Input DMA took 2015 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Kernel took 10380 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 1] Output DMA took 99 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Input DMA took 2002 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Kernel took 10232 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 2] Output DMA took 82 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 3] Input DMA took 2001 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 3] Kernel took 10191 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 3] Output DMA took 64 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 4] Input DMA took 1986 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 4] Kernel took 10175 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 4] Output DMA took 66 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 5] Input DMA took 1444 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 5] Kernel took 7391 cycles 
+[_MERGE_GEMMRQ_PASS_9_L2][SB][166144 ops][Tile 5] Output DMA took 63 cycles 
+Runtime RunNetwork: 243044 cycles
+Output:
+Runtime: 243044 cycles
+Errors: 0 out of 640 
+[100%] Built target gvsoc_AnomalyDetection
