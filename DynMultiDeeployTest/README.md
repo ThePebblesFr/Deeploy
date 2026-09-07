@@ -120,6 +120,10 @@ int main() {
 			// send InitNetworks_2_6() cluster task
 			// send RunNetworks_2_6() cluster task
 			break;
+		case BOTH_CRITICAL:
+			// send InitNetworks_4_4() cluster task
+			// send RunNetworks_4_4() cluster task
+			break;
 		default:
 			break;
 	}
