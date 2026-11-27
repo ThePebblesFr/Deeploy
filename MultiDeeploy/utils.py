@@ -1000,3 +1000,13 @@ static inline void subgroup_barrier_wait(uint32_t barrier_id, uint32_t core_id)
     // printf("Core %u passed barrier %u\\n", core_id, barrier_id);
 }
 """
+
+# ===== THESIS FIX (patch_multideeploy.py) =====
+import re as _thesis_re
+_THESIS_RE_TILEIDX_INC = _thesis_re.compile(r"^\s*\*\s*\w*tileIdxPtr\s*\+=\s*1\s*;\s*$")
+
+
+def remove_increment_statements(code: str) -> str:
+    """Drop only the tile-index increments; keep every other '+=' statement (e.g. the
+    accumulation of ReduceMean, which the original version removed)."""
+    return "".join(l for l in code.splitlines(keepends=True) if not _THESIS_RE_TILEIDX_INC.match(l))

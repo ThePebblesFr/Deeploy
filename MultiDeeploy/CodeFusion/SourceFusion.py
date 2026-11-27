@@ -55,8 +55,12 @@ class SourceFusion():
         self.run_network_fusion()
         self.init_network_fusion()
 
+        # THESIS FIX: rebase absolute core ids on each model's first core
+        _names = [s.model_name for s in self.files]
+        _starts = [sum(self.models_dedicated_cores[:k]) for k in range(len(self.files))]
+        _text = rebase_core_ids("".join(self.fused_content), _names, _starts)
         with open(self.output_path, 'w') as f:
-            f.writelines(self.fused_content)
+            f.write(_text)
 
     def globals_fusion(self) -> None:
         seen_lines = set()
@@ -206,3 +210,29 @@ class SourceFusion():
         self.fused_content.append(combined_closure_call_statement(cores0, cores1))
 
         self.fused_content.append("\n}\n")
+
+
+# ===== THESIS FIX (patch_multideeploy.py) =====
+import re as _thesis_re
+
+
+def rebase_core_ids(text: str, names, starts) -> str:
+    """Inside each model's layer functions, absolute core ids become group-relative, so that a
+    model placed on cores S..S+n-1 behaves as on cores 0..n-1 (Transpose, ReduceMean, ...)."""
+    hdr = _thesis_re.compile(r"^static void __attribute__\(\(noinline\)\) (\w+)_layer_\d+\(", _thesis_re.M)
+    heads = [(m.start(), m.group(1)) for m in hdr.finditer(text)]
+    end_of_layers = text.find("static void Combined_closure_")
+    out, last = [], 0
+    for idx, (pos, name) in enumerate(heads):
+        stop = heads[idx + 1][0] if idx + 1 < len(heads) else end_of_layers
+        out.append(text[last:pos])
+        body = text[pos:stop]
+        S = starts[names.index(name)] if name in names else 0
+        if S:
+            body = body.replace("pi_core_id()", f"(pi_core_id() - {S})")
+            body = _thesis_re.sub(r"\bBEGIN_SINGLE_CORE\b", f"if (pi_core_id() == {S}) {{", body)
+            body = _thesis_re.sub(r"(?<!BEGIN_)(?<!END_)\bSINGLE_CORE\b", f"if (pi_core_id() == {S})", body)
+        out.append(body)
+        last = stop
+    out.append(text[last:])
+    return "".join(out)
