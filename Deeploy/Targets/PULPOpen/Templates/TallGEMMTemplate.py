@@ -30,9 +30,9 @@ referenceTemplate = _PULPTallGEMMTemplate("""
 
 int8_t ${nodeName}_core_id = pi_core_id();
 int8_t ${nodeName}_log2Core = log2(NUM_CORES);
-int16_t ${nodeName}_chunk = (${int(M)} >> ${nodeName}_log2Core) + ((${int(M)} & (NUM_CORES-1))!=0);
-int16_t ${nodeName}_chunk_start = MIN(${nodeName}_chunk*${nodeName}_core_id, ${int(M)});
-int16_t ${nodeName}_chunk_stop = MIN(${nodeName}_chunk_start + ${nodeName}_chunk, ${int(M)} + 1);
+int32_t ${nodeName}_chunk = (((${int(M)}) + (NUM_CORES) - 1) / (NUM_CORES));
+int32_t ${nodeName}_chunk_start = MIN(${nodeName}_chunk*${nodeName}_core_id, ${int(M)});
+int32_t ${nodeName}_chunk_stop = MIN(${nodeName}_chunk_start + ${nodeName}_chunk, ${int(M)});
 
 int8_t* ref_${nodeName}_${A};
 int8_t* ref_${nodeName}_${B};

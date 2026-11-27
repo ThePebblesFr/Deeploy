@@ -8,7 +8,7 @@ referenceTemplate = NodeTemplate("""
 // Add Parallel with 1x6 unrolling (Name: ${nodeName}, Op: ${nodeOp})
 uint8_t ${nodeName}_core_id = (uint8_t) pi_core_id();
 uint8_t ${nodeName}_log2Core = (uint8_t) log2(NUM_CORES);
-uint32_t ${nodeName}_chunk = (${size} >> ${nodeName}_log2Core) + ((${size} & (NUM_CORES-1))!=0);
+uint32_t ${nodeName}_chunk = (((${size}) + (NUM_CORES) - 1) / (NUM_CORES));
 uint32_t ${nodeName}_chunk_start = (uint32_t) MIN(${nodeName}_chunk*${nodeName}_core_id, (uint32_t) ${size});
 uint32_t ${nodeName}_chunk_stop = (uint32_t) MIN(${nodeName}_chunk_start + ${nodeName}_chunk, (uint32_t) ${size});
 

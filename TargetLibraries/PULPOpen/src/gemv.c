@@ -116,7 +116,7 @@ void gemv_s8_s8_plp(int8_t *pIn, int8_t *pBias, int8_t *pOut, int8_t *pWeight,
       col_cnt--;
     }
     if (flag_batch_norm && flag_relu) {
-      *pOutBuffer = pulp_nn_bn_quant_i8(sum, *pKappa, *pLambda, out_shift);
+      *pOutBuffer = pulp_nn_bn_quant_i8(sum, pKappa[i], pLambda[i], out_shift);
       pOutBuffer++;
       pKappa++;
       pLambda++;

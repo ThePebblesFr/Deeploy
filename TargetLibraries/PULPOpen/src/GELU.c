@@ -18,7 +18,7 @@ void PULP_GELU_fp32_fp32(float32_t *data_in, float32_t *data_out,
   int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Split into chunks for each core
-  int32_t chunk = (dataSize >> log2Core) + ((dataSize & (nb_dedicated_cores - 1)) != 0);
+  int32_t chunk = (((dataSize) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   int32_t chunk_start = MIN(chunk * core_id, dataSize);
   int32_t chunk_stop = MIN(chunk_start + chunk, dataSize);
 
@@ -37,9 +37,9 @@ void PULP_GELU_fp32_fp32_sigmoid(float32_t *data_in, float32_t *data_out,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk = (dataSize >> log2Core) + ((dataSize & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, dataSize);
-  int16_t chunk_stop = MIN(chunk_start + chunk, dataSize);
+  int32_t chunk = (((dataSize) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, dataSize);
+  int32_t chunk_stop = MIN(chunk_start + chunk, dataSize);
 
   const float32_t scale = 1.702f;
   for (uint32_t i = chunk_start; i < chunk_stop; i++) {

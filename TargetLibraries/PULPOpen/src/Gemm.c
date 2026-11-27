@@ -18,7 +18,7 @@ void PULP_Gemm_fp32_fp32_fp32_fp32(const float32_t *__restrict__ pSrcA,
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
 
-  uint32_t M_chunk = (M >> log2Core) + ((M & (nb_dedicated_cores - 1)) != 0);
+  uint32_t M_chunk = (((M) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   uint32_t M_start = MIN(core_id * M_chunk, M);
   uint32_t M_end = MIN(M_start + M_chunk, M);
   uint32_t M_size = M_end - M_start;

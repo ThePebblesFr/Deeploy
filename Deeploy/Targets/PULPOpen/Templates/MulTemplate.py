@@ -14,9 +14,9 @@ referenceTemplate = _MulTemplate("""
 
 int8_t ${nodeName}_core_id = pi_core_id();
 int8_t ${nodeName}_log2Core = log2(NUM_CORES);
-int16_t ${nodeName}_chunk = (${size} >> ${nodeName}_log2Core) + ((${size} & (NUM_CORES-1))!=0);
-int16_t ${nodeName}_chunk_start = MIN(${nodeName}_chunk*${nodeName}_core_id, ${size});
-int16_t ${nodeName}_chunk_stop = MIN(${nodeName}_chunk_start + ${nodeName}_chunk, ${size} + 1);
+int32_t ${nodeName}_chunk = (((${size}) + (NUM_CORES) - 1) / (NUM_CORES));
+int32_t ${nodeName}_chunk_start = MIN(${nodeName}_chunk*${nodeName}_core_id, ${size});
+int32_t ${nodeName}_chunk_stop = MIN(${nodeName}_chunk_start + ${nodeName}_chunk, ${size});
 
 #pragma unroll 2
 for (uint32_t i=${nodeName}_chunk_start;i<${nodeName}_chunk_stop;i++){

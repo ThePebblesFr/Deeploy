@@ -21,8 +21,8 @@ void PULP_Conv2d_fp32_fp32_fp32_HWC(
   int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Compute the chunk size for each core
-  uint16_t ch_out_chunk =
-      (F_total >> log2Core) + ((F_total & (nb_dedicated_cores - 1)) != 0);
+  uint32_t ch_out_chunk =
+      (((F_total) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   uint16_t ch_out_start = MIN(ch_out_chunk * core_id, F_total);
   uint16_t ch_out_stop = MIN(ch_out_start + ch_out_chunk, F_total);
   uint16_t ch_out_count = ch_out_stop - ch_out_start;
@@ -116,8 +116,8 @@ void PULP_Conv2d_Im2Col_fp32_fp32_fp32_HWC(
   int8_t log2Core = LOG2(nb_dedicated_cores);
 
   // Compute the chunk size for each core
-  uint16_t ch_out_chunk =
-      (F_total >> log2Core) + ((F_total & (nb_dedicated_cores - 1)) != 0);
+  uint32_t ch_out_chunk =
+      (((F_total) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   uint16_t ch_out_start = MIN(ch_out_chunk * core_id, F_total);
   uint16_t ch_out_stop = MIN(ch_out_start + ch_out_chunk, F_total);
   uint16_t ch_out_count = ch_out_stop - ch_out_start;

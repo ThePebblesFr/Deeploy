@@ -117,7 +117,7 @@ void PULP_Softmax_fp32_fp32(float32_t *input, float32_t *output, uint32_t size,
 
   int32_t num_vectors = size / last_dim_length;
   int32_t chunk =
-      (num_vectors >> log2Core) + ((num_vectors & (nb_dedicated_cores - 1)) != 0);
+      (((num_vectors) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   int32_t vector_start = MIN(chunk * core_id, num_vectors);
   int32_t vector_end = MIN(vector_start + chunk, num_vectors);
   int32_t local_vectors = vector_end - vector_start;

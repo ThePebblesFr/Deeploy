@@ -16,12 +16,12 @@ void UniformRequantShift_s8_s8(int8_t *data_in, int32_t size, int32_t mul,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, size);
-  int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
+  int32_t chunk = (((size) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, size);
+  int32_t chunk_stop = MIN(chunk_start + chunk, size);
 
   // JUNGVI: Compiler magic, don't remove the volatile keyword below
-  int32_t volatile halfChunkSize = chunk >> 1;
+  int32_t volatile halfChunkSize = (chunk_stop - chunk_start) >> 1;
   int32_t intermediate;
   int8_t out;
   int8_t reg_data_in_A;
@@ -57,19 +57,12 @@ void UniformRequantShift_s8_s8(int8_t *data_in, int32_t size, int32_t mul,
   if ((chunk_stop - chunk_start) % 2) {
 
     reg_data_in_B = data_in[chunk_stop - 1];
-    reg_data_in_A = data_in[chunk_stop];
 
     intermediate = (reg_data_in_B + input_offset) * mul + add;
     intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
                    output_offset;
     out = (int8_t)CLAMP(intermediate, output_min, output_max);
     data_out[chunk_stop - 1] = out;
-
-    intermediate = (reg_data_in_A + input_offset) * mul + add;
-    intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
-                   output_offset;
-    out = (int8_t)CLAMP(intermediate, output_min, output_max);
-    data_out[chunk_stop] = out;
   }
 }
 
@@ -82,12 +75,12 @@ void UniformRequantShift_u8_s8(uint8_t *data_in, int32_t size, int32_t mul,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, size);
-  int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
+  int32_t chunk = (((size) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, size);
+  int32_t chunk_stop = MIN(chunk_start + chunk, size);
 
   // JUNGVI: Compiler magic, don't remove the volatile keyword below
-  int32_t volatile halfChunkSize = chunk >> 1;
+  int32_t volatile halfChunkSize = (chunk_stop - chunk_start) >> 1;
   int32_t intermediate;
   int8_t out;
   uint8_t reg_data_in_A;
@@ -123,19 +116,12 @@ void UniformRequantShift_u8_s8(uint8_t *data_in, int32_t size, int32_t mul,
   if ((chunk_stop - chunk_start) % 2) {
 
     reg_data_in_B = data_in[chunk_stop - 1];
-    reg_data_in_A = data_in[chunk_stop];
 
     intermediate = (reg_data_in_B + input_offset) * mul + add;
     intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
                    output_offset;
     out = (int8_t)CLAMP(intermediate, output_min, output_max);
     data_out[chunk_stop - 1] = out;
-
-    intermediate = (reg_data_in_A + input_offset) * mul + add;
-    intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
-                   output_offset;
-    out = (int8_t)CLAMP(intermediate, output_min, output_max);
-    data_out[chunk_stop] = out;
   }
 }
 
@@ -148,12 +134,12 @@ void UniformRequantShift_s16_s8(int16_t *data_in, int32_t size, int32_t mul,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, size);
-  int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
+  int32_t chunk = (((size) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, size);
+  int32_t chunk_stop = MIN(chunk_start + chunk, size);
 
   // JUNGVI: Compiler magic, don't remove the volatile keyword below
-  int32_t volatile halfChunkSize = chunk >> 1;
+  int32_t volatile halfChunkSize = (chunk_stop - chunk_start) >> 1;
   int32_t intermediate;
   int8_t out;
   int16_t reg_data_in_A;
@@ -189,19 +175,12 @@ void UniformRequantShift_s16_s8(int16_t *data_in, int32_t size, int32_t mul,
   if ((chunk_stop - chunk_start) % 2) {
 
     reg_data_in_B = data_in[chunk_stop - 1];
-    reg_data_in_A = data_in[chunk_stop];
 
     intermediate = (reg_data_in_B + input_offset) * mul + add;
     intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
                    output_offset;
     out = (int8_t)CLAMP(intermediate, output_min, output_max);
     data_out[chunk_stop - 1] = out;
-
-    intermediate = (reg_data_in_A + input_offset) * mul + add;
-    intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
-                   output_offset;
-    out = (int8_t)CLAMP(intermediate, output_min, output_max);
-    data_out[chunk_stop] = out;
   }
 }
 
@@ -214,12 +193,12 @@ void UniformRequantShift_s32_s8(int32_t *data_in, int32_t size, int32_t mul,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk = (size >> log2Core) + ((size & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, size);
-  int16_t chunk_stop = MIN(chunk_start + chunk, size + 1);
+  int32_t chunk = (((size) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, size);
+  int32_t chunk_stop = MIN(chunk_start + chunk, size);
 
   // JUNGVI: Compiler magic, don't remove the volatile keyword below
-  int32_t volatile halfChunkSize = chunk >> 1;
+  int32_t volatile halfChunkSize = (chunk_stop - chunk_start) >> 1;
   int32_t intermediate;
   int8_t out;
   int32_t reg_data_in_A;
@@ -255,18 +234,11 @@ void UniformRequantShift_s32_s8(int32_t *data_in, int32_t size, int32_t mul,
   if ((chunk_stop - chunk_start) % 2) {
 
     reg_data_in_B = data_in[chunk_stop - 1];
-    reg_data_in_A = data_in[chunk_stop];
 
     intermediate = (reg_data_in_B + input_offset) * mul + add;
     intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
                    output_offset;
     out = (int8_t)CLAMP(intermediate, output_min, output_max);
     data_out[chunk_stop - 1] = out;
-
-    intermediate = (reg_data_in_A + input_offset) * mul + add;
-    intermediate = ((intermediate + ((1 << (log2D - 1))) * rounding) >> log2D) +
-                   output_offset;
-    out = (int8_t)CLAMP(intermediate, output_min, output_max);
-    data_out[chunk_stop] = out;
   }
 }

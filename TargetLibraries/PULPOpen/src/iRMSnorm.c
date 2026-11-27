@@ -48,10 +48,10 @@ void iRMSnorm_s8_s8_plp(int8_t *data_in, int8_t *data_out, int32_t *weight,
   int8_t core_id = pi_core_id();
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
-  int16_t chunk =
-      (lastDimLength >> log2Core) + ((lastDimLength & (nb_dedicated_cores - 1)) != 0);
-  int16_t chunk_start = MIN(chunk * core_id, lastDimLength);
-  int16_t chunk_stop = MIN(chunk_start + chunk, lastDimLength + 1);
+  int32_t chunk =
+      (((lastDimLength) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
+  int32_t chunk_start = MIN(chunk * core_id, lastDimLength);
+  int32_t chunk_stop = MIN(chunk_start + chunk, lastDimLength);
 
   for (int i = 0; i < (size / lastDimLength); i++) {
     sum = 0;

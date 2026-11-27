@@ -18,7 +18,7 @@ void PULP_MaxPool2d_fp32_fp32_HWC(const float32_t *__restrict__ pSrcA,
   core_id = core_id % nb_dedicated_cores;
   int8_t log2Core = LOG2(nb_dedicated_cores);
 
-  uint16_t ch_chunk = (C >> log2Core) + ((C & (nb_dedicated_cores - 1)) != 0);
+  uint32_t ch_chunk = (((C) + (nb_dedicated_cores) - 1) / (nb_dedicated_cores));
   uint16_t ch_start = MIN(ch_chunk * core_id, C);
   uint16_t ch_stop = MIN(ch_start + ch_chunk, C);
   uint16_t ch_count = ch_stop - ch_start;
