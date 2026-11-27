@@ -1,0 +1,33 @@
+diff --git a/backends/dory/pact_export.py b/backends/dory/pact_export.py
+index 9e5d70d..c74c4aa 100644
+--- a/backends/dory/pact_export.py
++++ b/backends/dory/pact_export.py
+@@ -124,16 +124,27 @@ def export_net(net : nn.Module, name : str, out_dir : str, eps_in : float, in_da
+ 
+     #first export an unannotated ONNX graph
+     test_input = torch.rand(shape_in)
++    # dynamo=False: this codebase's custom PACT ONNX symbolic registrations (the
++    # ones producing fused ops like RequantShift instead of raw Mul/Div/Floor/Clip)
++    # are only respected by the legacy TorchScript-based exporter. Newer torch
++    # (2.5+) defaults torch.onnx.export to the dynamo-based exporter, which traces
++    # actual tensor ops instead and silently decomposes these fused ops -- Deeploy's
++    # engine has no operator mapping for the resulting raw Div/Floor/Clip nodes.
+     torch.onnx.export(net_integerized.to('cpu'),
+                       test_input,
+                       str(onnx_path),
+                       export_params=True,
+                       opset_version=10,
++                      dynamo=False,
+                       do_constant_folding=True)
+ 
+     #load the exported model and annotate it
+     onnx_model = onnx.load(str(onnx_path))
+-    annotate_onnx(onnx_model, prec_dict)
++    try:
++        annotate_onnx(onnx_model, prec_dict)
++    except Exception as e:
++        print(f"[export_net] Skipping DORY bit-precision annotation (non-essential metadata, "
++              f"incompatible with the modern ONNX exporter opset here): {e}")
+     # finally, save the annotated ONNX model
+     onnx.save(onnx_model, str(onnx_path))
+     # now we pass a test input through the model and log the intermediate

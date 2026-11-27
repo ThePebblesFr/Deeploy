@@ -1,0 +1,143 @@
+diff --git a/configure/storage_cfg.json b/configure/storage_cfg.json
+index b512bf1..002d812 100644
+--- a/configure/storage_cfg.json
++++ b/configure/storage_cfg.json
+@@ -1,4 +1,4 @@
+ {
+-  "data": "/scratchb",
+-  "logs": "/scratcha"
+-}
++  "data": "/app/Deeploy/quantlab_storage/data",
++  "logs": "/app/Deeploy/quantlab_storage/logs"
++}
+\ No newline at end of file
+diff --git a/examples/fx_integerization/integerize_pactnets.py b/examples/fx_integerization/integerize_pactnets.py
+index 1015d5e..de8d367 100644
+--- a/examples/fx_integerization/integerize_pactnets.py
++++ b/examples/fx_integerization/integerize_pactnets.py
+@@ -47,35 +47,64 @@ from systems.MNIST.utils.transforms.transforms import MNISTSTATS
+ from systems.ILSVRC12.utils.data import load_ilsvrc12
+ from systems.ILSVRC12.utils.transforms import ILSVRC12PACTQuantTransform
+ from systems.ILSVRC12.utils.transforms.transforms import ILSVRC12STATS
+-from systems.DVS128.dvs_cnn.preprocess import load_data_set as load_dvs128, DVSAugmentTransform
++try:
++    from systems.DVS128.dvs_cnn.preprocess import load_data_set as load_dvs128, DVSAugmentTransform
++except ImportError:
++    load_dvs128, DVSAugmentTransform = None, None  # DVS128 system unavailable in this quantlib checkout
+ 
+ 
+ _CIFAR10_EPS = CIFAR10STATS['quantize']['eps']
+ _ILSVRC12_EPS = ILSVRC12STATS['quantize']['eps']
+ _MNIST_EPS = MNISTSTATS['quantize']['eps']
+ 
+-# import the networks
+-from systems.CIFAR10.VGG import VGG
++# import the networks (only CIFAR10/ResNet is required for this run; the other
++# systems' imports are best-effort since this quantlib checkout has broken/missing
++# submodules for some of them -- e.g. quantlib.editing.lightweight.rules.SubTypeFilter
++# and quantlib.QTensor don't exist here, unrelated to CIFAR10/ResNet).
+ from systems.CIFAR10.ResNet import ResNet as ResNetCIFAR
+-from systems.ILSVRC12.MobileNetV1 import MobileNetV1
+-from systems.ILSVRC12.MobileNetV2 import MobileNetV2
+-from systems.ILSVRC12.MobileNetV3 import MobileNetV3
+-from systems.ILSVRC12.ResNet import ResNet
+-from systems.DVS128.dvs_cnn import DVSHybridNet, get_input_shape as get_in_shape_dvsnet
+-
+-# import the quantization functions for the networks
+-from systems.CIFAR10.VGG.quantize import pact_recipe as quantize_vgg, get_pact_controllers as controllers_vgg
+ from systems.CIFAR10.ResNet.quantize import pact_recipe as quantize_resnet_cifar, get_pact_controllers as controllers_resnet_cifar
+-from systems.ILSVRC12.MobileNetV1.quantize import pact_recipe as quantize_mnv1, get_pact_controllers as controllers_mnv1
+-from systems.ILSVRC12.MobileNetV2.quantize import pact_recipe as quantize_mnv2, get_pact_controllers as controllers_mnv2
+-from systems.ILSVRC12.MobileNetV3.quantize import pact_recipe as quantize_mnv3, get_pact_controllers as controllers_mnv3
+-from systems.ILSVRC12.ResNet.quantize import pact_recipe as quantize_resnet, get_pact_controllers as controllers_resnet
+-from systems.DVS128.dvs_cnn.quantize import pact_recipe as quantize_dvsnet, get_pact_controllers as controllers_dvsnet
+-from systems.MNIST.simpleCNN import simpleCNN
+-from systems.MNIST.simpleCNN.quantize import pact_recipe as quantize_simpleCNN, get_pact_controllers as controllers_simpleCNN
++
++def _optional_import(fn):
++    try:
++        return fn()
++    except ImportError:
++        return None
++
++VGG = _optional_import(lambda: __import__('systems.CIFAR10.VGG', fromlist=['VGG']).VGG)
++MobileNetV1 = _optional_import(lambda: __import__('systems.ILSVRC12.MobileNetV1', fromlist=['MobileNetV1']).MobileNetV1)
++MobileNetV2 = _optional_import(lambda: __import__('systems.ILSVRC12.MobileNetV2', fromlist=['MobileNetV2']).MobileNetV2)
++MobileNetV3 = _optional_import(lambda: __import__('systems.ILSVRC12.MobileNetV3', fromlist=['MobileNetV3']).MobileNetV3)
++ResNet = _optional_import(lambda: __import__('systems.ILSVRC12.ResNet', fromlist=['ResNet']).ResNet)
++_dvs_net_mod = _optional_import(lambda: __import__('systems.DVS128.dvs_cnn', fromlist=['DVSHybridNet', 'get_input_shape']))
++DVSHybridNet = _dvs_net_mod.DVSHybridNet if _dvs_net_mod else None
++get_in_shape_dvsnet = _dvs_net_mod.get_input_shape if _dvs_net_mod else None
++simpleCNN = _optional_import(lambda: __import__('systems.MNIST.simpleCNN', fromlist=['simpleCNN']).simpleCNN)
++
++# import the quantization functions for the networks (same best-effort policy)
++def _optional_quantize_import(module_path):
++    mod = _optional_import(lambda: __import__(module_path, fromlist=['pact_recipe', 'get_pact_controllers']))
++    if mod is None:
++        return None, None
++    return mod.pact_recipe, mod.get_pact_controllers
++
++quantize_vgg, controllers_vgg = _optional_quantize_import('systems.CIFAR10.VGG.quantize')
++quantize_mnv1, controllers_mnv1 = _optional_quantize_import('systems.ILSVRC12.MobileNetV1.quantize')
++quantize_mnv2, controllers_mnv2 = _optional_quantize_import('systems.ILSVRC12.MobileNetV2.quantize')
++quantize_mnv3, controllers_mnv3 = _optional_quantize_import('systems.ILSVRC12.MobileNetV3.quantize')
++quantize_resnet, controllers_resnet = _optional_quantize_import('systems.ILSVRC12.ResNet.quantize')
++quantize_dvsnet, controllers_dvsnet = _optional_quantize_import('systems.DVS128.dvs_cnn.quantize')
++quantize_simpleCNN, controllers_simpleCNN = _optional_quantize_import('systems.MNIST.simpleCNN.quantize')
+ 
+ # import the DORY backend
+-from quantlib.backends.dory import export_net, export_dvsnet, DORYHarmonizePass
++from quantlib.backends.dory import export_net
++try:
++    from quantlib.backends.dory import export_dvsnet
++except ImportError:
++    export_dvsnet = None
++try:
++    from quantlib.backends.dory import DORYHarmonizePass
++except ImportError:
++    DORYHarmonizePass = None  # not available in this quantlib checkout; use --no_dory_harmonize
+ # import the PACT/TQT integerization pass
+ from quantlib.editing.fx.passes.pact import IntegerizePACTNetPass
+ from quantlib.editing.fx.util import module_of_node
+diff --git a/quantlib b/quantlib
+index ba13b49..bff5351 160000
+--- a/quantlib
++++ b/quantlib
+@@ -1 +1 @@
+-Subproject commit ba13b4957bd23c54d94b5aae78457b78341e76bf
++Subproject commit bff5351f937c7dfd88e1ae44a146a257beca0585-dirty
+diff --git a/systems/CIFAR10/ResNet/__init__.py b/systems/CIFAR10/ResNet/__init__.py
+index 6becbdc..3158a75 100644
+--- a/systems/CIFAR10/ResNet/__init__.py
++++ b/systems/CIFAR10/ResNet/__init__.py
+@@ -24,5 +24,8 @@ from .resnet import ResNet
+ from .postprocess import *
+ from .quantize import *
+ 
+-from quantlib.algorithms.bb import BBSGD, BBCrossEntropyLoss
++try:
++    from quantlib.algorithms.bb import BBSGD, BBCrossEntropyLoss
++except ImportError:
++    pass  # BB (Bayesian Bits) training not available/used in this quantlib checkout
+ 
+diff --git a/systems/CIFAR10/ResNet/resnet.py b/systems/CIFAR10/ResNet/resnet.py
+index 2748ebc..82cc41b 100644
+--- a/systems/CIFAR10/ResNet/resnet.py
++++ b/systems/CIFAR10/ResNet/resnet.py
+@@ -204,6 +204,16 @@ _CONFIGS = {
+                                  ( 1, 32, 2),
+                                  ( 1, 64, 2)],
+                   'maxpool': False},
++    'ResNet8Small': {'block_class': BasicBlock,
++                  'block_cfgs': [( 1,  16, 1),
++                                 ( 1, 16, 2),
++                                 ( 1, 32, 2)],
++                  'maxpool': False},
++    'ResNet8Tiny': {'block_class': BasicBlock,
++                  'block_cfgs': [( 1,  4, 1),
++                                 ( 1, 4, 2),
++                                 ( 1, 8, 2)],
++                  'maxpool': False},
+     'ResNet0': {'block_class': NonResidualBlock,
+                   'block_cfgs': [( 1, 16, 2),
+                                  ( 1, 16, 2),
