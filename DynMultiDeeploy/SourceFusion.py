@@ -2,15 +2,20 @@ from typing import Dict, List, Tuple
 from pathlib import Path
 import re
 
-from DynMultiDeeploy.HeaderFusion import strip_core_suffix
+from DynMultiDeeploy.HeaderFusion import strip_variant_core_suffix
 
 # -----------------------------------------------------------------------------------------#
 #                         Functions for fusing multiple Network.c                          #
 # -----------------------------------------------------------------------------------------#
 
 GLOBALS_FROM_MARKER = "// ===== GLOBALS from"
-CORES_MAP_START = "// ===== CORES MAP START ====="
-FUSED_FUNCTIONS_MARKER = "// ===== FUSED FUNCTIONS: Scheduling Round 0 ====="
+# MultiDeeploy's independent-execution redesign no longer emits a "CORES MAP"
+# section (each config's combined closure bakes its own core-range boundaries in
+# as literal constants -- see MultiDeeploy/CodeFusion/SourceFusion.py's module
+# docstring), so the globals section now runs up to the SUBGROUP BARRIERS section
+# instead.
+SUBGROUP_BARRIERS_START = "// ===== SUBGROUP BARRIERS START ====="
+FUSED_FUNCTIONS_MARKER = "// ===== FUSED FUNCTIONS ====="
 RUN_NETWORK_MARKER = "void RunNetwork() {"
 INIT_NETWORK_MARKER = "void InitNetwork() {"
 
@@ -24,18 +29,6 @@ INITNETWORKS_START = "// ===== INITNETWORKS START ====="
 INITNETWORKS_END = "// ===== INITNETWORKS END ====="
 
 PI_L2_NAME_RE = re.compile(r"static\s+PI_L2\s+\S+\s+(\w+)")
-TILE_TIMINGS_RE = re.compile(r"round_\d+_tiles_timings")
-
-
-def strip_tile_timings(text: str) -> str:
-    """
-    Removes every line referencing a round_<x>_tiles_timings array.
-    These arrays are declared in each per-configuration Network.c's TIMINGS section,
-    which fuse_network_c does not carry over, so any leftover reference to them
-    (e.g. from the tiling closures in the FUNCTIONS section) would be a dangling
-    reference to an undeclared variable.
-    """
-    return "\n".join(line for line in text.splitlines() if not TILE_TIMINGS_RE.search(line)) + "\n"
 
 
 def split_statements(text: str) -> List[str]:
@@ -71,16 +64,20 @@ def split_statements(text: str) -> List[str]:
     return statements
 
 
-def fuse_globals(files: List[Path], model_names: List[str]) -> Tuple[str, Dict[str, str]]:
+def fuse_globals(files: List[Path], variant_tags: List[str]) -> Tuple[str, Dict[str, str]]:
     """
     Fuses the GLOBALS section of multiple Network.c files.
     Args:
         files: List of paths to Network.c files whose GLOBALS section should be fused.
-        model_names: Model names, used to detect that PI_L2 (weight) variables that only
-            differ by their core-count suffix (e.g. miniMNV2_2_x vs miniMNV2_4_x) are the
-            same variable, and must only be emitted once. MEMORYARENA/input/output/PI_L1
-            variables are core-split specific (their size can differ per configuration) and
-            are always kept as-is, with their suffix untouched.
+        variant_tags: Per-(task, variant) tags (e.g. "AnomalyDetection_light",
+            "AnomalyDetection_heavy"), used to detect that PI_L2 (weight) variables
+            that only differ by their core-count suffix (e.g.
+            AnomalyDetection_light_4_x vs AnomalyDetection_light_2_x) belong to the
+            SAME variant and must only be emitted once, while variables belonging to a
+            DIFFERENT variant of the same task (e.g. AnomalyDetection_heavy_*) are
+            never merged with it. MEMORYARENA/input/output/PI_L1 variables are
+            core-split specific (their size can differ per configuration) and are
+            always kept as-is, with their suffix untouched.
     Returns:
         A tuple (globals_text, l2_rename_map):
           - globals_text: the fused GLOBALS content as a single string.
@@ -95,7 +92,7 @@ def fuse_globals(files: List[Path], model_names: List[str]) -> Tuple[str, Dict[s
 
     for path in files:
         text = path.read_text()
-        globals_text = text[text.index(GLOBALS_FROM_MARKER):text.index(CORES_MAP_START)]
+        globals_text = text[text.index(GLOBALS_FROM_MARKER):text.index(SUBGROUP_BARRIERS_START)]
 
         for statement in split_statements(globals_text):
             stripped = statement.strip()
@@ -105,7 +102,7 @@ def fuse_globals(files: List[Path], model_names: List[str]) -> Tuple[str, Dict[s
 
             if stripped.startswith("static PI_L2"):
                 name = PI_L2_NAME_RE.match(stripped).group(1)
-                canonical_name = strip_core_suffix(name, model_names)
+                canonical_name = strip_variant_core_suffix(name, variant_tags)
                 l2_rename_map[name] = canonical_name
 
                 if canonical_name in seen_l2_vars:
@@ -143,6 +140,33 @@ def rename_function(text: str, old_name: str, new_name: str) -> str:
     return re.sub(rf"\b{re.escape(old_name)}\b", new_name, text)
 
 
+COMBINED_CLOSURE_RE = re.compile(r"\b(Combined_closure)_(\d+_\d+)(_args_t)?\b")
+
+
+def disambiguate_round_closures(text: str, v1: str, v2: str) -> str:
+    """
+    Inserts the (v1, v2) variant infix into the config's combined closure name and
+    its _args_t struct (e.g. Combined_closure_4_4 -> Combined_closure_s_s_4_4,
+    Combined_closure_4_4_args_t -> Combined_closure_s_s_4_4_args_t).
+    MultiDeeploy.CodeFusion.SourceFusion names these purely from the (cores_0,
+    cores_1) split, with no model or variant information, so two configs that
+    happen to share a core split (e.g. LE and CC both at 4/4, despite running
+    different variants) would otherwise emit two C functions/structs with the
+    exact same name once fused into one file. The optional "_args_t" suffix must
+    be matched as part of the same pattern rather than relying on a trailing \b: a
+    digit is immediately followed by "_", and both are word characters, so \b
+    never falls between them -- a separate \b-anchored pass would silently skip
+    every "_args_t" struct name. Must be applied per-config, before
+    concatenating configs together, since the closure names it targets always carry
+    that config's own core split already.
+    """
+    def _replace(m: "re.Match[str]") -> str:
+        prefix, cores, args_t_suffix = m.group(1), m.group(2), m.group(3) or ""
+        return f"{prefix}_{v1}_{v2}_{cores}{args_t_suffix}"
+
+    return COMBINED_CLOSURE_RE.sub(_replace, text)
+
+
 def insert_section(text: str, start_marker: str, end_marker: str, content: str) -> str:
     """Replaces the (possibly empty) content between start_marker and end_marker, both kept, with content."""
     pattern = re.compile(re.escape(start_marker) + r".*?" + re.escape(end_marker), re.DOTALL)
@@ -154,7 +178,8 @@ def fuse_network_c(
     template_path: Path,
     files: List[Path],
     core_splits: List[Tuple[int, int]],
-    model_names: List[str]
+    variant_names: List[Tuple[str, str]],
+    variant_tags: List[str]
 ) -> str:
     """
     Fuses the GLOBALS, FUNCTIONS, RUNNETWORKS and INITNETWORKS sections of multiple
@@ -162,29 +187,37 @@ def fuse_network_c(
     Args:
         template_path: Path to the Network.c template (DynMultiDeeploy/Templates/Network.c).
         files: List of paths to Network.c files to be fused, one per hardware configuration.
-        core_splits: One (cores_model_0, cores_model_1) tuple per file, in the same order as
-            `files`, used to build the RunNetwork/InitNetwork suffix (e.g. "_2_6").
-        model_names: Model names, used to dedupe the GLOBALS PI_L2 (weight) variables that
-            only differ by their core-count suffix.
+        core_splits: One (cores_task_0, cores_task_1) tuple per file, in the same order as
+            `files`, used to build part of the RunNetworks/InitNetworks suffix (e.g. "_2_6").
+        variant_names: One (variant_task_0, variant_task_1) tuple per file, in the same
+            order as `files`, e.g. ("light", "l") -- the per-task variant label used to
+            build the required `RunNetworks_v1_v2_n1_n2` / `InitNetworks_v1_v2_n1_n2`
+            naming (e.g. "RunNetworks_s_s_4_4"), so that configs sharing the same core
+            split but different variants (e.g. LE and CC both at 4/4) get distinct
+            entry points.
+        variant_tags: Per-(task, variant) tags (e.g. "AnomalyDetection_light",
+            "AnomalyDetection_heavy"), used to dedupe the GLOBALS PI_L2 (weight)
+            variables that only differ by their core-count suffix, without conflating
+            different variants of the same task.
     Returns:
         The template filled with the fused GLOBALS, FUNCTIONS, RUNNETWORKS and
         INITNETWORKS sections. Only the deduped PI_L2 (weight) variables are renamed to
         their canonical, suffix-stripped name; MEMORYARENA/input/output/PI_L1 variables,
         which are core-split specific, keep their original per-configuration name.
-        Tile-timing instrumentation (round_<x>_tiles_timings) is stripped out, since its
-        TIMINGS section declarations are not carried over by this fusion.
     """
     assert len(files) == len(core_splits), "One core split per Network.c file is required."
+    assert len(files) == len(variant_names), "One variant pair per Network.c file is required."
 
     functions_parts: List[str] = []
     run_networks_parts: List[str] = []
     init_networks_parts: List[str] = []
 
-    for path, (g0, g1) in zip(files, core_splits):
+    for path, (g0, g1), (v1, v2) in zip(files, core_splits, variant_names):
         text = path.read_text()
+        text = disambiguate_round_closures(text, v1, v2)
         functions, run_network, init_network = split_Network_c(text)
 
-        suffix = f"_{g0}_{g1}"
+        suffix = f"_{v1}_{v2}_{g0}_{g1}"
         run_network = rename_function(run_network, "RunNetwork", f"RunNetworks{suffix}")
         init_network = rename_function(init_network, "InitNetwork", f"InitNetworks{suffix}")
 
@@ -192,7 +225,7 @@ def fuse_network_c(
         run_networks_parts.append(run_network)
         init_networks_parts.append(init_network)
 
-    globals_text, l2_rename_map = fuse_globals(files, model_names)
+    globals_text, l2_rename_map = fuse_globals(files, variant_tags)
 
     template = template_path.read_text()
     template = insert_section(template, GLOBALS_START, GLOBALS_END, globals_text)
@@ -204,4 +237,4 @@ def fuse_network_c(
         if name != canonical_name:
             template = rename_function(template, name, canonical_name)
 
-    return strip_tile_timings(template)
+    return template

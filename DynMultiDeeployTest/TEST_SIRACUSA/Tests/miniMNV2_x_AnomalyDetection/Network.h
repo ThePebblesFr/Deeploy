@@ -11,12 +11,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void RunNetworks_2_6();
-void RunNetworks_4_4();
-void RunNetworks_6_2();
-void InitNetworks_2_6();
-void InitNetworks_4_4();
-void InitNetworks_6_2();
+void RunNetworks_a_a_2_6();
+void RunNetworks_a_a_4_4();
+void RunNetworks_a_a_6_2();
+void RunNetworks_b_b_4_4();
+void InitNetworks_a_a_2_6();
+void InitNetworks_a_a_4_4();
+void InitNetworks_a_a_6_2();
+void InitNetworks_b_b_4_4();
 
 
 
@@ -119,4 +121,38 @@ extern void *AnomalyDetection_2_inputs[1];
 extern void *AnomalyDetection_2_outputs[1];
 static const uint32_t AnomalyDetection_2_inputs_bytes[1] = {640};
 static const uint32_t AnomalyDetection_2_outputs_bytes[1] = {640};
+
+
+
+
+extern int8_t *miniMNV2_4cc_MEMORYARENA_L1; // L2_init_template
+static const uint32_t miniMNV2_4cc_MEMORYARENA_L1_len = 7712;
+extern int8_t *miniMNV2_4cc_MEMORYARENA_L2; // L2_init_template
+static const uint32_t miniMNV2_4cc_MEMORYARENA_L2_len = 4096;
+extern uint8_t *miniMNV2_4cc_input_0; // L2_init_template
+static const uint32_t miniMNV2_4cc_input_0_len = 768;
+extern int8_t *miniMNV2_4cc_output_0; // L2_init_template
+static const uint32_t miniMNV2_4cc_output_0_len = 10;
+static const uint32_t miniMNV2_4cc_num_inputs = 1;
+static const uint32_t miniMNV2_4cc_num_outputs = 1;
+extern void *miniMNV2_4cc_inputs[1];
+extern void *miniMNV2_4cc_outputs[1];
+static const uint32_t miniMNV2_4cc_inputs_bytes[1] = {768};
+static const uint32_t miniMNV2_4cc_outputs_bytes[1] = {10};
+
+
+extern int8_t *AnomalyDetection_4cc_MEMORYARENA_L1; // L2_init_template
+static const uint32_t AnomalyDetection_4cc_MEMORYARENA_L1_len = 31792;
+extern int8_t *AnomalyDetection_4cc_MEMORYARENA_L2; // L2_init_template
+static const uint32_t AnomalyDetection_4cc_MEMORYARENA_L2_len = 768;
+extern uint8_t *AnomalyDetection_4cc_input_0; // L2_init_template
+static const uint32_t AnomalyDetection_4cc_input_0_len = 640;
+extern int8_t *AnomalyDetection_4cc_output_0; // L2_init_template
+static const uint32_t AnomalyDetection_4cc_output_0_len = 640;
+static const uint32_t AnomalyDetection_4cc_num_inputs = 1;
+static const uint32_t AnomalyDetection_4cc_num_outputs = 1;
+extern void *AnomalyDetection_4cc_inputs[1];
+extern void *AnomalyDetection_4cc_outputs[1];
+static const uint32_t AnomalyDetection_4cc_inputs_bytes[1] = {640};
+static const uint32_t AnomalyDetection_4cc_outputs_bytes[1] = {640};
 #endif

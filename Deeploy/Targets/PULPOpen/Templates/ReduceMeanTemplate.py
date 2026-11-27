@@ -59,12 +59,14 @@ ${data_out}_accumulator = ${input_offset}*${reduceLength};
 % for i in list(axes):
 for(uint32_t i_${i} = 0; i_${i}<${data_in_shape[i]}; i_${i}++){
 % endfor
-${data_out}_accumulator += ((${data_in_type.typeName} ${shapeStr})${data_in})${accessStr};
+${data_out}_accumulator += ((${data_in_type.referencedType.typeName} (*)${shapeStr})${data_in})${accessStr};
 
 % for i in range(len(axes)):
 }
 % endfor
 % if keepdims:
+int8_t ${data_out}_sgn = 0;
+${data_out}_sgn = -(${data_out}_accumulator<0) + (${data_out}_accumulator >= 0);
 *dummy_${data_out}++ = (${data_out_type.referencedType.typeName}) ((${data_out}_accumulator + ${data_out}_sgn*(${reduceLength}>>1)) / ${reduceLength} + ${output_offset});
 % else:
 <%

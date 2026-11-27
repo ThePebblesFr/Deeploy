@@ -1,0 +1,556 @@
+{
+    "name": "VisualWakeWords_small_2",
+    "nb_dedicated_cores": 2,
+    "L1_dedicated_size": 16000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_input_0_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 1280,
+            "kernel_exec": 14203,
+            "output_DMA": 1354
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_input_0_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 1158,
+            "kernel_exec": 13796,
+            "output_DMA": 1209
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_input_0_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 1134,
+            "kernel_exec": 13791,
+            "output_DMA": 1206
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_input_0_transpose_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 774,
+            "kernel_exec": 8031,
+            "output_DMA": 728
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 2038,
+            "kernel_exec": 200781,
+            "output_DMA": 2460
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1915,
+            "kernel_exec": 192289,
+            "output_DMA": 2360
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 346,
+            "kernel_exec": 25975,
+            "output_DMA": 491
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1872,
+            "kernel_exec": 198417,
+            "output_DMA": 2340
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 4,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1833,
+            "kernel_exec": 191658,
+            "output_DMA": 2300
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 5,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 326,
+            "kernel_exec": 25561,
+            "output_DMA": 449
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 6,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1834,
+            "kernel_exec": 198323,
+            "output_DMA": 2302
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 7,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1815,
+            "kernel_exec": 191436,
+            "output_DMA": 2300
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 8,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 326,
+            "kernel_exec": 25452,
+            "output_DMA": 469
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 9,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1853,
+            "kernel_exec": 198009,
+            "output_DMA": 2322
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 10,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 1835,
+            "kernel_exec": 191482,
+            "output_DMA": 2300
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0_L2",
+            "tile": 11,
+            "double_buffering": false,
+            "ops": 504576,
+            "input_DMA": 326,
+            "kernel_exec": 25603,
+            "output_DMA": 469
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 2459,
+            "kernel_exec": 11522,
+            "output_DMA": 1012
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_0__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_0Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 2476,
+            "kernel_exec": 3958,
+            "output_DMA": 396
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 172800,
+            "input_DMA": 1270,
+            "kernel_exec": 286664,
+            "output_DMA": 1142
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_1_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 172800,
+            "input_DMA": 451,
+            "kernel_exec": 76700,
+            "output_DMA": 410
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 154368,
+            "input_DMA": 909,
+            "kernel_exec": 309309,
+            "output_DMA": 1568
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_2_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 154368,
+            "input_DMA": 721,
+            "kernel_exec": 240190,
+            "output_DMA": 1140
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_2__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 2482,
+            "kernel_exec": 15295,
+            "output_DMA": 994
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_2__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 2478,
+            "kernel_exec": 14727,
+            "output_DMA": 984
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_2__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_2Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 2438,
+            "kernel_exec": 7505,
+            "output_DMA": 702
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 84672,
+            "input_DMA": 1859,
+            "kernel_exec": 137407,
+            "output_DMA": 562
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_3_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 84672,
+            "input_DMA": 556,
+            "kernel_exec": 25840,
+            "output_DMA": 205
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_3_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 84672,
+            "input_DMA": 1066,
+            "kernel_exec": 67700,
+            "output_DMA": 275
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_3_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "ops": 84672,
+            "input_DMA": 240,
+            "kernel_exec": 12934,
+            "output_DMA": 96
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 149184,
+            "input_DMA": 744,
+            "kernel_exec": 228924,
+            "output_DMA": 1319
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 1552,
+            "kernel_exec": 14729,
+            "output_DMA": 1805
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 617,
+            "kernel_exec": 1918,
+            "output_DMA": 198
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 131,
+            "kernel_exec": 843,
+            "output_DMA": 187
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 92,
+            "kernel_exec": 235,
+            "output_DMA": 91
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 4,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 230,
+            "kernel_exec": 2070,
+            "output_DMA": 764
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 5,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 223,
+            "kernel_exec": 386,
+            "output_DMA": 118
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 6,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 66,
+            "kernel_exec": 310,
+            "output_DMA": 169
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_4__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_4Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 7,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 66,
+            "kernel_exec": 169,
+            "output_DMA": 72
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_5_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 167616,
+            "input_DMA": 1035,
+            "kernel_exec": 279086,
+            "output_DMA": 1915
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_5_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 167616,
+            "input_DMA": 408,
+            "kernel_exec": 93470,
+            "output_DMA": 1273
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 296640,
+            "input_DMA": 1194,
+            "kernel_exec": 212991,
+            "output_DMA": 1208
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 296640,
+            "input_DMA": 385,
+            "kernel_exec": 44704,
+            "output_DMA": 297
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 1555,
+            "kernel_exec": 14677,
+            "output_DMA": 1810
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 598,
+            "kernel_exec": 1911,
+            "output_DMA": 187
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 2,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 127,
+            "kernel_exec": 837,
+            "output_DMA": 191
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 3,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 96,
+            "kernel_exec": 233,
+            "output_DMA": 90
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 4,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 233,
+            "kernel_exec": 2067,
+            "output_DMA": 767
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 5,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 224,
+            "kernel_exec": 388,
+            "output_DMA": 120
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 6,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 81,
+            "kernel_exec": 304,
+            "output_DMA": 177
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_6__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_6Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 7,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 70,
+            "kernel_exec": 164,
+            "output_DMA": 66
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_7_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 41904,
+            "input_DMA": 1324,
+            "kernel_exec": 122232,
+            "output_DMA": 406
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_8_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 147888,
+            "input_DMA": 517,
+            "kernel_exec": 113551,
+            "output_DMA": 684
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_8__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_8Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 732,
+            "kernel_exec": 8481,
+            "output_DMA": 711
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_9_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 83376,
+            "input_DMA": 737,
+            "kernel_exec": 199771,
+            "output_DMA": 706
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_10_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 295344,
+            "input_DMA": 828,
+            "kernel_exec": 138861,
+            "output_DMA": 705
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_10__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_10Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 707,
+            "kernel_exec": 8463,
+            "output_DMA": 705
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_11_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 83376,
+            "input_DMA": 776,
+            "kernel_exec": 199575,
+            "output_DMA": 727
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_12_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 295344,
+            "input_DMA": 848,
+            "kernel_exec": 138594,
+            "output_DMA": 705
+        },
+        {
+            "layer_name": "_MERGE_CONVRQ_PASS_12__QL_REPLACED__INTEGERIZE_BN2D_UNSIGNED_ACT_PASS_12Clip_output_0_tensor_pre_transpose_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 708,
+            "kernel_exec": 8482,
+            "output_DMA": 704
+        },
+        {
+            "layer_name": "poolGlobalAveragePool_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 0,
+            "input_DMA": 746,
+            "kernel_exec": 12066,
+            "output_DMA": 125
+        },
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 230,
+            "input_DMA": 271,
+            "kernel_exec": 1161,
+            "output_DMA": 178
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+  "_comment": "One entry per operating mode: LOW_ENERGY, CRITICAL_TASK1, CRITICAL_TASK2, BOTH_CRITICAL. variant0/cores0/l1_0/v0 = ImageClassification; variant1/cores1/l1_1/v1 = AnomalyDetection.",
+  "configs": [
+    {
+      "_mode": "LOW_ENERGY",
+      "variant0": "ImageClassification_small",
+      "variant1": "AnomalyDetection_small",
+      "cores0": 4,
+      "cores1": 4,
+      "l1_0": 32000,
+      "l1_1": 32000,
+      "v0": "s",
+      "v1": "s"
+    },
+    {
+      "_mode": "CRITICAL_TASK1",
+      "variant0": "ImageClassification_small",
+      "variant1": "AnomalyDetection_heavy",
+      "cores0": 2,
+      "cores1": 6,
+      "l1_0": 16000,
+      "l1_1": 48000,
+      "v0": "s",
+      "v1": "l"
+    },
+    {
+      "_mode": "CRITICAL_TASK2",
+      "variant0": "ImageClassification_heavy",
+      "variant1": "AnomalyDetection_small",
+      "cores0": 6,
+      "cores1": 2,
+      "l1_0": 48000,
+      "l1_1": 16000,
+      "v0": "l",
+      "v1": "s"
+    },
+    {
+      "_mode": "BOTH_CRITICAL",
+      "variant0": "ImageClassification_heavy",
+      "variant1": "AnomalyDetection_heavy",
+      "cores0": 4,
+      "cores1": 4,
+      "l1_0": 32000,
+      "l1_1": 32000,
+      "v0": "l",
+      "v1": "l"
+    }
+  ]
+}

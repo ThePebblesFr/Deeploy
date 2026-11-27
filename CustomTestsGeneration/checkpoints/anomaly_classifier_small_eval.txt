@@ -1,0 +1,2 @@
+clip_accuracy: 0.9756
+frame_accuracy: 0.8387

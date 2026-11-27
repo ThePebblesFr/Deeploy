@@ -62,3 +62,7 @@ DynMultiDeeployDeeployTest/out.txt
 DynMultiDeeployTest/TEST_SIRACUSA/build_dyn/
 
 CHANGELOG_GEN.md
+quantlab_storage/
+CustomTestsGeneration/data/
+DynMultiDeeployTest/TEST_SIRACUSA/build_*/
+DynMultiDeeployTest/out.txt

@@ -1,7 +1,7 @@
 import re
 from typing import List, Tuple, Dict
 from MultiDeeploy.LayerProfile import LayerProfile
-from MultiDeeploy.utils import normalize_layer_name, parse_closure_body_sections, split_closure_call_body, split_tiling_call_body, split_typedef_struct, split_function_call, split_closure_L3_call_body, split_compound_literal, split_struct_and_function
+from MultiDeeploy.utils import normalize_layer_name, parse_closure_body_sections, parse_closure_body_sections_db, is_double_buffered_closure, lookup_num_tiles, split_closure_call_body, split_tiling_call_body, split_typedef_struct, split_function_call, split_closure_L3_call_body, split_compound_literal, split_struct_and_function
 
 class GlobalsDefinition():
 
@@ -43,6 +43,23 @@ class LayerFunctionDefinition:
         self.closure_L3_body = []
         self.cluster_fork_body = []
         self.closure_body = []
+        # "SB" (single-buffered) or "DB" (double-buffered, Deeploy's
+        # `--doublebuffer` tiling) -- detected per-layer in parse_closure()
+        # from the closure body's own shape, not passed in externally, since
+        # a fused pair can in principle mix models generated with different
+        # buffering flags. Determines which of the two structurally different
+        # dicts closure_body[1] holds, and which _layer_body_statement*
+        # re-emission function the fusion templates must use for this layer.
+        self.buffering_mode = "SB"
+        # Literal tile count for this layer, resolved (DB layers only) from
+        # its `..._numTiles[]` array declaration in the GLOBALS section --
+        # None for SB layers (never needed) or if resolution fails. A DB
+        # layer with num_tiles == 1 gets zero benefit from double buffering
+        # (there is no "next tile" to overlap with) and is where a real,
+        # confirmed-via-GVSoC-tracing repeated-invocation hang occurs in the
+        # deferred post-loop output-DMA flush -- see combined_closure_
+        # function_definition_statement's dispatch logic.
+        self.num_tiles = None
 
     @staticmethod
     def _split_block(block: str) -> list[list[str]]:
@@ -68,6 +85,26 @@ class LayerFunctionDefinition:
         self.closure        = self._split_block(closure)
         self.closure_L3     = self._split_block(closure_L3)
 
+    def parse_blocks_by_role(self, roles: Dict[str, Tuple[str, str]]) -> None:
+        """
+        Like parse_blocks, but tolerant of a layer contributing fewer than the
+        canonical 4 (struct, call) blocks -- e.g. GlobalAveragePool/ReduceMean
+        emits no "cluster_fork" stage at all, unlike every tiled Conv/Gemm
+        layer. `roles` maps role name ("tiling_closure"/"cluster_fork"/
+        "closure"/"closure_L3") to its (struct_text, call_text) pair, for
+        whichever roles this layer actually has (see
+        FunctionsDefinition.parseContent(), which groups blocks by role from
+        the closure function's own name rather than assuming a fixed stride).
+        """
+        if "tiling_closure" in roles:
+            self.tiling_closure = self._split_block("".join(roles["tiling_closure"]))
+        if "cluster_fork" in roles:
+            self.cluster_fork = self._split_block("".join(roles["cluster_fork"]))
+        if "closure" in roles:
+            self.closure = self._split_block("".join(roles["closure"]))
+        if "closure_L3" in roles:
+            self.closure_L3 = self._split_block("".join(roles["closure_L3"]))
+
     def parse_closure_L3(self):
         parts = split_closure_L3_call_body(self.closure_L3[1][1])
 
@@ -88,12 +125,26 @@ class LayerFunctionDefinition:
         self.cluster_fork_body.append([prefix, args, suffix])
         self.cluster_fork_body.append(parts["closure_call"])
 
-    def parse_closure(self):
+    def parse_closure(self, full_file_content: str = ""):
         parts = split_closure_call_body(self.closure[1][1])
+
+        if is_double_buffered_closure(parts["body"]):
+            self.buffering_mode = "DB"
+            sections = parse_closure_body_sections_db(parts["body"])
+            # Resolve the literal tile count from the GLOBALS-section array
+            # declaration (not visible from the closure body text alone) --
+            # needed to detect the degenerate numTiles==1 case, where DB's
+            # deferred output-DMA flush gives no overlap benefit and is where
+            # a real, repeated-invocation hang was confirmed via GVSoC-level
+            # tracing (see FunctionsDefinition_templates.py's dispatch logic).
+            self.num_tiles = lookup_num_tiles(full_file_content, sections["num_tiles_array_name"])
+        else:
+            self.buffering_mode = "SB"
+            sections = parse_closure_body_sections(parts["body"])
 
         self.closure_body = [
             parts["arg_cast"],
-            parse_closure_body_sections(parts["body"]),
+            sections,
         ]
 
     def parse_tiling_closure(self):
@@ -149,17 +200,67 @@ class FunctionsDefinition:
             elif mode == "call":
                 cur_call.append(line)
 
-        for i in range(0, len(blocks), 4):
+        # Group blocks into per-layer runs by the closure function's own base
+        # name (with its "_tiling_closure"/"_cluster_fork"/"_closure_L3"/
+        # "_closure" role suffix stripped), rather than assuming every layer
+        # contributes exactly 4 blocks in a fixed stride. That assumption is
+        # false for at least one real op once real conv-based models (ResNet)
+        # were plugged in: GlobalAveragePool (lowered to ReduceMean) emits no
+        # "cluster_fork" stage at all, only 3 of the 4 canonical roles --
+        # never exercised by the MLP-only models (AnomalyDetection/
+        # TinyClassifier) used everywhere else in this pipeline. Each layer's
+        # own blocks are always contiguous (its 4 sub-closures, or however
+        # many it has, are emitted back-to-back before the next layer's), so
+        # a simple "base name changed -> new group" scan is sufficient --
+        # no need to know the exact role count up front.
+        ROLE_SUFFIXES = ["_closure_L3", "_cluster_fork", "_tiling_closure", "_closure"]
+
+        def base_and_role(name: str):
+            for suffix in ROLE_SUFFIXES:
+                if name.endswith(suffix):
+                    return name[: -len(suffix)], suffix[1:]
+            return name, None
+
+        RE_CLOSURE_FUNC_NAME = re.compile(r"static void\s+([A-Za-z_]\w*)\s*\(", re.DOTALL)
+
+        runs: List[Tuple[str, Dict[str, Tuple[str, str]]]] = []
+        cur_base = None
+        cur_roles: Dict[str, Tuple[str, str]] = {}
+        for struct_text, call_text in blocks:
+            match = RE_CLOSURE_FUNC_NAME.search(call_text)
+            if not match:
+                raise RuntimeError(
+                    f"Could not extract a closure function name from block:\n{call_text[:200]}"
+                )
+            name = match.group(1)
+            base, role = base_and_role(name)
+            if role is None:
+                raise RuntimeError(
+                    f"Closure function name {name!r} doesn't end in any known role suffix "
+                    f"({ROLE_SUFFIXES})"
+                )
+            if base != cur_base:
+                if cur_base is not None:
+                    runs.append((cur_base, cur_roles))
+                cur_base = base
+                cur_roles = {}
+            cur_roles[role] = (struct_text, call_text)
+        if cur_base is not None:
+            runs.append((cur_base, cur_roles))
+
+        for base, roles in runs:
             layer = LayerFunctionDefinition()
-            layer.parse_blocks(
-                blocks[i + 0][0] + blocks[i + 0][1],
-                blocks[i + 1][0] + blocks[i + 1][1],
-                blocks[i + 2][0] + blocks[i + 2][1],
-                blocks[i + 3][0] + blocks[i + 3][1],
-            )
-            layer.parse_closure_L3()
-            layer.parse_cluster_fork()
-            layer.parse_closure()
+            layer.parse_blocks_by_role(roles)
+            if "closure_L3" in roles:
+                layer.parse_closure_L3()
+            if "cluster_fork" in roles:
+                layer.parse_cluster_fork()
+            if "closure" not in roles or "tiling_closure" not in roles:
+                raise RuntimeError(
+                    f"Layer {base!r} is missing its 'closure' or 'tiling_closure' block "
+                    f"(only found: {sorted(roles.keys())}) -- both are required downstream."
+                )
+            layer.parse_closure(self.content)
             layer.parse_tiling_closure()
             self.layers_functions_definition.append(layer)
 
@@ -272,7 +373,19 @@ class RunNetworkFunctionDefinition():
 
     RUN_NETWORK_START_PATTERN = "void RunNetwork("
     INIT_NETWORK_START_PATTERN = "void InitNetwork("
-    RE_ASSIGNMENT = re.compile(r"^\s*[\w_]+\s*=\s*.+")  # Assignment (may span multiple lines)
+    # Assignment (may span multiple lines). The RHS is optional on this first
+    # line: clang-format wraps long assignments (long, deeply-prefixed
+    # identifiers -- e.g. ResNet's "_MERGE_CONVRQ_PASS_N_..." names -- routinely
+    # push the "=" to the end of its own line, with the value starting on the
+    # next line) so requiring a same-line RHS silently failed to recognize the
+    # assignment as a block start at all, dropping the whole statement (buffer
+    # pointer computation, or an args-struct declaration's own "var =" line)
+    # since nothing else in getFunctionCalls() looks back to attach orphaned
+    # continuation lines to the block before them. Once a block DOES start,
+    # every subsequent line is collected unconditionally regardless of shape
+    # (see getFunctionCalls() step 4), so only this first-line check needs to
+    # tolerate the wrap.
+    RE_ASSIGNMENT = re.compile(r"^\s*[\w_]+\s*=\s*.*$")
     RE_CLOSURE_CALL = re.compile(r"^\s*[\w_]+\s*\([^;]*\);\s*$")
     RE_ARGS_STRUCT_START = re.compile(r"^\s*[A-Za-z_]\w*(?:\s+\*+)?\s+[A-Za-z_]\w*\s*=")  # Allows pointers
 

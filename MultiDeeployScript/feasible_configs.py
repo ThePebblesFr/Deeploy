@@ -1,11 +1,33 @@
 #!/usr/bin/env python3
 import argparse
+import json
+import sys
 from pathlib import Path
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from MultiDeeploy.ModelProfile import ModelProfile
 
 
 TOTAL_CORES = 8
 TOTAL_L1_KB = 64
+
+
+def load_total_ops(profiling_json_path: Path) -> int:
+    """
+    theta for one model, read from a Deeploy `*_profiling.json` (as written by
+    DeeployTest/testUtils/testRunner.py with --profileTiling --profileToJSON) --
+    an alternative to hand-computing and passing --ops-a/--ops-b.
+    """
+    with open(profiling_json_path) as f:
+        profile = ModelProfile.from_dict(json.load(f))
+    total_ops = profile.total_ops()
+    if total_ops is None:
+        raise ValueError(
+            f"{profiling_json_path} has no per-layer 'ops' field -- it was generated before "
+            f"testRunner.py started capturing it. Regenerate it, or pass --ops-a/--ops-b directly."
+        )
+    return total_ops
 
 
 def infer_model_name(csv_path: Path, df: pd.DataFrame) -> str:
@@ -223,15 +245,31 @@ def main():
     parser.add_argument("--phi-b", type=float, default=None, help="Max avg power for model B in W")
     parser.add_argument("--phi-total", type=float, default=None, help="Max total avg power in W")
 
-    # Gamma constraint
+    # Gamma constraint -- theta (ops) per model, either given directly or read from
+    # a Deeploy profiling JSON (see load_total_ops()); the JSON form is preferred
+    # since it comes straight from Deeploy's own NetworkDeployer.numberOfOps()
+    # rather than a hand-computed number that can drift from the actual model.
     parser.add_argument("--ops-a", type=int, default=None, help="Operation count for model A")
     parser.add_argument("--ops-b", type=int, default=None, help="Operation count for model B")
+    parser.add_argument("--ops-a-json", type=str, default=None,
+                         help="Path to model A's *_profiling.json; derives --ops-a from it")
+    parser.add_argument("--ops-b-json", type=str, default=None,
+                         help="Path to model B's *_profiling.json; derives --ops-b from it")
     parser.add_argument("--gamma-min", type=float, default=None, help="Min global energy efficiency in OP/J")
 
     parser.add_argument("--max-rows", type=int, default=20, help="Max rows to print")
     parser.add_argument("--save-csv", type=str, default=None, help="Optional output CSV path")
 
     args = parser.parse_args()
+
+    if args.ops_a_json:
+        if args.ops_a is not None:
+            raise ValueError("Pass only one of --ops-a and --ops-a-json")
+        args.ops_a = load_total_ops(Path(args.ops_a_json))
+    if args.ops_b_json:
+        if args.ops_b is not None:
+            raise ValueError("Pass only one of --ops-b and --ops-b-json")
+        args.ops_b = load_total_ops(Path(args.ops_b_json))
 
     model_a, df_a = load_csv(Path(args.csv_a), only_correct=args.only_correct)
     model_b, df_b = load_csv(Path(args.csv_b), only_correct=args.only_correct)

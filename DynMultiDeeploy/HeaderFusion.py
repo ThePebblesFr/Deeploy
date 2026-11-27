@@ -51,23 +51,33 @@ def fuse_variables(files: List[Path]) -> str:
     return "".join(fused_lines)
 
 # -----------------------------------------------------------------------------------------#
-#                    Functions for stripping the core-count suffix of variables             #
+#              Functions for stripping the core-count suffix of variant tags                #
 # -----------------------------------------------------------------------------------------#
 
-CORE_COUNT_SUFFIXES = ("2", "4", "6")
-
-def strip_core_suffix(text: str, model_names: List[str]) -> str:
+def strip_variant_core_suffix(text: str, variant_tags: List[str]) -> str:
     """
-    Removes the core-count suffix (_2, _4 or _6) that follows a model name
-    in every variable occurrence within text.
+    Removes the trailing core-count suffix (an arbitrary integer, e.g. _2, _4, _6, _8)
+    that follows a variant tag in every variable occurrence within text.
+
+    A variant tag identifies one (task, variant) pair, e.g. "AnomalyDetection_light"
+    or "AnomalyDetection_heavy" -- it is the exact per-task model directory name used
+    to generate that config's per-model MultiDeeployTest, before testRunner_2_models.py
+    appends the core count (e.g. "AnomalyDetection_light_4"). Unlike the old
+    core-count-only suffix stripping (CORE_COUNT_SUFFIXES), this is keyed per variant
+    tag rather than per base model name: two configs that reuse the SAME variant at
+    different core counts (e.g. "AnomalyDetection_light_4" and
+    "AnomalyDetection_light_2") canonicalize to the same "AnomalyDetection_light_" tag
+    and therefore dedupe, while two configs using DIFFERENT variants of the same task
+    (e.g. "AnomalyDetection_light_4" and "AnomalyDetection_heavy_4") keep their own
+    distinct tags and are never conflated.
     Args:
         text: The source text (e.g. a fused Network.h/Network.c) to rewrite.
-        model_names: Model names whose core-count suffix should be stripped.
+        variant_tags: Per-(task, variant) tags whose core-count suffix should be stripped.
     Returns:
-        The text with all `<model_name>_<2|4|6>_` occurrences replaced by `<model_name>_`.
+        The text with all `<variant_tag>_<cores>_` occurrences replaced by `<variant_tag>_`.
     """
-    for model_name in model_names:
-        pattern = re.compile(rf"\b{re.escape(model_name)}_(?:{'|'.join(CORE_COUNT_SUFFIXES)})_")
-        text = pattern.sub(f"{model_name}_", text)
+    for tag in variant_tags:
+        pattern = re.compile(rf"\b{re.escape(tag)}_\d+_")
+        text = pattern.sub(f"{tag}_", text)
 
     return text

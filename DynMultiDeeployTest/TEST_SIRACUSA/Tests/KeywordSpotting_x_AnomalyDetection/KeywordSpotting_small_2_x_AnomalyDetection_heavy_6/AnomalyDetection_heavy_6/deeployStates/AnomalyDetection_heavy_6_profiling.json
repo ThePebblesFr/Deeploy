@@ -1,0 +1,61 @@
+{
+    "name": "AnomalyDetection_heavy_6",
+    "nb_dedicated_cores": 6,
+    "L1_dedicated_size": 48000,
+    "layers": [
+        {
+            "layer_name": "RequantizedGemm_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 166144,
+            "input_DMA": 5454,
+            "kernel_exec": 13421,
+            "output_DMA": 202
+        },
+        {
+            "layer_name": "RequantizedGemm_0_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 166144,
+            "input_DMA": 5391,
+            "kernel_exec": 12872,
+            "output_DMA": 139
+        },
+        {
+            "layer_name": "RequantizedGemm_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 33536,
+            "input_DMA": 2351,
+            "kernel_exec": 6973,
+            "output_DMA": 198
+        },
+        {
+            "layer_name": "RequantizedGemm_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 33536,
+            "input_DMA": 2328,
+            "kernel_exec": 6736,
+            "output_DMA": 116
+        },
+        {
+            "layer_name": "RequantizedGemm_3_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 33536,
+            "input_DMA": 2329,
+            "kernel_exec": 6524,
+            "output_DMA": 160
+        },
+        {
+            "layer_name": "RequantizedGemm_4_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 902,
+            "input_DMA": 243,
+            "kernel_exec": 1039,
+            "output_DMA": 198
+        }
+    ]
+}

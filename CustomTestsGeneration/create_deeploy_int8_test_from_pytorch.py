@@ -37,6 +37,7 @@ import argparse
 import importlib.util
 import json
 import math
+import re
 import sys
 from collections import defaultdict
 from copy import deepcopy
@@ -57,6 +58,10 @@ try:
     import quantlib.algorithms as qa
     import quantlib.editing.fx as qfx
     import quantlib.editing.lightweight as qlw
+    from quantlib.algorithms.pact.pact_controllers import PACTLinearController, PACTActController
+    from quantlib.algorithms.pact.pact_ops import (
+        PACTLinear, PACTConv1d, PACTConv2d, PACTUnsignedAct, PACTAsymmetricAct,
+    )
 except ImportError as e:
     raise RuntimeError(
         "QuantLib is required for this script. Install it as in your notebook, e.g. "
@@ -211,8 +216,14 @@ def all_pact_f2f_recipe(network: nn.Module, name2config: Dict[str, Dict]) -> nn.
         "ReLU": qlw.rules.pact.ReplaceActPACTRule,
     }
 
+    # NameFilter treats its argument as a regex and matches via re.match (prefix match,
+    # unanchored at the end), so an unescaped name like "net.1" also matches "net.10"
+    # through "net.18" (and "." means "any char", not a literal dot). Harmless for
+    # <=9-node Sequentials (no two names are ever prefixes of each other) but silently
+    # mismatches/truncates deeper ones -- escape and anchor each name so it can only
+    # match itself exactly.
     rhos = [
-        type2rule[name2type[n]](qlw.rules.NameFilter(n), **name2config[n])
+        type2rule[name2type[n]](qlw.rules.NameFilter(re.escape(n) + "$"), **name2config[n])
         for n in name2config.keys()
     ]
 
@@ -263,6 +274,48 @@ def all_pact_create_configs_int8(network: nn.Module, patches: Optional[Dict[str,
         relu_config[n].update(patches[n] if n in patches else {})
 
     return {**linear_config, **relu_config}
+
+
+def calibrate_pact_clip_bounds(pact_model: nn.Module, calib_inputs: torch.Tensor) -> None:
+    """
+    Actually apply each PACTLinear/PACTConv*/PACTUnsignedAct/PACTAsymmetricAct
+    module's own `init_clip` strategy (e.g. "sawb_asymm", "std") to compute real
+    clip_lo/clip_hi bounds from this model's own weights and activations.
+
+    Without this, PACTLinear's clip_lo/clip_hi stay at the hardcoded -1./+1.
+    default set in setup_quant_params() -- init_clip is a purely declarative
+    config value that a PACTController must actually act on to take effect (see
+    quantlib's own pact_controllers.py: "The PACTController will take care of
+    managing them according to the configuration"). This script never
+    instantiated one, so every model exported through it (regardless of
+    --checkpoint) was quantized against a fixed +-1 weight/activation range --
+    harmless for weights that happen to already live in [-1, 1], but silently
+    catastrophic for models whose real trained weights are much smaller (e.g.
+    AnomalyDetection's classifiers, whose folded first-layer weights are
+    ~1e-3-1e-2 in magnitude: almost the entire 256-level quantization budget
+    was being spent on a range the weights never occupy).
+
+    `calib_inputs` should be a representative batch of REAL (or at least
+    realistic-magnitude) float inputs, in the same units the model's first
+    layer actually sees on device (raw feature space here, since normalization
+    is folded into the weights upstream of this script) -- PACTUnsignedAct/
+    PACTAsymmetricAct accumulate running activation statistics via a plain EMA
+    on every forward() call while `started=False` (see PACTUnsignedAct.forward
+    in quantlib's pact_ops.py), so a single forward pass over this batch is
+    enough to seed them before the controllers' 'start' command reads them.
+    """
+    linear_modules = [m for m in pact_model.modules() if isinstance(m, (PACTLinear, PACTConv1d, PACTConv2d))]
+    act_modules = [m for m in pact_model.modules() if isinstance(m, (PACTUnsignedAct, PACTAsymmetricAct))]
+
+    if act_modules:
+        pact_model.eval()
+        with torch.no_grad():
+            pact_model(calib_inputs)
+
+    if linear_modules:
+        PACTLinearController(linear_modules, schedule={0: "start"}).step_pre_training_epoch(0)
+    if act_modules:
+        PACTActController(act_modules, schedule={0: "start"}).step_pre_training_epoch(0)
 
 
 def compute_symmetric_input_eps(x_float: np.ndarray, n_levels: int = 256) -> float:
@@ -410,6 +463,58 @@ def get_requant_params(tq_model: nn.Module, n_linears: int, final_signed: bool) 
     return out_mult[:n_linears], out_shift[:n_linears], out_signed[:n_linears]
 
 
+def calibrate_missing_final_shifts(
+    x_i8: np.ndarray,
+    weights: List[np.ndarray],
+    biases: List[np.ndarray],
+    out_mult: List[int],
+    out_shift: List[int],
+    out_signed: List[bool],
+    n_measured: int,
+) -> Tuple[List[int], List[int]]:
+    """
+    get_requant_params() only finds a requant module for each activation QuantLib's
+    PACT pass actually inserted (typically one per hidden ReLU); any trailing Linear
+    layer with no following activation (e.g. an autoencoder's reconstruction head, or
+    a classifier head without a final Softmax) has no such module and is padded to an
+    identity (mult=1, shift=0) requant, i.e. the raw int32 accumulator is clipped
+    straight to int8/uint8 with no scaling, which saturates on any non-trivial layer.
+
+    This calibrates a data-driven power-of-two shift for those trailing, unmeasured
+    layers only, from the actual accumulator range on the given calibration input,
+    leaving every QuantLib-measured layer's requant parameters untouched.
+    """
+    out_mult = list(out_mult)
+    out_shift = list(out_shift)
+
+    current = np.asarray(x_i8, dtype=np.int8).reshape(-1)
+    current_signed = True
+    for i in range(n_measured):
+        current = fc_int(
+            current, weights[i], biases[i], out_mult[i], out_shift[i],
+            input_signed=current_signed, output_signed=out_signed[i],
+        )
+        current_signed = out_signed[i]
+
+    for i in range(n_measured, len(weights)):
+        w_i64 = weights[i].astype(np.int64)
+        b_i64 = biases[i].astype(np.int64)
+        x_i64 = current.astype(np.int64)
+        phi = b_i64 + w_i64 @ x_i64
+        max_abs = int(np.max(np.abs(phi))) if phi.size else 0
+        shift = max(0, math.ceil(math.log2(max_abs / 127))) if max_abs > 127 else 0
+
+        out_mult[i] = 1
+        out_shift[i] = shift
+        current = fc_int(
+            current, weights[i], biases[i], 1, shift,
+            input_signed=current_signed, output_signed=out_signed[i],
+        )
+        current_signed = out_signed[i]
+
+    return out_mult, out_shift
+
+
 def integer_forward(
     x_i8: np.ndarray,
     weights: List[np.ndarray],
@@ -516,9 +621,23 @@ def make_deeploy_requantized_gemm_onnx(
         M_name = f"layer{i}_mul"
         Y_name = f"output_0" if i == len(weights) - 1 else f"layer{i}_out"
 
+        # Deeploy's PULP GEMM kernel always takes the batch-norm-style quant path
+        # (pulp_nn_linear is called with flag_batch_norm=flag_relu=1 and pBias=NULL):
+        # y[i] = clip((kappa[i] * phi[i] + lambda[i]) >> shift), phi = W[i].x (no bias
+        # added into the accumulator). kappa/lambda are our mul/bias arrays, indexed
+        # PER OUTPUT CHANNEL, so mul must be a full-length array (not a length-1
+        # scalar) and bias must already be pre-multiplied by mult, matching what
+        # Deeploy's own Gemm+RequantShift merge pass (_merge_gemm_rq_fun) does when it
+        # builds a RequantizedGemm node the normal way. No extra rounding term is added
+        # here (unlike that merge pass) so this stays bit-exact with fc_int()/
+        # pulp_nn_quant()'s plain floor-shift reference used to compute outputs.npz.
+        num_o = int(W.shape[0])
+        bias_scaled = (B.astype(np.int64) * int(mult)).astype(np.int32)
+        mult_array = np.full(num_o, int(mult), dtype=np.int32)
+
         initializers.append(numpy_helper.from_array(W.astype(np.int8), W_name))
-        initializers.append(numpy_helper.from_array(B.astype(np.int32), B_name))
-        initializers.append(numpy_helper.from_array(np.array([mult], dtype=np.int32), M_name))
+        initializers.append(numpy_helper.from_array(bias_scaled, B_name))
+        initializers.append(numpy_helper.from_array(mult_array, M_name))
 
         out_dtype = TensorProto.INT8 if signed else TensorProto.UINT8
         out_shape = [batch, int(W.shape[0])]
@@ -532,7 +651,7 @@ def make_deeploy_requantized_gemm_onnx(
                 M=M_name,
                 Y=Y_name,
                 div=2 ** int(shift),
-                shift=0,
+                shift=int(shift),
                 n_levels=256,
                 signed=signed,
                 transB=1,
@@ -582,12 +701,26 @@ def main():
 
     parser.add_argument("--model-class", type=str, default=None, help="Class name when using --model-path.")
     parser.add_argument("--model-kwargs", type=str, default=None, help="JSON kwargs for --model-class.")
+    parser.add_argument("--checkpoint", type=str, default=None,
+                         help="Optional state_dict (torch.save'd) to load into the model after "
+                              "construction, e.g. a trained checkpoint from a separate training script. "
+                              "Without this, the model uses its freshly-constructed (random) weights.")
     parser.add_argument("--builtin-arch", choices=list(BUILTINS), default=None, help="Builtin arch when using --source-onnx.")
 
     parser.add_argument("--test-name", type=str, required=True)
     parser.add_argument("--output-dir", type=str, default="DeeployTest/Tests")
     parser.add_argument("--input-shapes", nargs="+", required=True)
     parser.add_argument("--input-range", nargs=2, type=float, default=[-1.0, 1.0])
+    parser.add_argument("--calib-npz", type=str, default=None,
+                         help="Optional .npz holding a batch of REAL (or at least realistic-magnitude) "
+                              "float input samples -- shape (N, *input_shape) under any single key -- used "
+                              "to actually calibrate each PACT layer's clip bounds per its own init_clip "
+                              "strategy (sawb_asymm/std/max/...). Without this, clip bounds are calibrated "
+                              "from --input-range random noise instead of real data, which is a weak proxy "
+                              "for models whose real inputs occupy a narrow, non-uniform slice of that range.")
+    parser.add_argument("--calib-samples", type=int, default=256,
+                         help="Number of --input-range random samples to calibrate against when --calib-npz "
+                              "is not given.")
     parser.add_argument("--seed", type=int, default=None)
 
     parser.add_argument("--opset-version", type=int, default=9)
@@ -614,6 +747,9 @@ def main():
             raise RuntimeError("--model-class is required with --model-path")
         model_kwargs = json.loads(args.model_kwargs) if args.model_kwargs else None
         float_model = load_model_from_file(args.model_path, args.model_class, model_kwargs).to(device)
+        if args.checkpoint:
+            state_dict = torch.load(args.checkpoint, map_location=device)
+            float_model.load_state_dict(state_dict)
     else:
         if not args.builtin_arch:
             raise RuntimeError("--builtin-arch is required with --source-onnx")
@@ -624,12 +760,38 @@ def main():
     test_dir = Path(args.output_dir) / args.test_name
     test_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1) Generate random float input as in create_deeploy_test.py.
+    # 1) Generate random float input as in create_deeploy_test.py -- this remains the
+    # single vector actually round-tripped through the network for the test's own
+    # inputs.txt/outputs.txt reference, but is NOT used to derive input_eps below.
     x_float_list = generate_random_float_inputs(input_shapes, tuple(args.input_range), np.float32)
     x_float = x_float_list[0]
 
+    # 1.5) Load or generate the calibration batch used both for input_eps (below)
+    # and for PACT clip-bound calibration (3.5). Loaded before input_eps so a
+    # single real dataset drives both -- see calibrate_pact_clip_bounds' docstring.
+    if args.calib_npz:
+        calib_npz = np.load(args.calib_npz)
+        calib_arr = calib_npz[calib_npz.files[0]]
+        calib_batch = torch.from_numpy(calib_arr.astype(np.float32))
+        print(f"[calibrate] Using {calib_batch.shape[0]} real calibration samples from {args.calib_npz}")
+    else:
+        calib_list = generate_random_float_inputs(
+            [(args.calib_samples, *input_shapes[0][1:])], tuple(args.input_range), np.float32
+        )
+        calib_batch = torch.from_numpy(calib_list[0])
+        print(f"[calibrate] No --calib-npz given: calibrating against {args.calib_samples} random "
+              f"samples in {tuple(args.input_range)} -- pass --calib-npz with real data for a better fit.")
+
     # 2) Compute an input epsilon and quantize the actual test input to signed int8.
-    input_eps = compute_symmetric_input_eps(x_float, n_levels=256)
+    # input_eps is derived from the CALIBRATION BATCH's own max-abs, not x_float's:
+    # x_float is one single random draw from --input-range, whose own max-abs can
+    # land anywhere in that range by chance -- using it as the sole basis for the
+    # scale that quantizes EVERY future input (including real deployment data) risks
+    # a wildly wrong eps (e.g. calibrated on a small-magnitude draw, then saturating
+    # real inputs whose true range is much larger). The calibration batch (real data
+    # when --calib-npz is given) is a far more representative source for this scale,
+    # exactly like it now is for the PACT clip bounds in 3.5 below.
+    input_eps = compute_symmetric_input_eps(calib_batch.numpy(), n_levels=256)
     x_i8 = quantize_input_i8(x_float, input_eps)
     x_q_float_for_quantlib = torch.from_numpy(x_i8.astype(np.float32))
 
@@ -637,6 +799,11 @@ def main():
     name2config = all_pact_create_configs_int8(deepcopy(float_model), patches={})
     pact_model = all_pact_f2f_recipe(deepcopy(float_model), name2config).to(device)
     pact_model.eval()
+
+    # 3.5) Actually calibrate clip bounds per each layer's own init_clip strategy
+    # (see calibrate_pact_clip_bounds' docstring for why this is otherwise silently
+    # skipped).
+    calibrate_pact_clip_bounds(pact_model, calib_batch)
 
     # 4) QuantLib fake-to-true integerization.
     tq_model = f2t_convert(deepcopy(pact_model), x_q_float_for_quantlib, input_eps=input_eps, D=args.D)
@@ -656,6 +823,16 @@ def main():
         n_linears=len(linear_layers),
         final_signed=args.final_signed,
     )
+
+    # 5b) Any trailing layer QuantLib didn't insert a requant module for (e.g. a plain
+    # Linear reconstruction/logit head with no following activation) was padded to an
+    # identity shift above, which saturates on non-trivial layers. Calibrate those from
+    # the actual accumulator range instead.
+    n_measured = len(collect_requant_modules(tq_model))
+    if n_measured < len(weights):
+        out_mult, out_shift = calibrate_missing_final_shifts(
+            x_i8, weights, biases, out_mult, out_shift, out_signed, n_measured,
+        )
 
     # 6) Integer reference outputs, not float PyTorch outputs.
     all_outputs = integer_forward(

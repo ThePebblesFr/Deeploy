@@ -62,12 +62,19 @@ void open_fs() {
 }
 
 void mem_init() {
+#ifndef NOFLASH
+  // Only open the flash device when something actually reads from it
+  // (open_fs()/load_file_to_ram() below). Opening a HyperFlash device that is
+  // never subsequently read from -- the case for any model small enough that
+  // no weight needs L3/hex storage, and thus an empty HEXLIST -- can leave it
+  // in a state where it later crashes on close instead of just going unused.
   flash_conf_init(&flash_conf);
   pi_open_from_conf(&flash, &flash_conf);
   if (pi_flash_open(&flash)) {
     printf("ERROR: Cannot open flash! Exiting...\n");
     pmsis_exit(-1);
   }
+#endif
 
   ram_conf_init(&ram_conf);
   pi_open_from_conf(&ram, &ram_conf);

@@ -133,3 +133,68 @@ int main() {
 	// operation_mode state update
 }
 ```
+
+## 3. Scenarios
+
+### 3.1. Start the container
+
+```bash
+docker start -i deeploy_main
+cd /app/Deeploy/DynMultiDeeployTest
+```
+
+### 3.2. Create a scenario
+
+```bash
+python3 scenarioUtils/create_scenario.py \
+  --task1-inputs-npz Tests/miniMNV2_x_AnomalyDetection/AnomalyDetection/inputs.npz \
+  --task2-inputs-npz Tests/miniMNV2_x_AnomalyDetection/miniMNV2/inputs.npz \
+  --delta-t 12 \
+  --output-dir Scenarios/demo \
+  --seed 42
+```
+
+This writes Scenarios/demo/{task1_inputs.npz, task2_inputs.npz, scenario_config.json}. Change --delta-t/--seed to get a different length/random draw. You can inspect scenario_config.json directly to see the generated operator-order timeline and thresholds before running anything.
+
+### 3.3. Generate, build, and simulate
+
+```bash
+python3 test_dynamic_2_models.py \
+  -t Tests/miniMNV2_x_AnomalyDetection/ \
+  --models miniMNV2 AnomalyDetection \
+  --scenario Scenarios/demo \
+  --gen-step
+```
+
+--gen-step regenerates everything from scratch (needed the first time, or after any model/config change) — takes a while (compiles 4 configs + the fused binary).
+
+Drop --gen-step on later runs if you only changed the scenario (new --delta-t, new seed, edited thresholds in scenario_config.json) — this skips straight to regenerating scenario_data.h, rebuilding, and re-simulating, much faster.
+
+### 3.4. Where the output is
+
+Everything prints straight to your terminal as it runs. The parts that matter:
+
+Tick-by-tick trace, e.g.:
+
+```bash
+[HOST CORE] Tick 1: operation mode 2 (task1_critical=1, task2_critical=0, operator_cmd=1, power_over_budget=0)
+[HOST CORE] Sending InitNetworks_a_a_6_2() cluster task
+Runtime InitNetwork: 2608 cycles
+Runtime RunNetwork: 345460 cycles
+[HOST CORE] Tick 1 context: task1_err=62255 task2_margin=1 total_energy_est_nj=3172
+```
+
+operation mode: 1=LOW_ENERGY, 2=CRITICAL_TASK1, 3=CRITICAL_TASK2, 4=BOTH_CRITICAL. Runtime RunNetwork/InitNetwork are δ in cycles (÷50MHz for seconds); InitNetwork only prints when the mode actually changed.
+Per-inference power: @power.measure_N@<watts> lines, one per inference in order (only appear since we always build with --power now).
+
+power_report.csv: written to TEST_SIRACUSA/build_dyn/gvsoc_workdir/power_report.csv — a per-block power breakdown for the last run.
+
+To save a full log instead of scrolling: ... --gen-step 2>&1 | tee /tmp/run.log, then grep -n "Tick\|power.measure" /tmp/run.log.
+
+
+### 3.5. Parsing the output
+
+```bash
+python3 test_dynamic_2_models.py -t Tests/<pair> --models <m1> <m2> --scenario Scenarios/demo 2>&1 | tee /tmp/run.log
+python3 scenarioUtils/parse_scenario_log.py --log /tmp/run.log --output /tmp/report.csv
+```

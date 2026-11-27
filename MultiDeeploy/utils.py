@@ -1,5 +1,4 @@
 import re
-from collections import defaultdict
 from typing import Dict, Tuple, Any, List
 
 def normalize_layer_name(name: str) -> str:
@@ -10,8 +9,6 @@ def normalize_layer_name(name: str) -> str:
     """
     if "___" in name:
         parts = name.split("___", 1)
-        print(parts)
-
         model, layer = parts
         return f"{model}__{layer}"
 
@@ -595,6 +592,248 @@ def parse_closure_body_sections(body: str) -> dict[str, str]:
 
     return out
 
+DOUBLE_BUFFERING_MARKER = "// DOUBLE BUFFERING CHECK TILE LOAD"
+
+
+def is_double_buffered_closure(body: str) -> bool:
+    """
+    Detects whether a layer's closure body was generated with Deeploy's
+    `--doublebuffer` tiling (ping-pong prefetch) rather than the default
+    single-buffered (SB) shape. Confirmed (by generating and reading real
+    output for both a multi-tile and a degenerate single-tile layer) that
+    Deeploy always emits this exact marker once per double-buffered input
+    tensor, even when the guard it's attached to (`if ((TILING_I+1) <
+    numTiles)`) is always false -- so this check is reliable per-layer,
+    independent of that layer's actual tile count.
+    """
+    return DOUBLE_BUFFERING_MARKER in body
+
+
+def parse_closure_body_sections_db(body: str) -> dict[str, str]:
+    """
+    Double-buffered (DB) counterpart of `parse_closure_body_sections`. Deeploy's
+    `--doublebuffer` tiling emits a structurally different closure body than SB:
+    priming DMA transfers for tile 0 BEFORE the loop, a ping-pong buffer-select
+    `switch` at the top of every iteration, one "DOUBLE BUFFERING CHECK TILE
+    LOAD" block per double-buffered input tensor (prefetching tile i+1 while
+    tile i computes), and DMA-out staggered by one iteration (waits for tile
+    i-1's output, transfers tile i's) with a final post-loop flush for the
+    last tile's output. Confirmed via direct generation+reading of real DB
+    output (`AnomalyDetection_heavy` at 8 cores/65536 L1) that the KERNEL
+    section (cluster_fork_args struct + pi_cl_team_fork call) and the actual
+    compute kernel body (`tiling_closure_body`) are byte-identical to SB's --
+    buffering scheme only changes the DMA/loop-prologue shape, never the
+    compute itself. So, like the SB parser, this drops the kernel section
+    entirely (the redesign inlines `tiling_closure_body` directly instead of
+    reusing the per-tile `pi_cl_team_fork` call) and, going further than SB's
+    parser, also drops all granular per-tile profiling (getCycles measurement
+    writes, the printf loop) -- none of it is reused by the redesigned
+    combined closure (SB's version already discards most of it too; DB's
+    profiling bookkeeping is materially more involved -- per-tensor prefetch
+    timestamps -- for no benefit here, since nothing downstream reads it).
+
+    Returned keys:
+      - buffers_init, pointers_init: identical extraction/shape to SB's parser
+        (arena-offset pointer declarations + buffer_0/buffer_1/_next pointer
+        resets) -- these fully describe DB's ping-pong buffer addresses too,
+        since buffer_0/buffer_1 are just pointers_init entries like any other.
+      - priming_dma: the pre-loop channel declarations + tile-0 priming
+        transfers (real hardware DMA calls -- must be leader-gated).
+      - for_loop_statement: the loop header, reused verbatim (same as SB).
+      - current_buffer_switch: the top-of-iteration ping-pong `switch`
+        selecting tile TILING_I's own buffers -- pure pointer arithmetic, safe
+        to run redundantly on every core (needed by the inlined kernel body).
+      - dma_in_wait_and_prefetch: "Wait for current input tile" plus every
+        per-tensor "DOUBLE BUFFERING CHECK TILE LOAD" block (next-tile
+        prefetch) -- all real hardware DMA calls, must be leader-gated as one
+        atomic unit (the `_next` pointers each block computes are consumed
+        only by that same block's own transfer call, so no finer split is
+        needed or safe to assume).
+      - dma_out_wait_and_transfer: "Wait for previous output tile" + "Transfer
+        current output tile" -- leader-gated, same reasoning.
+      - final_output_flush: the post-loop "Wait for final output tile" block --
+        flushes the LAST tile's output DMA (never waited on inside the loop,
+        since DMA-out is staggered by one iteration) -- leader-gated, and the
+        caller must barrier after it before any subsequent layer reuses this
+        layer's arena region.
+    """
+    out = {
+        "buffers_init": "",
+        "pointers_init": [],
+        "priming_dma": "",
+        "for_loop_statement": "",
+        "current_buffer_switch": "",
+        "dma_in_wait_and_prefetch": "",
+        "dma_out_wait_and_transfer": "",
+        "final_output_flush": "",
+        "num_tiles_array_name": "",
+    }
+
+    # 1) Strip profiling (StopTimer .. StartTimer) -- discarded, not reused.
+    if "StopTimer();" in body and "StartTimer();" in body:
+        pre, rest = body.split("StopTimer();", 1)
+        _, _post = rest.split("StartTimer();", 1)
+        body_main = pre
+    else:
+        body_main = body
+
+    lines = body_main.splitlines(keepends=True)
+
+    # 2) buffers_init / pointers_init: pointer declarations, up to (not
+    # including) "// Initialize DMA future" -- unlike SB, where "const static
+    # char" (measurements_init) comes right after the pointers, DB emits
+    # priming DMA first (see step 3), so that's the correct end anchor here.
+    buf_and_poin_init, rem = slice_by_line_anchors(lines, None, "// Initialize DMA future")
+    buf_and_poin_init_lines = buf_and_poin_init.splitlines(keepends=True)
+    buf_init, poin_init = slice_by_line_anchors(buf_and_poin_init_lines, None, "void *")
+    out["buffers_init"] = buf_init
+    out["pointers_init"] = parse_pointers_init("".join(poin_init))
+    lines = rem
+
+    # 3) priming_dma: "// Initialize DMA future" .. "const static char".
+    # Unlike SB (measurements_init declared BEFORE its "// Initialize DMA
+    # futures" section, which holds nothing but channel decls), DB emits the
+    # channel decls + tile-0 priming transfers FIRST, with the measurement
+    # array declarations coming after -- confirmed directly against real
+    # generated output (including a case with tensors too large for one DMA
+    # burst, whose priming has extra chunked "// UPDATE VARIABLE ..." + a
+    # second `mchan_transfer_1d` per tensor -- harmless here, just more plain
+    # lines the anchors below don't need to know about).
+    priming, rem = slice_by_line_anchors(lines, "// Initialize DMA future", "const static char")
+    out["priming_dma"] = "".join(l for l in priming.splitlines(keepends=True) if "getCycles" not in l)
+    lines = rem
+
+    # 4) Skip measurements_init (the per-tile timing array declarations, plus
+    # tile 0's own ingress-wait-start timestamp write) -- discarded entirely,
+    # nothing downstream reuses them.
+    _, rem = slice_by_line_anchors(lines, "const static char", "// TILING LOOP")
+    lines = rem
+
+    # 5) Loop chunk: "// TILING LOOP" .. "// CLOSE TILING LOOP" (+ trailing
+    # close brace) -- same tail-capture logic as SB's parser.
+    loop_chunk, rem_after_loop = slice_by_line_anchors(lines, "// TILING LOOP", "// CLOSE TILING LOOP")
+    close_tail = ""
+    if rem_after_loop:
+        close_tail += rem_after_loop[0]
+        rem_after_loop = rem_after_loop[1:]
+        if rem_after_loop and rem_after_loop[0].lstrip().startswith("}"):
+            close_tail += rem_after_loop[0]
+            rem_after_loop = rem_after_loop[1:]
+    loop_full = loop_chunk + close_tail
+
+    # Everything after the loop: "*tileIdxPtr += 1;", "// Wait for final
+    # output tile" (the real flush -- kept), "// Deinitialize DMA future",
+    # a trailing measurement, then the printf profiling loop (all discarded).
+    final_lines = "".join(rem_after_loop).splitlines(keepends=True)
+    flush_chunk, _ = slice_by_line_anchors(final_lines, "// Wait for final output tile", "// Deinitialize DMA future")
+    out["final_output_flush"] = flush_chunk
+
+    loop_lines = loop_full.splitlines(keepends=True)
+
+    # for_loop_statement: up to and including the opening '{'.
+    stmt_lines = []
+    i = 0
+    while i < len(loop_lines):
+        stmt_lines.append(loop_lines[i])
+        if "{" in loop_lines[i]:
+            i += 1
+            break
+        i += 1
+    out["for_loop_statement"] = "".join(stmt_lines)
+    loop_rest = loop_lines[i:]
+
+    # num_tiles_array_name: the loop bound is a runtime lookup into a
+    # per-layer `..._numTiles[]` array (its actual VALUES are declared
+    # elsewhere, in the GLOBALS section, not visible from this closure-body
+    # text alone) -- capture just the array's name here so a caller with
+    # access to the full file text (SourceFile.py) can resolve the literal
+    # tile count and detect the degenerate numTiles==1 case, where DB's
+    # deferred/staggered output-DMA flush provides no overlap benefit at all
+    # and (confirmed by direct GVSoC-level debugging) is where a real,
+    # repeated-invocation hang occurs.
+    m = re.search(r"(\w+_numTiles)\[", out["for_loop_statement"])
+    if m:
+        out["num_tiles_array_name"] = m.group(1)
+
+    # current_buffer_switch: up to (not including) the first "// Wait for
+    # current input tile" marker -- includes the optional `if (TILING_I > 0)
+    # { ...getCycles... }` profiling guard, whose getCycles line is dropped
+    # (harmless either way: a local, per-core array write nothing reads), and
+    # the ping-pong buffer-select switch itself (kept).
+    switch_lines = []
+    k = 0
+    while k < len(loop_rest) and "// Wait for current input tile" not in loop_rest[k]:
+        switch_lines.append(loop_rest[k])
+        k += 1
+    out["current_buffer_switch"] = "".join(l for l in switch_lines if "getCycles" not in l)
+    loop_rest = loop_rest[k:]
+
+    # dma_in_wait_and_prefetch: from the first "// Wait for current input
+    # tile" through the last "DOUBLE BUFFERING CHECK TILE LOAD" block, i.e.
+    # up to (not including) the ingress-wait-end measurement line.
+    din_lines = []
+    k = 0
+    while k < len(loop_rest):
+        line = loop_rest[k]
+        if "_ingress_dma_wait_end_measurements" in line and "getCycles" in line:
+            break
+        din_lines.append(line)
+        k += 1
+    out["dma_in_wait_and_prefetch"] = "".join(din_lines)
+    loop_rest = loop_rest[k:]
+    if loop_rest and "_ingress_dma_wait_end_measurements" in loop_rest[0]:
+        loop_rest = loop_rest[1:]
+
+    # Skip the kernel section entirely (kernel_start measurement,
+    # cluster_fork_args struct, pi_cl_team_fork call, kernel_end measurement)
+    # -- discarded, same rationale as SB's parser: the redesign inlines
+    # tiling_closure_body directly instead. Anchor on the egress-wait-start
+    # measurement line, which opens the DMA-out section next.
+    k = 0
+    while k < len(loop_rest) and not ("_egress_dma_wait_start_measurements" in loop_rest[k] and "getCycles" in loop_rest[k]):
+        k += 1
+    loop_rest = loop_rest[k:]
+    if loop_rest and "_egress_dma_wait_start_measurements" in loop_rest[0]:
+        loop_rest = loop_rest[1:]
+
+    # dma_out_wait_and_transfer: "// Wait for previous output tile" + "//
+    # Transfer current output tile", up to (not including) the egress-wait-end
+    # measurement line.
+    dout_lines = []
+    k = 0
+    while k < len(loop_rest):
+        line = loop_rest[k]
+        if "_egress_dma_wait_end_measurements" in line and "getCycles" in line:
+            break
+        dout_lines.append(line)
+        k += 1
+    out["dma_out_wait_and_transfer"] = "".join(dout_lines)
+
+    return out
+
+
+def lookup_num_tiles(full_file_content: str, num_tiles_array_name: str) -> "int | None":
+    """
+    Resolves a DB layer's literal tile count from its `..._numTiles[]` array
+    DECLARATION (in the GLOBALS section, e.g. `static PI_L1 uint8_t
+    ..._numTiles[2] = {0, 4};` -- L2-only/single-L3-chunk tiling always has
+    exactly 2 entries, {0, N}, since tileIdxPtr only ever takes the values 0
+    and 1 in that case). `parse_closure_body_sections_db` only sees the
+    closure body text, not the globals section where this is declared, so
+    this needs the FULL source file text to resolve -- returns None if the
+    array name is empty (SB layers don't have one) or the declaration isn't
+    found (defensive; callers should treat that as "unknown, assume multi-tile"
+    rather than crash).
+    """
+    if not num_tiles_array_name:
+        return None
+    m = re.search(
+        rf"\b{re.escape(num_tiles_array_name)}\[\d+\]\s*=\s*\{{\s*0\s*,\s*(\d+)\s*\}}",
+        full_file_content,
+    )
+    return int(m.group(1)) if m else None
+
+
 def remove_increment_statements(code: str) -> str:
 
     lines = code.splitlines(keepends=True)
@@ -714,45 +953,6 @@ def normalize_args_cast(arg_str: str) -> list[str]:
         out.append(s)
     return out
 
-def compute_tiling_i_ranges(scheduling_queue) -> List[Dict[str, Dict[str, Tuple[int, int]]]]:
-    """
-    Compute tiling index ranges per round, per model, per layer.
-
-    Returns:
-        ranges[round_idx][model_name][layer_name] = (start_tiling_i, end_tiling_i)
-    where the interval is half-open: start inclusive, end exclusive.
-
-    Assumes each scheduled item `tile` has attributes:
-        - tile.model_name
-        - tile.layer_name
-    """
-
-    cum = defaultdict(lambda: defaultdict(int))
-
-    ranges_per_round: List[Dict[str, Dict[str, Tuple[int, int]]]] = []
-
-    for round_layers in scheduling_queue:
-        round_counts = defaultdict(lambda: defaultdict(int))
-        for model_tiles in round_layers:
-            for tile in model_tiles:
-                round_counts[tile.model_name][tile.layer_name] += 1
-
-        round_ranges: Dict[str, Dict[str, Tuple[int, int]]] = {}
-        for model_name, layer_counts in round_counts.items():
-            round_ranges[model_name] = {}
-            for layer_name, cnt in layer_counts.items():
-                start = cum[model_name][layer_name]
-                end = start + cnt
-                round_ranges[model_name][layer_name] = (start, end)
-
-        for model_name, layer_counts in round_counts.items():
-            for layer_name, cnt in layer_counts.items():
-                cum[model_name][layer_name] += cnt
-
-        ranges_per_round.append(round_ranges)
-
-    return ranges_per_round
-
 def generate_subgroup_barriers_code():
     return """
 #include "hal/eu/eu_v3.h"
@@ -784,18 +984,19 @@ static inline void subgroup_barrier_init(uint32_t barrier_id,
 static inline void subgroup_barrier_wait(uint32_t barrier_id, uint32_t core_id)
 {
     // printf("Core %u waiting on barrier %u\\n", core_id, barrier_id);
+    // Deliberately does NOT clear PULP_HW_BAR_EVENT from the mask after use
+    // (a fix attempted and reverted -- see git history/session notes): PULP-OS's
+    // OWN pi_cl_team_barrier()/pi_cl_team_fork() join-wait (pos_team_offload_wait)
+    // call eu_bar_trig_wait_clr() DIRECTLY, without ever arming
+    // PULP_HW_BAR_EVENT themselves -- they rely on it staying permanently
+    // enabled once armed here. Clearing it after use breaks the very next
+    // pi_cl_team_fork's join-wait (used to dispatch every Combined_closure_*),
+    // which then hangs forever since nothing re-arms the bit for it. Confirmed
+    // by tracing pi_cl_team_barrier()'s implementation
+    // (pulp_hal/.../pos/implem/pe.h) after a mask-clear "fix" here caused
+    // exactly that hang.
     eu_evt_maskSet(1u << PULP_HW_BAR_EVENT);
     eu_bar_trig_wait_clr(eu_bar_addr(barrier_id));
     // printf("Core %u passed barrier %u\\n", core_id, barrier_id);
 }
 """
-
-def generate_timings_printing_code(tiles_timings):
-    ret_str = "void print_tiles_timings() {\n"
-    for round_idx, round_timings in enumerate(tiles_timings):
-        ret_str += f""" printf("=== Round {round_idx} ===\\n");\n"""
-        for tile_idx, tile in enumerate(round_timings):
-            ret_str += f""" printf("Tile {tile['model_name']}.{tile['layer_name']}\\n[DMA_in] %d cycles\\n[Kernel] %d cycles\\n[DMA_out] %d cycles\\n", round_{round_idx}_tiles_timings[{tile_idx}][0], round_{round_idx}_tiles_timings[{tile_idx}][1], round_{round_idx}_tiles_timings[{tile_idx}][2]);\n"""
-        ret_str += f""" printf("\\n");\n"""
-    ret_str += "}\n"
-    return ret_str

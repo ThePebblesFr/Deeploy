@@ -11,10 +11,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void RunNetworks_2_6();
-void RunNetworks_4_4();
-void RunNetworks_6_2();
-void InitNetworks_2_6();
-void InitNetworks_4_4();
-void InitNetworks_6_2();
+void RunNetworks_s_s_4_4();
+void RunNetworks_s_l_2_6();
+void RunNetworks_l_s_6_2();
+void RunNetworks_l_l_4_4();
+void InitNetworks_s_s_4_4();
+void InitNetworks_s_l_2_6();
+void InitNetworks_l_s_6_2();
+void InitNetworks_l_l_4_4();
 

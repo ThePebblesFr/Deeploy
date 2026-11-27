@@ -1,0 +1,16 @@
+{
+    "name": "AnomalyDetection_small_4",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "RequantizedGemm_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 4486,
+            "input_DMA": 442,
+            "kernel_exec": 2214,
+            "output_DMA": 199
+        }
+    ]
+}

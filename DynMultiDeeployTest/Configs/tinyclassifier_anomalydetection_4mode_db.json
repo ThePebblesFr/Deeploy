@@ -1,0 +1,29 @@
+{
+  "_comment": "Same 4-mode setup as tinyclassifier_anomalydetection_4mode.json, with doublebuffer0/doublebuffer1 = 1 for both models in every mode where it's safe -- used to re-measure delta/gamma with MultiDeeploy's double-buffered-closure support (Step 2 of the concurrent-execution redesign plan) enabled, for direct comparison against the SB baseline table recorded for Step 3. CRITICAL_TASK2's doublebuffer1 is deliberately left at 0: AnomalyDetection_light at 2 cores/16000 L1 with --doublebuffer hits a genuine, isolated Deeploy-internal codegen bug (confirmed via direct generation, captured BEFORE MultiDeeploy's own channel-renaming pass even runs) where Deeploy's own --name substitution double-applies, emitting an undeclared 'AnomalyDetection_light_2_AnomalyDetection_light_2_channel_input' identifier -- reproduces identically standalone via testRunner_tiled_siracusa.py, so it's not something MultiDeeploy's fusion introduced or can work around; out of scope for this pass, tracked as a known limitation.",
+  "configs": [
+    {
+      "_mode": "LOW_ENERGY",
+      "variant0": "TinyClassifier_light", "variant1": "AnomalyDetection_light",
+      "cores0": 4, "cores1": 4, "l1_0": 32000, "l1_1": 32000, "v0": "s", "v1": "s",
+      "doublebuffer0": 1, "doublebuffer1": 1
+    },
+    {
+      "_mode": "CRITICAL_TASK1",
+      "variant0": "TinyClassifier_light", "variant1": "AnomalyDetection_heavy",
+      "cores0": 2, "cores1": 6, "l1_0": 16000, "l1_1": 48000, "v0": "s", "v1": "l",
+      "doublebuffer0": 1, "doublebuffer1": 1
+    },
+    {
+      "_mode": "CRITICAL_TASK2",
+      "variant0": "TinyClassifier_heavy", "variant1": "AnomalyDetection_light",
+      "cores0": 6, "cores1": 2, "l1_0": 48000, "l1_1": 16000, "v0": "l", "v1": "s",
+      "doublebuffer0": 1, "doublebuffer1": 0
+    },
+    {
+      "_mode": "BOTH_CRITICAL",
+      "variant0": "TinyClassifier_heavy", "variant1": "AnomalyDetection_heavy",
+      "cores0": 4, "cores1": 4, "l1_0": 32000, "l1_1": 32000, "v0": "l", "v1": "l",
+      "doublebuffer0": 1, "doublebuffer1": 1
+    }
+  ]
+}

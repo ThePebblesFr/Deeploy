@@ -1,60 +1,55 @@
 from typing import List
 from MultiDeeploy.CodeFusion.SourceFile import SourceFile
-from MultiDeeploy.CodeFusion.Templates.FunctionsDefinition_templates import closure_function_definition_statement, struct_definition_statement, tiling_closure_function_definition_statement
-from MultiDeeploy.WorkloadScheduler import WorkloadScheduler
-from MultiDeeploy.utils import compute_tiling_i_ranges, generate_subgroup_barriers_code, generate_timings_printing_code, normalize_args_cast, replace_num_cores
-from MultiDeeploy.CodeFusion.Templates.RunNetwork_templates import arg_cast_statement, closure_call_statement
+from MultiDeeploy.CodeFusion.Templates.FunctionsDefinition_templates import (
+    combined_closure_struct_statement,
+    combined_closure_function_definition_statement,
+)
+from MultiDeeploy.utils import generate_subgroup_barriers_code
+from MultiDeeploy.CodeFusion.Templates.RunNetwork_templates import combined_arg_cast_statement, combined_closure_call_statement
+
+# Marker preceding the fused per-config closure code, consumed by
+# DynMultiDeeploy/SourceFusion.py's split_Network_c() to find the
+# globals/functions boundary -- keep these in sync if either changes.
+FUSED_FUNCTIONS_MARKER = "// ===== FUSED FUNCTIONS ====="
+
 
 class SourceFusion():
+    """
+    Fuses N models onto disjoint core/L1 shares of one cluster.
 
-    def __init__(self, files: List[SourceFile], workload_scheduler: WorkloadScheduler, output_path: str, models_dedicated_cores: List[int]):
+    Each model's cores run that model's own complete layer sequence
+    independently, in original order, synced only within their own subgroup
+    barrier -- NOT interleaved tile-by-tile with the other model(s) the way an
+    earlier, round-synchronized design (WorkloadScheduler-driven) used to work.
+    That design existed because arbitrary-core-subset barriers weren't
+    available; `subgroup_barrier_init`/`_wait` (still used here, just
+    re-initialized once per RunNetwork() call instead of once per round) make it
+    unnecessary. Removing the round structure also fixes a real, independently-
+    discovered bug: since core-range boundaries are now literal constants baked
+    directly into each config's own generated code (computed once, below, from
+    each model's dedicated core count), there is no shared `cores_map` global
+    left for a second-level fusion step (DynMultiDeeploy's) to accidentally
+    reuse a stale value from a different config.
+
+    Measured before building this: pure load-rebalancing gain (removing round
+    quantization alone, keeping everything else) is 0% for the real
+    DynMultiDeeploy configs on hand today (one model's tiles already dominate
+    every round). This redesign is still worth it for two other reasons: it
+    removes N_rounds-1 extra `pi_cl_team_fork` join points (real overhead the
+    load-balance calculation doesn't capture), and it fixes the cores_map bug
+    above. It does NOT restore/add DMA-compute overlap (double buffering) --
+    that needs new parser capability (SourceFile.py's extraction hard-assumes
+    the single-buffered comment-marker shape), not a wiring change, and is
+    deferred pending real target models that would actually need it.
+    """
+
+    def __init__(self, files: List[SourceFile], output_path: str, models_dedicated_cores: List[int]):
         self.files = files
-        self.workload_scheduler = workload_scheduler
         self.output_path = output_path
         self.models_dedicated_cores = models_dedicated_cores
         self.fused_content: List[str] = []
-        self.new_layer_keys_by_round = []
-        self.lf_map = {}
-        self.tiles_timings = []
-
-    def _initialize_tiles_timings(self):
-
-        for round in self.workload_scheduler.Scheduling_queue:
-            round_tiles = []
-            for layer in round:
-                for tile in layer:
-                    key = {
-                        "model_name": tile.model_name,
-                        "layer_name": tile.layer_name,
-                        "DMA_in": 0,
-                        "kernel_exec": 0,
-                        "DMA_out": 0
-                    }
-                    round_tiles.append(key)
-            self.tiles_timings.append(round_tiles)
-
-    def _compute_new_layer_keys_by_round(self):
-        """
-        Returns: list[set[(model_name, layer_name)]] where each element is
-        the set of layers that appear for the first time in that round.
-        """
-        seen_global = set()
-        new_by_round = []
-
-        for round_layers in self.workload_scheduler.Scheduling_queue:
-            new_this_round = set()
-            for model_layers in round_layers:
-                for t in model_layers:
-                    key = (t.model_name, t.layer_name)
-                    if key not in seen_global:
-                        seen_global.add(key)
-                        new_this_round.add(key)
-            new_by_round.append(new_this_round)
-
-        return new_by_round
 
     def fuse(self) -> None:
-        self.new_layer_keys_by_round = self._compute_new_layer_keys_by_round()
         self.globals_fusion()
         self.functions_fusion()
         self.run_network_fusion()
@@ -89,72 +84,29 @@ class SourceFusion():
 
         self.fused_content.append("\n")
 
-        # Adding cores_map definition
-        self.fused_content.append("// ===== CORES MAP START =====\n\n")
-        nb_models = len(self.files)
-        self.fused_content.append(f"int cores_map[{nb_models}][2] = {{")
-        core_cursor = 0
-        for i in range(nb_models):
-            nb_cores = self.models_dedicated_cores[i]
-            start = core_cursor
-            end = core_cursor + nb_cores - 1
-            self.fused_content.append(f"{{{start}, {end}}}")
-            core_cursor += nb_cores
-            if i < nb_models - 1:
-                self.fused_content.append(", ")
-        self.fused_content.append("};\n")
-
-        self.fused_content.append(f"int nb_dedicated_cores[{nb_models}] = {{")
-        for i in range(nb_models):
-            self.fused_content.append(str(self.models_dedicated_cores[i]))
-            if i < nb_models - 1:
-                self.fused_content.append(", ")
-        self.fused_content.append("};\n")
-        self.fused_content.append("// ===== CORES MAP END =====\n\n")
-
-        # Subgroup barriers
+        # No more cores_map/nb_dedicated_cores globals: each config's combined
+        # closure bakes its own core-range boundaries in as literal constants
+        # (see combined_closure_function_definition_statement), so there is
+        # nothing shared left to declare here -- this is also the cores_map bug
+        # fix (see class docstring): a stale/wrong shared value can no longer
+        # exist for a second-level fusion step to pick up.
         self.fused_content.append("// ===== SUBGROUP BARRIERS START =====\n\n")
         self.fused_content.append(generate_subgroup_barriers_code())
         self.fused_content.append("// ===== SUBGROUP BARRIERS END =====\n\n")
 
-        # for i in range(nb_models):
-        #     self.fused_content.append(f"PI_L1 static subgroup_barrier_t g_barrier_{i};\n")
-
-        # Timings
-        self.fused_content.append("// ===== TIMINGS START =====\n\n")
-        self.fused_content.append("\n")
-        self._initialize_tiles_timings()
-        for i in range(len(self.tiles_timings)):
-            self.fused_content.append(f"uint32_t round_{i}_tiles_timings[{len(self.tiles_timings[i])}][3] = {{")
-            for tile in self.tiles_timings[i]:
-                self.fused_content.append(f"{{{tile['DMA_in']}, {tile['kernel_exec']}, {tile['DMA_out']}}},")
-            self.fused_content[-1] = self.fused_content[-1].rstrip(',')  # remove last comma
-            self.fused_content.append("};\n")
-        self.fused_content.append("\n")
-
-        self.fused_content.append(generate_timings_printing_code(self.tiles_timings))
-        self.fused_content.append("// ===== TIMINGS END =====\n\n")
-
     def functions_fusion(self) -> None:
         """
-        Fuse function definitions (cluster_fork + closure_L3 + closure) according to the scheduler.
-
-        Strategy:
-        - Build a map (model_name, layer_name) -> LayerFunctionDefinition
-            by aligning:
-            * unique logical layer order from src.run_network.functions_calls (fc.layer_name)
-            * src.functions.layers_functions_definition (same order in the C file)
-
-        - For each scheduling round:
-            * collapse tiles to unique (model_name, layer_name) keys (once per logical layer per model per round)
-            * find the round's "longest layer" (scheduler)
-            * emit fused code for:
-                - tiling_closure
-                - closure
-
+        Build a map (model_name, layer_name) -> LayerFunctionDefinition by
+        aligning each source's logical layer order (from
+        src.run_network.functions_calls) with its parsed function layers (from
+        src.functions.layers_functions_definition), then emit ONE combined
+        closure covering every model's full layer sequence in that order (see
+        combined_closure_function_definition_statement's docstring for the
+        per-layer body it emits).
         """
-
         lf_map = {}
+        tiles_by_model: List[List] = []
+        model_names: List[str] = []
 
         for src in self.files:
             ordered = []
@@ -163,7 +115,7 @@ class SourceFusion():
                 if fc.layer_name and fc.layer_name not in seen:
                     ordered.append(fc.layer_name)
                     seen.add(fc.layer_name)
-                    
+
             layer_defs = src.functions.layers_functions_definition
             if len(ordered) != len(layer_defs):
                 raise RuntimeError(
@@ -172,99 +124,43 @@ class SourceFusion():
                     f"Did you call getFunctions() before fusion? Or parsing order differs."
                 )
 
+            model_tiles = []
             for layer_name, layer_def in zip(ordered, layer_defs):
                 key = (src.model_name, layer_name)
                 if key in lf_map:
                     raise RuntimeError(f"Duplicate LayerFunctionDefinition for {key}")
                 lf_map[key] = layer_def
+                model_tiles.append(layer_def)
 
-        self.lf_map = lf_map
-        ranges = compute_tiling_i_ranges(self.workload_scheduler.Scheduling_queue)
+            tiles_by_model.append(model_tiles)
+            model_names.append(src.model_name)
+
+        all_tiles = [tile for model_tiles in tiles_by_model for tile in model_tiles]
+
+        self.fused_content.append(f"\n{FUSED_FUNCTIONS_MARKER}\n\n")
+
+        # Global pointer declarations, deduped once across the whole fused file
+        # (no per-round "first seen" tracking needed anymore: with no round
+        # splitting, every layer is processed in exactly one place, exactly
+        # once). The matching per-layer RESET/assignment statements are emitted
+        # inside the combined closure itself, every time (see
+        # combined_closure_function_definition_statement).
         emitted_global_ptr_decls = set()
+        for tile in all_tiles:
+            for p in tile.closure_body[1]["pointers_init"]:
+                decl = f"{p[0].rstrip()}{p[1].strip()};\n"
+                if decl not in emitted_global_ptr_decls:
+                    emitted_global_ptr_decls.add(decl)
+                    self.fused_content.append(decl)
+        self.fused_content.append("\n")
 
-        # ----------------------------
-        # 2) Emit per round (tiling_closure / closure)
-        # ----------------------------
-        for round_idx, round_layers in enumerate(self.workload_scheduler.Scheduling_queue):
-            round_keys = []
-            seen = set()
-            for model_layers in round_layers:
-                for tile in model_layers:
-                    print(tile.layer_name)
-                    key = (tile.model_name, tile.layer_name)
-                    if key not in seen:
-                        if key not in lf_map:
-                            raise RuntimeError(f"[Round {round_idx}] Scheduled layer not found in parsed functions: {key}")
-                        seen.add(key)
-                        round_keys.append(key)
-
-            # 2) Map those keys to LayerFunctionDefinition objects ("tiles" for this round)
-            tiles = [lf_map[key] for key in round_keys]
-            
-            nb_models = len(round_layers)
-            tiles_by_model = []
-            tiles_by_model_keys = []
-
-            for model_idx in range(nb_models):
-                model_tiles_defs = []
-                model_keys = []
-
-                for t in round_layers[model_idx]:
-                    k = (t.model_name, t.layer_name)
-                    if k not in lf_map:
-                        raise RuntimeError(f"[Round {round_idx}] Scheduled tile not found in lf_map: {k}")
-
-                    model_keys.append(k)
-                    model_tiles_defs.append(lf_map[k])  # keep order, no dedup
-
-                tiles_by_model.append(model_tiles_defs)
-                tiles_by_model_keys.append(model_keys)
-
-            # 3) Emit the four artifacts you requested
-            self.fused_content.append(f"\n// ===== FUSED FUNCTIONS: Scheduling Round {round_idx} =====\n\n")
-
-            new_keys = self.new_layer_keys_by_round[round_idx]
-            if new_keys:
-                # Emit global pointer decls once (ever), only for first-time layers
-                for (mname, lname) in new_keys:
-                    tile_def = self.lf_map[(mname, lname)]
-                    for p in tile_def.closure_body[1]["pointers_init"]:
-                        # p = (type_str, var_name, initializer)
-                        decl = f"{p[0].rstrip()}{p[1].strip()};\n"
-                        if decl not in emitted_global_ptr_decls:
-                            emitted_global_ptr_decls.add(decl)
-                            self.fused_content.append(decl)
-
-                self.fused_content.append("\n")
-
-
-            # (a) struct for tiling_closure
-            self.fused_content.append(struct_definition_statement(round_idx, tiles, "tiling_closure", self.models_dedicated_cores))
-            self.fused_content.append("\n")
-
-            # (b) tiling_closure function
-            self.fused_content.append(
-                tiling_closure_function_definition_statement(
-                    round_idx,
-                    lf_map,
-                    tiles,
-                    tiles_by_model_keys,
-                    self.models_dedicated_cores,
-                    ranges,
-                    self.new_layer_keys_by_round[round_idx]
-                )
-            )
-            self.fused_content.append("\n")
-
-            # (c) struct for closure
-            self.fused_content.append(struct_definition_statement(round_idx, tiles, "closure", self.models_dedicated_cores))
-            self.fused_content.append("\n")
-
-            # (d) closure function
-            self.fused_content.append(closure_function_definition_statement(round_idx, tiles, self.models_dedicated_cores))
-            self.fused_content.append("\n")
-            
-            
+        cores0, cores1 = self.models_dedicated_cores[0], self.models_dedicated_cores[1]
+        self.fused_content.append(combined_closure_struct_statement(all_tiles, cores0, cores1))
+        self.fused_content.append("\n")
+        self.fused_content.append(
+            combined_closure_function_definition_statement(tiles_by_model, model_names, self.models_dedicated_cores)
+        )
+        self.fused_content.append("\n")
 
     def init_network_fusion(self) -> None:
         self.fused_content.append("\nvoid InitNetwork() {\n")
@@ -273,26 +169,15 @@ class SourceFusion():
             for line in source.init_network.content:
                 self.fused_content.append(line)
 
-        #for i, source in enumerate(self.files):
-            # self.fused_content.append(f"subgroup_barrier_init({i+2}, cores_map[{i}][0], cores_map[{i}][1]);\n")
-            #     self.fused_content.append(f"subgroup_barrier_init(&g_barrier_{i}, cores_map[{i}][0], cores_map[{i}][1]);\n")
-
         self.fused_content.append("}\n")
 
     def run_network_fusion(self) -> None:
         """
-        Fuse RunNetwork() functions according to the WorkloadScheduler.
-        Tiles are collapsed to logical layers PER ROUND.
+        Fuse RunNetwork(): variable declarations from every source, then ONE
+        arg-cast + ONE dispatch of the combined closure built by
+        functions_fusion() (no per-round loop -- see that method and
+        combined_closure_function_definition_statement's docstrings).
         """
-
-        fc_map = {}
-        for src in self.files:
-            for fc in src.run_network.functions_calls:
-                key = (fc.model_name, fc.layer_name)
-                if key in fc_map:
-                    raise RuntimeError(f"Duplicate FunctionCall for {key}")
-                fc_map[key] = fc
-
         self.fused_content.append("\nvoid RunNetwork() {\n")
 
         for src in self.files:
@@ -301,40 +186,23 @@ class SourceFusion():
             self.fused_content.append("\n")
         self.fused_content.append("\n")
 
-        for round_idx, round_layers in enumerate(self.workload_scheduler.Scheduling_queue):
-            # new_keys = self.new_layer_keys_by_round[round_idx]
-            # if new_keys:
-            #     for (mname, lname) in new_keys:
-            #         fc = fc_map[(mname, lname)]
-
-            #         tile_def = self.lf_map[(mname, lname)]
-            #         for p in tile_def.closure_body[1]["pointers_init"]:
-            #             init_stmt = f"{p[1].strip()}{p[2].strip()}\n"  # var + initializer
-            #             self.fused_content.append(init_stmt)
-
-            #     self.fused_content.append("\n")
-
-            self.fused_content.append(f"// ===== Scheduling Round {round_idx} =====\n")
-            round_keys = []
-            seen = set()
-            for model_layers in round_layers:
-                for tile in model_layers:
-                    key = (tile.model_name, tile.layer_name)
-                    if key not in seen:
-                        if key not in fc_map:
-                            raise RuntimeError(f"Scheduled layer not found in code: {key}")
-                        seen.add(key)
-                        round_keys.append(key)
-        
-            list_of_args = []
-            list_of_layer_buffer = []
-            for key in round_keys:
-                fc = fc_map[key]
+        # Walk in the same (model, layer) order functions_fusion() used
+        # (self.files order, each source's functions_calls already in that
+        # model's original layer order).
+        list_of_args = []
+        list_of_layer_buffer = []
+        seen = set()
+        for src in self.files:
+            for fc in src.run_network.functions_calls:
+                key = (fc.model_name, fc.layer_name)
+                if key in seen:
+                    continue
+                seen.add(key)
                 list_of_args.append(fc.args_cast)
                 list_of_layer_buffer.append(fc.layer_buffer)
 
-            self.fused_content.append(arg_cast_statement(round_idx, list_of_args, list_of_layer_buffer, self.models_dedicated_cores))
-            self.fused_content.append(closure_call_statement(round_idx, self.models_dedicated_cores))
+        cores0, cores1 = self.models_dedicated_cores[0], self.models_dedicated_cores[1]
+        self.fused_content.append(combined_arg_cast_statement(list_of_args, list_of_layer_buffer, cores0, cores1))
+        self.fused_content.append(combined_closure_call_statement(cores0, cores1))
 
-        # self.fused_content.append("print_tiles_timings();\n")
         self.fused_content.append("\n}\n")

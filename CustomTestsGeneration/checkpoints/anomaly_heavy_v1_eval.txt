@@ -1,0 +1,4 @@
+AUC: 0.7852
+threshold: 0.431216
+accuracy: 0.7170
+normalized_feature_range: [-7.7930, 10.0455]

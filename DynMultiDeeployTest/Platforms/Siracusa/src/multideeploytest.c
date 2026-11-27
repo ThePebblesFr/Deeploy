@@ -84,19 +84,19 @@ int main(void) {
 #ifndef CI
   printf("Initialized\r\n");
 #endif
-  // Copy miniMNV2_6 input data to L2
-  for (uint32_t buf = 0; buf < miniMNV2_6_num_inputs; buf++) {
-    if ((uint32_t) miniMNV2_6_inputs[buf] >= 0x10000000) {
-      memcpy(miniMNV2_6_inputs[buf], miniMNV2_6_testInputVector[buf],
-             miniMNV2_6_inputs_bytes[buf]);
+  // Copy VisualWakeWords_heavy_4 input data to L2
+  for (uint32_t buf = 0; buf < VisualWakeWords_heavy_4_num_inputs; buf++) {
+    if ((uint32_t) VisualWakeWords_heavy_4_inputs[buf] >= 0x10000000) {
+      memcpy(VisualWakeWords_heavy_4_inputs[buf], VisualWakeWords_heavy_4_testInputVector[buf],
+             VisualWakeWords_heavy_4_inputs_bytes[buf]);
     }
   }
 
-  // Copy AnomalyDetection_2 input data to L2
-  for (uint32_t buf = 0; buf < AnomalyDetection_2_num_inputs; buf++) {
-    if ((uint32_t) AnomalyDetection_2_inputs[buf] >= 0x10000000) {
-      memcpy(AnomalyDetection_2_inputs[buf], AnomalyDetection_2_testInputVector[buf],
-             AnomalyDetection_2_inputs_bytes[buf]);
+  // Copy AnomalyDetection_heavy_4 input data to L2
+  for (uint32_t buf = 0; buf < AnomalyDetection_heavy_4_num_inputs; buf++) {
+    if ((uint32_t) AnomalyDetection_heavy_4_inputs[buf] >= 0x10000000) {
+      memcpy(AnomalyDetection_heavy_4_inputs[buf], AnomalyDetection_heavy_4_testInputVector[buf],
+             AnomalyDetection_heavy_4_inputs_bytes[buf]);
     }
   }
 
@@ -120,133 +120,133 @@ int main(void) {
 #endif
 
   // -------------------------------------------------------------------
-  // miniMNV2_6 Output Verification
+  // VisualWakeWords_heavy_4 Output Verification
   // -------------------------------------------------------------------
-  uint32_t miniMNV2_6_tot_err, miniMNV2_6_tot_tested;
-  miniMNV2_6_tot_err = 0;
-  miniMNV2_6_tot_tested = 0;
-  void *miniMNV2_6_compbuf;
-  FloatCompareArgs miniMNV2_6_float_compare_args;
-  uint32_t miniMNV2_6_float_error_count = 0;
+  uint32_t VisualWakeWords_heavy_4_tot_err, VisualWakeWords_heavy_4_tot_tested;
+  VisualWakeWords_heavy_4_tot_err = 0;
+  VisualWakeWords_heavy_4_tot_tested = 0;
+  void *VisualWakeWords_heavy_4_compbuf;
+  FloatCompareArgs VisualWakeWords_heavy_4_float_compare_args;
+  uint32_t VisualWakeWords_heavy_4_float_error_count = 0;
 
-  for (uint32_t buf = 0; buf < miniMNV2_6_num_outputs; buf++) {
-    miniMNV2_6_tot_tested += miniMNV2_6_outputs_bytes[buf] / sizeof(MINIMNV2_6_OUTPUTTYPE);
+  for (uint32_t buf = 0; buf < VisualWakeWords_heavy_4_num_outputs; buf++) {
+    VisualWakeWords_heavy_4_tot_tested += VisualWakeWords_heavy_4_outputs_bytes[buf] / sizeof(VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE);
 
-    if ((uint32_t) miniMNV2_6_outputs[buf] < 0x1000000) {
-      miniMNV2_6_compbuf = pi_l2_malloc((int) miniMNV2_6_outputs_bytes[buf]);
-      ram_read(miniMNV2_6_compbuf, miniMNV2_6_outputs[buf],
-               miniMNV2_6_outputs_bytes[buf]);
+    if ((uint32_t) VisualWakeWords_heavy_4_outputs[buf] < 0x1000000) {
+      VisualWakeWords_heavy_4_compbuf = pi_l2_malloc((int) VisualWakeWords_heavy_4_outputs_bytes[buf]);
+      ram_read(VisualWakeWords_heavy_4_compbuf, VisualWakeWords_heavy_4_outputs[buf],
+               VisualWakeWords_heavy_4_outputs_bytes[buf]);
     } else {
-      miniMNV2_6_compbuf = miniMNV2_6_outputs[buf];
+      VisualWakeWords_heavy_4_compbuf = VisualWakeWords_heavy_4_outputs[buf];
     }
 
-    if (MINIMNV2_6_ISOUTPUTFLOAT) {
-      miniMNV2_6_float_error_count = 0;
-      miniMNV2_6_float_compare_args.expected = miniMNV2_6_testOutputVector[buf];
-      miniMNV2_6_float_compare_args.actual = miniMNV2_6_compbuf;
-      miniMNV2_6_float_compare_args.num_elements =
-          miniMNV2_6_outputs_bytes[buf] / sizeof(float);
-      miniMNV2_6_float_compare_args.output_buf_index = buf;
-      miniMNV2_6_float_compare_args.err_count = &miniMNV2_6_float_error_count;
+    if (VISUALWAKEWORDS_HEAVY_4_ISOUTPUTFLOAT) {
+      VisualWakeWords_heavy_4_float_error_count = 0;
+      VisualWakeWords_heavy_4_float_compare_args.expected = VisualWakeWords_heavy_4_testOutputVector[buf];
+      VisualWakeWords_heavy_4_float_compare_args.actual = VisualWakeWords_heavy_4_compbuf;
+      VisualWakeWords_heavy_4_float_compare_args.num_elements =
+          VisualWakeWords_heavy_4_outputs_bytes[buf] / sizeof(float);
+      VisualWakeWords_heavy_4_float_compare_args.output_buf_index = buf;
+      VisualWakeWords_heavy_4_float_compare_args.err_count = &VisualWakeWords_heavy_4_float_error_count;
 
       pi_cluster_task(&cluster_task, CompareFloatOnCluster,
-                      &miniMNV2_6_float_compare_args);
+                      &VisualWakeWords_heavy_4_float_compare_args);
       cluster_task.stack_size = MAINSTACKSIZE;
       cluster_task.slave_stack_size = SLAVESTACKSIZE;
       pi_cluster_send_task_to_cl(&cluster_dev, &cluster_task);
 
-      miniMNV2_6_tot_err += miniMNV2_6_float_error_count;
+      VisualWakeWords_heavy_4_tot_err += VisualWakeWords_heavy_4_float_error_count;
     } else {
 
       for (uint32_t i = 0;
-           i < miniMNV2_6_outputs_bytes[buf] / sizeof(MINIMNV2_6_OUTPUTTYPE); i++) {
-        MINIMNV2_6_OUTPUTTYPE expected = ((MINIMNV2_6_OUTPUTTYPE *)miniMNV2_6_testOutputVector[buf])[i];
-        MINIMNV2_6_OUTPUTTYPE actual = ((MINIMNV2_6_OUTPUTTYPE *)miniMNV2_6_compbuf)[i];
+           i < VisualWakeWords_heavy_4_outputs_bytes[buf] / sizeof(VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE); i++) {
+        VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE expected = ((VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE *)VisualWakeWords_heavy_4_testOutputVector[buf])[i];
+        VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE actual = ((VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE *)VisualWakeWords_heavy_4_compbuf)[i];
         int32_t error = expected - actual;
-        MINIMNV2_6_OUTPUTTYPE diff = (MINIMNV2_6_OUTPUTTYPE)(error < 0 ? -error : error);
+        VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE diff = (VISUALWAKEWORDS_HEAVY_4_OUTPUTTYPE)(error < 0 ? -error : error);
 
         if (diff) {
-          miniMNV2_6_tot_err += 1;
+          VisualWakeWords_heavy_4_tot_err += 1;
           printf("Expected: %4d  ", expected);
           printf("Actual: %4d  ", actual);
           printf("Diff: %4d at Index %12u in Output %u\r\n", diff, i, buf);
         }
       }
     }
-    if ((uint32_t) miniMNV2_6_outputs[buf] < 0x1000000) {
-      pi_l2_free(miniMNV2_6_compbuf, (int) miniMNV2_6_outputs_bytes[buf]);
+    if ((uint32_t) VisualWakeWords_heavy_4_outputs[buf] < 0x1000000) {
+      pi_l2_free(VisualWakeWords_heavy_4_compbuf, (int) VisualWakeWords_heavy_4_outputs_bytes[buf]);
     }
   }
 
   // -------------------------------------------------------------------
-  // AnomalyDetection_2 Output Verification
+  // AnomalyDetection_heavy_4 Output Verification
   // -------------------------------------------------------------------
-  uint32_t AnomalyDetection_2_tot_err, AnomalyDetection_2_tot_tested;
-  AnomalyDetection_2_tot_err = 0;
-  AnomalyDetection_2_tot_tested = 0;
-  void *AnomalyDetection_2_compbuf;
-  FloatCompareArgs AnomalyDetection_2_float_compare_args;
-  uint32_t AnomalyDetection_2_float_error_count = 0;
+  uint32_t AnomalyDetection_heavy_4_tot_err, AnomalyDetection_heavy_4_tot_tested;
+  AnomalyDetection_heavy_4_tot_err = 0;
+  AnomalyDetection_heavy_4_tot_tested = 0;
+  void *AnomalyDetection_heavy_4_compbuf;
+  FloatCompareArgs AnomalyDetection_heavy_4_float_compare_args;
+  uint32_t AnomalyDetection_heavy_4_float_error_count = 0;
 
-  for (uint32_t buf = 0; buf < AnomalyDetection_2_num_outputs; buf++) {
-    AnomalyDetection_2_tot_tested += AnomalyDetection_2_outputs_bytes[buf] / sizeof(ANOMALYDETECTION_2_OUTPUTTYPE);
+  for (uint32_t buf = 0; buf < AnomalyDetection_heavy_4_num_outputs; buf++) {
+    AnomalyDetection_heavy_4_tot_tested += AnomalyDetection_heavy_4_outputs_bytes[buf] / sizeof(ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE);
 
-    if ((uint32_t) AnomalyDetection_2_outputs[buf] < 0x1000000) {
-      AnomalyDetection_2_compbuf = pi_l2_malloc((int) AnomalyDetection_2_outputs_bytes[buf]);
-      ram_read(AnomalyDetection_2_compbuf, AnomalyDetection_2_outputs[buf],
-               AnomalyDetection_2_outputs_bytes[buf]);
+    if ((uint32_t) AnomalyDetection_heavy_4_outputs[buf] < 0x1000000) {
+      AnomalyDetection_heavy_4_compbuf = pi_l2_malloc((int) AnomalyDetection_heavy_4_outputs_bytes[buf]);
+      ram_read(AnomalyDetection_heavy_4_compbuf, AnomalyDetection_heavy_4_outputs[buf],
+               AnomalyDetection_heavy_4_outputs_bytes[buf]);
     } else {
-      AnomalyDetection_2_compbuf = AnomalyDetection_2_outputs[buf];
+      AnomalyDetection_heavy_4_compbuf = AnomalyDetection_heavy_4_outputs[buf];
     }
 
-    if (ANOMALYDETECTION_2_ISOUTPUTFLOAT) {
-      AnomalyDetection_2_float_error_count = 0;
-      AnomalyDetection_2_float_compare_args.expected = AnomalyDetection_2_testOutputVector[buf];
-      AnomalyDetection_2_float_compare_args.actual = AnomalyDetection_2_compbuf;
-      AnomalyDetection_2_float_compare_args.num_elements =
-          AnomalyDetection_2_outputs_bytes[buf] / sizeof(float);
-      AnomalyDetection_2_float_compare_args.output_buf_index = buf;
-      AnomalyDetection_2_float_compare_args.err_count = &AnomalyDetection_2_float_error_count;
+    if (ANOMALYDETECTION_HEAVY_4_ISOUTPUTFLOAT) {
+      AnomalyDetection_heavy_4_float_error_count = 0;
+      AnomalyDetection_heavy_4_float_compare_args.expected = AnomalyDetection_heavy_4_testOutputVector[buf];
+      AnomalyDetection_heavy_4_float_compare_args.actual = AnomalyDetection_heavy_4_compbuf;
+      AnomalyDetection_heavy_4_float_compare_args.num_elements =
+          AnomalyDetection_heavy_4_outputs_bytes[buf] / sizeof(float);
+      AnomalyDetection_heavy_4_float_compare_args.output_buf_index = buf;
+      AnomalyDetection_heavy_4_float_compare_args.err_count = &AnomalyDetection_heavy_4_float_error_count;
 
       pi_cluster_task(&cluster_task, CompareFloatOnCluster,
-                      &AnomalyDetection_2_float_compare_args);
+                      &AnomalyDetection_heavy_4_float_compare_args);
       cluster_task.stack_size = MAINSTACKSIZE;
       cluster_task.slave_stack_size = SLAVESTACKSIZE;
       pi_cluster_send_task_to_cl(&cluster_dev, &cluster_task);
 
-      AnomalyDetection_2_tot_err += AnomalyDetection_2_float_error_count;
+      AnomalyDetection_heavy_4_tot_err += AnomalyDetection_heavy_4_float_error_count;
     } else {
 
       for (uint32_t i = 0;
-           i < AnomalyDetection_2_outputs_bytes[buf] / sizeof(ANOMALYDETECTION_2_OUTPUTTYPE); i++) {
-        ANOMALYDETECTION_2_OUTPUTTYPE expected = ((ANOMALYDETECTION_2_OUTPUTTYPE *)AnomalyDetection_2_testOutputVector[buf])[i];
-        ANOMALYDETECTION_2_OUTPUTTYPE actual = ((ANOMALYDETECTION_2_OUTPUTTYPE *)AnomalyDetection_2_compbuf)[i];
+           i < AnomalyDetection_heavy_4_outputs_bytes[buf] / sizeof(ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE); i++) {
+        ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE expected = ((ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE *)AnomalyDetection_heavy_4_testOutputVector[buf])[i];
+        ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE actual = ((ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE *)AnomalyDetection_heavy_4_compbuf)[i];
         int32_t error = expected - actual;
-        ANOMALYDETECTION_2_OUTPUTTYPE diff = (ANOMALYDETECTION_2_OUTPUTTYPE)(error < 0 ? -error : error);
+        ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE diff = (ANOMALYDETECTION_HEAVY_4_OUTPUTTYPE)(error < 0 ? -error : error);
 
         if (diff) {
-          AnomalyDetection_2_tot_err += 1;
+          AnomalyDetection_heavy_4_tot_err += 1;
           printf("Expected: %4d  ", expected);
           printf("Actual: %4d  ", actual);
           printf("Diff: %4d at Index %12u in Output %u\r\n", diff, i, buf);
         }
       }
     }
-    if ((uint32_t) AnomalyDetection_2_outputs[buf] < 0x1000000) {
-      pi_l2_free(AnomalyDetection_2_compbuf, (int) AnomalyDetection_2_outputs_bytes[buf]);
+    if ((uint32_t) AnomalyDetection_heavy_4_outputs[buf] < 0x1000000) {
+      pi_l2_free(AnomalyDetection_heavy_4_compbuf, (int) AnomalyDetection_heavy_4_outputs_bytes[buf]);
     }
   }
 
   printf("Runtime: %u cycles\r\n", getCycles());
 
 
-  printf("[miniMNV2_6] Errors: %u out of %u \r\n", miniMNV2_6_tot_err, miniMNV2_6_tot_tested);
-  printf("[AnomalyDetection_2] Errors: %u out of %u \r\n", AnomalyDetection_2_tot_err, AnomalyDetection_2_tot_tested);
+  printf("[VisualWakeWords_heavy_4] Errors: %u out of %u \r\n", VisualWakeWords_heavy_4_tot_err, VisualWakeWords_heavy_4_tot_tested);
+  printf("[AnomalyDetection_heavy_4] Errors: %u out of %u \r\n", AnomalyDetection_heavy_4_tot_err, AnomalyDetection_heavy_4_tot_tested);
 
-  if (miniMNV2_6_tot_err == 0 && AnomalyDetection_2_tot_err == 0) {
+  if (VisualWakeWords_heavy_4_tot_err == 0 && AnomalyDetection_heavy_4_tot_err == 0) {
     return 0;
   } else {
-    return miniMNV2_6_tot_err + AnomalyDetection_2_tot_err;
+    return VisualWakeWords_heavy_4_tot_err + AnomalyDetection_heavy_4_tot_err;
   }
-  // return miniMNV2_6_tot_err;
+  // return VisualWakeWords_heavy_4_tot_err;
 }

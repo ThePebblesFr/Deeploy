@@ -9,8 +9,9 @@ class LayerProfile:
                  double_buffering,
                  input_DMA,
                  kernel_exec,
-                 output_DMA):
-        
+                 output_DMA,
+                 ops=None):
+
         self.model_name = model_name
         self.layer_name = layer_name
         self.tile = tile
@@ -19,6 +20,10 @@ class LayerProfile:
         self.kernel_exec = kernel_exec
         self.output_DMA = output_DMA
         self.layer_processing_time = input_DMA + kernel_exec + output_DMA
+        # Whole-layer op count (see testRunner.py's profiling-JSON writer): identical
+        # across every tile of this layer, not a per-tile share. None for profiling
+        # JSONs produced before this field existed.
+        self.ops = ops
 
 
     def from_dict(d):
@@ -30,6 +35,7 @@ class LayerProfile:
             input_DMA=d["input_DMA"],
             kernel_exec=d["kernel_exec"],
             output_DMA=d["output_DMA"],
+            ops=d.get("ops"),
         )
 
     def to_dict(self):
@@ -40,4 +46,5 @@ class LayerProfile:
             "input_DMA": self.input_DMA,
             "kernel_exec": self.kernel_exec,
             "output_DMA": self.output_DMA,
+            "ops": self.ops,
         }

@@ -1,0 +1,4 @@
+#define OUTPUTTYPE int8_t
+#define ISOUTPUTFLOAT 0
+int8_t testOutputVector0[] = {10144.236328125, -820.625, 0, 0};
+void *testOutputVector[1] = {testOutputVector0};

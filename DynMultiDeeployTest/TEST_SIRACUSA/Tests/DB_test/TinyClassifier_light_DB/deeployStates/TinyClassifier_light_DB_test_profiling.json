@@ -1,0 +1,25 @@
+{
+    "name": "TinyClassifier_light_DB_test",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": true,
+            "ops": 17248,
+            "input_DMA": 996,
+            "kernel_exec": 4093,
+            "output_DMA": 171
+        },
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": true,
+            "ops": 766,
+            "input_DMA": 112,
+            "kernel_exec": 1309,
+            "output_DMA": 171
+        }
+    ]
+}

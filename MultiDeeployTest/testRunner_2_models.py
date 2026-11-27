@@ -4,7 +4,6 @@ import re
 from pathlib import Path
 import json
 
-from MultiDeeploy.WorkloadScheduler import WorkloadScheduler
 from MultiDeeploy.ModelProfile import ModelProfile
 from MultiDeeploy.CodeFusion.HeaderFusion import Network_h_fusion, testinputs_h_fusion, testoutputs_h_fusion
 from MultiDeeploy.CodeFusion.SourceFile import SourceFile
@@ -22,6 +21,7 @@ if __name__ == "__main__":
     models_name = args.models
     models_dedicated_cores = args.dedicated_cores
     models_l1_dedicated_size = args.dedicated_l1
+    models_doublebuffer = args.doublebuffer
     models_profiles = []
 
     # Run deeploy for the specified models
@@ -40,6 +40,7 @@ if __name__ == "__main__":
             f"--plotMemAlloc "
             f"--name {models_name[i]}"
             f"--profileToJSON"
+            + (" --doublebuffer" if models_doublebuffer[i] else "")
         )
 
         print(f"[MultiDeeploy] Simulation Command: {command}")
@@ -56,32 +57,24 @@ if __name__ == "__main__":
         model = ModelProfile.from_dict(data)
         models_profiles.append(model)
 
-    workload_scheduler = WorkloadScheduler(models=models_profiles)
-    workload_scheduler.run()
-    workload_scheduler.print_schedule()
-
     # Channels renaming
     for model_name in models_name:
         model_network_c_path = Path(
             f"/app/Deeploy/MultiDeeployTest/TEST_SIRACUSA/{test_folder}/{model_name}/Network.c"
         )
 
-        lines = model_network_c_path.read_text().splitlines(keepends=True)
-        new_lines = []
+        content = model_network_c_path.read_text()
+        model_name_re = re.escape(model_name)
+        # Idempotent, word-boundary-anchored rename -- see DynMultiDeeployTest's
+        # copy of this same loop for the full rationale: a config-dependent
+        # minority of Deeploy generations (observed under --doublebuffer at a
+        # small, L3-chunking-forced L1 budget) already emit a model-prefixed
+        # "channel_input"/"channel_output", and an unconditional str.replace()
+        # here would double-prefix those, producing undeclared identifiers.
+        content = re.sub(rf"(?<!{model_name_re}_)\bchannel_input\b", f"{model_name}_channel_input", content)
+        content = re.sub(rf"(?<!{model_name_re}_)\bchannel_output\b", f"{model_name}_channel_output", content)
 
-        for line in lines:
-            # Replace only whole identifiers
-            line = line.replace(
-                "channel_input",
-                f"{model_name}_channel_input"
-            )
-            line = line.replace(
-                "channel_output",
-                f"{model_name}_channel_output"
-            )
-            new_lines.append(line)
-
-        model_network_c_path.write_text("".join(new_lines))
+        model_network_c_path.write_text(content)
 
 
     # Fuse Network.h files
@@ -143,7 +136,6 @@ if __name__ == "__main__":
 
     source_fusion = SourceFusion(
         files=sourcefile_c_objects,
-        workload_scheduler=workload_scheduler,
         output_path=Path(f"TEST_SIRACUSA/{test_folder}/Network.c"),
         models_dedicated_cores=models_dedicated_cores
     )

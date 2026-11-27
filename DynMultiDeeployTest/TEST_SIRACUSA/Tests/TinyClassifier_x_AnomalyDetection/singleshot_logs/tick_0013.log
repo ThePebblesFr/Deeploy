@@ -1,0 +1,10 @@
+BFD: DWARF error: invalid or unhandled FORM value: 0x25
+@power.measure_0@0.000257@
+HELLO WORLD:
+Intializing
+[HOST CORE] Tick 13: operation mode 3 (task1_critical=0, task2_critical=0, operator_cmd=0, power_over_budget=0)
+[HOST CORE] Sending InitNetworks_l_s_6_2() cluster task
+Runtime InitNetwork: 2321 cycles
+[HOST CORE] Sending RunNetworks_l_s_6_2() cluster task
+Runtime RunNetwork: 83500 cycles
+[HOST CORE] Tick 13 context: task1_err=48176 task2_margin=4 total_energy_est_nj=0

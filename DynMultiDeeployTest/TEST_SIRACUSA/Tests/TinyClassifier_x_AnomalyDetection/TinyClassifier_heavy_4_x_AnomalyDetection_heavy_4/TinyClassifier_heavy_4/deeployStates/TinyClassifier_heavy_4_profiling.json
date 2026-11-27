@@ -1,0 +1,43 @@
+{
+    "name": "TinyClassifier_heavy_4",
+    "nb_dedicated_cores": 4,
+    "L1_dedicated_size": 32000,
+    "layers": [
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 66688,
+            "input_DMA": 3876,
+            "kernel_exec": 10486,
+            "output_DMA": 201
+        },
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_0_L2",
+            "tile": 1,
+            "double_buffering": false,
+            "ops": 66688,
+            "input_DMA": 707,
+            "kernel_exec": 2002,
+            "output_DMA": 200
+        },
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_1_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 16960,
+            "input_DMA": 1240,
+            "kernel_exec": 4165,
+            "output_DMA": 116
+        },
+        {
+            "layer_name": "_MERGE_GEMMRQ_PASS_2_L2",
+            "tile": 0,
+            "double_buffering": false,
+            "ops": 1502,
+            "input_DMA": 306,
+            "kernel_exec": 1592,
+            "output_DMA": 160
+        }
+    ]
+}

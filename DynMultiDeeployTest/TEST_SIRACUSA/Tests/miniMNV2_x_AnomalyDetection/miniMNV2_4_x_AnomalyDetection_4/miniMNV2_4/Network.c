@@ -3055,8 +3055,8 @@ static void miniMNV2_4__MERGE_ADDRQ_PASS_0_closure(void *miniMNV2_4__MERGE_ADDRQ
   uint8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr = args->miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_tileIdxPtr;
 
   // CLOSURE FUNCTION CALL
-  int8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_4_MEMORYARENA_L1 + 256);
-  int8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_4_MEMORYARENA_L1 + 0);
+  int8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_1_ref = (int8_t *)((char *)miniMNV2_4_MEMORYARENA_L1 + 0);
+  int8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_in_2_ref = (int8_t *)((char *)miniMNV2_4_MEMORYARENA_L1 + 256);
   int8_t *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0_data_out_ref = (int8_t *)((char *)miniMNV2_4_MEMORYARENA_L1 + 512);
   void *miniMNV2_4_TILING_CODEGEN_L1__MERGE_ADDRQ_PASS_0__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed_ref =
       (void *)((char *)miniMNV2_4__MERGE_CONVRQ_PASS_6_x31_tensor_pre_transposed + 0);

@@ -484,6 +484,7 @@ class TestRunner():
                 tile = int(m.group("tile"))
                 kind = m.group("kind")
                 cycles = int(m.group("cycles"))
+                ops = int(m.group("ops"))
 
                 key = (layer_name, tile)
 
@@ -492,6 +493,13 @@ class TestRunner():
                         "layer_name": layer_name,
                         "tile": tile,
                         "double_buffering": (buf_type == "DB"),
+                        # nodeOps (Deeploy/TilingExtension/CodeTransformationPasses/
+                        # TilingPrototypes.py) is the WHOLE layer's op count, baked
+                        # identically into every Input DMA/Kernel/Output DMA line for
+                        # every tile of that layer -- not a per-tile share. Summing
+                        # this across tiles/kinds would overcount by the tile count;
+                        # ModelProfile.total_ops() dedupes by layer_name accordingly.
+                        "ops": ops,
                         "input_DMA": 0,
                         "kernel_exec": 0,
                         "output_DMA": 0,

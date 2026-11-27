@@ -38,3 +38,25 @@ class ModelProfile:
             "L1_dedicated_size": self.L1_dedicated_size,
             "layers": [layer.to_dict() for layer in self.layers],
         }
+
+    def total_ops(self):
+        """
+        Total operation count (theta) for one network inference: 1 MAC = 2 ops,
+        matching Deeploy/DeeployTypes.py's NetworkDeployer.numberOfOps(), the
+        authoritative compile-time source this is meant to reproduce from a
+        profiling JSON. Deliberately NOT a sum over self.layers: each LayerProfile
+        is one (layer, tile) pair, and a layer's `ops` (Deeploy's nodeOps) is its
+        WHOLE op count baked identically into every tile's profiling line, not a
+        per-tile share -- summing over tiles would overcount by the tile count for
+        any layer tiled more than once. Sums one `ops` value per distinct
+        layer_name instead.
+
+        Returns None if this profile predates the `ops` field (profiling JSON
+        generated before testRunner.py started capturing it).
+        """
+        seen = {}
+        for layer in self.layers:
+            if layer.ops is None:
+                return None
+            seen.setdefault(layer.layer_name, layer.ops)
+        return sum(seen.values())

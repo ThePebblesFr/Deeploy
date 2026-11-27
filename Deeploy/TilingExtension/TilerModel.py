@@ -332,24 +332,51 @@ class TilerModel():
 
     def _setupObjective(self, patternIdx: Optional[int] = None):
 
-        _patternIdx: int
+        if patternIdx is not None:
+            assert patternIdx <= len(
+                self._objectives), f"patternIdx {patternIdx} is larger than list of _objectives, {len(self._objectives)}"
 
-        if patternIdx is None:
-            _patternIdx = 0
-        else:
-            _patternIdx = patternIdx
+            _objective = self._objectives[patternIdx]
 
-        assert _patternIdx <= len(
-            self._objectives), f"patternIdx {_patternIdx} is larger than list of _objectives, {len(self._objectives)}"
+            if _objective[1] == False:
+                objective = self._model.Maximize(_objective[0], step = 1)
+            else:
+                objective = self._model.Minimize(_objective[0], step = 1)
 
-        _objective = self._objectives[_patternIdx]
+            return objective
 
-        if _objective[1] == False:
-            objective = self._model.Maximize(_objective[0], step = 1)
-        else:
-            objective = self._model.Minimize(_objective[0], step = 1)
+        # No explicit patternIdx -- the only way this is ever actually called
+        # (from _solveModel). This used to default to patternIdx=0, meaning only
+        # the FIRST pattern/layer's tile-footprint objective ever drove the
+        # solver's branch-and-bound search; every other layer's tile size was
+        # decided purely by the decision builder's greedy CHOOSE_FIRST_UNBOUND/
+        # ASSIGN_MAX_VALUE heuristic, with no L1-budget optimality guarantee.
+        # Combine every pattern's own 'maximize' objective (one DEEPLOY_PATTERN_MEM
+        # byte-footprint IntVar per layer, added in Tiler._setupHeuristics) into a
+        # single summed objective instead, so every layer's tile size is actually
+        # optimized by the solver, not just the first. Empirically (verified against
+        # AnomalyDetection_light/_heavy at several L1 budgets) this rarely changes the
+        # OUTCOME versus the old pattern-0-only objective, because the decision
+        # builder's own greedy ASSIGN_MAX_VALUE heuristic already reaches the same
+        # tile counts whenever its first (max-value) assignment attempt never needs
+        # to backtrack -- which is the common case for these simple GEMM-dominated
+        # layers. It remains a real correctness improvement for cases where that
+        # greedy first attempt DOES fail and the solver must backtrack under a tight
+        # L1 budget (more likely as available L1 shrinks, e.g. under co-resident
+        # execution's halved per-model share), where only a real objective search
+        # (not greedy assignment order) can find the true L1-budget-maximizing tile
+        # size for every layer, not just the first.
+        assert all(not minimize for _, minimize in self._objectives), \
+            "combined objective only supports 'maximize' terms; all current callers " \
+            "(Tiler._setupHeuristics) only ever add 'maximize' pattern objectives."
 
-        return objective
+        combinedExpr = self._model.Sum([obj for obj, _ in self._objectives])
+        combinedVar = self.addVariable(name = "DEEPLOY_COMBINED_TILE_OBJECTIVE",
+                                       lowerBound = 1,
+                                       upperBound = combinedExpr.Max())
+        self._model.Add(combinedVar == combinedExpr)
+
+        return self._model.Maximize(combinedVar, step = 1)
 
     def trySolveModel(self):
 
